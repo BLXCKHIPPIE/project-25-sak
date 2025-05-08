@@ -41,5 +41,102 @@
 
 
         }
+        public static void Level1()// Circle 9: Treachery
+        {
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level2()// Circle 8: Violence
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level3()// Circle 7: Heresy
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level4()// Circle 6: Anger
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level5()// Circle 5: Greed
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level6()// Circle 4: Gluttony
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
+        public static void Level7()// Circle 3: Lust
+        {
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }
