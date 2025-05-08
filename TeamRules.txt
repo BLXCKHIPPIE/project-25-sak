@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Try to work within hours of 9am - 10pm - if you have merge conflicts outside this time do your best to communicate and resolve within next working day.
+Communicate ideas and changes via teams / in class
+Comment code before git push
+Communicate all pushes via teams
+Never push broken code
+Obtain permission to edit others code
+Treat each other with respect - be accommodating to others creativity.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
