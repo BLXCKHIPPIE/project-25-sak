@@ -45,7 +45,7 @@
         }
         public static void Credits()// Credits
         {
-            string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan, 4.Thomas Visser";
+            string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan Field, 4.Thomas Visser";
             string[] split;
 
             Console.WriteLine("Irreverence Credits.\n");
