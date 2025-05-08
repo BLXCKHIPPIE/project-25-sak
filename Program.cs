@@ -9,12 +9,13 @@
             Console.WriteLine("Keep me empty pls"); // placeholder
 			
 			Console.ReadLine(); // pause
-            menu(); // calls menu
+            Menu(); // calls menu
+
 
         }
 
 
-        static void menu() // Declare title method
+        static void Menu() // Declare title method
         {
 
             int decision; // define decision variable
@@ -31,7 +32,8 @@
                         
                         break;
                     case 2:
-                        
+                        //heads to credits
+                        Credits();
                         break;
                 }
                 Console.Clear(); // clear screen
@@ -41,7 +43,24 @@
 
 
         }
+        public static void Credits()// Credits
+        {
+            string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan, 4.Thomas Visser";
+            string[] split;
 
+            Console.WriteLine("Irreverence Credits.\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            split = names.Split(',');
+            foreach (string name in split)//increments names neatly, will assign roles later.
+            { 
+                Console.WriteLine(name.Trim());
+                Thread.Sleep(200);
+            }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nPress enter key to return to menu.");
+            Console.ReadLine();//Exits back to menu
+        }
 
 
         public static void Level1()// Circle 9: Treachery
