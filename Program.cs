@@ -1,8 +1,13 @@
-﻿namespace Wah
+﻿using System.Net.NetworkInformation;
+
+namespace Wah
 {
     internal class Program
     {
+        public static string name = " "; //static variables go up here
         
+
+
         
         static void Main() // Declare main method
         {
@@ -29,21 +34,22 @@
                 {
 
                     case 1:
-                        
+                        Level1();
                         break;
-                    case 2:
-                        //heads to credits
+                    case 2://heads to credits
                         Credits();
+                        break;
+                    case 3://exits the game
+                        decision = 0;
                         break;
                 }
                 Console.Clear(); // clear screen
             }
             while (decision != 0); // exit command - placeholder to be worked on
-            Console.ReadLine(); // pause
 
 
         }
-        public static void Credits()// Credits
+        public static void Credits()// declare Credits method
         {
             string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan Field, 4.Thomas Visser";
             string[] split;
@@ -65,15 +71,45 @@
 
         public static void Level1()// Circle 9: Treachery
         {
+            string menuOptions = "1.Yes, 2.No", temp = " ";
+            string[] split;
+            bool correctName = false;
 
+            for (int i = 0; i<55; i++)//"loading" screen
+            {
+                Console.Write("/-");
+                Thread.Sleep(50);
+            }
+            while (correctName == false)//will keep looping until user confirms their name
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Clear();
+                Console.WriteLine("PLEASE TYPE YOUR NAME.");
+                temp = Console.ReadLine();
+                name = temp;
 
+                Console.WriteLine($"YOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
+                split = menuOptions.Split(',');//Same as credits, sves me having to format menu options
+                for (int i = 0; i < split.Length; i++)
+         
+                {
+                    Console.WriteLine(split[i].Trim());
+                }
 
+                temp = Console.ReadLine();//reads user input
+                if (temp == "1")
+                {
+                    correctName = true;
+                }
+                else if (temp == "2")
+                {
+                    Console.WriteLine("THEN TRY AGAIN.");
+                    Thread.Sleep(1500);
+                }
+                Console.ForegroundColor = ConsoleColor.White;
 
-
-
-
-
-
+                //Will put actual into here
+            }
 
         }
         public static void Level2()// Circle 8: Violence
