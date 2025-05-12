@@ -222,8 +222,20 @@ namespace Wah
                 "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
                 "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
             Console.WriteLine("1.Take the path up to higher ground\n2.Continue straight ahead");
-           
-            Console.ReadLine() ;
+            decision = Convert.ToInt32(Console.ReadLine());
+            if (decision == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Decision 1 was chosen");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Decision 2 was chosen");
+                Console.ReadLine();
+            }
+
 
 
 
