@@ -83,7 +83,6 @@ namespace Wah
             while (correctName == false)//will keep looping until user confirms their name
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.Clear();
                 Console.WriteLine("PLEASE TYPE YOUR NAME.");
                 temp = Console.ReadLine();
                 name = temp;
@@ -106,10 +105,14 @@ namespace Wah
                     Console.WriteLine("THEN TRY AGAIN.");
                     Thread.Sleep(1500);
                 }
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-
                 //Will put actual into here
             }
+
+            Console.WriteLine("Nothingness shouldn't have texture, should it?");
+            Console.ReadLine();
+            Console.Clear();
 
         }
         public static void Level2()// Circle 8: Violence
