@@ -27,6 +27,7 @@ namespace Wah
             do
             {
 
+                Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
                 Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit"); // presenting options
                 decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
@@ -80,6 +81,8 @@ namespace Wah
                 Console.Write("/-");
                 Thread.Sleep(50);
             }
+            Console.Clear();
+
             while (correctName == false)//will keep looping until user confirms their name
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -105,6 +108,12 @@ namespace Wah
                     Console.WriteLine("THEN TRY AGAIN.");
                     Thread.Sleep(1500);
                 }
+                else
+                {
+                    Console.WriteLine("INVALID INPUT. TRY AGAIN.");
+                    Thread.Sleep(1500);
+
+                }
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
                 //Will put actual into here
@@ -113,6 +122,20 @@ namespace Wah
             Console.WriteLine("Nothingness shouldn't have texture, should it?");
             Console.ReadLine();
             Console.Clear();
+
+            Console.WriteLine("The voice drags you aware, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.");
+            Thread.Sleep(200);
+            Console.WriteLine("In front of you is an elderly man, hunched over, with a wispy beard. It's a bit creepy how he's staring down at you.\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            menuOptions = "1. Stand up, 2. Attack, 3. Question";
+            split = menuOptions.Split(','); //Formats the choice
+            for (int i = 0; i < split.Length; i++)
+
+            {
+                Console.WriteLine(split[i].Trim());
+            }
+            temp = Console.ReadLine();
 
         }
         public static void Level2()// Circle 8: Violence
