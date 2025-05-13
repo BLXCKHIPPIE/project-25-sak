@@ -143,17 +143,15 @@ namespace Wah
         }
         public static void Level2()// Circle 8: Violence
         {
-
-
-
-
-
-
-
-
-
-
-
+            Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest\n");
+            Thread.Sleep(750);
+            Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you\n");
+            Thread.Sleep(750);
+            Console.WriteLine("You may cross the river safely if you have not committed the sin of Violence. Those who have committed the sin of Violence will sink. Will you attempt to cross?");
+            Console.WriteLine("1. Cross the river");
+            Console.WriteLine("2. Wait for the Centaurs to leave");
+            
+            // If the player attacked the person in the last level, they will not be able to pass the river
         }
         public static void Level3()// Circle 7: Heresy
         {
