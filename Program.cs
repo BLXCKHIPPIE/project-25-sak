@@ -150,29 +150,34 @@ namespace Wah
             Console.WriteLine("This is just here for testing. Decide whether or not you attacked the guy in Treachery\n1. Attacked him\n2. Did not");
             committedViolence = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
-            Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest\n");
+            Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
             Thread.Sleep(750);
-            Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you\n");
+            Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you.");
             Thread.Sleep(750);
-            Console.WriteLine("You may cross the river safely if you have not committed the sin of Violence.\nThose who have committed the sin of Violence will sink. Will you attempt to cross?");
+            Console.WriteLine("Those who have committed the sin of Violence will sink. Will you attempt to cross?");
+            Thread.Sleep(750);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1. Cross the river");
             Console.WriteLine("2. Wait for the Centaurs to leave");
+            Console.ForegroundColor = ConsoleColor.White;
             decision = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             // If the player attacked the person in the last level, they will not be able to pass the river
             if (decision == 1) //If they cross the river
             {
-                Console.Write("You step into the river.");
-                Thread.Sleep(200);
-                Console.Write(".");
-                Thread.Sleep(200);
-                Console.Write(".");
-                Thread.Sleep(200);
-                Console.Write(".");
-                Thread.Sleep(200);
+                Console.Write("You step into the river");
+                Thread.Sleep(400); Console.Write(".");
+                Thread.Sleep(200); Console.Write(".");
+                Thread.Sleep(400); Console.Write(".");
+                Thread.Sleep(400);
+                Console.Clear();
                 if (committedViolence == 1) // If they attacked the guy in treachery
                 {
-                    Console.Write("\nYou feel the weight of your sins sinking you deeper into the river of blood and fire.\nYour acts of violence in Treachery drag you deeper in the river.");
+                    Console.WriteLine("You feel the weight of your sins sinking you deeper into the river of blood and fire.");
+                    Thread.Sleep(400);
+                    Console.WriteLine("Your acts of violence in Treachery drag you deeper in the river.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Press Enter to restart");
                     Console.ReadLine();
                     Console.Clear();
                     Level1();
@@ -200,20 +205,20 @@ namespace Wah
                     {
                         Console.Clear();
                         Console.WriteLine("You wait an hour, but the Centaurs are still there. Would you like to:");
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("1. Cross the river");
                         Console.WriteLine("2. Wait longer");
+                        Console.ForegroundColor = ConsoleColor.White;
                         decision = Convert.ToInt32(Console.ReadLine());
+                        Console.Clear();
                         if(decision == 1)
                         {
-                            Console.Write("You step into the river.");
-                            Thread.Sleep(200);
-                            Console.Write(".");
-                            Thread.Sleep(200);
-                            Console.Write(".");
-                            Thread.Sleep(200);
-                            Console.Write(".");
-                            Thread.Sleep(200);
-                            Console.Write("\nYou are able to walk through the river without sinking.");
+                            Console.Write("You step into the river"); Thread.Sleep(400);
+                            Console.Write("."); Thread.Sleep(400);
+                            Console.Write("."); Thread.Sleep(400);
+                            Console.Write("."); Thread.Sleep(400);
+                            Console.Clear();
+                            Console.Write("You are able to walk through the river without sinking.");
                             Console.ReadLine();
                             Console.Clear();
                             Level2_2();
@@ -222,9 +227,10 @@ namespace Wah
                 }
             }
         }
+
         public static void Level2_2() //Violence Forest
         {
-            Console.WriteLine("Nothing here yet");
+            Console.WriteLine("You enter the forest. The trees are warped and thorny. They almost look like they're in agony");
             Console.ReadLine();
             
         }
