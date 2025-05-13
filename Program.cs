@@ -209,6 +209,20 @@ namespace Wah
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static void Level7()// Circle 3: Lust
         {
             int decision;
@@ -281,14 +295,42 @@ namespace Wah
             Console.ReadLine();
         }
 
-        public static void Level7_3() // Circle 3: Lust - Rope Bridge minigame
+        public static void Level7_3() // Circle 3: Lust - Rope Bridge mini-game
         {
             Random rnd = new Random(); // importing random
             int chance = rnd.Next(0, 100); // setting up chance of success
             Console.Clear(); // clear screen
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
             Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
-            Console.WriteLine(chance);
+
+            Console.Clear();
+            Console.WriteLine(".");
+            Thread.Sleep(200);
+            Console.Clear();
+            Console.WriteLine("..");
+            Thread.Sleep(200);
+            Console.Clear(); //           Adding animation for success suspense. 
+            Console.WriteLine("...");
+
+            Thread.Sleep(2000);
+            Console.Clear();
+
+
+            if (chance < 50)
+            {
+                Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
+                    "realize that if the rope had of snapped you would have fell 100 meters to your death. ");
+                    }
+            else
+            {
+                Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
+                    "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-10 hp"); // Loss of HP to be added later as global variable
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Strength check:");
+            }
+            
             Console.ReadLine();
 
         }
