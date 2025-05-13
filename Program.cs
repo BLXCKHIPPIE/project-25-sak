@@ -214,13 +214,14 @@ namespace Wah
         public static void Level7()// Circle 3: Lust
         {
             int decision;
-            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
+            
             Console.WriteLine("level 7"); 
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
                 "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
                 "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
                 "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
                 "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
             Console.WriteLine("1.Take the path up to higher ground\n2.Continue straight ahead");
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             if (decision == 1) // if user enters "1"
