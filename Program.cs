@@ -215,7 +215,7 @@ namespace Wah
         {
             int decision;
 
-            Console.WriteLine("level 7");
+            Console.WriteLine($"level 7 - Welcome {name}");
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
                 "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
                 "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
@@ -237,8 +237,6 @@ namespace Wah
              
         }
           
-            
-
         public static void Level7_1()// Circle 3: Lust - Taking the path to high ground
         {
             int decision;
@@ -269,9 +267,9 @@ namespace Wah
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
-                "as the dust settles you notice a marble staircase leading down.. it looks really clean and out of place in the midst of a dusty chasm. ");
+                "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
             Console.ForegroundColor= ConsoleColor.DarkYellow;
-            Console.WriteLine("1.Take stairs down (this will lead you to previous level\n" +
+            Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
                 "2. Circle back and take the path to high ground");
             decision= Convert.ToInt32(Console.ReadLine());
             if (decision == 1)
@@ -280,6 +278,7 @@ namespace Wah
             { Level7_1(); }
             Console.ReadLine();
         }
+
 
 
 
