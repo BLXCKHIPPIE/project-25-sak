@@ -11,7 +11,7 @@ namespace Wah
         
         static void Main() // Declare main method
         {
-            Console.WriteLine("Keep me empty pls"); // placeholder
+            Console.WriteLine("Keep me HUNGRY"); // placeholder
 			
 			Console.ReadLine(); // pause
             Menu(); // calls menu
@@ -79,11 +79,11 @@ namespace Wah
             string[] split;
             bool correctName = false;
 
-            for (int i = 0; i<55; i++)//"loading" screen
-            {
-                Console.Write("/-");
-                Thread.Sleep(50);
-            }
+            //for (int i = 0; i<55; i++)//"loading" screen
+            //{
+            //    Console.Write("/-");
+            //    Thread.Sleep(50);
+            //}
             Console.Clear();
 
             while (correctName == false)//will keep looping until user confirms their name
@@ -93,7 +93,7 @@ namespace Wah
                 temp = Console.ReadLine();
                 name = temp;
 
-                Console.WriteLine($"YOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
+                Console.WriteLine($"\nYOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
                 split = menuOptions.Split(',');//Same as credits, sves me having to format menu options
                 for (int i = 0; i < split.Length; i++)
          
@@ -109,7 +109,7 @@ namespace Wah
                 else if (temp == "2")
                 {
                     Console.WriteLine("THEN TRY AGAIN.");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(500);
                 }
                 else
                 {
@@ -119,16 +119,14 @@ namespace Wah
                 }
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                //Will put actual into here
+                //Will put actual intro here
             }
 
-            Console.WriteLine("Nothingness shouldn't have texture, should it?");
-            Console.ReadLine();
-            Console.Clear();
-
-            Console.WriteLine("The voice drags you aware, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.");
-            Thread.Sleep(200);
-            Console.WriteLine("In front of you is an elderly man, hunched over, with a wispy beard. It's a bit creepy how he's staring down at you.\n");
+            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'");
+  
+            Console.WriteLine("The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
+                "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin. \n" +
+                "It's a bit creepy how he's staring down at you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             menuOptions = "1. Stand up, 2. Attack, 3. Question";
@@ -139,8 +137,65 @@ namespace Wah
                 Console.WriteLine(split[i].Trim());
             }
             temp = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
 
+            Console.WriteLine("You " +(temp == "3" ? "start to speak " : (temp == "2" ? "try to attack " : "try to get up ")) + "but something stops you.\n" +
+                "Looking down, you see that your limbs are wrapped in thick, hoary rimes of ice. " +
+                "No sooner have you noticed than the pain sets in. It's both numbing and agonizing at the same time; " +
+                "every cell of your body demands that you MAKE IT STOP.\n");
+            Thread.Sleep(200);
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            menuOptions = "1. Struggle, 2. Attack, 3. Ask for help"; //Eventually will set stats
+            split = menuOptions.Split(','); //Formats the choice
+            for (int i = 0; i < split.Length; i++)
+
+            {
+                Console.WriteLine(split[i].Trim());
+            }
+            temp = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+
+            Console.Write(temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings." +
+                " At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens, until you finally pull an arm free. " +
+                "After that, it's a simple matter of working your way free." : (temp == "2" ? " You writhe around with brute force, " +
+                "throwing your will against the ice that binds you. It pushes back, but then, with a sudden crack, it gives way." : 
+                "'Okay, hold tight.'\n" +
+                "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
+                "but eventually, you feel the ice loosen all at once, then shatter.\n")+
+                "You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
+                "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
+                "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            menuOptions = "1. Where are we?";
+            split = menuOptions.Split(','); //Formats the choice
+            for (int i = 0; i < split.Length; i++)
+
+            {
+                Console.WriteLine(split[i].Trim());
+            }
+            temp = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+
+            Console.WriteLine("'Hell'.\n" +
+                "The old man replies quickly.\n" +
+                "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'");
+            Console.ReadLine();
         }
+
+
+
+
+
+
+
+
+
+
         public static void Level2()// Circle 8: Violence
         {
             Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest\n");
