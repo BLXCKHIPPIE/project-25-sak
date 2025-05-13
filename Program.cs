@@ -212,29 +212,70 @@ namespace Wah
         public static void Level7()// Circle 3: Lust
         {
             int decision;
-            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
-            Console.WriteLine("level 7"); 
+
+            Console.WriteLine($"level 7 - Welcome {name}");
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
                 "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
                 "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
                 "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
                 "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
             Console.WriteLine("1.Take the path up to higher ground\n2.Continue straight ahead");
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             if (decision == 1) // if user enters "1"
+
             {
-                Console.Clear(); // Clear console window
-                Console.WriteLine("Decision 1 was chosen");
-                Console.ReadLine();
+                Level7_1();
+            }
+            else
+            { 
+                Level7_2();
+            }
+            
+             
+        }
+          
+        public static void Level7_1()// Circle 3: Lust - Taking the path to high ground
+        {
+            int decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("You start walking up the path on the left side, it takes you higher and higher until you are around 100m\n" +
+                " from the pit of the chasm. The path begins to get dangerously narrow.\n" +
+                " As you steady yourself and walk down it you eventually reach a rope bridge.\n" +
+                " Looking behind at the left most edge of the wall you notice that it is quite easily climbable.\n\n ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
+            Console.WriteLine("1. Climb the chasm\n2. Take your chances on the rope bridge");
+            decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
+            if (decision == 2)
+            {
+                Console.WriteLine("rope bridge mini-game here");
             }
             else
             {
-                Console.Clear();
-                Console.WriteLine("Decision 2 was chosen");
-                Console.ReadLine();
+
+                Console.WriteLine("chasm climbing stuff happens here");
             }
+            Console.ReadLine();
+        }
+        public static void Level7_2()// Circle 3: Lust - continuing straight ahead
 
-
+        {
+            int decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
+                "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
+            Console.ForegroundColor= ConsoleColor.DarkYellow;
+            Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
+                "2. Circle back and take the path to high ground");
+            decision= Convert.ToInt32(Console.ReadLine());
+            if (decision == 1)
+            { Level6(); }
+            else
+            { Level7_1(); }
+            Console.ReadLine();
+        }
 
 
 
@@ -244,4 +285,4 @@ namespace Wah
 
         }
     }
-}
+
