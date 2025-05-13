@@ -300,6 +300,9 @@ namespace Wah
             if (decision == 1) // if user enters "1"
 
             {
+                Console.Clear();
+                Console.ForegroundColor= ConsoleColor.DarkYellow;
+                Console.WriteLine("You walk all the way back the the ramp on the left, you feel the air pressure lessen as you progress");
                 Level7_1();
             }
             else
@@ -324,7 +327,8 @@ namespace Wah
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             if (decision == 2)
             {
-                Console.WriteLine("rope bridge mini-game here");
+                
+                Level7_3();
             }
             else
             {
@@ -337,23 +341,32 @@ namespace Wah
 
         {
             int decision;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear(); // clearing console
+            Console.ForegroundColor = ConsoleColor.White; // setting text color to white
             Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
                 "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
-            Console.ForegroundColor= ConsoleColor.DarkYellow;
+            Console.ForegroundColor= ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
             Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
                 "2. Circle back and take the path to high ground");
-            decision= Convert.ToInt32(Console.ReadLine());
+            decision= Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
             if (decision == 1)
-            { Level6(); }
+            { Level6(); } // calls Level6 method
             else
-            { Level7_1(); }
+            { Level7_1(); } // calls Level7_1 method
             Console.ReadLine();
         }
 
+        public static void Level7_3() // Circle 3: Lust - Rope Bridge minigame
+        {
+            Random rnd = new Random(); // importing random
+            int chance = rnd.Next(0, 100); // setting up chance of success
+            Console.Clear(); // clear screen
+            Console.ForegroundColor = ConsoleColor.White; // setting text to white
+            Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
+            Console.WriteLine(chance);
+            Console.ReadLine();
 
-
+        }
 
 
 
