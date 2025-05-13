@@ -28,7 +28,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit\n4. Test"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit\n4. Test\n5. Violence"); // presenting options
                 decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -45,6 +45,9 @@ namespace Wah
                         break;
                     case 4: // use to test levels we will remove this from menu later!
                         Level7();
+                        break;
+                    case 5:
+                        Level2_1(); //Takes you to level 7
                         break;
                 }
                 Console.Clear(); // clear screen
@@ -198,15 +201,94 @@ namespace Wah
 
         public static void Level2()// Circle 8: Violence
         {
+
+
+
+
+        }
+        public static void Level2_1()// Circle 8: Violence River
+        {
+            int decision, committedViolence; //CommittedViolence is probably just a temporary variable for now
+            Console.WriteLine("This is just here for testing. Decide whether or not you attacked the guy in Treachery\n1. Attacked him\n2. Did not");
+            committedViolence = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
             Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest\n");
             Thread.Sleep(750);
             Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you\n");
             Thread.Sleep(750);
-            Console.WriteLine("You may cross the river safely if you have not committed the sin of Violence. Those who have committed the sin of Violence will sink. Will you attempt to cross?");
+            Console.WriteLine("You may cross the river safely if you have not committed the sin of Violence.\nThose who have committed the sin of Violence will sink. Will you attempt to cross?");
             Console.WriteLine("1. Cross the river");
             Console.WriteLine("2. Wait for the Centaurs to leave");
-            
+            decision = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
             // If the player attacked the person in the last level, they will not be able to pass the river
+            if (decision == 1) //If they cross the river
+            {
+                Console.Write("You step into the river.");
+                Thread.Sleep(200);
+                Console.Write(".");
+                Thread.Sleep(200);
+                Console.Write(".");
+                Thread.Sleep(200);
+                Console.Write(".");
+                Thread.Sleep(200);
+                if (committedViolence == 1) // If they attacked the guy in treachery
+                {
+                    Console.Write("\nYou feel the weight of your sins sinking you deeper into the river of blood and fire.\nYour acts of violence in Treachery drag you deeper in the river.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Level1();
+                } else //If they did NOT attack the guy in treachery
+                {
+                    Console.Write("You are able to walk through the river without sinking.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Level2_2();
+                }
+            }
+
+            if (decision == 2) //If they wait
+            {
+                if (committedViolence == 1) //If they attacked the guy in treachery
+                {
+                    Console.WriteLine("You wait at the river, hoping that the Centaurs will leave, however you seem to have forgotten that they have already noticed you.\nA group of Centaurs gallop over to you and pelt you with arrows and drag you to the river");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Level1();
+                }
+                else //If they did NOT attack the guy in treachery
+                {
+                    do // The player is allowed to cross so nothing happens until they cross
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You wait an hour, but the Centaurs are still there. Would you like to:");
+                        Console.WriteLine("1. Cross the river");
+                        Console.WriteLine("2. Wait longer");
+                        decision = Convert.ToInt32(Console.ReadLine());
+                        if(decision == 1)
+                        {
+                            Console.Write("You step into the river.");
+                            Thread.Sleep(200);
+                            Console.Write(".");
+                            Thread.Sleep(200);
+                            Console.Write(".");
+                            Thread.Sleep(200);
+                            Console.Write(".");
+                            Thread.Sleep(200);
+                            Console.Write("\nYou are able to walk through the river without sinking.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Level2_2();
+                        }
+                    } while (decision != 1);
+                }
+            }
+        }
+        public static void Level2_2() //Violence Forest
+        {
+            Console.WriteLine("Nothing here yet");
+            Console.ReadLine();
+            
         }
         public static void Level3()// Circle 7: Heresy
         {
@@ -264,6 +346,20 @@ namespace Wah
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static void Level7()// Circle 3: Lust
         {
             int decision;
@@ -280,6 +376,9 @@ namespace Wah
             if (decision == 1) // if user enters "1"
 
             {
+                Console.Clear();
+                Console.ForegroundColor= ConsoleColor.DarkYellow;
+                Console.WriteLine("You walk all the way back the the ramp on the left, you feel the air pressure lessen as you progress");
                 Level7_1();
             }
             else
@@ -304,7 +403,8 @@ namespace Wah
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             if (decision == 2)
             {
-                Console.WriteLine("rope bridge mini-game here");
+                
+                Level7_3();
             }
             else
             {
@@ -317,23 +417,60 @@ namespace Wah
 
         {
             int decision;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear(); // clearing console
+            Console.ForegroundColor = ConsoleColor.White; // setting text color to white
             Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
                 "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
-            Console.ForegroundColor= ConsoleColor.DarkYellow;
+            Console.ForegroundColor= ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
             Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
                 "2. Circle back and take the path to high ground");
-            decision= Convert.ToInt32(Console.ReadLine());
+            decision= Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
             if (decision == 1)
-            { Level6(); }
+            { Level6(); } // calls Level6 method
             else
-            { Level7_1(); }
+            { Level7_1(); } // calls Level7_1 method
             Console.ReadLine();
         }
 
+        public static void Level7_3() // Circle 3: Lust - Rope Bridge mini-game
+        {
+            Random rnd = new Random(); // importing random
+            int chance = rnd.Next(0, 100); // setting up chance of success
+            Console.Clear(); // clear screen
+            Console.ForegroundColor = ConsoleColor.White; // setting text to white
+            Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
+
+            Console.Clear();
+            Console.WriteLine(".");
+            Thread.Sleep(200);
+            Console.Clear();
+            Console.WriteLine("..");
+            Thread.Sleep(200);
+            Console.Clear(); //           Adding animation for success suspense. 
+            Console.WriteLine("...");
+
+            Thread.Sleep(2000);
+            Console.Clear();
 
 
+            if (chance < 50)
+            {
+                Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
+                    "realize that if the rope had of snapped you would have fell 100 meters to your death. ");
+                    }
+            else
+            {
+                Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
+                    "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-10 hp"); // Loss of HP to be added later as global variable
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Strength check:");
+            }
+            
+            Console.ReadLine();
+
+        }
 
 
 
