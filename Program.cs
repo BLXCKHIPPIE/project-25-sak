@@ -1,14 +1,17 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.ComponentModel.Design;
+using System.Net.NetworkInformation;
 
 namespace Wah
 {
     internal class Program
     {
-        public static string name = " "; //static variables go up here
         
 
 
-        
+
+
+
+
         static void Main() // Declare main method
         {
             Console.WriteLine("Keep me HUNGRY"); // placeholder
@@ -17,6 +20,43 @@ namespace Wah
             Menu(); // calls menu
 
 
+        }
+
+        // Character sheet ---- 
+       
+        public static string name = " "; 
+        public static int strength = 10;
+        public static int vitality = 100; // Max health
+        public static int intelligence = 10;
+        public static int karmaScore = -10;
+        public static int gold = 0;
+
+
+        static void Character()
+        {
+            string karma; // Basic Karma rank system
+            if (karmaScore < 0)
+            {
+                karma = "Sinner";
+            }
+            else if (karmaScore >= 0 && karmaScore < 20)
+            {
+                karma = "Neutral";
+            }
+            else
+            {
+                karma = "Saint";
+            }
+
+            Console.WriteLine($"--- Character ---\n");
+            Console.WriteLine($" Name: {name}");
+            Console.WriteLine($" Strength: {strength}");
+            Console.WriteLine($" Vitality: {vitality}");
+            Console.WriteLine($" Intelligence: {intelligence}");
+            Console.WriteLine($" Gold: {gold}");
+            Console.WriteLine($" Karma: {karma}");
+
+            Console.ReadLine();
         }
 
 
@@ -28,7 +68,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit\n4. Test\n5. Violence"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit\n4. Lust (test)\n5. Violence (test)\n6. Character (test)"); // presenting options
                 decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -47,7 +87,10 @@ namespace Wah
                         Level7();
                         break;
                     case 5:
-                        Level2_1(); //Takes you to level 7
+                        Level2_1(); //Takes you to level 2
+                        break;
+                    case 6:
+                        Character();
                         break;
                 }
                 Console.Clear(); // clear screen
@@ -496,7 +539,8 @@ namespace Wah
                 Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
                     "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("-10 hp"); // Loss of HP to be added later as global variable
+                Console.WriteLine("-10 hp"); 
+                vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Strength check:");
             }
