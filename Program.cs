@@ -84,7 +84,7 @@ namespace Wah
 
             Console.Clear();
 
-            while (correctName == false)//will keep looping until user confirms their name
+            do
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("PLEASE TYPE YOUR NAME.");
@@ -94,7 +94,7 @@ namespace Wah
                 Console.WriteLine($"\nYOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
                 split = menuOptions.Split(',');//Same as credits, sves me having to format menu options
                 for (int i = 0; i < split.Length; i++)
-         
+
                 {
                     Console.WriteLine(split[i].Trim());
                 }
@@ -117,10 +117,9 @@ namespace Wah
                 }
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Level1();//Will put actual intro here
-            }
+            } while (correctName == false);//will keep looping until user confirms their name)
+            Level1();//Will put actual intro here
 
-         
         }
         public static void Level1()// Circle 9: Treachery
         {
@@ -134,9 +133,8 @@ namespace Wah
             }
             Console.Clear();
 
-            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n");
-
-            Console.WriteLine("The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
+            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
+                "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
                 "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
                 "It's a bit creepy how he's staring down at you.\n");
 
@@ -152,10 +150,10 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "try to attack, " : "try to get up, ")) + "but something stops you.\n" +
+            Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
                 "Looking down, you see that your limbs are wrapped in thick, hoary rimes of ice. \n" +
-                "No sooner have you noticed than the pain sets in. It's both numbing and agonizing at the same time; " +
-                "every cell of your body demands that you MAKE IT STOP.\n");
+                "No sooner have you noticed than the pain sets in. It's both numbing and agonizing at the same time; every \n" +
+                "cell of your body demands that you MAKE IT STOP.\n");
             Thread.Sleep(200);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -170,19 +168,20 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.Write(temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings." +
-                " At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens, until you finally pull an arm free. " +
-                "After that, it's a simple matter of working your way free.\n\n" : (temp == "2" ? " You writhe around with brute force, " +
-                "throwing your will against the ice that binds you. It pushes back, but then, with a sudden crack, it gives way.\n\n" :
+            Console.Write((temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n\n" +
+                "" : (temp == "2" ? "You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                "It pushes back, but then, with a sudden crack, it gives way.\n" :
                 "'Okay, hold tight.'\n\n" +
                 "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                "but eventually, you feel the ice loosen all at once, then shatter.\n\n") +
+                "but eventually, you feel the ice loosen all at once, then shatter.\n")) +
                 "You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1.'Where are we?'";
+            menuOptions = "1. Where are we?";
             split = menuOptions.Split(','); //Formats the choice
             for (int i = 0; i < split.Length; i++)
 
@@ -195,7 +194,26 @@ namespace Wah
 
             Console.WriteLine("'Hell'.\n\n" +
                 "The old man replies quickly.\n\n" +
-                "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'");
+                "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'\n\n" +
+                "He points into the distance, and you can see a great looming shape that you had thought was a mountain.\n" +
+                "It's not the red man in tights that you had always thought he would be, no, it's a massive serpentine\n" +
+                "shape, half-frozen in ice, with three writhing heads coiling into the air like the mythological hydra.\n" +
+                "The details are hidden by the blustering snow, but the sillhouette is enough to make you shiver.\n\n" +
+                "'Anyway, my name is Bryan.'\n\n" +
+                "It's clear from the way he says it that Bryan is expecting you to give your name.\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            menuOptions = $"1. My name is {name}, 2. Attack, 3. Say Nothing";
+            split = menuOptions.Split(','); //Formats the choice
+            for (int i = 0; i < split.Length; i++)
+
+            {
+                Console.WriteLine(split[i].Trim());
+            }
+            temp = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+
             Console.ReadLine();
         }
 
