@@ -35,7 +35,7 @@ namespace Wah
                 {
 
                     case 1:
-                        Level1();
+                        NameCreation();
                         break;
                     case 2://heads to credits
                         Credits();
@@ -76,17 +76,12 @@ namespace Wah
         }
 
 
-        public static void Level1()// Circle 9: Treachery
+        public static void NameCreation()// Basic menu to set player name
         {
             string menuOptions = "1.Yes, 2.No", temp = " ";
             string[] split;
             bool correctName = false;
 
-            //for (int i = 0; i<55; i++)//"loading" screen
-            //{
-            //    Console.Write("/-");
-            //    Thread.Sleep(50);
-            //}
             Console.Clear();
 
             while (correctName == false)//will keep looping until user confirms their name
@@ -122,13 +117,27 @@ namespace Wah
                 }
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                //Will put actual intro here
+                Level1();//Will put actual intro here
             }
 
-            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'");
-  
+         
+        }
+        public static void Level1()// Circle 9: Treachery
+        {
+            string menuOptions = "1.Yes, 2.No", temp = " ";
+            string[] split;
+
+            for (int i = 0; i<55; i++)//"loading" screen
+            {
+                Console.Write("/-");
+                Thread.Sleep(50);
+            }
+            Console.Clear();
+
+            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n");
+
             Console.WriteLine("The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
-                "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin. \n" +
+                "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
                 "It's a bit creepy how he's staring down at you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -143,8 +152,8 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.WriteLine("You " +(temp == "3" ? "start to speak " : (temp == "2" ? "try to attack " : "try to get up ")) + "but something stops you.\n" +
-                "Looking down, you see that your limbs are wrapped in thick, hoary rimes of ice. " +
+            Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "try to attack, " : "try to get up, ")) + "but something stops you.\n" +
+                "Looking down, you see that your limbs are wrapped in thick, hoary rimes of ice. \n" +
                 "No sooner have you noticed than the pain sets in. It's both numbing and agonizing at the same time; " +
                 "every cell of your body demands that you MAKE IT STOP.\n");
             Thread.Sleep(200);
@@ -163,17 +172,17 @@ namespace Wah
 
             Console.Write(temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings." +
                 " At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens, until you finally pull an arm free. " +
-                "After that, it's a simple matter of working your way free." : (temp == "2" ? " You writhe around with brute force, " +
-                "throwing your will against the ice that binds you. It pushes back, but then, with a sudden crack, it gives way." : 
-                "'Okay, hold tight.'\n" +
+                "After that, it's a simple matter of working your way free.\n\n" : (temp == "2" ? " You writhe around with brute force, " +
+                "throwing your will against the ice that binds you. It pushes back, but then, with a sudden crack, it gives way.\n\n" :
+                "'Okay, hold tight.'\n\n" +
                 "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                "but eventually, you feel the ice loosen all at once, then shatter.\n")+
+                "but eventually, you feel the ice loosen all at once, then shatter.\n\n") +
                 "You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1. Where are we?";
+            menuOptions = "1.'Where are we?'";
             split = menuOptions.Split(','); //Formats the choice
             for (int i = 0; i < split.Length; i++)
 
@@ -184,8 +193,8 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.WriteLine("'Hell'.\n" +
-                "The old man replies quickly.\n" +
+            Console.WriteLine("'Hell'.\n\n" +
+                "The old man replies quickly.\n\n" +
                 "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'");
             Console.ReadLine();
         }
