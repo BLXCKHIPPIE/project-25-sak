@@ -68,7 +68,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Exit\n4. Lust (test)\n5. Violence (test)\n6. Character (test)"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)"); // presenting options
                 decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -79,20 +79,20 @@ namespace Wah
                         break;
                     case 2://heads to credits
                         Credits();
-                        break;
-                    case 3://exits the game
-                        decision = 0;
-                        break;
-                    case 4: // use to test levels we will remove this from menu later!
+                        break;                      
+                    case 3: // use to test levels we will remove this from menu later!
                         Level7();
                         break;
-                    case 5:
+                    case 4:
                         Level2_1(); //Takes you to level 2
                         break;
-                    case 6:
+                    case 5:
                         Character();
                         break;
-                }
+                    case 6:
+                        decision = 0;
+                        break;
+                }   
                 Console.Clear(); // clear screen
             }
             while (decision != 0); // exit command - placeholder to be worked on
