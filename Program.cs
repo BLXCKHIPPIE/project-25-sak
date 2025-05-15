@@ -132,12 +132,46 @@ namespace Wah
             Console.WriteLine("You Are Dead.\n");
             Console.ForegroundColor = ConsoleColor.White;
             
-            Console.WriteLine($"\n{quote}");
+            Console.WriteLine($"\n\"{quote}\"");
             Console.ReadLine();
             Console.Clear();
             death++;
             Character();
+            Console.WriteLine($"Press enter to return to level {level}");
             Console.ReadLine();
+            Console.Clear();
+
+
+            //Many if statements to take you to the level you're supposed to be on
+            if (level == 1)
+            {
+                Level1();
+            }
+            if (level == 2)
+            {
+                Level2();
+            }
+            if (level == 3)
+            {
+                Level3();
+            }
+            if (level == 4)
+            {
+                Level4();
+            }
+            if (level == 5)
+            {
+                Level5();
+            }
+            if (level == 6)
+            {
+                Level6();
+            }
+            if (level == 7)
+            {
+                Level7();
+            }
+
         }
 
 
@@ -388,14 +422,14 @@ namespace Wah
 
         public static void Level2()// Circle 8: Violence
         {
-
-
+            Level2_1();
 
 
         }
         public static void Level2_1()// Circle 8: Violence River
         {
             int decision, committedViolence; //CommittedViolence is probably just a temporary variable for now
+            level = 2;
             Console.WriteLine("This is just here for testing. Decide whether or not you attacked the guy in Treachery\n1. Attacked him\n2. Did not");
             committedViolence = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
@@ -420,6 +454,7 @@ namespace Wah
                 Thread.Sleep(500); Console.Write(".");
                 Thread.Sleep(500);
                 Console.Clear();
+                DeathScreen();
                 if (committedViolence == 1) // If they attacked the guy in treachery
                 {
                     Console.WriteLine("You feel the weight of your sins sinking you deeper into the river of blood and fire.");
@@ -683,13 +718,20 @@ namespace Wah
                 Console.WriteLine("-10 hp"); 
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Strength check:");
+                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
+                if (strength > 40)
+                { Level7_4(); }
+                else
+                { DeathScreen(); }
             }
             
             Console.ReadLine();
 
         }
-
+        public static void Level7_4
+        { 
+        
+        }
 
 
 
