@@ -15,9 +15,9 @@ namespace Wah
         static void Main() // Declare main method
         {
             Console.WriteLine("Keep me HUNGRY"); // placeholder
-			
 			Console.ReadLine(); // pause
-            Menu(); // calls menu
+            Console.Clear();
+            MainMenu(); // calls menu
 
 
         }
@@ -113,7 +113,7 @@ namespace Wah
     "Follow your own path, wherever it may lead you.",
     "The worst of all deceptions is self-deception.",
     "Nature is the art of God.",
-    "From a little spark may burst a flame.",
+    "You're not you when you're hungry",
     "The purpose of the present life is virtuous action.",
     "Do not be afraid; our fate cannot be taken from us; it is a gift.",
     "All your anxieties will disappear if you are willing to live in the moment.",
@@ -176,7 +176,7 @@ namespace Wah
 
 
 
-        static void Menu() // Declare title method
+        static void MainMenu() // Declare title method
         {
 
             int decision; // define decision variable
