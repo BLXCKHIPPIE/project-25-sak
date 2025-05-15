@@ -264,7 +264,7 @@ namespace Wah
                 name = temp;
 
                 Console.WriteLine($"\nYOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
-                Menu("1.Yes, 2.No");
+                Menu("1. Yes, 2. No");
 
                 temp = Console.ReadLine();//reads user input
                 if (temp == "1")
@@ -285,6 +285,14 @@ namespace Wah
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
             } while (correctName == false);//will keep looping until user confirms their name)
+
+            for (int i = 0; i < 55; i++)//"loading" screen
+            {
+                Console.Write("/-");
+                Thread.Sleep(50);
+            }
+            Console.Clear();
+
             Level1();//Onto the first level
         }
 
@@ -292,13 +300,6 @@ namespace Wah
         {
             string menuOptions = "1. Yes, 2. No", temp = " ";
             level = 1;
-
-            for (int i = 0; i<55; i++)//"loading" screen
-            {
-                Console.Write("/-");
-                Thread.Sleep(50);
-            }
-            Console.Clear();
 
             Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
                 "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
@@ -318,7 +319,7 @@ namespace Wah
             Thread.Sleep(200);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Struggle, 2. Attack, 3. Ask for help");
+            Menu("1. Work your way out, 2. Attack, 3. Ask for help");
             temp = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
