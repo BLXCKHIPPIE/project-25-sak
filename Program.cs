@@ -283,11 +283,11 @@ namespace Wah
             committedViolence = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
-            Thread.Sleep(750);
+            Thread.Sleep(1000);
             Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you.");
-            Thread.Sleep(750);
+            Thread.Sleep(1000);
             Console.WriteLine("Those who have committed the sin of Violence will sink. Will you attempt to cross?");
-            Thread.Sleep(750);
+            Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1. Cross the river");
             Console.WriteLine("2. Wait for the Centaurs to leave");
@@ -298,18 +298,18 @@ namespace Wah
             if (decision == 1) //If they cross the river
             {
                 Console.Write("You step into the river");
-                Thread.Sleep(400); Console.Write(".");
-                Thread.Sleep(200); Console.Write(".");
-                Thread.Sleep(400); Console.Write(".");
-                Thread.Sleep(400);
+                Thread.Sleep(500); Console.Write(".");
+                Thread.Sleep(500); Console.Write(".");
+                Thread.Sleep(500); Console.Write(".");
+                Thread.Sleep(500);
                 Console.Clear();
                 if (committedViolence == 1) // If they attacked the guy in treachery
                 {
                     Console.WriteLine("You feel the weight of your sins sinking you deeper into the river of blood and fire.");
-                    Thread.Sleep(400);
+                    Thread.Sleep(1000);
                     Console.WriteLine("Your acts of violence in Treachery drag you deeper in the river.");
                     Thread.Sleep(1000);
-                    Console.WriteLine("Press Enter to restart");
+                    Console.WriteLine("Your body is burning in fire while drowning at the same time");
                     Console.ReadLine();
                     Console.Clear();
                     Level1();
@@ -338,17 +338,17 @@ namespace Wah
                         Console.Clear();
                         Console.WriteLine("You wait an hour, but the Centaurs are still there. Would you like to:");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("1. Cross the river");
-                        Console.WriteLine("2. Wait longer");
+                        Console.WriteLine("1. Cross the river\n2. Wait longer");
                         Console.ForegroundColor = ConsoleColor.White;
                         decision = Convert.ToInt32(Console.ReadLine());
                         Console.Clear();
                         if(decision == 1)
                         {
-                            Console.Write("You step into the river"); Thread.Sleep(400);
-                            Console.Write("."); Thread.Sleep(400);
-                            Console.Write("."); Thread.Sleep(400);
-                            Console.Write("."); Thread.Sleep(400);
+                            Console.Write("You step into the river"); Thread.Sleep(500);
+                            Thread.Sleep(500); Console.Write(".");
+                            Thread.Sleep(500); Console.Write(".");
+                            Thread.Sleep(500); Console.Write(".");
+                            Thread.Sleep(500);
                             Console.Clear();
                             Console.Write("You are able to walk through the river without sinking.");
                             Console.ReadLine();
@@ -359,12 +359,36 @@ namespace Wah
                 }
             }
         }
-
+        
         public static void Level2_2() //Violence Forest
         {
-            Console.WriteLine("You enter the forest. The trees are warped and thorny. They almost look like they're in agony");
-            Console.ReadLine();
-            
+            Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony"); Thread.Sleep(1000);
+            Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); Thread.Sleep(1000);
+            Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?"); Thread.Sleep(1000);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("1. Gather Wood\n2. Carry on moving through the forest");
+            Console.ForegroundColor = ConsoleColor.White;
+            int decision = Convert.ToInt32(Console.ReadLine());
+            Console.Clear();
+            if (decision == 1) //If the player decides to gather wood
+            {
+                Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire."); Thread.Sleep(1000);
+                Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
+                Console.ReadLine(); //Pause so the player can read the tree screaming
+                Console.Clear();
+                Console.ForegroundColor= ConsoleColor.DarkRed;
+                Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
+                Console.WriteLine("WHY WOULD YOU RIP OFF THAT BRANCH!"); Thread.Sleep(1500);
+                Console.WriteLine("DO YOU HAVE ANY EMPATHY?"); Thread.Sleep(1500);
+                Console.WriteLine("WHAT IS WRONG WITH YOU!"); Thread.Sleep(1500);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else //If the player decides to leave the forest
+            {
+                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+            }
+            Console.ReadLine() ;
+
         }
         public static void Level3()// Circle 7: Heresy
         {
