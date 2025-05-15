@@ -229,7 +229,7 @@ namespace Wah
             Thread.Sleep(200);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1. Struggle, 2. Attack, 3. Ask for help"; //Eventually will set stats
+            menuOptions = "1. Struggle, 2. Attack, 3. Ask for help;" //Eventually will set stats
             split = menuOptions.Split(','); //Formats the choice
             for (int i = 0; i < split.Length; i++)
 
@@ -240,15 +240,32 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.Write((temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings.\n" +
-                "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n\n" +
-                "" : (temp == "2" ? "You writhe around with brute force,throwing your will against the ice that binds you.\n" +
-                "It pushes back, but then, with a sudden crack, it gives way.\n" :
-                "'Okay, hold tight.'\n\n" +
+            switch(temp)
+            {
+                case "1":
+                   Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n\n");
+                   intelligence = intelligence + 1;
+                   break;
+                case "2":
+                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                "It pushes back, but then, with a sudden crack, it gives way.\n");
+                    strength = strength + 1;
+                    break;
+                case "3":
+                    Console.WriteLine("'Okay, hold tight.'\n\n" +
                 "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                "but eventually, you feel the ice loosen all at once, then shatter.\n")) +
-                "You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
+                "but eventually, you feel the ice loosen all at once, then shatter.\n");
+                    karmaScore = karmaScore + 1;
+                    break;
+                case "4":
+                    Console.Clear();
+                    Character();
+                    break;
+            }
+
+            Console.Write("You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
 
