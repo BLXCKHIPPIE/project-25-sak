@@ -5,7 +5,7 @@ namespace Wah
 {
     internal class Program
     {
-        
+        public static Random rand = new Random();
 
 
 
@@ -31,6 +31,7 @@ namespace Wah
         public static int karmaScore = -10;
         public static int gold = 0;
         public static int death = 0;
+        public static int level = 0;
 
 
         static void Character()
@@ -89,6 +90,58 @@ namespace Wah
         }
 
 
+
+        static void DeathScreen()
+        {
+            int chosenQuote;
+            chosenQuote = rand.Next(29);
+            string[] deathQuotes = {
+    "All hope abandon, ye who enter here.",
+    "The more a thing is perfect, the more it feels pleasure and pain.",
+    "The love that moves the sun and the other stars.",
+    "Consider your origin. You were not formed to live like brutes but to follow virtue and knowledge.",
+    "Into the eternal darkness, into fire and into ice.",
+    "The man who lies asleep will never waken fame, and his desire and all his life drift past him like a dream.",
+    "There is no greater sorrow than to recall happiness in times of misery.",
+    "Midway upon the journey of our life, I found myself within a forest dark, for the straightforward pathway had been lost.",
+    "Av’rice, envy, pride, Three fatal sparks, have set the hearts of all on fire.",
+    "Not all the gold, that is beneath the moon, or ever hath been, might purchase rest for one.",
+    "The hottest places in Hell are reserved for those who, in times of great moral crisis, maintain their neutrality.",
+    "Beauty awakens the soul to act.",
+    "The path to paradise begins in hell.",
+    "A great flame follows a little spark.",
+    "Follow your own path, wherever it may lead you.",
+    "The worst of all deceptions is self-deception.",
+    "Nature is the art of God.",
+    "From a little spark may burst a flame.",
+    "The purpose of the present life is virtuous action.",
+    "Do not be afraid; our fate cannot be taken from us; it is a gift.",
+    "All your anxieties will disappear if you are willing to live in the moment.",
+    "Heaven wheels above you, displaying to you her eternal glories, and still your eyes are on the ground.",
+    "Love, that quickly seized upon my heart, led me to make my state of mind like to itself.",
+    "The more perfect a thing is, the more susceptible to good and bad treatment it is.",
+    "The world is not only for the clever ones.",
+    "Remember tonight… for it is the beginning of always.",
+    "Weeping is a sign of love.",
+    "The day that man allows true love to appear, those things which are well made will fall into confusion and will overturn everything we believe to be right and true.",
+    "I did not die, and yet I lost life’s breath.",
+    "O human race, born to fly upward, wherefore at a little wind dost thou so fall?" };
+            string quote = deathQuotes[chosenQuote];
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("You Are Dead.\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            
+            Console.WriteLine($"\n{quote}");
+            Console.ReadLine();
+            Console.Clear();
+            death++;
+            Character();
+            Console.ReadLine();
+        }
+
+
+
         static void Menu() // Declare title method
         {
 
@@ -97,7 +150,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen"); // presenting options
                 decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -119,6 +172,9 @@ namespace Wah
                         Character();
                         break;
                     case 6:
+                        DeathScreen();
+                        break;
+                    case 7:
                         decision = 0;
                         break;
                 }   
@@ -197,6 +253,7 @@ namespace Wah
         {
             string menuOptions = "1.Yes, 2.No", temp = " ";
             string[] split;
+            level = 1;
 
             for (int i = 0; i<55; i++)//"loading" screen
             {
@@ -340,8 +397,8 @@ namespace Wah
                     Thread.Sleep(1000);
                     Console.WriteLine("Your body is burning in fire while drowning at the same time");
                     Console.ReadLine();
+
                     Console.Clear();
-                    Level1();
                 } else //If they did NOT attack the guy in treachery
                 {
                     Console.Write("You are able to walk through the river without sinking.");
