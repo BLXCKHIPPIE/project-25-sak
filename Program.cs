@@ -94,7 +94,7 @@ namespace Wah
         static void DeathScreen()
         {
             int chosenQuote;
-            chosenQuote = rand.Next(29);
+            chosenQuote = rand.Next(30);
             string[] deathQuotes = {
     "All hope abandon, ye who enter here.",
     "The more a thing is perfect, the more it feels pleasure and pain.",
@@ -237,11 +237,21 @@ namespace Wah
             Console.ReadLine();//Exits back to menu
         }
 
+        public static void Menu(string menuOptions)//quick options-creation method to save time.
+        {
+            string[] split;
+            split = menuOptions.Split(',');//Same as credits, saves me having to format menu options
+            for (int i = 0; i < split.Length; i++)
+
+            {
+                Console.WriteLine(split[i].Trim());
+            }
+
+        }
 
         public static void NameCreation()// Basic menu to set player name
         {
-            string menuOptions = "1.Yes, 2.No", temp = " ";
-            string[] split;
+            string temp = " ";
             bool correctName = false;
 
             Console.Clear();
@@ -254,12 +264,7 @@ namespace Wah
                 name = temp;
 
                 Console.WriteLine($"\nYOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
-                split = menuOptions.Split(',');//Same as credits, sves me having to format menu options
-                for (int i = 0; i < split.Length; i++)
-
-                {
-                    Console.WriteLine(split[i].Trim());
-                }
+                Menu("1.Yes, 2.No");
 
                 temp = Console.ReadLine();//reads user input
                 if (temp == "1")
@@ -280,13 +285,12 @@ namespace Wah
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
             } while (correctName == false);//will keep looping until user confirms their name)
-            Level1();//Will put actual intro here
-
+            Level1();//Onto the first level
         }
+
         public static void Level1()// Circle 9: Treachery
         {
-            string menuOptions = "1.Yes, 2.No", temp = " ";
-            string[] split;
+            string menuOptions = "1. Yes, 2. No", temp = " ";
             level = 1;
 
             for (int i = 0; i<55; i++)//"loading" screen
@@ -302,13 +306,7 @@ namespace Wah
                 "It's a bit creepy how he's staring down at you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1. Stand up, 2. Attack, 3. Question";
-            split = menuOptions.Split(','); //Formats the choice
-            for (int i = 0; i < split.Length; i++)
-
-            {
-                Console.WriteLine(split[i].Trim());
-            }
+            Menu("1. Stand Up, 2. Attack, 3. Question");
             temp = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
@@ -320,70 +318,56 @@ namespace Wah
             Thread.Sleep(200);
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1. Struggle, 2. Attack, 3. Ask for help"; //Eventually will set stats
-            split = menuOptions.Split(','); //Formats the choice
-            for (int i = 0; i < split.Length; i++)
-
-            {
-                Console.WriteLine(split[i].Trim());
-            }
+            Menu("1. Struggle, 2. Attack, 3. Ask for help");
             temp = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            switch(temp)
+            switch(temp)//the first choice to alter stats
             {
                 case "1":
-                   Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
-                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n");
-
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
                         "Other choices may require you to have certain stats to succeed.\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
+                    Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n");
                     intelligence = intelligence + 1;
                    break;
                 case "2":
-                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
-                "It pushes back, but then, with a sudden crack, it gives way.\n");
-
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
                         "Other choices may require you to have certain stats to succeed.\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
+                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                    "It pushes back, but then, with a sudden crack, it gives way.\n");
                     strength = strength + 1;
                     break;
                 case "3":
-                    Console.WriteLine("'Okay, hold tight.'\n\n" +
-                "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                "but eventually, you feel the ice loosen all at once, then shatter.\n");
-
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
                         "Other choices may require you to have certain stats to succeed.\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
+                    Console.WriteLine("'Okay, hold tight.'\n\n" +
+                         "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
+                    "but eventually, you feel the ice loosen all at once, then shatter.\n");
                     intelligence = intelligence + 1;
+                    karmaScore = karmaScore + 1; //treachery is decreased by trust
                     break;
             }
 
             Console.WriteLine("You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
-                "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
+                "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = "1. Where are we?";
-            split = menuOptions.Split(','); //Formats the choice
-            for (int i = 0; i < split.Length; i++)
-
-            {
-                Console.WriteLine(split[i].Trim());
-            }
-            temp = Console.ReadLine();
+            Menu("1. Where are we?");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
             Console.Clear();
 
             Console.WriteLine("'Hell'.\n\n" +
@@ -394,21 +378,34 @@ namespace Wah
                 "shape, half-frozen in ice, with three writhing heads coiling into the air like the mythological hydra.\n" +
                 "The details are hidden by the blustering snow, but the sillhouette is enough to make you shiver.\n\n" +
                 "'Anyway, my name is Bryan.'\n\n" +
-                "It's clear from the way he says it that Bryan is expecting you to give your name.\n\n");
+                "It's clear from the way he says it that Bryan is expecting you to give your name.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            menuOptions = $"1. My name is {name}, 2. Attack, 3. Say Nothing";
-            split = menuOptions.Split(','); //Formats the choice
-            for (int i = 0; i < split.Length; i++)
-
-            {
-                Console.WriteLine(split[i].Trim());
-            }
+            Menu($"1. My name is {name}, 2. Attack, 3. Say nothing");
             temp = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
+            switch(temp)
+            {
+                case "1":
+                    Console.WriteLine("'Oh, just like that, huh?'\n\n" +
+                        "Bryan seems surprised by your frank honesty.");
+                    karmaScore = karmaScore + 1;
+                    break;
+                case "2":
+                    //will head to the split path
+                    break;
+                case "3":
+                    Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
+                    break;
+            }
+
+                
+
             Console.ReadLine();
+            Level2();
+            
         }
 
 
@@ -733,7 +730,7 @@ namespace Wah
             Console.ReadLine();
 
         }
-        public static void Level7_4
+        public static void Level7_4()
         { 
         
         }
