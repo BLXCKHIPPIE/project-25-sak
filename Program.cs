@@ -331,15 +331,46 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            Console.Write((temp == "1" ? "You squirm around, systematically testing for weaknesses in your bindings.\n" +
-                "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n\n" +
-                "" : (temp == "2" ? "You writhe around with brute force,throwing your will against the ice that binds you.\n" +
-                "It pushes back, but then, with a sudden crack, it gives way.\n" :
-                "'Okay, hold tight.'\n\n" +
+            switch(temp)
+            {
+                case "1":
+                   Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                        "Other choices may require you to have certain stats to succeed.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    intelligence = intelligence + 1;
+                   break;
+                case "2":
+                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                "It pushes back, but then, with a sudden crack, it gives way.\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
+                        "Other choices may require you to have certain stats to succeed.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    strength = strength + 1;
+                    break;
+                case "3":
+                    Console.WriteLine("'Okay, hold tight.'\n\n" +
                 "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                "but eventually, you feel the ice loosen all at once, then shatter.\n")) +
-                "You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
+                "but eventually, you feel the ice loosen all at once, then shatter.\n");
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                        "Other choices may require you to have certain stats to succeed.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    intelligence = intelligence + 1;
+                    break;
+            }
+
+            Console.WriteLine("You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n\n");
 
@@ -692,13 +723,20 @@ namespace Wah
                 Console.WriteLine("-10 hp"); 
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Strength check:");
+                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
+                if (strength > 40)
+                { Level7_4(); }
+                else
+                { DeathScreen(); }
             }
             
             Console.ReadLine();
 
         }
-
+        public static void Level7_4
+        { 
+        
+        }
 
 
 
