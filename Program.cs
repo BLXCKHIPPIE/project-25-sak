@@ -30,6 +30,7 @@ namespace Wah
         public static int intelligence = 10;
         public static int karmaScore = -10;
         public static int gold = 0;
+        public static int death = 0;
 
 
         static void Character()
@@ -48,13 +49,41 @@ namespace Wah
                 karma = "Saint";
             }
 
-            Console.WriteLine($"--- Character ---\n");
-            Console.WriteLine($" Name: {name}");
-            Console.WriteLine($" Strength: {strength}");
-            Console.WriteLine($" Vitality: {vitality}");
-            Console.WriteLine($" Intelligence: {intelligence}");
-            Console.WriteLine($" Gold: {gold}");
-            Console.WriteLine($" Karma: {karma}");
+            Console.WriteLine($"--- Character ---");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Name: \n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(name);
+            Console.WriteLine("--- Skills ---");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Strength: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine (strength);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Vitality: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(vitality);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Intelligence: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(intelligence);
+            Console.WriteLine("\n--- Statistics ---");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Karma: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(karma);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Gold: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(gold);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write($" Deaths: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(death);
+
+
+
+
 
             Console.ReadLine();
         }
