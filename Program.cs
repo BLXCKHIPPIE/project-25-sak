@@ -440,6 +440,7 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                     Level2_2();
+                    
                 }
             }
 
@@ -503,10 +504,14 @@ namespace Wah
                 Console.WriteLine("DO YOU HAVE ANY EMPATHY?"); Thread.Sleep(1500);
                 Console.WriteLine("WHAT IS WRONG WITH YOU!"); Thread.Sleep(1500);
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+                Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you");
+                Console.ReadLine();
+                //Fight goes here
             }
             else //If the player decides to leave the forest
             {
-                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); Thread.Sleep(1000);
             }
             Console.ReadLine() ;
 
