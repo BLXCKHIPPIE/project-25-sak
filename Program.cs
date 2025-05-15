@@ -400,6 +400,9 @@ namespace Wah
                     Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
                     break;
             }
+            Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. \n" +
+                "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
+                "'Take it, you probably need it more than I do.'\n");
 
                 
 
