@@ -652,13 +652,20 @@ namespace Wah
                 Console.WriteLine("-10 hp"); 
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Strength check:");
+                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
+                if (strength > 40)
+                { Level7_4(); }
+                else
+                { DeathScreen(); }
             }
             
             Console.ReadLine();
 
         }
-
+        public static void Level7_4
+        { 
+        
+        }
 
 
 
