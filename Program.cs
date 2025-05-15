@@ -455,7 +455,6 @@ namespace Wah
                 Thread.Sleep(500); Console.Write(".");
                 Thread.Sleep(500);
                 Console.Clear();
-                DeathScreen();
                 if (committedViolence == 1) // If they attacked the guy in treachery
                 {
                     Console.WriteLine("You feel the weight of your sins sinking you deeper into the river of blood and fire.");
@@ -464,8 +463,8 @@ namespace Wah
                     Thread.Sleep(1000);
                     Console.WriteLine("Your body is burning in fire while drowning at the same time");
                     Console.ReadLine();
-
                     Console.Clear();
+                    DeathScreen();
                 } else //If they did NOT attack the guy in treachery
                 {
                     Console.Write("You are able to walk through the river without sinking.");
