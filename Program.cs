@@ -278,7 +278,7 @@ namespace Wah
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    Console.WriteLine($"you are fighting {creature}.\n\n\n");
+                    Console.WriteLine($"you are fighting {creature}.\n\n\n\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                     MonsterMenu($"HP. {monHp}, Speed. {monSpeed}");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -301,8 +301,13 @@ namespace Wah
             {
                 do
                 {
-                    Console.WriteLine($"\n\nIt is {name}'s turn.\n");
+                    Console.WriteLine($"\n\nIt is {name}'s turn.\nVitality: ");
+                    for (int i = 0; i <= vitality; i++)
+                    {
+                        Console.Write("|");
+                    }
                     Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.Write("\n");
                     Menu("1. Light Attack, 2. Heavy Attack, 3. Flee");
                     Console.ForegroundColor = ConsoleColor.White;
                     combatAction = Console.ReadLine();
@@ -381,7 +386,8 @@ namespace Wah
             }
             else
             {
-                Console.WriteLine("You have been felled.");
+                Console.Clear();
+                Console.WriteLine($"{monsterName} was too much. You have been felled.\n");
                 DeathScreen();
             }
 
@@ -444,15 +450,16 @@ namespace Wah
 
 
 
+
         public static void NameCreation()// Basic menu to set player name
         {
             string temp = " ";
             bool correctName = false;
 
-            Console.Clear();
 
             do
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("PLEASE TYPE YOUR NAME.");
                 temp = Console.ReadLine();
@@ -481,7 +488,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
             } while (correctName == false);//will keep looping until user confirms their name)
 
-            LoadAnimation();
+            //LoadAnimation();
 
             Level1();//Onto the first level
         }
@@ -489,6 +496,7 @@ namespace Wah
         public static void Level1()// Circle 9: Treachery
         {
             string menuOptions = "1. Yes, 2. No", temp = " ";
+            bool choiceBreak = false;
             level = 1;
 
             Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
@@ -503,8 +511,8 @@ namespace Wah
             Console.Clear();
 
             Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
-                "Looking down, you see that your limbs are wrapped in thick, hoary rimes of ice. \n" +
-                "No sooner have you noticed than the pain sets in. It's both numbing and agonizing at the same time; every \n" +
+                "Looking down, you see that your limbs are encased in thick, frigid rimes of ice. \n" +
+                "No sooner have you noticed than the pain sets in--It's both numbing and agonizing at the same time; every \n" +
                 "cell of your body demands that you MAKE IT STOP.\n");
             Thread.Sleep(200);
 
@@ -553,53 +561,93 @@ namespace Wah
 
             Console.WriteLine("You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
                 "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
-                "but what really chills you are the frozen statues dotting the ice. Those could have been you.\n");
+                "but what really chills you are the frozen statues dotting the ice, each vaguely moulding to the shape of the person inside.\n" +
+                "That could have been you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Menu("1. Where are we?");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("'Hell'.\n\n" +
+               "The old man replies quickly.\n\n" +
+               "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'\n\n" +
+               "He points into the distance, and you can see a great looming shape that you had thought was a mountain.\n" +
+               "It's not the red man in tights that you had always thought he would be, no, it's a massive serpentine\n" +
+               "shape, half-frozen in ice, with three writhing heads coiling into the air like the mythological hydra.\n" +
+               "The details are hidden by the blustering snow, but the sillhouette is enough to make you shiver.\n\n" +
+               "'Anyway, my name is Bryan.'\n\n" +
+               "It's clear from the way he says it that Bryan is expecting you to give your name.\n");
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu($"1. My name is {name}, 2. Attack, 3. Say nothing");
+                temp = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("'Oh, just like that, huh?'\n\n" +
+                            "Bryan seems surprised by your frank honesty.");
+                        karmaScore = karmaScore + 1;
+                        break;
+                    case "2":
+                        choiceBreak = true;
+                        Level1_1();
+                        choiceBreak = false;
+                        break;
+                    case "3":
+                        Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
+                        intelligence++;
+                        break;
+                }
+            } while (choiceBreak == true);
+                Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. \n" +
+                    "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
+                    "'Take it, you probably need it more than I do.'\n");
+
+
+
+
+            Level2();
+            
+        }
+        public static void Level1_1()
+        {
+            string temp = " ";
+
             Console.Clear();
-
-            Console.WriteLine("'Hell'.\n\n" +
-                "The old man replies quickly.\n\n" +
-                "'No, seriously. Actual H-E-Double-Hockeystick Hell. Look, there's the Devil over there.'\n\n" +
-                "He points into the distance, and you can see a great looming shape that you had thought was a mountain.\n" +
-                "It's not the red man in tights that you had always thought he would be, no, it's a massive serpentine\n" +
-                "shape, half-frozen in ice, with three writhing heads coiling into the air like the mythological hydra.\n" +
-                "The details are hidden by the blustering snow, but the sillhouette is enough to make you shiver.\n\n" +
-                "'Anyway, my name is Bryan.'\n\n" +
-                "It's clear from the way he says it that Bryan is expecting you to give your name.\n");
-
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu($"1. My name is {name}, 2. Attack, 3. Say nothing");
+            Console.WriteLine("ARE YOU SURE?\n");
+
+            Menu($"1. Yes, 2. No");
             temp = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            switch(temp)
+            if (temp == "1")
             {
-                case "1":
-                    Console.WriteLine("'Oh, just like that, huh?'\n\n" +
-                        "Bryan seems surprised by your frank honesty.");
-                    karmaScore = karmaScore + 1;
-                    break;
-                case "2":
-                    Combat("Bryan", 1, 3);
-                    break;
-                case "3":
-                    Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
-                    break;
+                Console.WriteLine("A pulse of adrenaline staves off the cold, as you swing your fist at Ryan, taking him by surprise.\n" +
+                    "Your blow lands with a satisying crack, and he rocks back in the snow, wobbling on dazed feet. But he recovers quickly,\n" +
+                    "a dangerous glint coming to his eyes--made worse by the line of blood dribbling down his chin.\n\n" +
+                    "'So that's how it's going to be, huh? I'll get you back for that.'\n\n" +
+                    "He brandishes " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you; it's a fight!\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Press ENTER to continue...");
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("In this game you will face enemies. You have two combat options, light attacks and heavy attacks. Light attacks are\n" +
+                    "more accurate, but do less damage. Heavy attacks are less accurate, but can potentially end a fight sooner.\n" +
+                    "Finally, you have the option to flee. Be careful--some enemies will catch you!\n\n" +
+                    "Press ENTER to continue...");
+                Console.ReadLine();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Combat("Bryan", 2, 2);
             }
-            Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. \n" +
-                "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
-                "'Take it, you probably need it more than I do.'\n");
-
-                
-
-            Console.ReadLine();
-            Level2();
-            
         }
 
 
@@ -940,7 +988,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
             Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
             Console.Clear();
-            LoadAnimation();
+            //LoadAnimation();
             if (chance < 30)
             {
                 Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
