@@ -603,7 +603,7 @@ namespace Wah
                     case "2":
                         choiceBreak = true;
                         Level1_1(ref fought);
-                        choiceBreak = fought;
+                        choiceBreak = false;
                         break;
                     case "3":
                         Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
@@ -619,9 +619,9 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("With a final blow, Bryan sprawls across the icy ground, gasping up at the sky. Before your eyes\n" +
-                    "the ice grows over him, like a mold. He struggles, but nothing is able to save him from slowly being swallowed by the snow.\n" +
-                    "It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies blade-down in the snow,\n" +
-                    "and you stoop down to retrieve it. It's spotted with rust, but the metal seems solid enough.\n");
+                    "the ice grows over him, like a mold. He struggles, but nothing is able to save him from slowly being swallowed by \n" +
+                    "the snow. It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies\n" +
+                    "blade-down in the snow, and you stoop down to retrieve it. \nIt's spotted with rust, but the metal seems solid enough.\n");
                 weapon = 2;
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu("Press ENTER to continue...");
@@ -638,7 +638,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu("1. Take the knife, 2. I'll pass.");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+                temp = Console.ReadLine();
             }
 
 
