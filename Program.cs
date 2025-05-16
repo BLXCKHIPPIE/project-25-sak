@@ -7,7 +7,8 @@ namespace Wah
     {
         public static Random rand = new Random();
         public static string monsterName = " ";
-        public static int monHp = 1, monSpeed = 0, mAttack;
+        public static int monHp, monPanic, monSpeed, mAttack;
+        public static bool blocking = false;
         public static bool coward = false;
 
 
@@ -261,28 +262,33 @@ namespace Wah
         {
             monsterName = creature;
             bool combat = true;
-            monHp = difficulty * 10; 
+            monHp = difficulty * 10;
+            monPanic = (difficulty * 10) - (difficulty * 8);
             monSpeed = speed;
-            mAttack = difficulty * 2 + difficulty;
+            mAttack = difficulty + 2 ;
 
             while (combat)
             {
                 if (monHp < 0 || coward == true)
                 {
                     combat = false;
+                    Console.Clear();
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    Console.WriteLine($"you are fighting a {creature}.\n\n\n");
+                    Console.WriteLine($"you are fighting {creature}.\n\n\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                     MonsterMenu($"HP. {monHp}, Speed. {monSpeed}");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true);
+                    MonsterRound();
                 }
                 
             }
             coward = false;
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void PlayerRound(bool playerRound)//handles the player's round during combat
@@ -290,13 +296,13 @@ namespace Wah
             int damage= 0, attack = 0;
             string combatAction = " ";
             string[] def = { "dives", "dodges", "swerves", "slides", "weaves", "leaps" };
+            string[] atk = { "lunge", "stab", "swing", "cut", "thrust", "slash" };
             if (vitality > 0)
             {
                 do
                 {
-                    Console.WriteLine("\n\nIt is your turn.\n");
-
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\n\nIt is {name}'s turn.\n");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Menu("1. Light Attack, 2. Heavy Attack, 3. Flee");
                     Console.ForegroundColor = ConsoleColor.White;
                     combatAction = Console.ReadLine();
@@ -304,58 +310,66 @@ namespace Wah
                     switch (combatAction)
                     {
                         case "1":
-                            attack = rand.Next(0, 10) + 2;
+                            attack = rand.Next(1, 11) + 2;
                             damage = rand.Next(0, strength / 2) + weapon;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine("You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", but unfortunately the {monsterName} {def[rand.Next(def.Length)]} out of the way.");
+                                Console.WriteLine($"You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way.");
+                                playerRound = false;
                                 damage = 0;
 
                             }
                             else
                             {
-                                if (attack == 10 + 2)
+                                if (attack == 12)
                                 {
-                                    Console.WriteLine("CRITICAL HIT! You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", dealing {damage * 2} damage!");
+                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    playerRound = false;
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you swing your " + (weapon > 2 ? "sword" : "dagger") + $" at the {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $" at {monsterName}, dealing {damage} damage.");
+                                    playerRound = false;
                                 }
                             }
                            
                             break;
                         case "2":
-                            attack = rand.Next(0, 10);
+                            attack = rand.Next(1, 11);
                             damage = rand.Next(0, strength) + weapon;
                             if (attack < monSpeed)
                             {
-                                Console.WriteLine("You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
+                                playerRound = false;
                             }
                             else
                             {
                                 if (attack == 10)//TOD: implement dodging
                                 {
-                                    Console.WriteLine("CRITICAL HIT! You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", dealing {damage * 2} damage!");
+                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    playerRound = false;
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you swing your " + (weapon > 2 ? "sword" : "dagger") + $" at {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $" at {monsterName}, dealing {damage} damage.");
+                                    playerRound = false;
                                 }
                             }
                            
-                            break;
-                        case "3":
-                            attack = rand.Next(0, 10);
+                            break; 
+                        case  "3":
+                            attack = rand.Next(0, 11);
                             if (attack >= monSpeed)
                             {
                                 Console.WriteLine("You turn tail and leave the fight behind you.");
                                 coward = true;
+                                playerRound = false;
 
                             }
                             else
                             {
                                 Console.WriteLine($"You try to run but {monsterName} is too fast!");
+                                playerRound = false;
                             }
                             break;
                         default:
@@ -363,8 +377,6 @@ namespace Wah
                             break;
                     }
                     monHp = monHp - damage;
-                    playerRound = false;
-                    MonsterRound();
                 } while (playerRound == true);
             }
             else
@@ -375,13 +387,22 @@ namespace Wah
 
         }
 
-        public static void MonsterRound()
+        public static void MonsterRound()//monster's turn
         {
-            int damage, attack;
-            if (monHp > 0 && coward == false)
+            int damage, attack, block = 2;
+            if (monHp >= 0 && coward == false)
             {
-                attack = rand.Next(0, 10) + mAttack;
-                damage = rand.Next(0, mAttack);
+                Console.WriteLine($"\n\nIt is {monsterName}'s turn.\n");
+                for (int i=0; i < 3; i++)
+                {
+                    Console.Write(".");
+                    Thread.Sleep(100);
+                }
+
+                Console.WriteLine('\n');
+
+                attack = rand.Next(0, 10) + mAttack;// determines whether an attack hits
+                damage = rand.Next(0, mAttack); // determines monster damage
                 switch (rand.Next(0, 3))
                 {
                     case 0:
@@ -393,14 +414,35 @@ namespace Wah
                         vitality = vitality - (damage + mAttack);
                         break;
                     case 2:
-                        Console.WriteLine($"{monsterName} flees.");
-                        monHp = monHp - (monHp + 1);
+                        if (monHp <= monPanic)
+                        {
+                            Console.WriteLine($"{monsterName} flees.");
+                            monHp = monHp - (monHp + 1);
+                        }
+                        else
+                        {
+                            if(blocking == true) 
+                            {
+                                Console.WriteLine($"{monsterName} drops their defensive stance.");
+                                monSpeed = (monSpeed - block);
+                                blocking = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{monsterName} takes a defensive stance.");
+                                monSpeed = monSpeed + block;
+                                blocking = true;
+                            }   
+                        }
                         break;
                 }
             }
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\nPress ENTER to continue...");
             Console.ReadLine();
         }
-    
+
+
 
         public static void NameCreation()// Basic menu to set player name
         {
