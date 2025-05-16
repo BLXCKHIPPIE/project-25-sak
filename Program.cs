@@ -278,9 +278,9 @@ namespace Wah
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    Console.WriteLine($"you are fighting {creature}.\n\n\n\n");
+                    Console.WriteLine($"you are fighting {creature}.\n\n\n");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    MonsterMenu($"HP. {monHp}, Speed. {monSpeed}");
+                    MonsterMenu($"---| HP. {monHp} |---, ---| DEF. {monSpeed} |---");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true);
                     MonsterRound();
@@ -329,6 +329,7 @@ namespace Wah
                                 if (attack == 12)
                                 {
                                     Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    damage = damage * 2;
                                     playerRound = false;
                                 }
                                 else
@@ -342,9 +343,10 @@ namespace Wah
                         case "2":
                             attack = rand.Next(1, 11);
                             damage = rand.Next(0, strength) + weapon;
-                            if (attack < monSpeed)
+                            if (attack <= monSpeed)
                             {
                                 Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
+                                damage = 0;
                                 playerRound = false;
                             }
                             else
@@ -352,6 +354,7 @@ namespace Wah
                                 if (attack == 10)//TOD: implement dodging
                                 {
                                     Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    damage = damage * 2;
                                     playerRound = false;
                                 }
                                 else
@@ -431,12 +434,14 @@ namespace Wah
                             {
                                 Console.WriteLine($"{monsterName} drops their defensive stance.");
                                 monSpeed = (monSpeed - block);
+                                mAttack = mAttack + block;
                                 blocking = false;
                             }
                             else
                             {
                                 Console.WriteLine($"{monsterName} takes a defensive stance.");
                                 monSpeed = monSpeed + block;
+                                mAttack = mAttack - block;
                                 blocking = true;
                             }   
                         }
