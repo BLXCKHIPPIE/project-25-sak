@@ -815,6 +815,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
             Console.WriteLine("1. Climb the chasm\n2. Take your chances on the rope bridge");
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
+            Console.Clear();
             if (decision == 2)
             {
                 
@@ -822,24 +823,27 @@ namespace Wah
             }
             else
             {
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("You begin climbing up the side wall of the chasm when you hear something bellow you" +
                     "\nYou see a scaley demon like figure climbing bellow you, it is much faster than you and before you know it" +
                     "\n it catches up to you ");
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
                 Console.WriteLine("1. Climb faster\n2. Kick the demon in its stupid face");
+                
                 decision = Convert.ToInt32(Console.ReadLine());
                 if (decision == 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("The demon catches upto you and rips you from the wall\n" +
                     " You both take a tumble down 7 meters or so\n" +
                     " Once the dust settles you realise you have only one choice\n" +
-                    "Kill or be Killed.");
+                    " Kill or be Killed.");
                     Console.ReadLine();
                     // COMBAT GOES HERE
                 }
                 else 
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You kick the demon in its stupid face caving in its crooked nose!\n " +
                         "You see the demon take a tumble and hit the ground hard.. its not moving\n" +
                         "You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
@@ -847,6 +851,7 @@ namespace Wah
                     Console.WriteLine("\n Press ENTER to continue");
                     Console.ReadLine();
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("The winds up here are much stronger a scent of rich purfume fills the air overwhelming your senses\n" +
                         "Looking ahead you can see a sloping path leading down towards a narrowing in the chasm." +
                         " you follow the path leads you to the narrow part of the chasm and you hop accross");
