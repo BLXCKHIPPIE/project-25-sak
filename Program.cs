@@ -330,17 +330,17 @@ namespace Wah
                             damage = rand.Next(0, strength) + weapon;
                             if (attack < monSpeed)
                             {
-                                Console.WriteLine("You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", but unfortunately the {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
+                                Console.WriteLine("You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
                             }
                             else
                             {
-                                if (attack == 10)
+                                if (attack == 10)//TOD: implement dodging
                                 {
                                     Console.WriteLine("CRITICAL HIT! You swing with your " + (weapon > 2 ? "sword" : "dagger") + $", dealing {damage * 2} damage!");
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you swing your " + (weapon > 2 ? "sword" : "dagger") + $" at the {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you swing your " + (weapon > 2 ? "sword" : "dagger") + $" at {monsterName}, dealing {damage} damage.");
                                 }
                             }
                            
@@ -355,7 +355,7 @@ namespace Wah
                             }
                             else
                             {
-                                Console.WriteLine($"You try to run but the {monsterName} is too fast!");
+                                Console.WriteLine($"You try to run but {monsterName} is too fast!");
                             }
                             break;
                         default:
@@ -377,19 +377,26 @@ namespace Wah
 
         public static void MonsterRound()
         {
-            if (monHp > 0||coward == false)
-            switch (rand.Next(0, 3))
+            int damage, attack;
+            if (monHp > 0 || coward == false)
             {
-                case 0:
-                    Console.WriteLine($"The {monsterName} takes a swipe at you.");
-                    break;
-                case 1:
-                    Console.WriteLine($"The {monsterName} winds up and hits you with a staggering blow!");
-                    break;
-                case 2:
-                    Console.WriteLine($"The {monsterName} flees.");
-                    monHp = monHp - (monHp + 1);
-                    break;
+                attack = rand.Next(0, 10) + mAttack;
+                damage = rand.Next(0, mAttack);
+                switch (rand.Next(0, 3))
+                {
+                    case 0:
+                        Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage}damage.");
+                        vitality = vitality - damage;
+                        break;
+                    case 1:
+                        Console.WriteLine($"{monsterName} winds up and hits you with a staggering blow, dealing {damage+mAttack} damage!");
+                        vitality = vitality - (damage + mAttack);
+                        break;
+                    case 2:
+                        Console.WriteLine($"{monsterName} flees.");
+                        monHp = monHp - (monHp + 1);
+                        break;
+                }
             }
             Console.ReadLine();
         }
