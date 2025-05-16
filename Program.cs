@@ -24,7 +24,7 @@ namespace Wah
 
         }
 
-        // Character sheet ---- 
+        // Character sheet //
        
         public static string name = " "; 
         public static int strength = 10;
@@ -400,7 +400,15 @@ namespace Wah
             }
             Console.ReadLine();
         }
-    
+        public static void LoadAnimation()// Basic menu to set player name
+        {
+            for (int i = 0; i < 55; i++)//"loading" screen
+            {
+                Console.Write("/-");
+                Thread.Sleep(50);
+            }
+            Console.Clear();
+        }
 
         public static void NameCreation()// Basic menu to set player name
         {
@@ -439,12 +447,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
             } while (correctName == false);//will keep looping until user confirms their name)
 
-            for (int i = 0; i < 55; i++)//"loading" screen
-            {
-                Console.Write("/-");
-                Thread.Sleep(50);
-            }
-            Console.Clear();
+            LoadAnimation();
 
             Level1();//Onto the first level
         }
@@ -872,15 +875,26 @@ namespace Wah
             {
                 Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
                     "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
+                Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("-10 hp"); 
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
+                Thread.Sleep(2000);
                 Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
+             
                 if (strength > 40)
                 { Level7_4(); }
                 else
-                { DeathScreen(); }
+                {
+                    
+                    Console.WriteLine("Your arms grow tired and you feel your grip loosening...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("you hear a sudden crack and experience the full force of vertigo as you fall to your certain death");
+                    Console.ReadLine();
+                    Console.Clear();
+                    DeathScreen();
+                }
             }
             
             Console.ReadLine();
