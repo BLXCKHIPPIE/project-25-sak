@@ -257,7 +257,7 @@ namespace Wah
                 Console.WriteLine(split[i].PadLeft(50));
             }
         }
-        public static void Combat(string creature, int difficulty, int speed)
+        public static void Combat(string creature, int difficulty, int speed)//handles combat in general
         {
             monsterName = creature;
             bool combat = true;
@@ -267,7 +267,7 @@ namespace Wah
 
             while (combat)
             {
-                if (monHp < 0|| coward == true)
+                if (monHp < 0 || coward == true)
                 {
                     combat = false;
                 }
@@ -280,12 +280,12 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true);
                 }
-                coward = false;
+                
             }
-
+            coward = false;
         }
 
-        public static void PlayerRound(bool playerRound)
+        public static void PlayerRound(bool playerRound)//handles the player's round during combat
         {
             int damage= 0, attack = 0;
             string combatAction = " ";
@@ -378,14 +378,14 @@ namespace Wah
         public static void MonsterRound()
         {
             int damage, attack;
-            if (monHp > 0 || coward == false)
+            if (monHp > 0 && coward == false)
             {
                 attack = rand.Next(0, 10) + mAttack;
                 damage = rand.Next(0, mAttack);
                 switch (rand.Next(0, 3))
                 {
                     case 0:
-                        Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage}damage.");
+                        Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage} damage.");
                         vitality = vitality - damage;
                         break;
                     case 1:
