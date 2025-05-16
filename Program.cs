@@ -501,7 +501,7 @@ namespace Wah
         public static void Level1()// Circle 9: Treachery
         {
             string menuOptions = "1. Yes, 2. No", temp = " ";
-            bool choiceBreak = false;
+            bool choiceBreak = false, fought = false;
             level = 1;
 
             Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
@@ -591,6 +591,7 @@ namespace Wah
                 Menu($"1. My name is {name}, 2. Attack, 3. Say nothing");
                 temp = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
 
                 switch (temp)
                 {
@@ -601,8 +602,8 @@ namespace Wah
                         break;
                     case "2":
                         choiceBreak = true;
-                        Level1_1();
-                        choiceBreak = false;
+                        Level1_1(ref fought);
+                        choiceBreak = fought;
                         break;
                     case "3":
                         Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
@@ -610,9 +611,35 @@ namespace Wah
                         break;
                 }
             } while (choiceBreak == true);
+
+            if (fought == true)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Bryan's knife gained.\n");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("With a final blow, Bryan sprawls across the icy ground, gasping up at the sky. Before your eyes\n" +
+                    "the ice grows over him, like a mold. He struggles, but nothing is able to save him from slowly being swallowed by the snow.\n" +
+                    "It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies blade-down in the snow,\n" +
+                    "and you stoop down to retrieve it. It's spotted with rust, but the metal seems solid enough.\n");
+                weapon = 2;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+
+            }
+            else
+            {
+
                 Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. \n" +
-                    "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
-                    "'Take it, you probably need it more than I do.'\n");
+                            "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
+                            "'Take it, you probably need it more than I do.'\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Take the knife, 2. I'll pass.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+            }
 
 
 
@@ -620,8 +647,9 @@ namespace Wah
             Level2();
             
         }
-        public static void Level1_1()
+        public static bool Level1_1(ref bool fought)
         {
+            fought = false;
             string temp = " ";
 
             Console.Clear();
@@ -652,7 +680,11 @@ namespace Wah
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
                 Combat("Bryan", 2, 2);
+                fought = true;
+                return fought;
             }
+            fought = false;
+            return fought;
         }
 
 
