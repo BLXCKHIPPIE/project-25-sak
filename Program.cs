@@ -454,7 +454,6 @@ namespace Wah
             }
             Console.Clear();
         }
->>>>>>> 561943899203095c53c522f360bccf14782a4bae
 
         public static void NameCreation()// Basic menu to set player name
         {
@@ -493,10 +492,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
             } while (correctName == false);//will keep looping until user confirms their name)
 
-<<<<<<< HEAD
-=======
             LoadAnimation();
->>>>>>> 561943899203095c53c522f360bccf14782a4bae
 
             Level1();//Onto the first level
         }
@@ -955,11 +951,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
             Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
             Console.Clear();
-<<<<<<< HEAD
-            //LoadAnimation();
-=======
             LoadAnimation();
->>>>>>> 561943899203095c53c522f360bccf14782a4bae
             if (chance < 30)
             {
                 Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
