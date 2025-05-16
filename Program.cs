@@ -400,9 +400,9 @@ namespace Wah
             }
             Console.ReadLine();
         }
-        public static void LoadAnimation()// Basic menu to set player name
+        public static void LoadAnimation()// Loading animation
         {
-            for (int i = 0; i < 55; i++)//"loading" screen
+            for (int i = 0; i < 55; i++)
             {
                 Console.Write("/-");
                 Thread.Sleep(50);
@@ -705,8 +705,8 @@ namespace Wah
         }
         public static void Level3()// Circle 7: Heresy
         {
-
-
+            level = 3;
+            
 
 
 
@@ -719,7 +719,7 @@ namespace Wah
         }
         public static void Level4()// Circle 6: Anger
         {
-
+            level = 4;
 
 
 
@@ -733,7 +733,7 @@ namespace Wah
         }
         public static void Level5()// Circle 5: Greed
         {
-
+            level = 5;
 
 
 
@@ -747,7 +747,7 @@ namespace Wah
         }
         public static void Level6()// Circle 4: Gluttony
         {
-
+            level = 6;
 
 
 
@@ -775,6 +775,7 @@ namespace Wah
 
         public static void Level7()// Circle 3: Lust
         {
+            level = 7;
             int decision;
 
             Console.WriteLine($"level 7 - Welcome {name}");
@@ -852,20 +853,8 @@ namespace Wah
             Console.Clear(); // clear screen
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
             Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
-
             Console.Clear();
-            Console.WriteLine(".");
-            Thread.Sleep(200);
-            Console.Clear();
-            Console.WriteLine("..");
-            Thread.Sleep(200);
-            Console.Clear(); //           Adding animation for success suspense. 
-            Console.WriteLine("...");
-
-            Thread.Sleep(2000);
-            Console.Clear();
-
-
+            LoadAnimation();
             if (chance < 50)
             {
                 Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
@@ -882,12 +871,10 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 Thread.Sleep(2000);
                 Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
-             
                 if (strength > 40)
                 { Level7_4(); }
                 else
-                {
-                    
+                {   
                     Console.WriteLine("Your arms grow tired and you feel your grip loosening...");
                     Thread.Sleep(2000);
                     Console.WriteLine("you hear a sudden crack and experience the full force of vertigo as you fall to your certain death");
