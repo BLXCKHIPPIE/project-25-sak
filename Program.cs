@@ -143,33 +143,31 @@ namespace Wah
 
 
             //Many if statements to take you to the level you're supposed to be on
-            if (level == 1)
+            switch (level)
             {
-                Level1();
-            }
-            if (level == 2)
-            {
-                Level2();
-            }
-            if (level == 3)
-            {
-                Level3();
-            }
-            if (level == 4)
-            {
-                Level4();
-            }
-            if (level == 5)
-            {
-                Level5();
-            }
-            if (level == 6)
-            {
-                Level6();
-            }
-            if (level == 7)
-            {
-                Level7();
+                case 1:
+                    Level1();
+                    break;
+                case 2:
+                    Level2(); break;
+                case 3:
+                    Level3(); 
+                    break;
+                case 4:
+                    Level4(); 
+                    break;
+                case 5:
+                    Level5(); 
+                    break;
+                case 6:
+                    Level6(); 
+                    break;
+                case 7:
+                    Level7(); 
+                    break;
+                default:
+                    MainMenu(); 
+                    break;
             }
 
         }
@@ -482,7 +480,7 @@ namespace Wah
                     Console.WriteLine("You wait at the river, hoping that the Centaurs will leave, however you seem to have forgotten that they have already noticed you.\nA group of Centaurs gallop over to you and pelt you with arrows and drag you to the river");
                     Console.ReadLine();
                     Console.Clear();
-                    Level1();
+                    DeathScreen();
                 }
                 else //If they did NOT attack the guy in treachery
                 {
