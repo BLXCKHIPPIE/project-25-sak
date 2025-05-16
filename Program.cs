@@ -441,19 +441,8 @@ namespace Wah
             Console.WriteLine("\nPress ENTER to continue...");
             Console.ReadLine();
         }
-<<<<<<< HEAD
 
 
-=======
-        public static void LoadAnimation()// Loading animation
-        {
-            for (int i = 0; i < 55; i++)
-            {
-                Console.Write("/-");
-                Thread.Sleep(50);
-            }
-            Console.Clear();
-        }
 
         public static void NameCreation()// Basic menu to set player name
         {
