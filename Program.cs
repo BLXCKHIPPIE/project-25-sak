@@ -823,7 +823,38 @@ namespace Wah
             else
             {
 
-                Console.WriteLine("chasm climbing stuff happens here");
+                Console.WriteLine("You begin climbing up the side wall of the chasm when you hear something bellow you" +
+                    "\nYou see a scaley demon like figure climbing bellow you, it is much faster than you and before you know it" +
+                    "\n it catches up to you ");
+                Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
+                Console.WriteLine("1. Climb faster\n2. Kick the demon in its stupid face");
+                decision = Convert.ToInt32(Console.ReadLine());
+                if (decision == 1)
+                {
+                    Console.WriteLine("The demon catches upto you and rips you from the wall\n" +
+                    " You both take a tumble down 7 meters or so\n" +
+                    " Once the dust settles you realise you have only one choice\n" +
+                    "Kill or be Killed.");
+                    Console.ReadLine();
+                    // COMBAT GOES HERE
+                }
+                else 
+                {
+                    Console.WriteLine("You kick the demon in its stupid face caving in its crooked nose!\n " +
+                        "You see the demon take a tumble and hit the ground hard.. its not moving\n" +
+                        "You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n Press ENTER to continue");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("The winds up here are much stronger a scent of rich purfume fills the air overwhelming your senses\n" +
+                        "Looking ahead you can see a sloping path leading down towards a narrowing in the chasm." +
+                        " you follow the path leads you to the narrow part of the chasm and you hop accross");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n Press ENTER to continue");
+                    Console.ReadLine();
+                    Level7_4();
+                }
             }
             Console.ReadLine();
         }
@@ -855,24 +886,32 @@ namespace Wah
             Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
             Console.Clear();
             LoadAnimation();
-            if (chance < 50)
+            if (chance < 30)
             {
                 Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
                     "realize that if the rope had of snapped you would have fell 100 meters to your death. ");
-                    }
+            }
             else
             {
                 Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
                     "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
                 Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("-10 hp"); 
+                Console.WriteLine("-10 hp");
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
                 Thread.Sleep(2000);
-                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough");
-                if (strength > 40)
-                { Level7_4(); }
+                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough\nPress ENTER to climb");
+                Console.ReadLine();
+                Console.Clear();
+            
+                if (strength > 9) // This might require a balance change later ~
+                { 
+                    Console.WriteLine("Looks like all that killing has paid off! \n You manage to climb up the rope improving your strength slightly");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+1 Strength");
+                    strength = strength + 1;
+                 Level7_4(); }
                 else
                 {   
                     Console.WriteLine("Your arms grow tired and you feel your grip loosening...");
