@@ -839,7 +839,23 @@ namespace Wah
                     " Once the dust settles you realise you have only one choice\n" +
                     " Kill or be Killed.");
                     Console.ReadLine();
-                    // COMBAT GOES HERE
+
+                    Combat("Gnarled abomination",5,5);
+
+                    Console.Clear();
+                    Console.WriteLine("You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n Press ENTER to continue");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("The winds up here are much stronger a scent of rich purfume fills the air overwhelming your senses\n" +
+                        "Looking ahead you can see a sloping path leading down towards a narrowing in the chasm." +
+                        " you follow the path leads you to the narrow part of the chasm and you hop accross");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n Press ENTER to continue");
+                    Console.ReadLine();
+                    Level7_4();
                 }
                 else 
                 {
