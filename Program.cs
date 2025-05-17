@@ -181,42 +181,45 @@ namespace Wah
         static void MainMenu() // Declare title method
         {
 
-            int decision; // define decision variable
+            string decision; // define decision variable
             do
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
                 Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen"); // presenting options
-                decision = Convert.ToInt32(Console.ReadLine());// taking user input and assigning to decision
+                decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
                 {
 
-                    case 1:
+                    case "1":
                         NameCreation();
                         break;
-                    case 2://heads to credits
+                    case "2"://heads to credits
                         Credits();
                         break;
-                    case 3: // use to test levels we will remove this from menu later!
+                    case "3": // use to test levels we will remove this from menu later!
                         Level7();
                         break;
-                    case 4:
+                    case "4":
                         Level2_1(); //Takes you to level 2
                         break;
-                    case 5:
+                    case "5":
                         Character();
                         break;
-                    case 6:
+                    case "6":
                         DeathScreen();
                         break;
-                    case 7:
-                        decision = 0;
+                    case "7":
+                        decision = "0";
                         break;
+                    default:
+                        break;
+
                 }
                 Console.Clear(); // clear screen
             }
-            while (decision != 0); // exit command - placeholder to be worked on
+            while (decision != "0"); // exit command - placeholder to be worked on
 
 
         }
@@ -696,7 +699,7 @@ namespace Wah
                 }
             } while (choiceBreak == false);
 
-            if (fought == true)
+            if (fought == true)//if they attacked Bryan they have to go face Satan
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Bryan's knife gained.\n");
@@ -844,7 +847,7 @@ namespace Wah
                     "Your blow lands with a satisying crack, and he rocks back in the snow, wobbling on dazed feet. But he recovers quickly,\n" +
                     "a dangerous glint coming to his eyes--made worse by the line of blood dribbling down his chin.\n\n" +
                     "'So that's how it's going to be, huh? I'll get you back for that.'\n\n" +
-                    "He brandishes " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you; it's a fight!\n");
+                    (weapon == 2 ? "He clenches his fists at you;" : "He brandishes " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you;") + " it's a fight!\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Press ENTER to continue...");
                 Console.ReadLine();
