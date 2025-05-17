@@ -18,7 +18,7 @@ namespace Wah
         static void Main() // Declare main method
         {
             Console.WriteLine("Keep me HUNGRY"); // placeholder
-			Console.ReadLine(); // pause
+            Console.ReadLine(); // pause
             Console.Clear();
             MainMenu(); // calls menu
 
@@ -26,8 +26,8 @@ namespace Wah
         }
 
         // Character sheet //
-       
-        public static string name = " "; 
+
+        public static string name = " ";
         public static int strength = 10;
         public static int vitality = 100; // Max health
         public static int intelligence = 10;
@@ -35,7 +35,7 @@ namespace Wah
         public static int gold = 0;
         public static int death = 0;
         public static int level = 0;
-        public static int weapon = 0; //used to derive damace calcs
+        public static int weapon = 2; //used to derive damage calcs
 
 
         static void Character()
@@ -63,7 +63,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Strength: ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine (strength);
+            Console.WriteLine(strength);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Vitality: ");
             Console.ForegroundColor = ConsoleColor.White;
@@ -135,7 +135,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("You Are Dead.\n");
             Console.ForegroundColor = ConsoleColor.White;
-            
+
             Console.WriteLine($"\n\"{quote}\"");
             Console.ReadLine();
             Console.Clear();
@@ -155,22 +155,22 @@ namespace Wah
                 case 2:
                     Level2(); break;
                 case 3:
-                    Level3(); 
+                    Level3();
                     break;
                 case 4:
-                    Level4(); 
+                    Level4();
                     break;
                 case 5:
-                    Level5(); 
+                    Level5();
                     break;
                 case 6:
-                    Level6(); 
+                    Level6();
                     break;
                 case 7:
-                    Level7(); 
+                    Level7();
                     break;
                 default:
-                    MainMenu(); 
+                    MainMenu();
                     break;
             }
 
@@ -197,7 +197,7 @@ namespace Wah
                         break;
                     case 2://heads to credits
                         Credits();
-                        break;                      
+                        break;
                     case 3: // use to test levels we will remove this from menu later!
                         Level7();
                         break;
@@ -213,7 +213,7 @@ namespace Wah
                     case 7:
                         decision = 0;
                         break;
-                }   
+                }
                 Console.Clear(); // clear screen
             }
             while (decision != 0); // exit command - placeholder to be worked on
@@ -230,7 +230,7 @@ namespace Wah
 
             split = names.Split(',');
             foreach (string name in split)//increments names neatly, will assign roles later.
-            { 
+            {
                 Console.WriteLine(name.Trim());
                 Thread.Sleep(200);
             }
@@ -265,7 +265,16 @@ namespace Wah
             monHp = difficulty * 10;
             monPanic = (difficulty * 10) - (difficulty * 8);
             monSpeed = speed;
-            mAttack = difficulty + 2 ;
+
+            if (speed >= difficulty * 2)
+            {
+                mAttack = difficulty + speed;
+            }
+            else
+            {
+                mAttack = difficulty + 2;
+            }
+
 
             while (combat)
             {
@@ -285,10 +294,81 @@ namespace Wah
                     PlayerRound(true);
                     MonsterRound();
                 }
-                
+
             }
             coward = false;
             Console.ForegroundColor = ConsoleColor.White;
+        }
+        public static void MonsterAttacks(int powerLevel, int attkType)
+        {
+            int damage, attack, roundcount = 0;
+
+            attack = rand.Next(0, 10);
+            damage = rand.Next(0, mAttack);
+
+
+
+            if (attkType == 1)
+            {
+                switch (rand.Next(0, mAttack))
+                {
+                    case 0:
+                        Console.WriteLine($"{monsterName} takes a swing at you, but misses.");
+                        break;
+                    case < 6:
+                        Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage} damage.");
+                        vitality = vitality - damage;
+                        break;
+                    case < 9:
+                        Console.WriteLine($"{monsterName} hurls a chunk of loose debris at you, dealing {damage + 2} damage.");
+                        vitality = vitality - (damage + 2);
+                        break;
+                    case < 12:
+                        Console.WriteLine($"{monsterName} applies some kind of poison, increasing their future damage.");
+                        mAttack = mAttack + 1;
+                        break;
+                    case < 15:
+                        Console.WriteLine($"{monsterName}'s hands glow, firing off two quick bolts of energy that burn your skin for {attack} & {damage} damage!");
+                        vitality = vitality - (damage + attack);
+                        break;
+                    case < 18:
+                        Console.WriteLine($"{monsterName} sucks in a deep breath before unleashing a stream of fire! You take {damage} and are set on fire!");
+                        vitality = vitality - damage;
+                        break;
+                }
+               
+
+            }
+            else if (attkType == 2)
+            {
+                switch (rand.Next(0, mAttack))
+                {
+                    case 0:
+                        Console.WriteLine($"{monsterName} takes a swing at you, but misses.");
+                        break;
+                    case < 3:
+                        Console.WriteLine($"{monsterName} winds up and takes a mighty swing at you, dealing {damage} damage.");
+                        vitality = vitality - damage;
+                        break;
+                    case < 6:
+                        Console.WriteLine($"{monsterName} pierces you with a sudden lunge, dealing {damage + mAttack} damage.");
+                        vitality = vitality - (damage + mAttack);
+                        break;
+                    case < 9:
+                        Console.WriteLine($"{monsterName} glows with energy, increasing their future damage.");
+                        mAttack = mAttack + 2;
+                        break;
+                    case < 12:
+                        Console.WriteLine($"{monsterName} roars, limbs glowing with hellish energy, and swipes you for {attack*2} & {damage} damage!");
+                        vitality = vitality - (damage + attack*2);
+                        break;
+                    case < 15:
+                        Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half!");
+                        vitality = vitality - (vitality/2);
+                        break;
+                }
+
+            }
         }
 
         public static void PlayerRound(bool playerRound)//handles the player's round during combat
@@ -315,7 +395,7 @@ namespace Wah
                     switch (combatAction)
                     {
                         case "1":
-                            attack = rand.Next(1, 11) + 2;
+                            attack = rand.Next(2, 11) + 2;
                             damage = rand.Next(0, strength / 2) + weapon;
                             if (attack <= monSpeed)
                             {
@@ -341,11 +421,12 @@ namespace Wah
                            
                             break;
                         case "2":
-                            attack = rand.Next(1, 11);
-                            damage = rand.Next(0, strength) + weapon;
+                            attack = rand.Next(1, 11);//determines whether an atack hits
+                            damage = rand.Next(0, strength) + weapon * 2;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way\n" +
+                                    $"of your telegraphed move.");
                                 damage = 0;
                                 playerRound = false;
                             }
@@ -415,12 +496,10 @@ namespace Wah
                 switch (rand.Next(0, 3))
                 {
                     case 0:
-                        Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage} damage.");
-                        vitality = vitality - damage;
+                        MonsterAttacks(mAttack, 1);
                         break;
                     case 1:
-                        Console.WriteLine($"{monsterName} winds up and hits you with a staggering blow, dealing {damage+mAttack} damage!");
-                        vitality = vitality - (damage + mAttack);
+                        MonsterAttacks(mAttack, 2);
                         break;
                     case 2:
                         if (monHp <= monPanic)
@@ -602,7 +681,7 @@ namespace Wah
                         break;
                     case "2":
                         choiceBreak = true;
-                        Level1_1(ref fought);
+                        Level1_1(ref fought);//lets people rethink their decisions
                         choiceBreak = false;
                         break;
                     case "3":
@@ -959,7 +1038,7 @@ namespace Wah
                     " Kill or be Killed.");
                     Console.ReadLine();
 
-                    Combat("Gnarled abomination",5,5);
+                    Combat("the Gnarled abomination",5,5);
 
                     Console.Clear();
                     Console.WriteLine("You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
