@@ -263,25 +263,26 @@ namespace Wah
         }
         public static void Combat(string creature, int difficulty, int speed)//handles combat in general
         {
+            coward = false;
             monsterName = creature;
             bool combat = true;
             monHp = difficulty * 10;
             monPanic = (difficulty * 10) - (difficulty * 8);
             monSpeed = speed;
 
-            if (speed >= difficulty * 2)
+            if (speed >= difficulty + 1)
             {
                 mAttack = difficulty + speed;
             }
             else
             {
-                mAttack = difficulty + 2;
+                mAttack = difficulty * 2;
             }
 
 
             while (combat)
             {
-                if (monHp < 0 || coward == true)
+                if (monHp <= 0 || coward == true)
                 {
                     combat = false;
                     Console.Clear();
@@ -299,7 +300,6 @@ namespace Wah
                 }
 
             }
-            coward = false;
             Console.ForegroundColor = ConsoleColor.White;
         }
         public static void MonsterAttacks(int powerLevel, int attkType)
@@ -318,25 +318,28 @@ namespace Wah
                     case 0:
                         Console.WriteLine($"{monsterName} takes a swing at you, but misses.");
                         break;
-                    case < 6:
+                    case <= 6:
                         Console.WriteLine($"{monsterName} takes a swipe at you, dealing {damage} damage.");
                         vitality = vitality - damage;
                         break;
-                    case < 9:
+                    case <= 9:
                         Console.WriteLine($"{monsterName} hurls a chunk of loose debris at you, dealing {damage + 2} damage.");
                         vitality = vitality - (damage + 2);
                         break;
-                    case < 12:
+                    case <= 12:
                         Console.WriteLine($"{monsterName} applies some kind of poison, increasing their future damage.");
                         mAttack = mAttack + 1;
                         break;
-                    case < 15:
+                    case <= 15:
                         Console.WriteLine($"{monsterName}'s hands glow, firing off two quick bolts of energy that burn your skin for {attack} & {damage} damage!");
                         vitality = vitality - (damage + attack);
                         break;
-                    case < 18:
-                        Console.WriteLine($"{monsterName} sucks in a deep breath before unleashing a stream of fire! You take {damage} and are set on fire!");
-                        vitality = vitality - damage;
+                    case <= 18:
+                        Console.WriteLine($"{monsterName} sucks in a deep breath before unleashing a stream of fire! You take {damage * 2} damage and are set on fire!");
+                        vitality = vitality - damage * 2;
+                        break;
+                    default:
+                        Console.WriteLine($"{monsterName} points at you, then spreads its limbs out in an easy pose, daring you to take your best shot.");
                         break;
                 }
                
@@ -346,28 +349,32 @@ namespace Wah
             {
                 switch (rand.Next(0, mAttack))
                 {
-                    case 0:
+                    case <= 2:
                         Console.WriteLine($"{monsterName} takes a swing at you, but misses.");
                         break;
-                    case < 3:
-                        Console.WriteLine($"{monsterName} winds up and takes a mighty swing at you, dealing {damage} damage.");
-                        vitality = vitality - damage;
+                    case <= 3:
+                        Console.WriteLine($"{monsterName} winds up and takes a mighty swing at you, dealing {damage + 2} damage.");
+                        vitality = vitality - damage + 2;
                         break;
-                    case < 6:
+                    case <= 6:
                         Console.WriteLine($"{monsterName} pierces you with a sudden lunge, dealing {damage + mAttack} damage.");
                         vitality = vitality - (damage + mAttack);
                         break;
-                    case < 9:
+                    case <= 9:
                         Console.WriteLine($"{monsterName} glows with energy, increasing their future damage.");
                         mAttack = mAttack + 2;
                         break;
-                    case < 12:
+                    case <= 12:
                         Console.WriteLine($"{monsterName} roars, limbs glowing with hellish energy, and swipes you for {attack*2} & {damage} damage!");
                         vitality = vitality - (damage + attack*2);
                         break;
-                    case < 15:
-                        Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half!");
+                    case <= 18:
+                        Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half! {monsterName}'s wounds close before your eyes, as they regain {vitality/2} health!");
+                        monHp = monHp + (vitality / 2);
                         vitality = vitality - (vitality/2);
+                        break;
+                    default:
+                        Console.WriteLine($"{monsterName} points at you, then spreads its limbs out in an easy pose, daring you to take your best shot.");
                         break;
                 }
 
@@ -384,7 +391,7 @@ namespace Wah
             {
                 do
                 {
-                    Console.WriteLine($"\n\nIt is {name}'s turn.\nVitality: ");
+                    Console.Write($"\n\nIt is {name}'s turn.\nVitality: ");
                     for (int i = 0; i <= vitality; i++)
                     {
                         Console.Write("|");
@@ -428,8 +435,8 @@ namespace Wah
                             damage = rand.Next(0, strength) + weapon * 2;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way\n" +
-                                    $"of your telegraphed move.");
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your \n" +
+                                    $"telegraphed move.");
                                 damage = 0;
                                 playerRound = false;
                             }
@@ -619,7 +626,7 @@ namespace Wah
 
                     Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
                    "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.\n");
+                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
                     intelligence = intelligence + 1;
                    break;
                 case "2":
@@ -646,9 +653,10 @@ namespace Wah
                     break;
             }
 
-            Console.WriteLine("You stand up, looking around. You are standing on a vast plain of ice, like you've seen in depictions of Antarctica,\n" +
-                "a howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
-                "but what really chills you are the frozen statues dotting the ice, each vaguely moulding to the shape of the person inside.\n" +
+            Console.WriteLine("You push yourself upright, looking around. You are standing on a vast plain of ice, like you've seen in depictions\n" +
+                "of Antarctica, with howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
+                "but what really chills you are the frozen statues dotting the ice, each vaguely moulding to the shape of the person \n" +
+                "inside.\n" +
                 "That could have been you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -701,21 +709,30 @@ namespace Wah
 
             if (fought == true)//if they attacked Bryan they have to go face Satan
             {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Bryan's knife gained.\n");
-                Console.ForegroundColor = ConsoleColor.White;
-                karmaScore = karmaScore - 5;
+                if (coward == true)
+                {
+                    Console.WriteLine("You flee across the ice, leaving Bryan behind. Directionless, there's only one\n" +
+                        "place left to go--towards the great serpentine form in the distance.");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Bryan's knife gained.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    karmaScore = karmaScore - 5;
 
-                Console.WriteLine("With a final blow, Bryan sprawls across the icy ground, gasping up at the sky. Before your eyes\n" +
-                    "the ice grows over him, like a mold. He struggles, but nothing is able to save him from slowly being swallowed by \n" +
-                    "the snow. It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies\n" +
-                    "blade-down in the snow, and you stoop down to retrieve it. \nIt's spotted with rust, but the metal seems solid enough.\n");
-                weapon = 2;
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-                Console.Clear();
+                    Console.WriteLine("With a final blow, Bryan sprawls across the icy ground, gasping up at the sky. Before your eyes\n" +
+                        "the ice grows over him, like a mold. He struggles, but nothing is able to save him from slowly being swallowed by \n" +
+                        "the snow. It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies\n" +
+                        "blade-down in the snow, and you stoop down to retrieve it. \nIt's spotted with rust, but the metal seems solid enough.\n");
+                    weapon = 2;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+               
 
             }
             else
