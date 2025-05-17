@@ -338,8 +338,20 @@ namespace Wah
                         Console.WriteLine($"{monsterName} sucks in a deep breath before unleashing a stream of fire! You take {damage * 2} damage and are set on fire!");
                         vitality = vitality - damage * 2;
                         break;
+                    case <= 30:
+                        Console.WriteLine($"Screams ring on the wind, as {monsterName} summons the baleful legions of hell to his service.\n" +
+                            $"they tear accross you in an endless torrent!");
+                        for (int i = 0; i < 20; i++)
+                        {
+                            attack = rand.Next(0, 11);
+                            vitality = vitality - attack;
+                            Console.WriteLine($"You take {attack} damage!");
+                            Thread.Sleep(250);
+                             
+                        }
+                        break;
                     default:
-                        Console.WriteLine($"{monsterName} points at you, then spreads its limbs out in an easy pose, daring you to take your best shot.");
+                        Console.WriteLine($"{monsterName} gestures towards you, then spreads their limbs out in an easy pose, daring you to take your best shot.");
                         break;
                 }
                
@@ -369,9 +381,16 @@ namespace Wah
                         vitality = vitality - (damage + attack*2);
                         break;
                     case <= 18:
-                        Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half! {monsterName}'s wounds close before your eyes, as they regain {vitality/2} health!");
+                        Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half! \n" +
+                            $"{monsterName}'s wounds close before your eyes, as they regain {vitality/2} health!");
                         monHp = monHp + (vitality / 2);
                         vitality = vitality - (vitality/2);
+                        break;
+                    case <= 30:
+                        Console.WriteLine($"{monsterName}'s heads writhe around, half-way pulling himself from the ice to loom over you,\n" +
+                            $"before unleashing three streams of ice, lava, and lightning. The elemental beams tear across you for {damage * 2}, {damage},\n" +
+                            $"and {attack * 3} damage!");
+                        vitality = vitality - (damage * 3 + attack * 3);
                         break;
                     default:
                         Console.WriteLine($"{monsterName} points at you, then spreads its limbs out in an easy pose, daring you to take your best shot.");
@@ -771,7 +790,7 @@ namespace Wah
                             "He pauses, then chuckles.\n\n" +
                             "'Or the one down below, I suppose.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("1. That makes sense, 2. I'm going my own way.");
+                Menu("1. That makes sense, 2. I'm going my own way");
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
@@ -825,7 +844,7 @@ namespace Wah
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Menu("Infernum non habet misericordiam, Gementes in tenebris perpetuis, damnati ululant.");
-                        Thread.Sleep(150);
+                        Thread.Sleep(250);
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Clear();
                         Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
@@ -835,16 +854,97 @@ namespace Wah
                         Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine("The ice finds you quickly, crawling up your legs like the most persistent of predators. It's not long before\n" +
-                            "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. And there is no respite. It just\n" +
+                            "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. Yet there is no respite. It just\n" +
                             "goes on and on and on. Is this your eternity? Is this your torment?\n\n" +
                             $"But eventually, {name} stops thinking.\n\n");
                         weapon = 0;
                         DeathScreen();
                         break;
 
-                }                    
+                }
             }
-            Console.WriteLine("You set out across the ice.");
+            Console.WriteLine("You" + (fought == false ? " and Bryan" : "") + " set out across the ice, towards the looming shape\n" +
+                "in the distance. The snowy winds increase with each step, blustering you about, but oddly, it feels\n" +
+                "like it's getting . . . \n\n");
+            Thread.Sleep(1000);
+            Console.WriteLine("Warmer.\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            do
+            {
+                choiceBreak = true;
+                Console.WriteLine("It's practically hot by the time you get to the Devil himself. Three-headed and vast, \n" +
+                "his skin is scaled and red, and beneath the steaming ice you see the outline of shadowed wings.\n" +
+                "You feel violently ill just looking at him.\n\n" +
+                "'What do you want?'\n\n" +
+                "One massive reptilian head lowers to look you in the eye, and you hear the sound of cruching and screaming \n" +
+                "when he talks. You realize that there's a person trapped between those jaws, being casually chewed on while he speaks\n" +
+                "in the same way you might chew on gum.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu((fought == true ? "1. I want out of hell, 2. Attack " : "1. I want out of hell, 2. Attack, 3. Let Bryan speak"));
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+
+                switch (temp)
+                {
+                    case "1":
+                        if (intelligence > 11)
+                        {
+                            Console.WriteLine("You may be speaking to the literal source of everything wrong with the world, an ancient\n" +
+                                "evil who might as well regard you as an ant. But you also lived through Capitalism, so this is familiar\n" +
+                                "territory, honestly. You manage to keep your wits about you, and explain that you want to leave, please\n" +
+                                "and thank you. It's not like you're asking to just be let go, either: you're willing to bargain.\n" +
+                                "The Devil loves to bargain, right?\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You want to get out, and stuff. Honestly your mouth is just moving at this point. You're\n" +
+                                "literally speaking to the root of all evil, and it feels like all the moisture is being pulled from your\n" +
+                                "body just from the gaze of a single cross-pupiled eye.\n\n" +
+                                "'ENOUGH.'\n\n" +
+                                "The head snaps, and the poor person wedged between his teeth makes a horrid gurgling noise.\n\n" +
+                                "'I know what you want, despite your best efforts.'\n");
+                        }
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                case "2":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("THIS IS A BAD IDEA. ARE YOU SURE THAT YOU WANT TO DO THIS?\n");
+                        Menu($"1. Yes, 2. No");
+                        choiceBreak = false;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        temp = Console.ReadLine();
+                        if (temp == "1")
+                        {
+                            Console.Clear();
+                            Console.WriteLine("You lunge forwards and attack Satan. The dragon bites down, all three heads swivelling to\n" +
+                                "look down at you with their baleful presence, fire flaring from their nostrils. It's a fight!\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Combat("Satan, the Fallen Star", 66, 9);
+
+                        }
+                        else
+                        {
+                            Console.Clear();
+                        }
+                        break;
+                        
+
+                }
+            } while (choiceBreak == false);
 
             Level2();
             
