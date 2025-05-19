@@ -33,7 +33,7 @@ namespace Wah
         public static int vitality = 100; // Max health
         public static int intelligence = 10;
         public static int karmaScore = -10;
-        public static int gold = 0;
+        public static int gold = 1000;
         public static int death = 0;
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
@@ -187,7 +187,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen\n7. Vendor (test)"); // presenting options
                 decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -212,9 +212,11 @@ namespace Wah
                         DeathScreen();
                         break;
                     case "7":
-                        decision = "0";
+                        Vendor();
                         break;
+                    
                     default:
+                        decision = "0";
                         break;
 
                 }
@@ -1496,12 +1498,134 @@ namespace Wah
 
         }
         public static void Level7_4()
-        { 
+        {
+            
+            Console.WriteLine(" The wind howls through the jagged maw of the chasm, its breath sharp with the scent of scorched earth and ancient ruin." +
+                " Below, the desolate plains stretch into infinity, cracked and barren, where the bones of forgotten souls lie scattered like whispers of past agony." +
+                " The sky, bruised and relentless, presses down upon the forsaken land, mirroring the feverish hunger that coils within—an insatiable craving, a consuming fire that flickers like distant embers in the abyss." +
+                "Far beyond, carved into the dying light of the horizon, a solitary tower rises—blackened and defiant against the sky’s unforgiving weight.Its silhouette is stark," +
+                " etched in the fragile haze of dust and despair, a beacon of grim promise.It calls to you, its presence a silent command, pulling at the marrow of your bones." +
+                "You cannot ignore its whisper—low and insidious—threading through the ruinous winds, beckoning you forward into the unknown.  ");
+            Console.ForegroundColor= ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Head Towards the Tower");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+
+
+            }
+
         
+
+
+    public static void Vendor()
+        {
+            int store;
+            bool leave=false;
+            while (leave == false)
+            { 
+                Console.WriteLine(@"
+  _   _           __     __             _                       _   _  
+ | | | |          \ \   / /__ _ __   __| | ___  _ __           | | | | 
+/ __) __)  _____   \ \ / / _ \ '_ \ / _` |/ _ \| '__|  _____  / __) __)
+\__ \__ \ |_____|   \ V /  __/ | | | (_| | (_) | |    |_____| \__ \__ \
+(   (   /            \_/ \___|_| |_|\__,_|\___/|_|            (   (   /
+ |_| |_|                                                       |_| |_|
+        
+_________________________________________________________________________
+");
+
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"   Gold:{gold}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"_________________________________________________________________________\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("1. Concentration Elixer");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("   || Boosts intelligence by 5 ||");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("   200 Gold\n\n");
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("2. Strength Elixer");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("   || Boosts Strength by 5 ||");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("   300 Gold\n\n");
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("3. Rejuvenation Elixer");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("   || Increases Maximum Health by 10  ||");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("   300 Gold\n\n");
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("4. Leave vendor\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                
+
+
+
+                store = Convert.ToInt32(Console.ReadLine());
+
+
+                switch (store)
+                {
+                    case 1:
+                        if (gold >= 200)
+                        {
+                            gold=gold-200;
+                            intelligence=intelligence+5;
+                            Console.Clear();
+                            Console.WriteLine("Item Purchaced.");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\nYou cannot afford this!");
+                            
+                        }
+                            break;
+                    case 2:
+                        if (gold >= 300)
+                        {
+                            gold=gold - 300;
+                            strength=strength + 5;
+                            Console.Clear();
+                            Console.WriteLine("Item Purchaced.");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\nYou cannot afford this!");
+
+                        }
+                        break;
+                    case 3:
+                        if (gold >= 300)
+                        {
+                            gold = gold - 300;
+                            vitality=vitality+10;
+                            Console.Clear();
+                            Console.WriteLine("Item Purchaced.");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\nYou cannot afford this!");
+
+                        }
+                        break;
+                       
+
+                    case 4:
+                        leave = true;
+                        break;
+                }
+            }
         }
 
-
-
-        }
+    }
     }
 
