@@ -266,6 +266,7 @@ namespace Wah
             monHp = difficulty * 10;
             monPanic = (difficulty * 10) - (difficulty * 8);
             monSpeed = speed;
+            int spoils = difficulty * rand.Next(20, 50);
 
             if (speed >= difficulty + 1)
             {
@@ -281,14 +282,15 @@ namespace Wah
             {
                 if (monHp <= 0 || coward == true)
                 {
-                    vitality = hpAtCombat;
                     combat = false;
+                    gold = gold + spoils;
+                    Console.WriteLine($"{monsterName} drops {spoils} gold!");
                     Console.Clear();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine($"you are fighting {creature}.");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write($"--[ {creature} ]-- \nVitality: {monHp} ");
@@ -302,6 +304,7 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true);
                     MonsterRound();
+                    Console.Clear();
                 }
 
             }
@@ -539,7 +542,7 @@ namespace Wah
                     case 2:
                         if (monHp <= monPanic)
                         {
-                            Console.WriteLine($"{monsterName} flees.");
+                            Console.WriteLine($"{monsterName} throws some god at you. While you are distracted, {monsterName} flees.");
                             monHp = monHp - (monHp + 1);
                         }
                         else
@@ -561,6 +564,14 @@ namespace Wah
                         }
                         break;
                 }
+            }
+            else if (coward == true)
+            {
+                Console.Write($"You hear {monsterName} shrieking behind while you run for your life.\n");
+            }
+            else
+            {
+                Console.WriteLine($"{monsterName} has been slain!\nYou are victorious!\n");
             }
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\nPress ENTER to continue...");
@@ -887,7 +898,7 @@ namespace Wah
                 "his skin is scaled and red, and beneath the steaming ice you see the outline of shadowed wings.\n" +
                 "You feel violently ill just looking at him.\n\n" +
                 "'What do you want?'\n\n" +
-                "One massive reptilian head lowers to look you in the eye, and you hear the sound of cruching and screaming \n" +
+                "One massive reptilian head lowers to look you in the eye, and you hear the sound of crunching and screaming \n" +
                 "when he talks. You realize that there's a person trapped between those jaws, being casually chewed on while he speaks\n" +
                 "in the same way you might chew on gum.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -946,7 +957,7 @@ namespace Wah
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
-                            Combat("Satan, the Fallen Star", 66, 9);
+                            Combat("Satan the Fallen Star", 66, 9);
 
                         }
                         else
@@ -1002,7 +1013,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
-            if (fought = false)
+            if (fought == false)
             {
                 Console.WriteLine("No sooner has the Devil finished speaking, than Bryan turns towards you.\n\n" +
                     "'Sorry" + (toldName == true ? $" {name}," : ",") + " but this is the name of the game.'\n\n" +
