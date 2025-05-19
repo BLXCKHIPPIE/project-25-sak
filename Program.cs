@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using System;
+using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
 
 namespace Wah
@@ -1399,11 +1400,7 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("The winds up here are much stronger a scent of rich purfume fills the air overwhelming your senses\n" +
-                        "Looking ahead you can see a sloping path leading down towards a narrowing in the chasm." +
-                        " you follow the path leads you to the narrow part of the chasm and you hop accross");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n Press ENTER to continue");
+               
                     Console.ReadLine();
                     Level7_4();
                 }
@@ -1418,12 +1415,7 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("The winds up here are much stronger a scent of rich purfume fills the air overwhelming your senses\n" +
-                        "Looking ahead you can see a sloping path leading down towards a narrowing in the chasm." +
-                        " you follow the path leads you to the narrow part of the chasm and you hop accross");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n Press ENTER to continue");
-                    Console.ReadLine();
+            
                     Level7_4();
                 }
             }
@@ -1499,18 +1491,65 @@ namespace Wah
         }
         public static void Level7_4()
         {
-            
-            Console.WriteLine(" The wind howls through the jagged maw of the chasm, its breath sharp with the scent of scorched earth and ancient ruin." +
-                " Below, the desolate plains stretch into infinity, cracked and barren, where the bones of forgotten souls lie scattered like whispers of past agony." +
-                " The sky, bruised and relentless, presses down upon the forsaken land, mirroring the feverish hunger that coils within—an insatiable craving, a consuming fire that flickers like distant embers in the abyss." +
-                "Far beyond, carved into the dying light of the horizon, a solitary tower rises—blackened and defiant against the sky’s unforgiving weight.Its silhouette is stark," +
-                " etched in the fragile haze of dust and despair, a beacon of grim promise.It calls to you, its presence a silent command, pulling at the marrow of your bones." +
-                "You cannot ignore its whisper—low and insidious—threading through the ruinous winds, beckoning you forward into the unknown.  ");
-            Console.ForegroundColor= ConsoleColor.DarkYellow;
-            Console.WriteLine("1. Head Towards the Tower");
-            Console.ReadLine();
+            int decision = 0;
             Console.ForegroundColor = ConsoleColor.White;
+            while (decision != 1)
+            {
+                Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n\n" +
+                          "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n\n" +
+                          "The sky, bruised and relentless, presses down, mirroring the hunger within.\n\n" +
+                          "On the horizon, a solitary tower rises—blackened, defiant.\n\n" +
+                          "It calls to you, its whisper threading through the ruinous winds,\n" +
+                          "beckoning you forward into the unknown.");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("1. Head Towards the Tower");
+                decision = Convert.ToInt32(Console.ReadLine());
 
+            }
+            decision = 0;
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine("The wind howls, pushing against you, each step heavier than the last.\n\n" +
+                       "Your strength fades, the tower distant, unwavering.\n\n" +
+                       "Then—a friendly figure appears over the ridge, walking toward you, steady against the storm.\n\n" +
+                       "Their presence cuts through the chaos.\n\n" +
+                       "\"Greetings, Stranger,\" they say.\n\n" +
+                       "And just like that, the weight shifts.");
+            while (decision != 1 && decision != 2)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("1. Purchace some goods\n2. Leave");
+                decision = Convert.ToInt32(Console.ReadLine());
+                switch (decision) 
+                {
+                    case 1:
+                        Console.Clear();
+                        Vendor();
+                        break;
+                    case 2:
+                        break;
+                
+                }
+
+
+            }
+            decision = 0;
+            while (decision != 1)
+            {
+                Console.WriteLine("Lore here");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Menu here");
+                decision = Convert.ToInt32(Console.ReadLine());
+                switch (decision)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+
+                }
+            }
 
             }
 
@@ -1521,7 +1560,7 @@ namespace Wah
         {
             int store;
             bool leave=false;
-            while (leave == false)
+            while (leave == false) // allows player to interact with menus and leave by choice
             { 
                 Console.WriteLine(@"
   _   _           __     __             _                       _   _  
@@ -1563,6 +1602,7 @@ _________________________________________________________________________
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("4. Leave vendor\n");
                 Console.ForegroundColor = ConsoleColor.White;
+
                 
 
 
@@ -1573,12 +1613,12 @@ _________________________________________________________________________
                 switch (store)
                 {
                     case 1:
-                        if (gold >= 200)
+                        if (gold >= 200) // Making sure player has enough gold for purchace
                         {
-                            gold=gold-200;
-                            intelligence=intelligence+5;
+                            gold=gold-200; // Charging player gold
+                            intelligence=intelligence+5; // Adding stats
                             Console.Clear();
-                            Console.WriteLine("Item Purchaced.");
+                            Console.WriteLine("Item Purchaced."); // Sucess method
                         }
                         else
                         {
@@ -1621,6 +1661,8 @@ _________________________________________________________________________
 
                     case 4:
                         leave = true;
+                        Console.Clear();
+                        Thread.Sleep(1000);
                         break;
                 }
             }
