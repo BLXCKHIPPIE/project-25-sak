@@ -257,14 +257,6 @@ namespace Wah
             }
 
         }
-        public static void MonsterMenu(string MenuOptions) //litst monster stats
-        {
-            string[] split = MenuOptions.Split(',');
-            for (int i = 0; i < split.Length; i++)
-            {
-                Console.WriteLine(split[i].PadLeft(50));
-            }
-        }
         public static void Combat(string creature, int difficulty, int speed)//handles combat in general
         {
             hpAtCombat = vitality;
