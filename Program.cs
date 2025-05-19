@@ -297,9 +297,16 @@ namespace Wah
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    Console.WriteLine($"you are fighting {creature}.\n\n\n");
+                    Console.WriteLine($"you are fighting {creature}.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    MonsterMenu($"---| HP. {monHp} |---, ---| DEF. {monSpeed} |---");
+                    Console.Write($"--[ {creature} ]-- \nVitality: {monHp} ");
+                    for (int i = 0; i <= (monHp / 2); i++)
+                    {
+                        Console.Write("|");
+                    }
+                    Console.WriteLine("");
+                    Menu($"DEF. {monSpeed} ");
+                    Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true);
                     MonsterRound();
@@ -346,7 +353,7 @@ namespace Wah
                         break;
                     case <= 40:
                         Console.WriteLine($"Screams ring on the wind, as {monsterName} summons the baleful legions of hell to his service.\n" +
-                            $"they tear accross you in an endless torrent!");
+                            $"they tear across you in an endless torrent!");
                         for (int i = 0; i < 20; i++)
                         {
                             attack = rand.Next(0, 11);
@@ -416,8 +423,8 @@ namespace Wah
             {
                 do
                 {
-                    Console.Write($"\n\nIt is {name}'s turn.\nVitality: ");
-                    for (int i = 0; i <= vitality; i++)
+                    Console.Write($"\n\nIt is {name}'s turn.\n--[ {name} ]-- \nVitality: {vitality} ");
+                    for (int i = 0; i <= (vitality/2); i++)
                     {
                         Console.Write("|");
                     }
@@ -1088,7 +1095,7 @@ namespace Wah
 
             if (temp == "1")
             {
-                Console.WriteLine("A pulse of adrenaline staves off the cold, as you swing your fist at Ryan, taking him by surprise.\n" +
+                Console.WriteLine("A pulse of adrenaline staves off the cold, as you swing your fist at Bryan, taking him by surprise.\n" +
                     "Your blow lands with a satisying crack, and he rocks back in the snow, wobbling on dazed feet. But he recovers quickly,\n" +
                     "a dangerous glint coming to his eyes--made worse by the line of blood dribbling down his chin.\n\n" +
                     "'So that's how it's going to be, huh? I'll get you back for that.'\n\n" +
@@ -1519,7 +1526,7 @@ namespace Wah
             while (decision != 1 && decision != 2)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("1. Purchace some goods\n2. Leave");
+                Console.WriteLine("1. Purchase some goods\n2. Leave");
                 decision = Convert.ToInt32(Console.ReadLine());
                 switch (decision) 
                 {
@@ -1618,7 +1625,7 @@ _________________________________________________________________________
                             gold=gold-200; // Charging player gold
                             intelligence=intelligence+5; // Adding stats
                             Console.Clear();
-                            Console.WriteLine("Item Purchaced."); // Sucess method
+                            Console.WriteLine("Item Purchased."); // Sucess method
                         }
                         else
                         {
@@ -1633,7 +1640,7 @@ _________________________________________________________________________
                             gold=gold - 300;
                             strength=strength + 5;
                             Console.Clear();
-                            Console.WriteLine("Item Purchaced.");
+                            Console.WriteLine("Item Purchased.");
                         }
                         else
                         {
@@ -1648,7 +1655,7 @@ _________________________________________________________________________
                             gold = gold - 300;
                             vitality=vitality+10;
                             Console.Clear();
-                            Console.WriteLine("Item Purchaced.");
+                            Console.WriteLine("Item Purchased.");
                         }
                         else
                         {
