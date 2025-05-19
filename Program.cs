@@ -6,8 +6,9 @@ namespace Wah
     internal class Program
     {
         public static Random rand = new Random();
+        //Stats for combat
         public static string monsterName = " ";
-        public static int monHp, monPanic, monSpeed, mAttack;
+        public static int monHp, monPanic, monSpeed, mAttack, hpAtCombat;
         public static bool blocking = false;
         public static bool coward = false;
 
@@ -263,6 +264,7 @@ namespace Wah
         }
         public static void Combat(string creature, int difficulty, int speed)//handles combat in general
         {
+            hpAtCombat = vitality;
             coward = false;
             monsterName = creature;
             bool combat = true;
@@ -284,6 +286,7 @@ namespace Wah
             {
                 if (monHp <= 0 || coward == true)
                 {
+                    vitality = hpAtCombat;
                     combat = false;
                     Console.Clear();
                 }
@@ -302,7 +305,7 @@ namespace Wah
             }
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public static void MonsterAttacks(int powerLevel, int attkType)
+        public static void MonsterAttacks(int powerLevel, int attkType)//different attacks for monsters, more powerful monsters have access to higher tiers of attacks.
         {
             int damage, attack;
 
@@ -338,7 +341,7 @@ namespace Wah
                         Console.WriteLine($"{monsterName} sucks in a deep breath before unleashing a stream of fire! You take {damage * 2} damage and are set on fire!");
                         vitality = vitality - damage * 2;
                         break;
-                    case <= 30:
+                    case <= 40:
                         Console.WriteLine($"Screams ring on the wind, as {monsterName} summons the baleful legions of hell to his service.\n" +
                             $"they tear accross you in an endless torrent!");
                         for (int i = 0; i < 20; i++)
@@ -386,11 +389,11 @@ namespace Wah
                         monHp = monHp + (vitality / 2);
                         vitality = vitality - (vitality/2);
                         break;
-                    case <= 30:
+                    case <= 40:
                         Console.WriteLine($"{monsterName}'s heads writhe around, half-way pulling himself from the ice to loom over you,\n" +
                             $"before unleashing three streams of ice, lava, and lightning. The elemental beams tear across you for {damage * 2}, {damage},\n" +
-                            $"and {attack * 3} damage!");
-                        vitality = vitality - (damage * 3 + attack * 3);
+                            $"and {attack * 5} damage!");
+                        vitality = vitality - (damage * 3 + attack * 5);
                         break;
                     default:
                         Console.WriteLine($"{monsterName} points at you, then spreads its limbs out in an easy pose, daring you to take your best shot.");
@@ -402,7 +405,7 @@ namespace Wah
 
         public static void PlayerRound(bool playerRound)//handles the player's round during combat
         {
-            int damage= 0, attack = 0;
+            int damage = 0, attack = 0;
             string combatAction = " ";
             string[] def = { "dives", "dodges", "swerves", "slides", "weaves", "leaps" };
             string[] atk = { "lunge", "stab", "swing", "cut", "thrust", "slash" };
@@ -501,6 +504,7 @@ namespace Wah
             {
                 Console.Clear();
                 Console.WriteLine($"{monsterName} was too much. You have been felled.\n");
+                vitality = hpAtCombat;
                 DeathScreen();
             }
 
@@ -609,7 +613,8 @@ namespace Wah
         public static void Level1()// Circle 9: Treachery
         {
             string menuOptions = "1. Yes, 2. No", temp = " ";
-            bool choiceBreak = false, fought = false;
+            bool choiceBreak = false, fought = false, toldName = false;
+            weapon = 0;
             level = 1;
 
             Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
@@ -710,6 +715,7 @@ namespace Wah
                             "Bryan seems surprised by your frank honesty.\n\n" +
                             $"'Well, it's a pleasure to meet you, {name}.'\n");
                         karmaScore = karmaScore + 1;
+                        toldName = true;
                         break;
                     case "2":
                         Console.Clear();
@@ -757,8 +763,7 @@ namespace Wah
             else
             {
 
-                Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. \n" +
-                            "He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
+                Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
                             "'Take it, you probably need it more than I do.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu("1. Take the knife, 2. I'll pass.");
@@ -799,7 +804,7 @@ namespace Wah
                 {
                     case "1":
                         Console.WriteLine("Everything about this situation is insane. Why not add one more thing to the pile? What could go wrong?\n\n" +
-                            "'Let's go, before we freeze to death.\n");
+                            "'Let's go, before we freeze to death.'\n");
                         break;
                     case "2":
                         Console.WriteLine("You aren't going to go speak to the LITERAL devil. What sort of insane plan is that?\n" +
@@ -892,13 +897,17 @@ namespace Wah
                 switch (temp)
                 {
                     case "1":
-                        if (intelligence > 11)
+                        if (intelligence >= 11)
                         {
                             Console.WriteLine("You may be speaking to the literal source of everything wrong with the world, an ancient\n" +
                                 "evil who might as well regard you as an ant. But you also lived through Capitalism, so this is familiar\n" +
                                 "territory, honestly. You manage to keep your wits about you, and explain that you want to leave, please\n" +
                                 "and thank you. It's not like you're asking to just be let go, either: you're willing to bargain.\n" +
-                                "The Devil loves to bargain, right?\n");
+                                "The Devil loves to bargain, right?\n\n" +
+                                "'You seem to think I'm the king of this place, and not the most condemned prisoner. I do love company\n" +
+                                "in my misery.\n\n" +
+                                "The red-scaled serpent pauses to chew, causing a cacophany of screams.\n\n" +
+                                "'But there is something I want, after all.'\n");
                         }
                         else
                         {
@@ -915,7 +924,7 @@ namespace Wah
                         Console.ReadLine();
                         Console.Clear();
                         break;
-                case "2":
+                    case "2":
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("THIS IS A BAD IDEA. ARE YOU SURE THAT YOU WANT TO DO THIS?\n");
@@ -927,7 +936,9 @@ namespace Wah
                         {
                             Console.Clear();
                             Console.WriteLine("You lunge forwards and attack Satan. The dragon bites down, all three heads swivelling to\n" +
-                                "look down at you with their baleful presence, fire flaring from their nostrils. It's a fight!\n");
+                                "look down at you with their baleful presence, fire flaring from their nostrils.\n\n" +
+                                $"'Treachery may be your damnation, but arrogance will be your undoing. {name}, I INVENTED arrogance.'\n\n" +
+                                "It's a fight!\n");
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Menu("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -941,12 +952,126 @@ namespace Wah
                             Console.Clear();
                         }
                         break;
-                        
+                    case "3":
+                        Console.WriteLine("You push Bryan forwards, who stammers and then straightens up.\n\n" +
+                            "'We don't belong here, uh, your Wickedness...?'\n\n" +
+                            "He doesn't seem to have much of a case, but one of the serpentine heads writhes down to peer at him,\n" +
+                            "fixing Bryan with a glare hot enough to melt the snow." +
+                            "'Belong here? You misguided mortal. You paid your way here with a \n" +
+                            "lifetime of Sin. But perhaps I can help. It could be amusing.'\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
 
                 }
             } while (choiceBreak == false);
 
+            Console.WriteLine("'Judas.'\n\n" +
+                "One of the titanic heads sweeps past, leaving a trail of heat and the scent of blood and sulphur in its wake.\n" +
+                "As he does, you can see the man inside, wedged between his teeth.\n\n" +
+                "'Brutus.'\n\n" +
+                "The second head sweeps by, displaying another man with roman features, pierced by several teeth. The devil\n" +
+                "keeps his mouth open just long enough for you to get a good look, before the head rears back, and the third\n" +
+                "slinks down before your eyes, opening great jaws to display a third man.\n\n" +
+                "'And Gaius Cassius. All the greatest traitors in history. For that is the nature of this place, the circle\n" +
+                "of...'\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("\\__   __/(  ____ )(  ____ \\(  ___  )(  ____ \\|\\     /|(  ____ \\(  ____ )|\\     /|\r\n   ) (   | (    )|| (    \\/| (   ) || (    \\/| )   ( || (    \\/| (    )|( \\   / )\r\n   | |   | (____)|| (__    | (___) || |      | (___) || (__    | (____)| \\ (_) / \r\n   | |   |     __)|  __)   |  ___  || |      |  ___  ||  __)   |     __)  \\   /  \r\n   | |   | (\\ (   | (      | (   ) || |      | (   ) || (      | (\\ (      ) (   \r\n   | |   | ) \\ \\__| (____/\\| )   ( || (____/\\| )   ( || (____/\\| ) \\ \\__   | |   \r\n   )_(   |/   \\__/(_______/|/     \\|(_______/|/     \\|(_______/|/   \\__/   \\_/\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("'But truthfully...'\n\n" +
+                "The Devil shudders when he says the word, all three long necks rearing back as if he had eaten something\n" +
+                "distasteful.\n\n" +
+                "'No one even remembers who Gaius is, or what treachery he wrought. He's staring to lose his flavor.'\n\n" +
+                "The middle head slinks back down over you, puffing a putrid breath over you" + (fought == false ? "and Bryan.\n\n" : ".\n\n") +
+                "'So here's what I want, mortal. Find me a sweeter flavor to chew on, and I'll let you pass into the next circle.'\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            if (fought = false)
+            {
+                Console.WriteLine("No sooner has the Devil finished speaking, than Bryan turns towards you.\n\n" +
+                    "'Sorry" + (toldName == true ? $" {name}," : ",") + " but this is the name of the game.'\n\n" +
+                    "He advances on you quickly, siezing you by the shoulders, and starts to wrestle you towards the dragon's mouth.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Fight back, 2. Do not resist");
+                Console.ForegroundColor = ConsoleColor.White;
+                Level1_1(ref fought);
+                switch (fought)
+                {
+                    case true:
+                        Console.WriteLine("With a final blow, it is over. Bryan tries to flee, but he stumbles backwards, towards the Devil's waiting jaws.\n");
+                        break;
+                    case false:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your Intelligence has increased.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        karmaScore++;
+                        Console.WriteLine("You think about fighting back, but you realize something; the Devil wants a traitor. by betraying you, \n" +
+                            "Bryan might be making himself a more appealing flavor than you. Instead you go limp, allowing Bryan\n" +
+                            "to heft you towards Satan's waiting jaws. He drags you forwards, yelling.\n\n" +
+                            "'Here! Oh Ancient Serpent! The soul of a man condemned to Treachery!'\n\n" +
+                            "With a quick motion, the Devil spits out the body of Cassius, flinging him across the snow, and then lunges.\n" +
+                            "You hear the snap of jaws, and feel a flash of scalding heat.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                }
+                Console.WriteLine("You hear Bryan's screams as the dragon pulls him up into the air, jaws clamped about his midsection.\n\n" +
+                            "'Oh what sweet treachery, to betray even in the pit of hell!'\n\n" +
+                            "The Devil exults, pulling Bryan up into the air, and then shaking him around like a dog with a toy.\n" +
+                            "One of the other heads turns towards you, slithering up across the snow.\n\n" +
+                            $"'Done well enough, {name}, and so I open up Hell unto you.'\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("You try to think of any traitors you know about.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu($"1. Bryan, 2. Benedict Arnold, 3. {name}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+
+
+            }
+            Console.WriteLine("It crunches down on Judas, and blood steams against the snow. The steam does not dissapate.\n" +
+                    "Instead, it rises and congeals, warping the air. You realize that it is creating a door in thin air!\n" +
+                    "Through it, you can see what looks like a dense forest, murky and dark. Satan huffs.\n\n" +
+                    "'Go on. Claim your reward.'\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("1. Pass through the gate");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("As you step forwards, you hear Satan laugh behind you.\n\n" +
+                "'I'll see you soon.'\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
             Level2();
+           
             
         }
         public static bool Level1_1(ref bool fought)
