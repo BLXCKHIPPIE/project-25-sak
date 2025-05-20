@@ -1175,6 +1175,7 @@ namespace Wah
         }
         public static void Level2_1()// Circle 8: Violence River
         {
+           
             int decision;
             level = 2;
             weapon = 2; //The player has the knife
@@ -1248,8 +1249,9 @@ namespace Wah
                 Console.Clear();
                 //Fight goes here
                 Combat("Harpy", 2, 4);
-                Console.WriteLine("After defeating the harpy, you are able to pick up the wood from the tree and make a bonfire");
+                Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire");
                 Console.ReadLine();
+                Bonfire();
             }
             else //If the player decides to leave the forest
             {
