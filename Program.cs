@@ -13,6 +13,18 @@ namespace Wah
         public static bool blocking = false;
         public static bool coward = false;
 
+        // Character sheet //
+
+        public static string name = " ";
+        public static int strength = 10;
+        public static int vitality = 100; // Max health
+        public static int intelligence = 10;
+        public static int karmaScore = -10;
+        public static int gold = 1000;
+        public static int death = 0;
+        public static int level = 0;
+        public static int weapon = 0; //used to derive damage calcs
+        public static string weaponName = "";
 
 
 
@@ -26,18 +38,6 @@ namespace Wah
 
 
         }
-
-        // Character sheet //
-
-        public static string name = " ";
-        public static int strength = 10;
-        public static int vitality = 100; // Max health
-        public static int intelligence = 10;
-        public static int karmaScore = -10;
-        public static int gold = 1000;
-        public static int death = 0;
-        public static int level = 0;
-        public static int weapon = 0; //used to derive damage calcs
 
 
         static void Character()
@@ -54,6 +54,18 @@ namespace Wah
             else
             {
                 karma = "Saint";
+            }
+            switch (weapon)
+            {
+                case 0:
+                    weaponName = "Fists";
+                    break;
+                case 2:
+                    weaponName = "Rusty Knife";
+                    break;
+                case 5:
+                    weaponName = "Sword";
+                    break;
             }
 
             Console.WriteLine($"--- Character ---");
@@ -81,14 +93,20 @@ namespace Wah
             Console.WriteLine(karma);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Gold: ");
+          
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(gold);
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Weapon:");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{weaponName}\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write($" Deaths: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(death);
 
-
+          
 
 
 
