@@ -1567,6 +1567,7 @@ namespace Wah
                         Bonfire();
                         break;
                     case 2:
+                        Console.Clear();
                         break;
 
                 }
@@ -1574,23 +1575,54 @@ namespace Wah
 
             }
             decision = 0;
-            while (decision != 1)
-            {
-                Console.WriteLine("Lore here");
+            
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
+                    "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
+                    "At its base stands the gate keeper. His armor, a shiny fusion of metal and sin, exudes an aura of ruin.\n Darkness stares from within his helmet, a silent challenge.\n\n");
+             Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("'Mortal, Your journey was long, but futile. This is King Minos' domain and you are unworthy of his gaze. \n" +
+                    "Turn back, lest this place strip you bare.There is no salvation here.Only judgment.'\n\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Menu here");
+                Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 decision = Convert.ToInt32(Console.ReadLine());
                 switch (decision)
                 {
                     case 1:
+                        Console.Clear();
+                        Console.WriteLine("'Reason? There is no reason in this place—only judgment. \nYou speak of purpose, of resolve, as if they hold weight here. They do not.'\n" +
+                                "'Turn back, mortal. Your words are wasted.'\n");
+                        decision = 0;
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    decision = Convert.ToInt32(Console.ReadLine());
+                    if (decision ==1)
+                    { Combat("Gate Keeper", 7, 3); }
+                    else
+                    { 
+                    Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
+                    Console.WriteLine("Press ENTER");
+                    Console.ReadLine();
+                    Combat("Gate Keeper", 7, 3);
+
+                    }
                         break;
                     case 2:
-                        break;
+                    Combat("Gate Keeper", 7, 3);
+                    break;
+                    case 3:
+                    Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
+                    Console.WriteLine("Press ENTER");
+                    Console.ReadLine();
+                    Combat("Gate Keeper", 7, 3);
+                    break;
 
-                }
+            }
             }
 
-        }
+        
 
 
 
@@ -1632,11 +1664,11 @@ _________________________________________________________________________
                 Console.Write("   300 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write("3. Rejuvenation Elixer");
+                Console.Write("3. Placeholder Sword");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("   || Increases Maximum Health by 10  ||");
+                Console.Write("   || kills stuff pretty well  ||");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("   300 Gold\n\n");
+                Console.Write("   3000000 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("4. Leave vendor\n");
@@ -1682,10 +1714,10 @@ _________________________________________________________________________
                         }
                         break;
                     case 3:
-                        if (gold >= 300)
+                        if (gold >= 1000000)
                         {
-                            gold = gold - 300;
-                            vitality = vitality + 10;
+                            gold = gold - 1000000;
+                            
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
                         }
@@ -1708,11 +1740,8 @@ _________________________________________________________________________
 
 
         public static void Bonfire()
-        {
-            
-            string decision = "";
+        { string decision = "";
             bool leaver = false;
-
             string[] darkTradeGreetings = {
     "A stranger in the shadows… do you come to barter?",
     "I see the weight of the world upon you. Perhaps a trade will lighten the load?",
@@ -1723,13 +1752,7 @@ _________________________________________________________________________
     "A traveler wise enough to deal is a traveler who lasts. What’s your price?",
     "Give me something of worth, and perhaps I'll give you something of use.",
     "Only fools hoard what they cannot carry. Shall we make a trade?",
-    "Every item has a story, and every trade has a consequence. What do you bring?"
-};
-
-
-
-    
-            
+    "Every item has a story, and every trade has a consequence. What do you bring?"};
             while (leaver==false)
             {
                 Console.Clear();
