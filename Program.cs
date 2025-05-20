@@ -1146,88 +1146,40 @@ namespace Wah
         }
         public static void Level2_1()// Circle 8: Violence River
         {
-            int decision, committedViolence; //CommittedViolence is probably just a temporary variable for now
+            int decision;
             level = 2;
-            Console.WriteLine("This is just here for testing. Decide whether or not you attacked the guy in Treachery\n1. Attacked him\n2. Did not");
-            committedViolence = Convert.ToInt32(Console.ReadLine());
+            weapon = 2; //The player has the knife
             Console.Clear();
             Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
             Thread.Sleep(1000);
-            Console.WriteLine("The River is guarded by a group of Centaurs armed with bows and arrows, who take notice of you.");
+            Console.WriteLine("The River is guarded by a Centaur armed with a sword");
             Thread.Sleep(1000);
-            Console.WriteLine("Those who have committed the sin of Violence will sink. Will you attempt to cross?");
+            Console.WriteLine("Those who have committed the sin of Violence will be hunted by the Centaur. Will you attempt to cross?");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1. Cross the river");
-            Console.WriteLine("2. Wait for the Centaurs to leave");
+            Console.WriteLine("2. Attack the Centaur");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             // If the player attacked the person in the last level, they will not be able to pass the river
+
             if (decision == 1) //If they cross the river
             {
-                Console.Write("You step into the river");
-                Thread.Sleep(500); Console.Write(".");
-                Thread.Sleep(500); Console.Write(".");
-                Thread.Sleep(500); Console.Write(".");
-                Thread.Sleep(500);
-                Console.Clear();
-                if (committedViolence == 1) // If they attacked the guy in treachery
-                {
-                    Console.WriteLine("You feel the weight of your sins sinking you deeper into the river of blood and fire.");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("Your acts of violence in Treachery drag you deeper in the river.");
-                    Thread.Sleep(1000);
-                    Console.WriteLine("Your body is burning in fire while drowning at the same time");
-                    Console.ReadLine();
-                    Console.Clear();
-                    DeathScreen();
-                } else //If they did NOT attack the guy in treachery
-                {
-                    Console.Write("You are able to walk through the river without sinking.");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Level2_2();
-                    
-                }
+                Console.Write("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
+                Console.ReadLine();
             }
 
-            if (decision == 2) //If they wait
+            if (decision == 2) //If they Attack
             {
-                if (committedViolence == 1) //If they attacked the guy in treachery
-                {
-                    Console.WriteLine("You wait at the river, hoping that the Centaurs will leave, however you seem to have forgotten that they have already noticed you.\nA group of Centaurs gallop over to you and pelt you with arrows and drag you to the river");
-                    Console.ReadLine();
-                    Console.Clear();
-                    DeathScreen();
-                }
-                else //If they did NOT attack the guy in treachery
-                {
-                    do // The player is allowed to cross so nothing happens until they cross
-                    {
-                        Console.Clear();
-                        Console.WriteLine("You wait an hour, but the Centaurs are still there. Would you like to:");
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("1. Cross the river\n2. Wait longer");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        decision = Convert.ToInt32(Console.ReadLine());
-                        Console.Clear();
-                        if(decision == 1)
-                        {
-                            Console.Write("You step into the river"); Thread.Sleep(500);
-                            Thread.Sleep(500); Console.Write(".");
-                            Thread.Sleep(500); Console.Write(".");
-                            Thread.Sleep(500); Console.Write(".");
-                            Thread.Sleep(500);
-                            Console.Clear();
-                            Console.Write("You are able to walk through the river without sinking.");
-                            Console.ReadLine();
-                            Console.Clear();
-                            Level2_2();
-                        }
-                    } while (decision != 1);
-                }
+
+                Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
+                Console.WriteLine("He gallops over to you, and pulls out his sword. ");
+                Console.ReadLine();
             }
+            Combat("Centaur", 4, 1); //Heavy but slow
+            Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+            Level2_2(); //Currently the player has to fight the centaur to progress. I will add a way for the player to cross without fighting in the intro
         }
         
         public static void Level2_2() //Violence Forest
@@ -1243,8 +1195,8 @@ namespace Wah
             if (decision == 1) //If the player decides to gather wood
             {
                 Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire."); Thread.Sleep(1000);
-                Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
-                Console.ReadLine(); //Pause so the player can read the tree screaming
+                Console.WriteLine("As you snap the branch off, blood spills out and the tree screams"); Thread.Sleep(1500);
+                Console.ReadLine(); 
                 Console.Clear();
                 Console.ForegroundColor= ConsoleColor.DarkRed;
                 Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
@@ -1255,7 +1207,9 @@ namespace Wah
                 Console.Clear();
                 Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you");
                 Console.ReadLine();
+                Console.Clear();
                 //Fight goes here
+                Combat("Harpy", 2, 4);
             }
             else //If the player decides to leave the forest
             {
