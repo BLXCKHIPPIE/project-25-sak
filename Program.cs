@@ -455,7 +455,7 @@ namespace Wah
                             damage = rand.Next(0, strength / 2) + weapon;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way.");
+                                Console.WriteLine($"You {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way.");
                                 playerRound = false;
                                 damage = 0;
 
@@ -464,13 +464,13 @@ namespace Wah
                             {
                                 if (attack == 12)
                                 {
-                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your {weaponName}, dealing {damage * 2} damage!");
                                     damage = damage * 2;
                                     playerRound = false;
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $" at {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your {weaponName} at {monsterName}, dealing {damage} damage.");
                                     playerRound = false;
                                 }
                             }
@@ -481,7 +481,7 @@ namespace Wah
                             damage = rand.Next(0, strength) + weapon * 2;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your \n" +
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your \n" +
                                     $"telegraphed move.");
                                 damage = 0;
                                 playerRound = false;
@@ -490,13 +490,13 @@ namespace Wah
                             {
                                 if (attack == 10)//TOD: implement dodging
                                 {
-                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $", dealing {damage * 2} damage!");
+                                    Console.WriteLine($"CRITICAL HIT! You {atk[rand.Next(atk.Length)]} with your {weaponName}, dealing {damage * 2} damage!");
                                     damage = damage * 2;
                                     playerRound = false;
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your " + (weapon < 2 ? "fist" : (weapon > 2 ? "sword" : "dagger")) + $" at {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your {weaponName} at {monsterName}, dealing {damage} damage.");
                                     playerRound = false;
                                 }
                             }
@@ -976,7 +976,7 @@ namespace Wah
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
-                            Combat("Satan the Fallen Star", 66, 9);
+                            Combat("Satan, the Fallen Star", 66, 9);
 
                         }
                         else
@@ -1036,7 +1036,7 @@ namespace Wah
             {
                 Console.WriteLine("No sooner has the Devil finished speaking, than Bryan turns towards you.\n\n" +
                     "'Sorry" + (toldName == true ? $" {name}," : ",") + " but this is the name of the game.'\n\n" +
-                    "He advances on you quickly, siezing you by the shoulders, and starts to wrestle you towards the dragon's mouth.\n");
+                    "He advances on you quickly, seizing you by the shoulders, and starts to wrestle you towards the dragon's mouth.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu("1. Fight back, 2. Do not resist");
                 Console.ForegroundColor = ConsoleColor.White;
