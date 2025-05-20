@@ -31,6 +31,19 @@ namespace Wah
 
         static void Main() // Declare main method
         {
+            switch (weapon)
+            {
+                case 0:
+                    weaponName = "Fists";
+                    break;
+                case 2:
+                    weaponName = "Rusty Knife";
+                    break;
+                case 5:
+                    weaponName = "Sword";
+                    break;
+            }
+
             Console.WriteLine("Keep me HUNGRY"); // placeholder
             Console.ReadLine(); // pause
             Console.Clear();
@@ -55,18 +68,7 @@ namespace Wah
             {
                 karma = "Saint";
             }
-            switch (weapon)
-            {
-                case 0:
-                    weaponName = "Fists";
-                    break;
-                case 2:
-                    weaponName = "Rusty Knife";
-                    break;
-                case 5:
-                    weaponName = "Sword";
-                    break;
-            }
+
 
             Console.WriteLine($"--- Character ---");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -93,7 +95,7 @@ namespace Wah
             Console.WriteLine(karma);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Gold: ");
-          
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(gold);
 
@@ -106,7 +108,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(death);
 
-          
+
 
 
 
@@ -233,7 +235,7 @@ namespace Wah
                     case "7":
                         Vendor();
                         break;
-                    
+
                     default:
                         decision = "0";
                         break;
@@ -374,14 +376,14 @@ namespace Wah
                             vitality = vitality - attack;
                             Console.WriteLine($"You take {attack} damage!");
                             Thread.Sleep(250);
-                             
+
                         }
                         break;
                     default:
                         Console.WriteLine($"{monsterName} gestures towards you, then spreads their limbs out in an easy pose, daring you to take your best shot.");
                         break;
                 }
-               
+
 
             }
             else if (attkType == 2)
@@ -404,14 +406,14 @@ namespace Wah
                         mAttack = mAttack + 2;
                         break;
                     case <= 12:
-                        Console.WriteLine($"{monsterName} roars, limbs glowing with hellish energy, and swipes you for {attack*2} & {damage} damage!");
-                        vitality = vitality - (damage + attack*2);
+                        Console.WriteLine($"{monsterName} roars, limbs glowing with hellish energy, and swipes you for {attack * 2} & {damage} damage!");
+                        vitality = vitality - (damage + attack * 2);
                         break;
                     case <= 18:
                         Console.WriteLine($"{monsterName} points a finger, and you feel your insides rot. It's agonizing, as your vitality is reduced in half! \n" +
-                            $"{monsterName}'s wounds close before your eyes, as they regain {vitality/2} health!");
+                            $"{monsterName}'s wounds close before your eyes, as they regain {vitality / 2} health!");
                         monHp = monHp + (vitality / 2);
-                        vitality = vitality - (vitality/2);
+                        vitality = vitality - (vitality / 2);
                         break;
                     case <= 40:
                         Console.WriteLine($"{monsterName}'s heads writhe around, half-way pulling himself from the ice to loom over you,\n" +
@@ -438,7 +440,7 @@ namespace Wah
                 do
                 {
                     Console.Write($"\n\nIt is {name}'s turn.\n--[ {name} ]-- \nVitality: {vitality} ");
-                    for (int i = 0; i <= (vitality/2); i++)
+                    for (int i = 0; i <= (vitality / 2); i++)
                     {
                         Console.Write("|");
                     }
@@ -474,7 +476,7 @@ namespace Wah
                                     playerRound = false;
                                 }
                             }
-                           
+
                             break;
                         case "2":
                             attack = rand.Next(1, 11);//determines whether an atack hits
@@ -500,9 +502,9 @@ namespace Wah
                                     playerRound = false;
                                 }
                             }
-                           
-                            break; 
-                        case  "3":
+
+                            break;
+                        case "3":
                             attack = rand.Next(0, 11);
                             if (attack >= monSpeed)
                             {
@@ -540,7 +542,7 @@ namespace Wah
             if (monHp >= 0 && coward == false)
             {
                 Console.WriteLine($"\n\nIt is {monsterName}'s turn.\n");
-                for (int i=0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     Console.Write(".");
                     Thread.Sleep(100);
@@ -566,7 +568,7 @@ namespace Wah
                         }
                         else
                         {
-                            if(blocking == true) 
+                            if (blocking == true)
                             {
                                 Console.WriteLine($"{monsterName} drops their defensive stance.");
                                 monSpeed = (monSpeed - block);
@@ -579,7 +581,7 @@ namespace Wah
                                 monSpeed = monSpeed + block;
                                 mAttack = mAttack - block;
                                 blocking = true;
-                            }   
+                            }
                         }
                         break;
                 }
@@ -672,7 +674,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
 
-            switch(temp)//the first choice to alter stats
+            switch (temp)//the first choice to alter stats
             {
                 case "1":
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -684,7 +686,7 @@ namespace Wah
                    "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
                    "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
                     intelligence = intelligence + 1;
-                   break;
+                    break;
                 case "2":
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
@@ -789,7 +791,7 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                 }
-               
+
 
             }
             else
@@ -802,7 +804,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
-                switch(temp)
+                switch (temp)
                 {
                     case "1":
                         Console.WriteLine("The knife is spotted with rust, but the steel itself is firm, and the blade tapers to a sharp point.\n" +
@@ -1103,8 +1105,8 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Level2();
-           
-            
+
+
         }
         public static bool Level1_1(ref bool fought)
         {
@@ -1141,7 +1143,7 @@ namespace Wah
                 {
                     Combat("Bryan", 1, 2);
                 }
-                    fought = true;
+                fought = true;
                 return fought;
             }
             fought = false;
@@ -1197,7 +1199,7 @@ namespace Wah
                     Console.WriteLine("Because you did not sin in tr");
                     Console.ReadLine();
                 }
-                
+
             }
 
             if (decision == 2) //If they Attack
@@ -1210,10 +1212,10 @@ namespace Wah
                 Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
                 Console.ReadLine();
             }
-            
+
             Level2_2();
         }
-        
+
         public static void Level2_2() //Violence Forest
         {
             Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony"); Thread.Sleep(1000);
@@ -1229,7 +1231,7 @@ namespace Wah
                 Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire."); Thread.Sleep(1000);
                 Console.WriteLine("As you snap the branch off, blood spills out and the tree screams"); Thread.Sleep(1500);
                 Console.Clear();
-                Console.ForegroundColor= ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
                 Console.WriteLine("WHY WOULD YOU RIP OFF THAT BRANCH!"); Thread.Sleep(1500);
                 Console.WriteLine("DO YOU HAVE ANY EMPATHY?"); Thread.Sleep(1500);
@@ -1246,13 +1248,13 @@ namespace Wah
             {
                 Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); Thread.Sleep(1000);
             }
-            Console.ReadLine() ;
+            Console.ReadLine();
 
         }
         public static void Level3()// Circle 7: Heresy
         {
             level = 3;
-            
+
 
 
 
@@ -1337,18 +1339,18 @@ namespace Wah
 
             {
                 Console.Clear();
-                Console.ForegroundColor= ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("You walk all the way back the the ramp on the left, you feel the air pressure lessen as you progress");
                 Level7_1();
             }
             else
-            { 
+            {
                 Level7_2();
             }
-            
-             
+
+
         }
-          
+
         public static void Level7_1()// Circle 3: Lust - Taking the path to high ground
         {
             int decision;
@@ -1364,7 +1366,7 @@ namespace Wah
             Console.Clear();
             if (decision == 2)
             {
-                
+
                 Level7_3();
             }
             else
@@ -1375,7 +1377,7 @@ namespace Wah
                     "\n it catches up to you ");
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
                 Console.WriteLine("1. Climb faster\n2. Kick the demon in its stupid face");
-                
+
                 decision = Convert.ToInt32(Console.ReadLine());
                 if (decision == 1)
                 {
@@ -1386,7 +1388,7 @@ namespace Wah
                     " Kill or be Killed.");
                     Console.ReadLine();
 
-                    Combat("the Gnarled abomination",5,5);
+                    Combat("the Gnarled abomination", 5, 5);
 
                     Console.Clear();
                     Console.WriteLine("You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
@@ -1395,11 +1397,11 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-               
+
                     Console.ReadLine();
                     Level7_4();
                 }
-                else 
+                else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You kick the demon in its stupid face caving in its crooked nose!\n " +
@@ -1410,7 +1412,7 @@ namespace Wah
                     Console.ReadLine();
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-            
+
                     Level7_4();
                 }
             }
@@ -1424,10 +1426,10 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White; // setting text color to white
             Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
                 "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
-            Console.ForegroundColor= ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
             Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
                 "2. Circle back and take the path to high ground");
-            decision= Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
+            decision = Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
             if (decision == 1)
             { Level6(); } // calls Level6 method
             else
@@ -1462,16 +1464,16 @@ namespace Wah
                 Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough\nPress ENTER to climb");
                 Console.ReadLine();
                 Console.Clear();
-            
+
                 if (strength > 9) // This might require a balance change later ~
-                { 
+                {
                     Console.WriteLine("Looks like all that killing has paid off! \n You manage to climb up the rope improving your strength slightly");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("+1 Strength");
                     strength = strength + 1;
-                 Level7_4(); }
+                    Level7_4(); }
                 else
-                {   
+                {
                     Console.WriteLine("Your arms grow tired and you feel your grip loosening...");
                     Thread.Sleep(2000);
                     Console.WriteLine("you hear a sudden crack and experience the full force of vertigo as you fall to your certain death");
@@ -1480,7 +1482,7 @@ namespace Wah
                     DeathScreen();
                 }
             }
-            
+
             Console.ReadLine();
 
         }
@@ -1516,7 +1518,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("1. Purchase some goods\n2. Leave");
                 decision = Convert.ToInt32(Console.ReadLine());
-                switch (decision) 
+                switch (decision)
                 {
                     case 1:
                         Console.Clear();
@@ -1524,7 +1526,7 @@ namespace Wah
                         break;
                     case 2:
                         break;
-                
+
                 }
 
 
@@ -1546,17 +1548,17 @@ namespace Wah
                 }
             }
 
-            }
-
-        
+        }
 
 
-    public static void Vendor()
+
+
+        public static void Vendor()
         {
             int store;
-            bool leave=false;
+            bool leave = false;
             while (leave == false) // allows player to interact with menus and leave by choice
-            { 
+            {
                 Console.WriteLine(@"
   _   _           __     __             _                       _   _  
  | | | |          \ \   / /__ _ __   __| | ___  _ __           | | | | 
@@ -1598,7 +1600,7 @@ _________________________________________________________________________
                 Console.Write("4. Leave vendor\n");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                
+
 
 
 
@@ -1610,8 +1612,8 @@ _________________________________________________________________________
                     case 1:
                         if (gold >= 200) // Making sure player has enough gold for purchace
                         {
-                            gold=gold-200; // Charging player gold
-                            intelligence=intelligence+5; // Adding stats
+                            gold = gold - 200; // Charging player gold
+                            intelligence = intelligence + 5; // Adding stats
                             Console.Clear();
                             Console.WriteLine("Item Purchased."); // Sucess method
                         }
@@ -1619,14 +1621,14 @@ _________________________________________________________________________
                         {
                             Console.Clear();
                             Console.WriteLine("\nYou cannot afford this!");
-                            
+
                         }
-                            break;
+                        break;
                     case 2:
                         if (gold >= 300)
                         {
-                            gold=gold - 300;
-                            strength=strength + 5;
+                            gold = gold - 300;
+                            strength = strength + 5;
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
                         }
@@ -1641,7 +1643,7 @@ _________________________________________________________________________
                         if (gold >= 300)
                         {
                             gold = gold - 300;
-                            vitality=vitality+10;
+                            vitality = vitality + 10;
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
                         }
@@ -1652,7 +1654,7 @@ _________________________________________________________________________
 
                         }
                         break;
-                       
+
 
                     case 4:
                         leave = true;
@@ -1663,6 +1665,21 @@ _________________________________________________________________________
             }
         }
 
+
+
+        public static void Bonfire()
+        {
+            int decision = 0;
+            bool leave = false;
+            
+               
+
+
+
+
+
+            }
+        }
     }
-    }
+
 
