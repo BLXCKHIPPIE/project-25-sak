@@ -285,6 +285,7 @@ namespace Wah
                     combat = false;
                     gold = gold + spoils;
                     Console.WriteLine($"{monsterName} drops {spoils} gold!");
+                    Console.ReadLine();
                     Console.Clear();
                 }
                 else
