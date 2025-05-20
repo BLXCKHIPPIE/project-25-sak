@@ -1151,7 +1151,7 @@ namespace Wah
             level = 2;
             weapon = 2; //The player has the knife
             Console.Clear();
-            Console.WriteLine("You descend down a cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
+            Console.WriteLine("You descend down the cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
             Thread.Sleep(1000);
             Console.WriteLine("The River is guarded by a Centaur armed with a sword");
             Thread.Sleep(1000);
@@ -1163,12 +1163,23 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             decision = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
-            // If the player attacked the person in the last level, they will not be able to pass the river
-
             if (decision == 1) //If they cross the river
             {
-                Console.Write("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
-                Console.ReadLine();
+                if (karmaScore < -10)
+                {
+                    Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
+                    Combat("The Centaur", 3, 3);
+                    Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+                    Console.ReadLine();
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.");
+                    Console.WriteLine("Because you did not sin in tr");
+                    Console.ReadLine();
+                }
+                
             }
 
             if (decision == 2) //If they Attack
@@ -1177,10 +1188,12 @@ namespace Wah
                 Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
                 Console.WriteLine("He gallops over to you, and pulls out his sword. ");
                 Console.ReadLine();
+                Combat("Centaur", 4, 1); //Heavy but slow
+                Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+                Console.ReadLine();
             }
-            Combat("Centaur", 4, 1); //Heavy but slow
-            Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
-            Level2_2(); //Currently the player has to fight the centaur to progress. I will add a way for the player to cross without fighting in the intro
+            
+            Level2_2();
         }
         
         public static void Level2_2() //Violence Forest
@@ -1197,7 +1210,6 @@ namespace Wah
             {
                 Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire."); Thread.Sleep(1000);
                 Console.WriteLine("As you snap the branch off, blood spills out and the tree screams"); Thread.Sleep(1500);
-                Console.ReadLine(); 
                 Console.Clear();
                 Console.ForegroundColor= ConsoleColor.DarkRed;
                 Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
