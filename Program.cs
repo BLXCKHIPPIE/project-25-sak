@@ -1510,21 +1510,17 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("The wind howls, pushing against you, each step heavier than the last.\n\n" +
-                       "Your strength fades, the tower distant, unwavering.\n\n" +
-                       "Then—a friendly figure appears over the ridge, walking toward you, steady against the storm.\n\n" +
-                       "Their presence cuts through the chaos.\n\n" +
-                       "\"Greetings, Stranger,\" they say.\n\n" +
-                       "And just like that, the weight shifts.");
+                       "Your strength fades, the tower distant, unwavering.\n You spot a nearby bonfire");
             while (decision != 1 && decision != 2)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("1. Purchase some goods\n2. Leave");
+                Console.WriteLine("1. Rest by bonfire\n2. Leave");
                 decision = Convert.ToInt32(Console.ReadLine());
                 switch (decision)
                 {
                     case 1:
                         Console.Clear();
-                        Vendor();
+                        Bonfire();
                         break;
                     case 2:
                         break;
