@@ -543,7 +543,7 @@ namespace Wah
                     case 2:
                         if (monHp <= monPanic)
                         {
-                            Console.WriteLine($"{monsterName} throws some god at you. While you are distracted, {monsterName} flees.");
+                            Console.WriteLine($"{monsterName} throws some gold at you. While you are distracted, {monsterName} flees.");
                             monHp = monHp - (monHp + 1);
                         }
                         else
