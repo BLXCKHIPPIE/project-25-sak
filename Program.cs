@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
+using System.Text;
 
 namespace Wah
 {
@@ -233,7 +235,7 @@ namespace Wah
                         DeathScreen();
                         break;
                     case "7":
-                        Vendor();
+                        Bonfire();
                         break;
 
                     default:
@@ -1658,8 +1660,6 @@ _________________________________________________________________________
 
                     case 4:
                         leave = true;
-                        Console.Clear();
-                        Thread.Sleep(1000);
                         break;
                 }
             }
@@ -1669,11 +1669,68 @@ _________________________________________________________________________
 
         public static void Bonfire()
         {
-            int decision = 0;
-            bool leave = false;
             
-               
+            string decision = "";
+            bool leaver = false;
 
+            string[] darkTradeGreetings = {
+    "A stranger in the shadows… do you come to barter?",
+    "I see the weight of the world upon you. Perhaps a trade will lighten the load?",
+    "Your pockets hold secrets, as do mine. Shall we exchange them?",
+    "Gold, relics, or something less tangible? What do you seek in trade?",
+    "Not all exchanges are fair… but neither is fate. What do you offer?",
+    "The cost of survival is steep. Do you have something worth my time?",
+    "A traveler wise enough to deal is a traveler who lasts. What’s your price?",
+    "Give me something of worth, and perhaps I'll give you something of use.",
+    "Only fools hoard what they cannot carry. Shall we make a trade?",
+    "Every item has a story, and every trade has a consequence. What do you bring?"
+};
+
+
+
+    
+            
+            while (leaver==false)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.OutputEncoding = Encoding.UTF8;
+                Console.WriteLine("\t   🔥🔥 Bonfire 🔥🔥");
+                Console.WriteLine("---------------------------------------");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("As you take rest by the bonfire\na friendly figure appears over the ridge, \n walking toward you, steady against the storm.\n\n" +
+                           "Their presence cuts through the chaos.\n\n" +
+                           $"'{darkTradeGreetings[rand.Next(darkTradeGreetings.Length)]}'\n\n" +
+                           "And just like that, the weight shifts.\n");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("---------------------------------------\n");
+                Console.WriteLine("1. Rest (Recovers hp)\n2. Trade \n3. Character Stats\n4. Leave");
+
+                decision = Console.ReadLine();
+                switch (decision)
+                {
+                    case "1":
+                        vitality = 100;
+                        Console.Clear();
+                        break;
+                    case "2":
+                        Console.Clear();
+                        Vendor();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        Character();
+                        break;
+                    case "4":
+                        leaver = true;
+                        Console.Clear();
+                        break;
+                }
+                    
+            
+            }
+               
+            
 
 
 
