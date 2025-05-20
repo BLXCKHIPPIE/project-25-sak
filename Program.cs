@@ -1159,9 +1159,15 @@ namespace Wah
 
         public static void Level2()// Circle 8: Violence
         {
+            Console.WriteLine("As you leave Treachery, you notice the temperature cooling down to a bearable heat.");
+            Console.WriteLine("You enter a rocky mountain range and see a long red river far away.");
+            Console.WriteLine("A roar echoes in the distance");
+            Console.WriteLine("Press enter to continue");
+            Console.ReadLine();
+            Console.Clear ();
+
+            //Going to attempt to foreshadow the Minotaur. Will add a fight
             Level2_1();
-
-
         }
         public static void Level2_1()// Circle 8: Violence River
         {
@@ -1170,11 +1176,9 @@ namespace Wah
             weapon = 2; //The player has the knife
             Console.Clear();
             Console.WriteLine("You descend down the cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
-            Thread.Sleep(1000);
             Console.WriteLine("The River is guarded by a Centaur armed with a sword");
-            Thread.Sleep(1000);
-            Console.WriteLine("Those who have committed the sin of Violence will be hunted by the Centaur. Will you attempt to cross?");
-            Thread.Sleep(1000);
+            Console.WriteLine("Those who have sinned to a certain degree will be hunted by the Centaur if they try to cross the river.\n\nWill you attempt to cross?\n");
+            Thread.Sleep(1500);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1. Cross the river");
             Console.WriteLine("2. Attack the Centaur");
@@ -1194,7 +1198,6 @@ namespace Wah
                 else
                 {
                     Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.");
-                    Console.WriteLine("Because you did not sin in tr");
                     Console.ReadLine();
                 }
                 
@@ -1216,9 +1219,9 @@ namespace Wah
         
         public static void Level2_2() //Violence Forest
         {
-            Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony"); Thread.Sleep(1000);
-            Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); Thread.Sleep(1000);
-            Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?"); Thread.Sleep(1000);
+            Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony");
+            Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); 
+            Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1. Gather Wood\n2. Carry on moving through the forest");
             Console.ForegroundColor = ConsoleColor.White;
@@ -1241,10 +1244,12 @@ namespace Wah
                 Console.Clear();
                 //Fight goes here
                 Combat("Harpy", 2, 4);
+                Console.WriteLine("After defeating the harpy, you are able to pick up the wood from the tree and make a bonfire");
+                Console.ReadLine();
             }
             else //If the player decides to leave the forest
             {
-                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); Thread.Sleep(1000);
+                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); 
             }
             Console.ReadLine() ;
 
