@@ -592,7 +592,7 @@ namespace Wah
             }
             else
             {
-                Console.WriteLine($"{monsterName} has been slain!\nYou are victorious!\n");
+                Console.WriteLine($"{monsterName} has been defeated!\nYou are victorious!\n");
             }
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\nPress ENTER to continue...");
@@ -1079,12 +1079,37 @@ namespace Wah
             }
             else
             {
-                Console.WriteLine("You try to think of any traitors you know about.\n");
+                Console.WriteLine("You try to think of any well-know traitors that might catch Satan's interest.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu($"1. Bryan, 2. Benedict Arnold, 3. {name}");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+                temp = Console.ReadLine();
                 Console.Clear();
+                switch(temp)
+                {
+                    case "1":
+                        Console.WriteLine("You remember the old man that you met earlier. If he was in this level of Hell,\n" +
+                            "surely he must have committed some act of treachery, right? So you turn around and head back, finding\n" +
+                            "the frozen sarcophagus that contains Bryan's body. It's hard to chip him free, and even harder to drag him \n" +
+                            "all the way back to where the devil waits.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("'No.'\n\n" +
+                            "One draconic head huffs in disgust, taking a short whiff of the frigid air around you. The atmosphere darkens,\n" +
+                            "a feeling of dread washing over you.\n\n" +
+                            "'You have offered me poorly.'\n\n" +
+                            "A second head growls, then opens its mouth. You don't have much time to feel fear.\n\n" +
+                            "The pain, however, lasts for eternity.\n");
+                        DeathScreen();
+                        break;
+                    case "2":
+                        Level1_2();
+                        break;
+
+                }
 
 
             }
@@ -1120,7 +1145,7 @@ namespace Wah
             if (temp == "1")
             {
                 Console.WriteLine("A pulse of adrenaline staves off the cold, as you swing your fist at Bryan, taking him by surprise.\n" +
-                    "Your blow lands with a satisying crack, and he rocks back in the snow, wobbling on dazed feet. But he recovers quickly,\n" +
+                    "Your blow lands with a satisfying crack, and he rocks back in the snow, wobbling on dazed feet. But he recovers quickly,\n" +
                     "a dangerous glint coming to his eyes--made worse by the line of blood dribbling down his chin.\n\n" +
                     "'So that's how it's going to be, huh? I'll get you back for that.'\n\n" +
                     (weapon == 2 ? "He clenches his fists at you;" : "He brandishes " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you;") + " it's a fight!\n");
@@ -1148,6 +1173,18 @@ namespace Wah
             }
             fought = false;
             return fought;
+        }
+        public static void Level1_2()
+        {
+            string temp;
+            Console.WriteLine("You wander away from the warmth while you ponder, the ice growing firmer beneath your bare feet. It's painful,\n" +
+                "but the cold is better than the heat. You remember at least one traitor from history. His name is still used as a euphemism\n" +
+                "for traitor,but how do you plan on finding him?\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("1. Use your brain, 2. Use your muscles");
+            Console.ForegroundColor = ConsoleColor.White;
+            temp = Console.ReadLine();
+            Console.Clear();
         }
 
 
