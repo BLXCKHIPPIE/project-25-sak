@@ -26,26 +26,13 @@ namespace Wah
         public static int death = 0;
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
-        public static string weaponName = "";
+        public static string weaponName = "fists";
 
 
 
 
         static void Main() // Declare main method
         {
-            switch (weapon)
-            {
-                case 0:
-                    weaponName = "Fists";
-                    break;
-                case 2:
-                    weaponName = "Rusty Knife";
-                    break;
-                case 5:
-                    weaponName = "Sword";
-                    break;
-            }
-
             Console.WriteLine("Keep me HUNGRY"); // placeholder
             Console.ReadLine(); // pause
             Console.Clear();
@@ -787,6 +774,7 @@ namespace Wah
                         "the snow. It's a horrible fate. But at least something good came of your violent tendencies-- Bryan's knife lies\n" +
                         "blade-down in the snow, and you stoop down to retrieve it. \nIt's spotted with rust, but the metal seems solid enough.\n");
                     weapon = 2;
+                    weaponName = "rusty knife";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -813,6 +801,7 @@ namespace Wah
                             "You need a weapon, if this really is Hell. Honestly, the feeling of something solid in your hands is a lifeline.\n" +
                             "It helps keep the panic at just how messed up this situation is at bay.\n");
                         weapon = 2;
+                        weaponName = "rusty knife";
                         break;
                     case "2":
                         Console.ForegroundColor = ConsoleColor.DarkRed;
