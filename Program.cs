@@ -1988,6 +1988,7 @@ _________________________________________________________________________
                     case "4":
                         leaver = true;
                         Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
                     
