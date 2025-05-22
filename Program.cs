@@ -82,7 +82,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Karma: ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(karma);
+            Console.WriteLine($"{karma}  ({karmaScore})");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Gold: ");
 
