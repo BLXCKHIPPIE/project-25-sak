@@ -197,7 +197,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen\n7. Vendor (test)"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen\n7. Vendor (test)\n8. Roulette"); // presenting options
                 decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -223,6 +223,9 @@ namespace Wah
                         break;
                     case "7":
                         Bonfire();
+                        break;
+                    case "8":
+                        RussianRoulette();
                         break;
 
                     default:
@@ -1384,9 +1387,70 @@ namespace Wah
 
 
 
+        }
+
+        public static void RussianRoulette()
+        {
+            int bet = 0;
+            bool roulette = false;
+            int demonShot = 0;
+            int playerShot = 0;
+            int shots = 6;
+
+            Console.WriteLine("How much would you like to bet?");
+            bet = Convert.ToInt32(Console.ReadLine());
+            while (bet > gold)
+            {
+                Console.WriteLine("You do not have enough gold for this bet!");
+                bet = Convert.ToInt32(Console.ReadLine());
+            }
+
+            while (roulette == false)
+            {
+               
+                Console.WriteLine("First shot!\n press ENTER to proceed"); 
+                Console.ReadLine();
+                Console.Clear();
+                demonShot = rand.Next(0, 7);
+                
+                if (demonShot >0)
+                {
+                    Console.WriteLine("The demon blew his brains out -- u win");
+                    gold = gold + bet;
+                    roulette=true;
+                }
+
+                else
+                {
+                    Console.WriteLine("The Demon pulls the trigger");
+                    Thread.Sleep(750);
+                    Console.WriteLine("The hammer clicks. \n'Your turn.'");
+                    playerShot = rand.Next(0, 6);
+                    Console.WriteLine("Press ENTER to take your shot");
+                    Console.ReadLine();
+                    Console.Clear();
+                    if (playerShot > 0)
+                    {
+                        Console.WriteLine("You paint the wall with grey matter\n Press ENTER to continue.");
+                        Console.ReadLine();
+                        Console.Clear();
+                        DeathScreen();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You slowly squeeze the trigger");
+                        Thread.Sleep(750);
+                        Console.WriteLine("The hammer clicks. \nYou survived the round");
+                    }
+                
+               
+               
+                }
 
 
-
+                    
+            }
+            Console.ReadLine();
 
         }
         public static void Level6()// Circle 4: Gluttony
@@ -1477,6 +1541,7 @@ namespace Wah
                 decision = Convert.ToInt32(Console.ReadLine());
                 if (decision == 1)
                 {
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("The demon catches upto you and rips you from the wall\n" +
                     " You both take a tumble down 7 meters or so\n" +
@@ -1798,7 +1863,7 @@ _________________________________________________________________________
     "Your pockets hold secrets, as do mine. Shall we exchange them?",
     "Gold, relics, or something less tangible? What do you seek in trade?",
     "Not all exchanges are fair… but neither is fate. What do you offer?",
-    "The cost of survival is steep. Do you have something worth my time?",
+    "The cost of survival is steep. Perhaps these can aid you on your journey?",
     "A traveler wise enough to deal is a traveler who lasts. What’s your price?",
     "Give me something of worth, and perhaps I'll give you something of use.",
     "Only fools hoard what they cannot carry. Shall we make a trade?",
@@ -1811,7 +1876,7 @@ _________________________________________________________________________
                 Console.WriteLine("\t   🔥🔥 Bonfire 🔥🔥");
                 Console.WriteLine("---------------------------------------");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("As you take rest by the bonfire\na friendly figure appears over the ridge, \n walking toward you, steady against the storm.\n\n" +
+                Console.Write("As you take rest by the bonfire\na friendly figure appears over the ridge, \nwalking toward you, steady against the storm.\n\n" +
                            "Their presence cuts through the chaos.\n\n" +
                            $"'{darkTradeGreetings[rand.Next(darkTradeGreetings.Length)]}'\n\n" +
                            "And just like that, the weight shifts.\n");
