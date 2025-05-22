@@ -797,6 +797,9 @@ namespace Wah
                 switch (temp)
                 {
                     case "1":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Bryan's knife gained.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("The knife is spotted with rust, but the steel itself is firm, and the blade tapers to a sharp point.\n" +
                             "You need a weapon, if this really is Hell. Honestly, the feeling of something solid in your hands is a lifeline.\n" +
                             "It helps keep the panic at just how messed up this situation is at bay.\n");
@@ -1090,10 +1093,9 @@ namespace Wah
                         Console.Clear();
                         Console.WriteLine("'No.'\n\n" +
                             "One draconic head huffs in disgust, taking a short whiff of the frigid air around you. The atmosphere darkens,\n" +
-                            "a feeling of dread washing over you.\n\n" +
-                            "'You have offered me poorly.'\n\n" +
-                            "A second head growls, then opens its mouth. You don't have much time to feel fear.\n\n" +
-                            "The pain, however, lasts for eternity.\n");
+                            "and feeling of intense dread washes over you.\n\n" +
+                            "'You have offered me gruel when I asked for fine meat. You, however, have a much finer flavor.'\n\n" +
+                            "A second head growls, then opens its mouth. You don't have much time to feel fear. The pain, however, lasts for eternity.\n");
                         DeathScreen();
                         break;
                     case "2":
@@ -1169,8 +1171,9 @@ namespace Wah
         {
             string temp;
             Console.WriteLine("You wander away from the warmth while you ponder, the ice growing firmer beneath your bare feet. It's painful,\n" +
-                "but the cold is better than the heat. You remember at least one traitor from history. His name is still used as a euphemism\n" +
-                "for traitor; that would be the villain of the Revolutionary War, Benedict Arnold. but how do you plan on finding him?\n");
+                "but the cold is better than the heat. You remember at least one traitor from history. His name is still used as a \n" +
+                "euphemism for traitor; that would be the villain of the Revolutionary War, Benedict Arnold. but how do you plan on \n" +
+                "finding him?\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Menu("1. Use your brain, 2. Use your muscles");
             Console.ForegroundColor = ConsoleColor.White;
@@ -1178,27 +1181,61 @@ namespace Wah
             Console.Clear();
             switch (temp)
             {
-                case "1" && intelligence > 10:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Menu("Intelligence check passed.");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\nYou notice that some people are buried far deeper in the ice than others. You don't know exactly\n" +
-                        "how Hell works, but the worse the sin, the worse the torment, right? So you set out on a lonely trek across the icy\n" +
-                        "fields, hugging yourself for warmth. It's almost dreamlike in its misery: the landscape you are witnessing is too\n" +
-                        "cruel, too oppressive, to be real. But the sharp cuts across your feet remind you that it is real.\n");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Menu("Press ENTER to continue...");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    Console.Clear();
-                    Console.WriteLine("But at long last you find something unusual; a frozen lump like the others, but pierced with great\n" +
-                        "iron spikes. Only the tip of a head-like shape protrudes from the snow. It is clear that whoever is buried here\n" +
-                        "was never meant to leave;");
+                case "1":
+                    if (intelligence > 10)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Intelligence check passed., Your Intelligence has increased.");
+                        intelligence = intelligence + 1;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nYou notice that some people are buried far deeper in the ice than others. You don't know exactly\n" +
+                            "how Hell works, but the worse the sin, the worse the torment, right? So you set out on a lonely trek across the icy\n" +
+                            "fields, hugging yourself for warmth. It's almost dreamlike in its misery: the landscape you are witnessing is too\n" +
+                            "cruel, too oppressive, to be real. But the sharp cuts across your feet remind you that it is real.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("But at long last you find something unusual; a frozen lump like the others, but pierced with great\n" +
+                            "iron spikes. Only the tip of a head-like shape protrudes from the snow. It is clear that whoever is buried here\n" +
+                            "was never meant to leave.");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Intelligence check failed.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nThe ice is dotted with the frozen-over shapes of men contorted in the throes of agony. There must\n" +
+                            "be some sort of pattern, right? Some sort of method to the madness? You approach one such frozen sarcophagus, and take a\n" +
+                            "look inside. The face that peers back haunts you, eyes daring this way and that through the pallid frost. You pull back,\n" +
+                            "uncomfortable, and move to the next, then the next. It's a kalaeidoscope of human agony, each face blurring to the next.\n" +
+                            "But there is no constant. There is no center. It's all just suffering and pain.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.WriteLine("Your feet are numb. You must have checked thousands of these frozen tombs by now, but you don't dare\n" +
+                            "return to face the Devil empty-handed. You run your hands, blackened by the bitter cold, over yet another frozen person.\n" +
+                            "Except... this one, this shape in the ice, is empty. It's just a hole in the snow, human-shaped, as if a human had once lain\n" +
+                            "here but been pulled out. It looks... comfortable, out of reach of the biting wind.\n" +
+                            "You swear that you'll only rest a moment. You have plenty of time to find an appropriate traitor. In the meantime,\n" +
+                            "this hole is meant for you.\n");
+                        DeathScreen();
+                    }
                     break;
-                case "1" && intelligence <= 10:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Menu("Intelligence check failed.");
-                    Console.ForegroundColor = ConsoleColor.White;
+                case "2":
+                    if (strength > 10)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Strength check passed., Your Strength has increased.");
+                        strength = strength + 1;
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    break;
+
+
+
             }
         }
 
