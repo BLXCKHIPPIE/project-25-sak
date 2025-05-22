@@ -1104,6 +1104,12 @@ namespace Wah
                     case "2":
                         Level1_2();
                         break;
+                    case "3":
+                        karmaScore = karmaScore + 1;
+                        Console.WriteLine("You know... maybe you don't deserve to leave Hell. This might just be where you belong. Satan hesitates,\n" +
+                            "for the briefest moment, as if he suspects a trap. But then his jaws flash forwards, and the pain begins.\n");
+                        DeathScreen();
+                        break;
 
                 }
 
@@ -1172,6 +1178,7 @@ namespace Wah
         }
         public static void Level1_2()
         {
+            bool choicebreak = false;
             string temp;
             Console.WriteLine("You wander away from the warmth while you ponder, the ice growing firmer beneath your bare feet. It's painful,\n" +
                 "but the cold is better than the heat. You remember at least one traitor from history. His name is still used as a \n" +
@@ -1236,7 +1243,7 @@ namespace Wah
                         strength = strength + 1;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("You don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
-                            $"person-shaped forms of ice that jut from the barren, endless icefields. Using your {weaponName}, you bash open\n" +
+                            $"person-shaped forms of ice that jut from the barren, endless ice-fields. Using your {weaponName}, you bash open\n" +
                             $"the section where it's face should be. A long, thin scream escaped the ice, but when you peer inside, there's a\n" +
                             $"woman staring back at you, thrashing in her prison. Not  Benedict Arnold. Oh well. On to the next.");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1264,7 +1271,7 @@ namespace Wah
                         Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine("After only a few tries, your arms are numb. Sweat is beading from your brow, only to freeze, sticking\n" +
-                            "to your forehead and back. YOu take another swing, but your exhasted hands slip off the sarcophagus, and you slide\n" +
+                            "to your forehead and back. YOu take another swing, but your exhausted hands slip off the sarcophagus, and you slide\n" +
                             "face-down into the snow. You lie there a moment, panting, feeling your body scream. Maybe it's time to try a\n" +
                             "a different method. But when you try to rise, something stops you. Ice has grown around your hands, crawled\n" +
                             "over your back; it's pinning you to the snowy ground. And this time, you're too exhausted to escape.\n");
@@ -1273,7 +1280,98 @@ namespace Wah
                     break;
 
             }
+            while (choicebreak == false)
+            {
+                Console.WriteLine("There's an inscription over the small mound, connected by dark metal plates to some sort of mechanism. It seems\n" +
+                    "to be a riddle.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Solve the riddle, 2. Brute force");
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+                switch(temp)
+                {
+                    case "1":
+                        Console.WriteLine("The inscription reads:\n\n" +
+                            "'I have a mouth but no teeth, a body but no bones; I can fall but never rise. What am I?\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Write your answer then press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        temp = Console.ReadLine().ToLower();
+                        Console.Clear();
+                        if(temp == "river"||temp == "a river")
+                        {
+                            choicebreak = true;
+                            Console.WriteLine("As soon as you speak the words, the spikes click, then withdraw from the ice with a repeated whir");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You whisper into the wind, but it swallows your words. You must have been wrong.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        break;
+                    case "2":
+                        Console.WriteLine($"You move forwards and start going ham with your {weaponName}, bashing up and down the mechanism.");
+                        if(strength >= 12)
+                        {
+                            Console.WriteLine("At first, it looks as if nothing is happening, but, after several repeated blows, something makes\n" +
+                                "a very satisfying PING.");
+                            choicebreak = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unfortunately, the ice resists your blows, and no matter how hard you try to hit it, nothing happens.\n" +
+                                "You might need to try something else.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        break;
+                }
 
+            }
+            Console.WriteLine("The ice splits, and then a gust of cold air blasts your hair back. Emerging from below the ice\n" +
+                   "like Dracula from his coffin, comes a man in a Revolutionary War uniform, bound by a multitude of red tassels.\n" +
+                   "Slowly, the tassels spread from his body, before the man's eyes snap open--it's a fight!\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Combat("Benedict Arnold", 3, 3);
+            if(coward == true)
+            {
+                Console.WriteLine("You flee across the ice, leaving Benedict Arnold behind. Unfortunately, you now have no offering to\n" +
+                    "give Satan. Maybe he will offer you some other task instead.");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("He doesn't.\n");
+                DeathScreen();
+            }
+            else
+            {
+                Console.WriteLine($"You knock the traitorous revolutionary unconscious with a final blow from your {weaponName},\n" +
+                    $"and then it's a simple matter of dragging him all the way back to where the titanic form of Satan waits. He regards you\n" +
+                    $"eagerly as you approach, heads coiling and lashing over each other. The middle head approaches, steaming the snow, and takes\n" +
+                    $"a deep whiff. The moment of truth.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("'This one has such a delicious scent, what treachery he fermented in his heart.'\n\n" +
+                    "He lunges, snapping the man between razor-sharp teeth, before savoring the crunching and screaming. A second head\n" +
+                    "lowers to your level.");
+            }
         }
 
 
