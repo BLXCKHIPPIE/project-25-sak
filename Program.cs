@@ -292,9 +292,12 @@ namespace Wah
                 if (monHp <= 0 || coward == true)
                 {
                     combat = false;
-                    gold = gold + spoils;
-                    Console.WriteLine($"{monsterName} drops {spoils} gold!");
-                    Console.ReadLine();
+                    if(coward == false)
+                    {
+                        Console.WriteLine($"{monsterName} drops {spoils} gold!");
+                        gold = gold + spoils;
+                        Console.ReadLine();
+                    }
                     Console.Clear();
                 }
                 else
@@ -541,15 +544,15 @@ namespace Wah
 
                 attack = rand.Next(0, 10) + mAttack;// determines whether an attack hits
                 damage = rand.Next(0, mAttack); // determines monster damage
-                switch (rand.Next(0, 3))
+                switch (rand.Next(0, 4))
                 {
-                    case 0:
+                    case <=1:
                         MonsterAttacks(mAttack, 1);
                         break;
-                    case 1:
+                    case 2:
                         MonsterAttacks(mAttack, 2);
                         break;
-                    case 2:
+                    case 3:
                         if (monHp <= monPanic)
                         {
                             Console.WriteLine($"{monsterName} throws some gold at you. While you are distracted, {monsterName} flees.");
@@ -1040,7 +1043,7 @@ namespace Wah
                 switch (fought)
                 {
                     case true:
-                        Console.WriteLine("With a final blow, it is over. Bryan tries to flee, but he stumbles backwards, towards the Devil's waiting jaws.\n");
+                        Console.WriteLine("With a final blow, it is over. Bryan tries to flee, but he stumbles backwards, towards the Devil's waiting jaws.");
                         break;
                     case false:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1215,6 +1218,7 @@ namespace Wah
                         Menu("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
+                        Console.Clear();
                         Console.WriteLine("Your feet are numb. You must have checked thousands of these frozen tombs by now, but you don't dare\n" +
                             "return to face the Devil empty-handed. You run your hands, blackened by the bitter cold, over yet another frozen person.\n" +
                             "Except... this one, this shape in the ice, is empty. It's just a hole in the snow, human-shaped, as if a human had once lain\n" +
@@ -1231,12 +1235,45 @@ namespace Wah
                         Menu("Strength check passed., Your Strength has increased.");
                         strength = strength + 1;
                         Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("You don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
+                            $"person-shaped forms of ice that jut from the barren, endless icefields. Using your {weaponName}, you bash open\n" +
+                            $"the section where it's face should be. A long, thin scream escaped the ice, but when you peer inside, there's a\n" +
+                            $"woman staring back at you, thrashing in her prison. Not  Benedict Arnold. Oh well. On to the next.");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Again and again you bash in the frozen ice. Your muscles ache. Your legs want to give up. But eventually,\n" +
+                            "you find something unusual; this icy sarcophagus is almost entirely buried in the snow, down to the neck, and pierced\n" +
+                            "several thick spikes of iron. It is clear that whoever was buried here was never meant to leave.");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Strength check failed.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("You don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
+                            $"person-shaped forms of ice that jut from the barren, endless icefields. Using your {weaponName}, you bash open\n" +
+                            $"the section where it's face should be. It's hard work, and your arms are burning by the time you pry it open.\n" +
+                            $"When you do, you are greeted by a warbling scream of pure agony, the voice of a young man writhing in the ice.\n" +
+                            $"Clearly that's not Benedict Arnold; you'll have to try again.");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("After only a few tries, your arms are numb. Sweat is beading from your brow, only to freeze, sticking\n" +
+                            "to your forehead and back. YOu take another swing, but your exhasted hands slip off the sarcophagus, and you slide\n" +
+                            "face-down into the snow. You lie there a moment, panting, feeling your body scream. Maybe it's time to try a\n" +
+                            "a different method. But when you try to rise, something stops you. Ice has grown around your hands, crawled\n" +
+                            "over your back; it's pinning you to the snowy ground. And this time, you're too exhausted to escape.\n");
+                        DeathScreen();
                     }
                     break;
 
-
-
             }
+
         }
 
 
