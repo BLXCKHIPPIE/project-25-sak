@@ -1671,6 +1671,7 @@ namespace Wah
             while (gamble)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"|   Gold:{gold}   |");
                 Console.WriteLine("|   1.Bet 25   |   2.Bet 50   |   3.Bet 100  |  4.Leave   |");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 decision = Console.ReadLine();
@@ -1726,7 +1727,7 @@ namespace Wah
                 }
 
                 if (count == 30)
-                    
+
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -1736,6 +1737,18 @@ namespace Wah
                     karmaScore = karmaScore - 10;
                     Console.ReadLine();
                 }
+                    if (count == 60)
+
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
+                            "'Addiction is a fickle mistress'\n" +
+                        "A piece of your soul has been removed -20 karma \n\nPress ENTER to Continue");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        karmaScore = karmaScore - 20;
+                        Console.ReadLine();
+                    }
                 if (bet > 0)
                 {
                     int slot1 = rand.Next(0, symbols.Length);
