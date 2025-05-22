@@ -1648,7 +1648,7 @@ namespace Wah
             string[] symbols = { "7", "❤", "🔥", "3", "5" };
             bool gamble = true;
             string decision;
-
+            int count = 0;
             while (gamble)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -1664,11 +1664,12 @@ namespace Wah
                         {
                             gold -= 25;
                             bet = 25;
+                            count++;
                         }
                         else
                         {
                             Console.WriteLine("You are too poor for this bet!");
-                            continue; // Restart loop if invalid
+                            
                         }
                         break;
                     case "2":
@@ -1676,11 +1677,12 @@ namespace Wah
                         {
                             gold -= 50;
                             bet = 50;
+                            count++;
                         }
                         else
                         {
                             Console.WriteLine("You are too poor for this bet!");
-                            continue;
+                            break;
                         }
                         break;
                     case "3":
@@ -1688,6 +1690,7 @@ namespace Wah
                         {
                             gold -= 100;
                             bet = 100;
+                            count++;
                         }
                         else
                         {
@@ -1697,31 +1700,42 @@ namespace Wah
                         break;
                     case "4":
                         gamble = false;
-                        continue; // Exit loop
+                        break;
                     default:
                         Console.WriteLine("Invalid input! Please enter a number between 1 and 4.");
-                        continue; // Restart loop
+                        break; 
                 }
 
-                // Ensure the bet was set before rolling
+                if (count == 30)
+                    
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'You have become a degenerate gambler, now you pay the ultimate price'\n\n" +
+                    "A piece of your soul has been removed -10 karma \n\nPress ENTER to Continue");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    karmaScore = karmaScore - 10;
+                    Console.ReadLine();
+                }
                 if (bet > 0)
                 {
                     int slot1 = rand.Next(0, symbols.Length);
                     int slot2 = rand.Next(0, symbols.Length);
                     int slot3 = rand.Next(0, symbols.Length);
-                    int winnings = bet * 10;
+                    int winnings = bet * 20;
 
                     Console.WriteLine($"\n\n\t\t\t{symbols[slot1]}  --  {symbols[slot2]}  --  {symbols[slot3]}\n");
 
                     if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
                     {
-                        Console.WriteLine("\t\tJackpot baby!! All slots match!\n\n\n");
+                        Console.WriteLine("\t\tJackpot baby!! All slots match!\n Enjoy a bonus of +5 Karma!\n\n");
                         gold += winnings;
+                        karmaScore = karmaScore + 5;
                     }
                     else
                     {
-                        Console.WriteLine("\t\tTry again! - 1 karma!!\n\n\n");
-                        karmaScore -= 1;
+                        Console.WriteLine("\t\tTry again!\n\n\n");
+                        
                     }
                 }
 
