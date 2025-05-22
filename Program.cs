@@ -1411,10 +1411,12 @@ namespace Wah
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
-            Combat("Minotaur", 7, 2);
+            Combat("Minotaur", 6, 2);
             Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
             Console.ReadLine();
             //Was thinking of putting ASCII text for "HERESY" after here
+            //Also just putting 'Satan Says' here for testing it
+            SatanSays();
         }
         public static void Level3()// Circle 7: Heresy
         {
@@ -1431,11 +1433,84 @@ namespace Wah
 
         }
 
+        static void SatanSays()
+        {
+            string guess = "", currentSequence = "", temp = "";
+            int[] sequence = new int[7]; //Change this to change the amount of Simon Says levels you have to do
+            for (int i = 0; i < sequence.Length; i++)
+            {
+                sequence[i] = rand.Next(4);
+            }
+            for (int i = 0; i < sequence.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (i >= 1)
+                    {
+                        switch (sequence[j])
+                        {
+                            case 0:
+                                Console.BackgroundColor = ConsoleColor.Red;
+                                Console.Write(" RED ");
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                temp = "r";
+                                break;
+                            case 1:
+                                Console.BackgroundColor = ConsoleColor.Blue;
+                                Console.Write(" BLUE ");
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                temp = "b";
+                                break;
+                            case 2:
+                                Console.BackgroundColor = ConsoleColor.Green;
+                                Console.Write(" GREEN ");
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                temp = "g";
+                                break;
+                            case 3:
+                                Console.BackgroundColor = ConsoleColor.Yellow;
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.Write(" YELLOW ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.BackgroundColor = ConsoleColor.Black;
+                                temp = "y";
+                                break;
+                        }
+                    }
+                    Thread.Sleep(1000);
+                }
+                Console.Clear();
+                currentSequence = currentSequence + temp;
+                if (i == 0)
+                {
+                    Console.WriteLine("Press 1 to begin Satan Says\nPress 2 for the rules");
+                    guess = Console.ReadLine();
+                    if (guess == "2") //Tutorial
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Will explain later. Press enter to start");
+                        Console.ReadLine();
+                    }
+                }
+                else //Playing the Game
+                {
+                    Console.WriteLine("Please enter the sequence");
+                    guess = Console.ReadLine();
+                }
+                if (guess != currentSequence && i != 0) //Checking Answer
+                {
+                    Console.WriteLine("Wrong!");
+                    Console.WriteLine($"The correct sequence is {currentSequence}");
+                }
+                Console.Clear();
+            }
+            Console.WriteLine("You win! Congratulations!");
 
+        }
         public static void Level4()// Circle 6: Anger
         {
             level = 4;
-
+            
 
 
 
