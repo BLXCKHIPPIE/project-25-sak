@@ -2,6 +2,7 @@
 using System.Collections;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Wah
@@ -227,6 +228,10 @@ namespace Wah
                     case "8":
                         RussianRoulette();
                         break;
+                    case "9":
+                        slots();
+                        break;
+
 
                     default:
                         decision = "0";
@@ -1637,21 +1642,108 @@ namespace Wah
 
 
         }
+        public static void slots()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            string[] symbols = { "7", "❤", "🔥", "3", "5" };
+            bool gamble = true;
+            string decision;
+
+            while (gamble)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("|   1.Bet 25   |   2.Bet 50   |   3.Bet 100  |  4.Leave   |");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                decision = Console.ReadLine();
+                int bet = 0;
+
+                switch (decision)
+                {
+                    case "1":
+                        if (gold >= 25)
+                        {
+                            gold -= 25;
+                            bet = 25;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            continue; // Restart loop if invalid
+                        }
+                        break;
+                    case "2":
+                        if (gold >= 50)
+                        {
+                            gold -= 50;
+                            bet = 50;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            continue;
+                        }
+                        break;
+                    case "3":
+                        if (gold >= 100)
+                        {
+                            gold -= 100;
+                            bet = 100;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            continue;
+                        }
+                        break;
+                    case "4":
+                        gamble = false;
+                        continue; // Exit loop
+                    default:
+                        Console.WriteLine("Invalid input! Please enter a number between 1 and 4.");
+                        continue; // Restart loop
+                }
+
+                // Ensure the bet was set before rolling
+                if (bet > 0)
+                {
+                    int slot1 = rand.Next(0, symbols.Length);
+                    int slot2 = rand.Next(0, symbols.Length);
+                    int slot3 = rand.Next(0, symbols.Length);
+                    int winnings = bet * 10;
+
+                    Console.WriteLine($"\n\n\t\t\t{symbols[slot1]}  --  {symbols[slot2]}  --  {symbols[slot3]}\n");
+
+                    if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
+                    {
+                        Console.WriteLine("\t\tJackpot baby!! All slots match!\n\n\n");
+                        gold += winnings;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\t\tTry again! - 1 karma!!\n\n\n");
+                        karmaScore -= 1;
+                    }
+                }
+
+                
+            }
+        }
+
+
 
         public static void RussianRoulette()
         {
-            int bet = 0;
+            
             bool roulette = false;
             int demonShot = 0;
             int playerShot = 0;
             int shots = 6;
 
-            Console.WriteLine("How much would you like to bet?");
-            bet = Convert.ToInt32(Console.ReadLine());
-            while (bet > gold)
+            
+           
             {
                 Console.WriteLine("You do not have enough gold for this bet!");
-                bet = Convert.ToInt32(Console.ReadLine());
+             
             }
 
             while (roulette == false)
@@ -1662,10 +1754,10 @@ namespace Wah
                 Console.Clear();
                 demonShot = rand.Next(0, 7);
                 
-                if (demonShot >0)
+                if (demonShot ==6)
                 {
                     Console.WriteLine("The demon blew his brains out -- u win");
-                    gold = gold + bet;
+                   
                     roulette=true;
                 }
 
