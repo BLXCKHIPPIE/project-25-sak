@@ -1170,12 +1170,36 @@ namespace Wah
             string temp;
             Console.WriteLine("You wander away from the warmth while you ponder, the ice growing firmer beneath your bare feet. It's painful,\n" +
                 "but the cold is better than the heat. You remember at least one traitor from history. His name is still used as a euphemism\n" +
-                "for traitor,but how do you plan on finding him?\n");
+                "for traitor; that would be the villain of the Revolutionary War, Benedict Arnold. but how do you plan on finding him?\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Menu("1. Use your brain, 2. Use your muscles");
             Console.ForegroundColor = ConsoleColor.White;
             temp = Console.ReadLine();
             Console.Clear();
+            switch (temp)
+            {
+                case "1" && intelligence > 10:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Menu("Intelligence check passed.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nYou notice that some people are buried far deeper in the ice than others. You don't know exactly\n" +
+                        "how Hell works, but the worse the sin, the worse the torment, right? So you set out on a lonely trek across the icy\n" +
+                        "fields, hugging yourself for warmth. It's almost dreamlike in its misery: the landscape you are witnessing is too\n" +
+                        "cruel, too oppressive, to be real. But the sharp cuts across your feet remind you that it is real.\n");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("But at long last you find something unusual; a frozen lump like the others, but pierced with great\n" +
+                        "iron spikes. Only the tip of a head-like shape protrudes from the snow. It is clear that whoever is buried here\n" +
+                        "was never meant to leave;");
+                    break;
+                case "1" && intelligence <= 10:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Menu("Intelligence check failed.");
+                    Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
 
