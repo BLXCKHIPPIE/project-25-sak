@@ -1265,7 +1265,6 @@ namespace Wah
            
             int decision;
             level = 2;
-            weapon = 2; //The player has the knife
             Console.Clear();
             Console.WriteLine("You descend down the cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
             Console.WriteLine("The River is guarded by a Centaur armed with a sword");
@@ -1344,8 +1343,12 @@ namespace Wah
             {
                 Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); 
             }
+            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.");
             Console.ReadLine();
-
+            Combat("Minotaur", 6, 2);
+            Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
+            Console.ReadLine();
+            //Was thinking of putting ASCII text for "HERESY" after here
         }
         public static void Level3()// Circle 7: Heresy
         {
