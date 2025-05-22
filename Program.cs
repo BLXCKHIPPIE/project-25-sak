@@ -292,9 +292,12 @@ namespace Wah
                 if (monHp <= 0 || coward == true)
                 {
                     combat = false;
-                    gold = gold + spoils;
-                    Console.WriteLine($"{monsterName} drops {spoils} gold!");
-                    Console.ReadLine();
+                    if(coward == false)
+                    {
+                        Console.WriteLine($"{monsterName} drops {spoils} gold!");
+                        gold = gold + spoils;
+                        Console.ReadLine();
+                    }
                     Console.Clear();
                 }
                 else
@@ -541,15 +544,15 @@ namespace Wah
 
                 attack = rand.Next(0, 10) + mAttack;// determines whether an attack hits
                 damage = rand.Next(0, mAttack); // determines monster damage
-                switch (rand.Next(0, 3))
+                switch (rand.Next(0, 4))
                 {
-                    case 0:
+                    case <=1:
                         MonsterAttacks(mAttack, 1);
                         break;
-                    case 1:
+                    case 2:
                         MonsterAttacks(mAttack, 2);
                         break;
-                    case 2:
+                    case 3:
                         if (monHp <= monPanic)
                         {
                             Console.WriteLine($"{monsterName} throws some gold at you. While you are distracted, {monsterName} flees.");
@@ -1040,7 +1043,7 @@ namespace Wah
                 switch (fought)
                 {
                     case true:
-                        Console.WriteLine("With a final blow, it is over. Bryan tries to flee, but he stumbles backwards, towards the Devil's waiting jaws.\n");
+                        Console.WriteLine("With a final blow, it is over. Bryan tries to flee, but he stumbles backwards, towards the Devil's waiting jaws.");
                         break;
                     case false:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
