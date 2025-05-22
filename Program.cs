@@ -198,7 +198,7 @@ namespace Wah
             {
 
                 Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Lust (test)\n4. Violence (test)\n5. Character (test)\n6. Death Screen\n7. Vendor (test)\n8. Roulette"); // presenting options
+                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Readme.txt\n4. Developer Menu"); // presenting options
                 decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -210,29 +210,12 @@ namespace Wah
                     case "2"://heads to credits
                         Credits();
                         break;
-                    case "3": // use to test levels we will remove this from menu later!
-                        Level7();
+                    case "3":
+                        Console.WriteLine("Coming soon");
                         break;
                     case "4":
-                        Level2(); //Takes you to level 2
+                        DevMenu();
                         break;
-                    case "5":
-                        Character();
-                        break;
-                    case "6":
-                        DeathScreen();
-                        break;
-                    case "7":
-                        Bonfire();
-                        break;
-                    case "8":
-                        RussianRoulette();
-                        break;
-                    case "9":
-                        slots();
-                        break;
-
-
                     default:
                         decision = "0";
                         break;
@@ -240,10 +223,46 @@ namespace Wah
                 }
                 Console.Clear(); // clear screen
             }
-            while (decision != "0"); // exit command - placeholder to be worked on
+            while (decision != "0");
+        } // exit command - placeholder to be worked on
 
+        public static void DevMenu()
+        {
 
-        }
+            string decision;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("1. Lust\n2. Violence\n3. Character\n4. Death Screen\n5. Bonfire\n6. Roulette\n7. Slots\n8. Exit");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            switch (decision)
+            {
+                case "1": // use to test levels we will remove this from menu later!
+                    Level7();
+                    break;
+                case "2":
+                    Level2(); //Takes you to level 2
+                    break;
+                case "3":
+                    Character();
+                    break;
+                case "4":
+                    DeathScreen();
+                    break;
+                case "5":
+                    Bonfire();
+                    break;
+                case "6":
+                    RussianRoulette();
+                    break;
+                case "7":
+                    slots();
+                    break;
+                case "8":
+                    break;
+            }
+            }
+
+        
         public static void Credits()// declare Credits method
         {
             string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan Field, 4.Thomas Visser";
