@@ -128,7 +128,7 @@ namespace Wah
     "Follow your own path, wherever it may lead you.",
     "The worst of all deceptions is self-deception.",
     "Nature is the art of God.",
-    "You're not you when you're hungry",
+    "You're not you when you're hungry", //Forgot why this is here, but it's staying
     "The purpose of the present life is virtuous action.",
     "Do not be afraid; our fate cannot be taken from us; it is a gift.",
     "All your anxieties will disappear if you are willing to live in the moment.",
@@ -213,7 +213,7 @@ namespace Wah
                         Level7();
                         break;
                     case "4":
-                        Level2_1(); //Takes you to level 2
+                        Level2(); //Takes you to level 2
                         break;
                     case "5":
                         Character();
@@ -1414,7 +1414,7 @@ namespace Wah
             Combat("Minotaur", 6, 2);
             Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
             Console.ReadLine();
-            //Was thinking of putting ASCII text for "HERESY" after here
+            //Was thinking of putting ASCII text art for "HERESY" after here
             //Also just putting 'Satan Says' here for testing it
             SatanSays();
         }
@@ -1452,18 +1452,21 @@ namespace Wah
                             case 0:
                                 Console.BackgroundColor = ConsoleColor.Red;
                                 Console.Write(" RED ");
+                                Console.Beep(915, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "r";
                                 break;
                             case 1:
                                 Console.BackgroundColor = ConsoleColor.Blue;
                                 Console.Write(" BLUE ");
+                                Console.Beep(794, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "b";
                                 break;
                             case 2:
                                 Console.BackgroundColor = ConsoleColor.Green;
                                 Console.Write(" GREEN ");
+                                Console.Beep(646, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "g";
                                 break;
@@ -1471,6 +1474,7 @@ namespace Wah
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
                                 Console.Write(" YELLOW ");
+                                Console.Beep(1298, 500);
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "y";
@@ -1501,6 +1505,7 @@ namespace Wah
                 {
                     Console.WriteLine("Wrong!");
                     Console.WriteLine($"The correct sequence is {currentSequence}");
+                    Console.ReadLine();
                 }
                 Console.Clear();
             }
