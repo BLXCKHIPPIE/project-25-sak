@@ -1287,11 +1287,11 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Menu("Strength check failed.");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("You don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
+                        Console.WriteLine("\nYou don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
                             $"person-shaped forms of ice that jut from the barren, endless icefields. Using your {weaponName}, you bash open\n" +
                             $"the section where it's face should be. It's hard work, and your arms are burning by the time you pry it open.\n" +
                             $"When you do, you are greeted by a warbling scream of pure agony, the voice of a young man writhing in the ice.\n" +
-                            $"Clearly that's not Benedict Arnold; you'll have to try again.");
+                            $"Clearly that's not Benedict Arnold; you'll have to try again.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Menu("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -1388,8 +1388,8 @@ namespace Wah
             {
                 Console.WriteLine($"You knock the traitorous revolutionary unconscious with a final blow from your {weaponName},\n" +
                     $"and then it's a simple matter of dragging him all the way back to where the titanic form of Satan waits. He regards you\n" +
-                    $"eagerly as you approach, heads coiling and lashing over each other. The middle head approaches, steaming the snow, and takes\n" +
-                    $"a deep whiff. The moment of truth.\n");
+                    $"eagerly as you approach, heads coiling and lashing over each other. The middle head approaches, steaming the snow, \n" +
+                    $"and takes a deep whiff. The moment of truth.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Menu("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -1414,7 +1414,7 @@ namespace Wah
         {
             Console.WriteLine("As you leave Treachery, you notice the temperature cooling down to a bearable heat.");
             Console.WriteLine("You enter a rocky mountain range and see a long red river far away.");
-            Console.WriteLine("A roar echoes in the distance");
+            Console.WriteLine("A roar echoes in the distance\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -1531,7 +1531,7 @@ namespace Wah
             {
                 Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); 
             }
-            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.");
+            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
