@@ -28,6 +28,7 @@ namespace Wah
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fists";
+        public static bool champion = false;
 
 
 
@@ -1834,56 +1835,82 @@ namespace Wah
             int winnings = 2000;
             string decision;
             bool def = false;
-
             
 
 
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
-                "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
-                "'Care to try your luck, stranger? The house pays well... if you survive.'\n\n\n");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("1. Fight!(350 gold)\n2. Leave");
-            decision = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            while (def == false)
+            if (champion == false)
             {
-                switch (decision)
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
+                    "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
+                    "'Care to try your luck, stranger? The house pays well... if you survive.'\n\n\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("1. Fight!(350 gold)\n2. Leave");
+                decision = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                while (def == false)
                 {
+                    switch (decision)
+                    {
 
-                    case "1":
-                        def = true;
-                        break;
-                    case "2":
-                        def = true;
-                        Level5();
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input! Please enter a number between 1 and 2");
-                        break;
+                        case "1":
+                            def = true;
+                            gold = gold - 350;
+                            break;
+                        case "2":
+                            def = true;
+                            Level5();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input! Please enter a number between 1 and 2");
+                            break;
+                    }
                 }
-            }
+                Console.Clear();
+                Console.WriteLine("'Stepping into the ring—the Young Nephilim. Born just three days ago, yet already thrown into the fight.\n" +
+                    "' Will his divine blood save him, or will he fall like the rest?'\n\n\n");
+                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to fight!");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Combat("Infant Nephilim", 1, 1);
+                Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to continue");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Combat("Cursed Vagabond", 2, 2);
+                Console.WriteLine($"'{name} stands victorious—the Cursed Vagabond is no more, his struggle ending like all the others before him.\nBut the air shifts, the crowd quiets, and a new presence looms at the edge of the arena.\nHugh Capet.\n" +
+                    "\nOnce a king, now a wretched soul bound by the weight of greed.\n Gold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
+                    $"'Will {name} break the chains, or be crushed beneath them?'");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to continue");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Combat("Hugh Capet", 3, 3);
+                Console.WriteLine($"'{name} stands victorious, bloodied but unbeaten. Three challengers have fallen—the young Nephilim, the desperate Vagabond, and the cursed king, Hugh Capet.'" +
+                    "'Tonight, he is crowned Champion of the Pits, and with that title comes glory… and {winnings}.'\n\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"+ {winnings} gold!");
+                gold = gold + winnings;
+                champion = true;
 
-            Console.WriteLine("'Stepping into the ring—the Young Nephilim. Born just three days ago, yet already thrown into the fight.\n" +
-                "' Will his divine blood save him, or will he fall like the rest?'");
-            Combat("Infant Nephilim", 1, 1);
-            Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Press ENTER to continue");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-            Combat("Cursed Vagabond",2,2);
-            Console.WriteLine($"'{name} stands victorious—the Cursed Vagabond is no more, his struggle ending like all the others before him.\nBut the air shifts, the crowd quiets, and a new presence looms at the edge of the arena.\nHugh Capet.\n" +
-                "\nOnce a king, now a wretched soul bound by the weight of greed.\n Gold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
-                $"'Will {name} break the chains, or be crushed beneath them?'");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Press ENTER to continue");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-            Combat("Hugh Capet",3, 3);
-            Console.WriteLine($"'{name} stands victorious, bloodied but unbeaten. Three challengers have fallen—the young Nephilim, the desperate Vagabond, and the cursed king, Hugh Capet.'" +
-                "'Tonight, he is crowned Champion of the Pits, and with that title comes glory… and {winnings}.'");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Press ENTER to leave");
+                Console.ReadLine();
+                Level5();
+            }
+            else
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"'The Champion returns… but there are no challengers left.\n The pit stands empty, fear outweighing ambition. For now {name}, earths mightiest traveller reigns uncontested.'\n\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("Press ENTER to leave");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Level5();
         }
 
 
