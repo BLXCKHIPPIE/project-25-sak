@@ -1826,15 +1826,64 @@ namespace Wah
             }
         }
 
-
+        
 
 
         public static void FightingPits()
         {
-            Console.WriteLine(" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
+            int winnings = 2000;
+            string decision;
+            bool def = false;
+
+            
+
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
                 "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
-                "'Care to try your luck, stranger? The house pays well... if you survive.'");
+                "'Care to try your luck, stranger? The house pays well... if you survive.'\n\n\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("1. Fight!(350 gold)\n2. Leave");
+            decision = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            while (def == false)
+            {
+                switch (decision)
+                {
+
+                    case "1":
+                        def = true;
+                        break;
+                    case "2":
+                        def = true;
+                        Level5();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input! Please enter a number between 1 and 2");
+                        break;
+                }
+            }
+
+            Console.WriteLine("'Stepping into the ring—the Young Nephilim. Born just three days ago, yet already thrown into the fight.\n" +
+                "' Will his divine blood save him, or will he fall like the rest?'");
+            Combat("Infant Nephilim", 1, 1);
+            Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Press ENTER to continue");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
+            Combat("Cursed Vagabond",2,2);
+            Console.WriteLine($"'{name} stands victorious—the Cursed Vagabond is no more, his struggle ending like all the others before him.\nBut the air shifts, the crowd quiets, and a new presence looms at the edge of the arena.\nHugh Capet.\n" +
+                "\nOnce a king, now a wretched soul bound by the weight of greed.\n Gold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
+                $"'Will {name} break the chains, or be crushed beneath them?'");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Press ENTER to continue");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Combat("Hugh Capet",3, 3);
+            Console.WriteLine($"'{name} stands victorious, bloodied but unbeaten. Three challengers have fallen—the young Nephilim, the desperate Vagabond, and the cursed king, Hugh Capet.'" +
+                "'Tonight, he is crowned Champion of the Pits, and with that title comes glory… and {winnings}.'");
         }
 
 
@@ -1847,7 +1896,7 @@ namespace Wah
                 "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
                 "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
                 "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
-                "'Step up if you dare, traveler.'");
+                "'Step up if you dare, {name}.'");
 
             
             Console.ForegroundColor = ConsoleColor.DarkYellow;
