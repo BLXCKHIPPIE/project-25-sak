@@ -1759,7 +1759,7 @@ namespace Wah
                     int slot1 = rand.Next(0, symbols.Length);
                     int slot2 = rand.Next(0, symbols.Length);
                     int slot3 = rand.Next(0, symbols.Length);
-                    int winnings = bet * 20;
+                    int winnings = bet * 25;
 
                     Console.Clear();
                     Console.ForegroundColor= ConsoleColor.DarkYellow;
@@ -1768,14 +1768,18 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
                     if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
                     {
-                        Console.WriteLine("\t\tJackpot baby!! All slots match!\n Enjoy a bonus of +5 Karma!\n\n");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine($"\t\tJackpot baby!! All slots match!\n\t\t         You gain +5 Karma!\n\t\t           And {winnings} gold!\n\n");
+                        Console.ForegroundColor = ConsoleColor.White;
                         gold += winnings;
                         karmaScore = karmaScore + 5;
                     }
                     else
                     {
-                        Console.WriteLine("\t\tTry again!\n\n\n");
-                        
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"\t\t\t -{bet} gold.\n\n\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
                     }
                 }
 
