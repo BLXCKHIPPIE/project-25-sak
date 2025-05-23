@@ -28,8 +28,8 @@ namespace Wah
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fists";
-        public static bool champion = true;
-
+        public static bool champion = false;
+        public static bool degen = false;
 
 
 
@@ -109,17 +109,24 @@ namespace Wah
             Console.Write($" Deaths: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(death);
-            if (champion == true)
+            if (champion == true || degen == true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"\n--- Accolades ---\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write($"'Champion of the Pits'\n");
+
+                if (champion == true)
+                {
+                    Console.Write($"'Champion of the Pits'\n");
+                }
+
+                if (degen == true)
+                {
+                    Console.Write($"'Degenerate Gambler'\n");
+                }
+
                 Console.ForegroundColor = ConsoleColor.White;
-
             }
-
-
 
 
             Console.ReadLine();
@@ -1817,7 +1824,8 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
                             "'Addiction is a fickle mistress'\n" +
-                        "A piece of your soul has been removed -20 karma \n\nPress ENTER to Continue");
+                        "A piece of your soul has been removed -20 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
+                    degen = true;
                         Console.ForegroundColor = ConsoleColor.Gray;
                         karmaScore = karmaScore - 20;
                         Console.ReadLine();
