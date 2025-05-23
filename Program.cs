@@ -1661,6 +1661,9 @@ namespace Wah
 
 
         }
+
+
+
         public static void slots()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -1779,67 +1782,101 @@ namespace Wah
 
         public static void RussianRoulette()
         {
-            
-            bool roulette = false;
-            int demonShot = 0;
-            int playerShot = 0;
-            int shots = 6;
+            string decision;
+            Console.WriteLine("Description of russian roulette here (costs 250 gold to enter");
 
             
-           
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Play\n2.Leave");
+            decision = Console.ReadLine();
+            bool gamble = true;
+            bool game = true;
+            int shots = 6;
+            int roll = rand.Next(0, shots);
+            int round = 1;
+
+
+            while (gamble == true)
             {
-                Console.WriteLine("You do not have enough gold for this bet!");
-             
+                switch (decision)
+                {
+                    case "1":
+                        gold = gold - 250;
+                        break;
+
+                    case "2":
+                        gamble = false;
+                        break;
+
+                        
+                }
+                if (decision == "1")
+                {
+                    while (game = true)
+                    {
+                        Console.WriteLine("Demons turn");
+                        roll = rand.Next(0, shots);
+                        if (roll == 0)
+                        {
+                            Console.WriteLine("The demon blows his brains out");
+                            game = false;
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("The demon puts the revolver to his head and pulls the trigger without hesitation\n" +
+                                "you hear a click -- Damn! The demon has survived");
+                            shots--;
+                            Console.WriteLine("You put the revolver to your head");
+                            roll = rand.Next(0, shots);
+                            
+                           if (roll == 0)
+                            {
+                                Console.WriteLine("You slowly squeeze the trigger" +
+                                    "the echo of a scream can be heard" +
+                                    "as you make a brain mural on the wall");
+                                DeathScreen();
+                            }
+                           else
+                            {
+                                shots--;
+                                Console.WriteLine("You slowly squeeze the trigger\n" +
+                                    "You hear a click - its your lucky day!");
+
+                            }
+                            round++;
+                        }
+                        Console.ReadLine();
+
+
+
+
+
+
+
+                    }
+
+                }
+
+
             }
 
-            while (roulette == false)
-            {
-               
-                Console.WriteLine("First shot!\n press ENTER to proceed"); 
-                Console.ReadLine();
-                Console.Clear();
-                demonShot = rand.Next(0, 7);
-                
-                if (demonShot ==6)
-                {
-                    Console.WriteLine("The demon blew his brains out -- u win");
-                   
-                    roulette=true;
-                }
+            
 
-                else
-                {
-                    Console.WriteLine("The Demon pulls the trigger");
-                    Thread.Sleep(750);
-                    Console.WriteLine("The hammer clicks. \n'Your turn.'");
-                    playerShot = rand.Next(0, 6);
-                    Console.WriteLine("Press ENTER to take your shot");
-                    Console.ReadLine();
-                    Console.Clear();
-                    if (playerShot > 0)
-                    {
-                        Console.WriteLine("You paint the wall with grey matter\n Press ENTER to continue.");
-                        Console.ReadLine();
-                        Console.Clear();
-                        DeathScreen();
-                    }
-                    else
-                    {
-                        Console.WriteLine("You slowly squeeze the trigger");
-                        Thread.Sleep(750);
-                        Console.WriteLine("The hammer clicks. \nYou survived the round");
-                    }
+        }
+            
+         
                 
-               
-               
-                }
 
 
                     
-            }
-            Console.ReadLine();
+          
+            
 
-        }
+        
+
+
+
         public static void Level6()// Circle 4: Gluttony
         {
             level = 6;
@@ -2191,7 +2228,8 @@ _________________________________________________________________________
                             gold = gold - 200; // Charging player gold
                             intelligence = intelligence + 5; // Adding stats
                             Console.Clear();
-                            Console.WriteLine("Item Purchased."); // Sucess method
+                            Console.WriteLine("Item Purchased.");
+                            Console.WriteLine("Intelligence +5");
                         }
                         else
                         {
@@ -2207,6 +2245,7 @@ _________________________________________________________________________
                             strength = strength + 5;
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
+                            Console.WriteLine("Strength +5");
                         }
                         else
                         {
