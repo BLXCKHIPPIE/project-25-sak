@@ -1667,11 +1667,12 @@ namespace Wah
 
         public static void slots()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            string[] symbols = { "7", "❤", "🔥", "3", "5" };
+            Console.OutputEncoding = System.Text.Encoding.UTF8; 
+            string[] symbols = { "7", "♥", "☺", "Ω", "✶" };
             bool gamble = true;
             string decision;
             int count = 0;
+            Console.Clear();
             while (gamble)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -1760,8 +1761,11 @@ namespace Wah
                     int slot3 = rand.Next(0, symbols.Length);
                     int winnings = bet * 20;
 
+                    Console.Clear();
+                    Console.ForegroundColor= ConsoleColor.DarkYellow;
                     Console.WriteLine($"\n\n\t\t\t{symbols[slot1]}  --  {symbols[slot2]}  --  {symbols[slot3]}\n");
-
+                    
+                    Console.ForegroundColor = ConsoleColor.White;
                     if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
                     {
                         Console.WriteLine("\t\tJackpot baby!! All slots match!\n Enjoy a bonus of +5 Karma!\n\n");
