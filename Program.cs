@@ -36,7 +36,16 @@ namespace Wah
         static void Main() // Declare main method
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.WriteLine("Keep me HUNGRY"); // placeholder
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("\n\n\n     ██╗    ██╗ █████╗ ██╗  ██╗");
+            Console.WriteLine("     ██║    ██║██╔══██╗██║  ██║");
+            Console.WriteLine("     ██║ █╗ ██║███████║███████║");
+            Console.WriteLine("     ██║███╗██║██╔══██║██╔══██║");
+            Console.WriteLine("     ╚███╔███╔╝██║  ██║██║  ██║");
+            Console.WriteLine("      ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n\n");
+            Console.WriteLine("   We are hungry games presents...\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.ReadLine(); // pause
             Console.Clear();
             MainMenu(); // calls menu
@@ -198,9 +207,19 @@ namespace Wah
             string decision; // define decision variable
             do
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n\n           ██╗██████╗░██████╗░███████╗██╗░░░██╗███████╗██████╗░███████╗███╗░░██╗░█████╗░███████╗");
+                Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔════╝██║░░░██║██╔════╝██╔══██╗██╔════╝████╗░██║██╔══██╗██╔════╝");
+                Console.WriteLine("           ██║██████╔╝██████╔╝█████╗░░╚██╗░██╔╝█████╗░░██████╔╝█████╗░░██╔██╗██║██║░░╚═╝█████╗░░");
+                Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔══╝░░░╚████╔╝░██╔══╝░░██╔══██╗██╔══╝░░██║╚████║██║░░██╗██╔══╝░░");
+                Console.WriteLine("           ██║██║░░██║██║░░██║███████╗░░╚██╔╝░░███████╗██║░░██║███████╗██║░╚███║╚█████╔╝███████╗");
+                Console.WriteLine("           ╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝░╚════╝░╚══════╝");
 
-                Console.ForegroundColor = ConsoleColor.White;//Ensures the menu color is always white if the game takes you back to menu
-                Console.WriteLine("Menu\n1. New Game\n2. Credits\n3. Readme.txt\n4. Developer Menu"); // presenting options
+
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n\t   |   1. New Game   |   2. Credits   |   3. Readme.txt   |   4. Developer Menu   |"); // presenting options
                 decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
