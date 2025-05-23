@@ -28,7 +28,7 @@ namespace Wah
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fists";
-        public static bool champion = false;
+        public static bool champion = true;
 
 
 
@@ -76,6 +76,7 @@ namespace Wah
             Console.Write($" Name: \n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(name);
+            
             Console.WriteLine("--- Skills ---");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Strength: ");
@@ -108,7 +109,15 @@ namespace Wah
             Console.Write($" Deaths: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(death);
+            if (champion == true)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write($"\n--- Accolades ---\n");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write($"'Champion of the Pits'\n");
+                Console.ForegroundColor = ConsoleColor.White;
 
+            }
 
 
 
