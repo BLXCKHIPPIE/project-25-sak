@@ -34,6 +34,7 @@ namespace Wah
 
         static void Main() // Declare main method
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine("Keep me HUNGRY"); // placeholder
             Console.ReadLine(); // pause
             Console.Clear();
@@ -1917,14 +1918,14 @@ namespace Wah
                 "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
                 "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
-            Console.WriteLine("1.Take the path up to higher ground\n2.Continue straight ahead");
+            Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             if (decision == 1) // if user enters "1"
 
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("You walk all the way back the the ramp on the left, you feel the air pressure lessen as you progress");
+                Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
                 Level7_1();
             }
             else
@@ -1940,12 +1941,12 @@ namespace Wah
             int decision;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("You start walking up the path on the left side, it takes you higher and higher until you are around 100m\n" +
-                " from the pit of the chasm. The path begins to get dangerously narrow.\n" +
-                " As you steady yourself and walk down it you eventually reach a rope bridge.\n" +
-                " Looking behind at the left most edge of the wall you notice that it is quite easily climbable.\n\n ");
+            Console.WriteLine("You follow the left path, rising steadily until you're about 100 meters above the chasm’s depths.\n" +
+                "The ground beneath you narrows, forcing cautious steps. Pressing forward, you reach a rope bridge,\n" +
+                "its worn strands shifting in the breeze. Glancing back, you spot the leftmost edge of the wall—rough,\n" +
+                "but climbable.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
-            Console.WriteLine("1. Climb the chasm\n2. Take your chances on the rope bridge");
+            Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
             decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
             Console.Clear();
             if (decision == 2)
@@ -1956,27 +1957,27 @@ namespace Wah
             else
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You begin climbing up the side wall of the chasm when you hear something bellow you" +
-                    "\nYou see a scaley demon like figure climbing bellow you, it is much faster than you and before you know it" +
-                    "\n it catches up to you ");
+                Console.WriteLine("You begin climbing the chasm’s side wall when a noise rises from below.\n" +
+                    "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
+                    "it closes the gap, its presence looming just beneath you.");
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
-                Console.WriteLine("1. Climb faster\n2. Kick the demon in its stupid face");
+                Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
 
                 decision = Convert.ToInt32(Console.ReadLine());
                 if (decision == 1)
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("The demon catches upto you and rips you from the wall\n" +
-                    " You both take a tumble down 7 meters or so\n" +
-                    " Once the dust settles you realise you have only one choice\n" +
-                    " Kill or be Killed.");
+                    Console.WriteLine("The demon’s claws tear into you, ripping you from the wall.\n" +
+                        "Together, you plummet—seven meters of uncontrolled descent.\n" +
+                        "You hit the ground with a thump as dust and debris settle around you. Only one choice remains:\n\nKill or be killed.");
                     Console.ReadLine();
 
-                    Combat("the Gnarled abomination", 5, 5);
+                    Combat("Gnarled abomination", 5, 5);
 
                     Console.Clear();
-                    Console.WriteLine("You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
+                    Console.WriteLine("You press on, scaling the rugged wall with steady determination.\n" +
+                        "Before you know it, your hand finds the final ledge, and you pull yourself up.");
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n Press ENTER to continue");
                     Console.ReadLine();
@@ -1989,9 +1990,10 @@ namespace Wah
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("You kick the demon in its stupid face caving in its crooked nose!\n " +
-                        "You see the demon take a tumble and hit the ground hard.. its not moving\n" +
-                        "You continue to climb up the side of the wall of the chasm and before you know it you have reached the summit");
+                    Console.WriteLine("Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
+                        "It tumbles backward, crashing hard into the ground. Dust settles, silence lingers—it’s not moving.\n" +
+                        "You press on, scaling the rugged wall with steady determination.\n" +
+                        "Before you know it, your hand finds the final ledge, and you pull yourself up.");
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n Press ENTER to continue");
                     Console.ReadLine();
@@ -2009,11 +2011,12 @@ namespace Wah
             int decision;
             Console.Clear(); // clearing console
             Console.ForegroundColor = ConsoleColor.White; // setting text color to white
-            Console.WriteLine("You continue down the trail. As you progress you feel the winds getting stronger.\n" +
-                "as the dust settles you notice a marble staircase leading down.. it appears polished and out of place in. ");
+            Console.WriteLine("The wind howls as you push forward. As the dust settles, a marble staircase comes into view—pristine, out of place.\n" +
+                "Descending, a familiar scent clings to the air—rich meats, overripe fruit,\n" +
+                "remnants of excess. Gluttony awaits.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
-            Console.WriteLine("1.Take stairs down (Back to Gluttony)\n" +
-                "2. Circle back and take the path to high ground");
+            Console.WriteLine("1. Descend the marble stairs (Back to gluttony)\n" +
+                "2. Turn back and take the path upward, away from the excess below.");
             decision = Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
             if (decision == 1)
             { Level6(); } // calls Level6 method
@@ -2028,40 +2031,45 @@ namespace Wah
             int chance = rnd.Next(0, 100); // setting up chance of success
             Console.Clear(); // clear screen
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
-            Console.WriteLine("You decide to take your chances on the rope bridge\n it looks sketchy but hey, fortune favors the bold right?");
+            Console.WriteLine("You step onto the rope bridge, its frayed strands swaying beneath your weight.\n" +
+                "The abyss yawns below, but hesitation won’t serve you now.\nfortune favors the bold.");
             Console.Clear();
             //LoadAnimation();
             if (chance < 30)
             {
-                Console.WriteLine("You successfully cross the rope bridge clearing the chasm, You look back down and \n" +
-                    "realize that if the rope had of snapped you would have fell 100 meters to your death. ");
+                Console.WriteLine("You make it across the rope bridge, steadying yourself on solid ground. Turning back,\nyou peer into the abyss" +
+                    "100 meters of sheer drop. The realization settles in.\n" +
+                    "If that rope had snapped, the fall would have been fatal. ");
             }
             else
             {
-                Console.WriteLine("You hear a thunderous snap behind you and you begin to fall down the chasm\n" +
-                    "by sheer luck you manage to hold onto the rope and are smashed against the side of the chasm");
+                Console.WriteLine("A sharp snap rings out behind you. The world tilts—you fall.\n" +
+                    "By sheer luck, your hands grasp the rope, stopping your descent.\n" +
+                    "The impact against the chasm wall leaves you breathless, but you’re still hanging on.\n");
                 Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("-10 hp");
+                Console.WriteLine("-10 hp\n\n");
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
-                Thread.Sleep(2000);
-                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough\nPress ENTER to climb");
+                
+                Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough\n\nPress ENTER to climb");
                 Console.ReadLine();
                 Console.Clear();
 
                 if (strength > 9) // This might require a balance change later ~
                 {
-                    Console.WriteLine("Looks like all that killing has paid off! \n You manage to climb up the rope improving your strength slightly");
+                    Console.WriteLine("You pull yourself up the rope, muscles straining but growing stronger.\nEvery challenge,every fight—it’s all paying off.\n" +
+                        "Bit by bit, you’re becoming tougher for what lies ahead.");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("+1 Strength");
                     strength = strength + 1;
+                    Console.ReadLine();
                     Level7_4(); }
                 else
                 {
-                    Console.WriteLine("Your arms grow tired and you feel your grip loosening...");
+                    Console.WriteLine("Your grip weakens, arms burning. The rope sways—you're running out of time.");
                     Thread.Sleep(2000);
-                    Console.WriteLine("you hear a sudden crack and experience the full force of vertigo as you fall to your certain death");
+                    Console.WriteLine("Your grip fails. The world tilts as you fall, vertigo consuming you. The abyss rushes up—there’s no stopping it now.");
                     Console.ReadLine();
                     Console.Clear();
                     DeathScreen();
@@ -2077,12 +2085,12 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             while (decision != 1)
             {
-                Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n\n" +
-                          "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n\n" +
-                          "The sky, bruised and relentless, presses down, mirroring the hunger within.\n\n" +
-                          "On the horizon, a solitary tower rises—blackened, defiant.\n\n" +
+                Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n" +
+                          "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n" +
+                          "The sky, bruised and relentless, presses down, mirroring the hunger within.\n" +
+                          "On the horizon, a solitary tower rises—blackened, defiant.\n" +
                           "It calls to you, its whisper threading through the ruinous winds,\n" +
-                          "beckoning you forward into the unknown.");
+                          "beckoning you forward into the unknown.\n\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("1. Head Towards the Tower");
                 decision = Convert.ToInt32(Console.ReadLine());
