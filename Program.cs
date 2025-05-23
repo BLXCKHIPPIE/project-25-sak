@@ -232,7 +232,7 @@ namespace Wah
 
             string decision;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("1. Lust\n2. Violence\n3. Character\n4. Death Screen\n5. Bonfire\n6. Roulette\n7. Slots\n8. Exit");
+            Console.WriteLine("1. Lust\n2. Violence\n3. Character\n4. Death Screen\n5. Bonfire\n6. Roulette\n7. Slots\n8. level 5\n9. Exit");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
@@ -259,6 +259,9 @@ namespace Wah
                     slots();
                     break;
                 case "8":
+                    Level5();
+                    break;
+                case "9":
                     break;
             }
             }
@@ -1652,18 +1655,53 @@ namespace Wah
 
 
         }
+
+
+
+
+
+
+
         public static void Level5()// Circle 5: Greed
         {
+            Console.Clear();
+            string decision;
             level = 5;
+            Console.WriteLine("You enter Hell’s Casino—a palace of false promise and endless debt.\n" +
+                "Gold-lined walls shimmer under flickering neon, masking the desperation in the air.\n" +
+                "Fortune teases, greed consumes, and the deeper you go, the harder it is to escape.\n\n");
+           Console.ForegroundColor= ConsoleColor.DarkMagenta;
+            Console.WriteLine("1. Play Slots\n2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
+            
+            decision = Console.ReadLine();
+           
+            switch (decision)
+            {
+                case "1":
+                    slots();
+                    break;
+                case "2":
+                    RussianRoulette();
+                    break;
+                case "3":
+                    FightingPits();
+                    break;
+                case "4":
+                    LoanShark();
+                    break;
+                case "5":
+                    Level6();
+                    break;
 
-
+            }
 
 
 
 
         }
 
-
+        public static void LoanShark()
+        {}
 
         public static void slots()
         {
@@ -1725,6 +1763,7 @@ namespace Wah
                         break;
                     case "4":
                         gamble = false;
+                        Level5();
                         break;
                     default:
                         Console.WriteLine("Invalid input! Please enter a number between 1 and 4.");
@@ -1789,14 +1828,30 @@ namespace Wah
 
 
 
+
+        public static void FightingPits()
+        {
+            Console.WriteLine(" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
+                "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
+                "'Care to try your luck, stranger? The house pays well... if you survive.'");
+            Console.ReadLine();
+        }
+
+
         public static void RussianRoulette()
         {
             string decision;
-            Console.WriteLine("Description of russian roulette here (costs 250 gold to enter");
+            Console.WriteLine("you enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
+                "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
+                "A demonic figure looms across from a trembling young lady.\n" +
+                "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
+                "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
+                "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
+                "'Step up if you dare, traveler.'");
 
             
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("1. Play\n2.Leave");
+            Console.WriteLine("1. Play (250 gold)\n2.Leave");
             decision = Console.ReadLine();
             bool gamble = true;
             bool game = true;
