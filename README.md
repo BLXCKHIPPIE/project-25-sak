@@ -83,4 +83,3 @@ May 14, 2025
 
     Cleaned up menu UI
 
-    Added Character Sheet v0.1
