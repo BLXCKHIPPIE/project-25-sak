@@ -1742,7 +1742,7 @@ namespace Wah
                     LoanShark();
                     break;
                 case "5":
-                    Level6();
+                    Level5_1();
                     break;
 
             }
@@ -2196,7 +2196,67 @@ namespace Wah
 
                     }
         }
+        public static void Level5_1()
+        {
+            string decision;
 
+            if (debt == true) 
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("As you approach the gatekeeper, you feel something grab your shoulder.\n" +
+                                  "Trying to pull a fast one on me, eh? Bold move. But you know how this works. Debts don’t just disappear.\n" +
+                                  "The loan shark casts a menacing shadow over you.\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("|   1. Repay debt   |   2. Suffer the consequences   |");
+                decision = Console.ReadLine();
+
+                switch (decision)
+                {
+                    case "1":
+                        if (gold >= 1200)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("'Fine. But don’t think this means we're square. I’ll remember you hesitated.'");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Gold -1200\nKarma -5");
+                            gold -= 1200; 
+                            debt = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You don't have enough to repay the debt!");
+                            Console.ReadLine();
+                            goto case "2"; // Forces player into consequences if they can't pay
+                        }
+                        break;
+
+                    case "2":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Bad call. You’ll regret this.\n");
+
+                        Console.WriteLine("Before you can even process what's happening, a fist slams into your gut.\n" +
+                                          "The world tilts as you're sent sprawling, each blow driving the lesson home—you don’t walk away from debt.\n\n");
+                        Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Health -50\nKarma -10\nGold -{gold}");
+                        gold = 0;
+                        vitality -= 50;
+                        karmaScore -= 10;
+                        debt = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
+            }
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Gatekeeper stuff here?");
+            Console.ReadLine();
+        }
 
 
 
