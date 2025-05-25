@@ -235,7 +235,8 @@ namespace Wah
 
 
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("\n\n\n\t   |   1. New Game   |   2. Credits   |   3. Readme.txt   |   4. Developer Menu   |"); // presenting options
+                Console.WriteLine("\n\n\n\t|   1. New Game   |   2. Credits   |   3. Readme.txt   |   4. Developer Menu   |   5. Quit   |"); // presenting options
+
                 decision = (Console.ReadLine());// taking user input and assigning to decision
                 Console.Clear(); // clearing screen
                 switch (decision) // switch statement for different options
@@ -253,8 +254,11 @@ namespace Wah
                     case "4":
                         DevMenu();
                         break;
-                    default:
+                    case "5":
                         decision = "0";
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input!");
                         break;
 
                 }
@@ -1747,12 +1751,14 @@ namespace Wah
             string decision;
             int count = 0;
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($"\n\n\t\t\t{symbols[1]}  --  {symbols[1]}  --  {symbols[1]}\n\n");
             while (gamble)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"|   Gold:{gold}   |");
                 Console.WriteLine("|   1.Bet 25   |   2.Bet 50   |   3.Bet 100  |  4.Leave   |");
-                Console.ForegroundColor = ConsoleColor.Gray;
+               
                 decision = Console.ReadLine();
                 int bet = 0;
 
@@ -1812,9 +1818,9 @@ namespace Wah
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'You have become a degenerate gambler, now you pay the ultimate price'\n\n" +
-                    "A piece of your soul has been removed -10 karma \n\nPress ENTER to Continue");
+                    "A piece of your soul has been removed -5 karma \n\nPress ENTER to Continue");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    karmaScore = karmaScore - 10;
+                    karmaScore = karmaScore - 5;
                     Console.ReadLine();
                 }
                     if (count == 60)
@@ -1824,10 +1830,10 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
                             "'Addiction is a fickle mistress'\n" +
-                        "A piece of your soul has been removed -20 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
+                        "A piece of your soul has been removed -10 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
                     degen = true;
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        karmaScore = karmaScore - 20;
+                        karmaScore = karmaScore - 10;
                         Console.ReadLine();
                     }
                 if (bet > 0)
@@ -1953,27 +1959,29 @@ namespace Wah
         public static void RussianRoulette()
         {
             string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("you enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
                 "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
                 "A demonic figure looms across from a trembling young lady.\n" +
                 "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
                 "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
                 "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
-                "'Step up if you dare, {name}.'");
+                "'Step up if you dare, {name}.'\n\n\n");
 
             
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("1. Play (250 gold)\n2.Leave");
             decision = Console.ReadLine();
-            bool gamble = true;
+           
             bool game = true;
             int shots = 6;
             int roll = rand.Next(0, shots);
             int round = 1;
 
 
-            while (gamble == true)
-            {
+            
+            
                 switch (decision)
                 {
                     case "1":
@@ -1981,7 +1989,7 @@ namespace Wah
                         break;
 
                     case "2":
-                        gamble = false;
+                        Level5();
                         break;
 
                         
@@ -2039,7 +2047,7 @@ namespace Wah
 
             
 
-        }
+        
             
          
                 
@@ -2313,13 +2321,23 @@ namespace Wah
                 {
                     case 1:
                         Console.Clear();
+                    if (intelligence >= 20)
+                    {
+                        Console.WriteLine("'Your words bear the weight of wisdom, an argument as sharp as Minos' tail.\nVery well—pass, but know this: knowledge alone will not shield you from what lies ahead.'\n\n" +
+                            "Press ENTER to continue.");
+                        Console.ReadLine();
+                        Level7_5();
+                    }
+                    else
+                    {
                         Console.WriteLine("'Reason? There is no reason in this place—only judgment. \nYou speak of purpose, of resolve, as if they hold weight here. They do not.'\n" +
-                                "'Turn back, mortal. Your words are wasted.'\n");
+                                    "'Turn back, mortal. Your words are wasted.'\n");
                         decision = 0;
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    decision = Convert.ToInt32(Console.ReadLine());
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        decision = Convert.ToInt32(Console.ReadLine());
+                    }
                     if (decision ==1)
                     { Combat("Gate Keeper", 7, 3); }
                     else
@@ -2346,8 +2364,8 @@ namespace Wah
 
         
 
-
-
+        public static void Level7_5()
+        { }
 
         public static void Vendor()
         {
