@@ -2252,10 +2252,26 @@ namespace Wah
                         break;
                 }
             }
-            Console.ReadLine();
+            
             Console.Clear();
-            Console.WriteLine("Gatekeeper stuff here?");
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("'Ah, another traveler seeking passage! Fear not, for these stairs demand no toll—only the courage to climb.\n" +
+                " Greed has weighed down many souls, but ahead lies gluttony, where excess takes a different form.\n Step into our dining hall, Where everyone is well-fed'\n\n");
+            
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("|    1. Proceed   |   2. Stay in greed   |");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            decision =Console.ReadLine();
+            switch (decision)
+            {
+                case "1":
+                    Level6();
+                    break;
+                case "2":
+                    Level5();
+                    break;
+            }
         }
 
 
@@ -2286,22 +2302,127 @@ namespace Wah
 
         public static void Level6()// Circle 4: Gluttony
         {
+
+            
             level = 6;
+            string decision;
+            Console.Clear();
+            Character();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+           
+            Console.WriteLine("You enter Gluttony. A vast dining hall sprawls before you, tables overflowing with lavish feasts—roasted meats, golden loaves, and goblets of wine.\n" +
+                "All around, bloated figures gorge themselves, shoveling food into their mouths without pause.\n Plates refill endlessly, trapping them in a cycle of indulgence that never satisfies.\n" +
+                "Press ENTER to continue");
 
 
+                Console.WriteLine("Choose your meal:\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("1. Lentil Stew – A warm, hearty bowl of slow-cooked lentils,\n infused with fragrant herbs and spices, offering a rich, earthy flavor.\n\n");
+            Console.WriteLine("2. Veal Cutlet – A tender, delicately breaded piece of meat,\n pan-seared to a golden crisp and served with a savory sauce.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            Console.Clear();
 
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 1;
+                    Console.WriteLine("You feel nourished, yet grounded.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 1;
+                    Console.WriteLine("The richness lingers, but something feels off.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
 
+            Console.WriteLine("\nChoose your next meal:\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("1. Fresh Garden Salad – Crisp greens, vibrant vegetables, and a drizzle of dressing,\n refreshing and light on the palate.\n");
+            Console.WriteLine("2. Foie Gras – A silky-smooth delicacy, served atop toasted bread\n with a subtle, buttery richness that melts in the mouth.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            Console.Clear();
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 1;
+                    Console.WriteLine("Fresh, crisp, and satisfying.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 1;
+                    Console.WriteLine("Decadent, yet heavy.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
 
+            Console.WriteLine("\nChoose your final meal:\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("1. Whole Grain Bread & Hummus – A rustic loaf with a crunchy crust,\n paired with creamy hummus that carries a nutty, tangy depth.\n");
+            Console.WriteLine("2. Shark Fin Soup – A clear, aromatic broth simmered to perfection,\n featuring delicate strands with a subtle, oceanic taste.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            Console.Clear();
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 1;
+                    Console.WriteLine("Simple yet fulfilling.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 1;
+                    Console.WriteLine("A rare taste, but uneasy feelings linger.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-1 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
 
-
-
+            Console.Clear();
+            Console.WriteLine("You step forward, weighed down by indulgence. The gatekeeper eyes you with amusement.");
+            Console.WriteLine("\n\n Press ENTER to Proceed to Lust");
+            Console.ReadLine();
+            Console.WriteLine("The moment you nod, he grips a massive lever and pulls. A rush of weightlessness overtakes you—suddenly,\n" +
+                " you're soaring. Vision fades, replaced only by the sensation of wind rushing past," +
+                "\n lifting you effortlessly into the unknown.");
+            Console.ReadLine();
+            Level7();
 
 
         }
 
 
 
-
+        
 
 
 
@@ -2317,7 +2438,7 @@ namespace Wah
             level = 7;
             int decision;
 
-            Console.WriteLine($"level 7 - Welcome {name}");
+            Console.Clear();
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
                 "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
                 "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
@@ -2418,14 +2539,14 @@ namespace Wah
             Console.Clear(); // clearing console
             Console.ForegroundColor = ConsoleColor.White; // setting text color to white
             Console.WriteLine("The wind howls as you push forward. As the dust settles, a marble staircase comes into view—pristine, out of place.\n" +
-                "Descending, a familiar scent clings to the air—rich meats, overripe fruit,\n" +
-                "remnants of excess. Gluttony awaits.\n\n");
+                "Descending, a familiar scent of cigar smoke fills the air.\n" +
+                "remnants of excess. Greed awaits.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
-            Console.WriteLine("1. Descend the marble stairs (Back to gluttony)\n" +
+            Console.WriteLine("1. Descend the marble stairs (Back to greed)\n" +
                 "2. Turn back and take the path upward, away from the excess below.");
             decision = Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
             if (decision == 1)
-            { Level6(); } // calls Level6 method
+            { Level5(); } // calls Level6 method
             else
             { Level7_1(); } // calls Level7_1 method
             Console.ReadLine();
