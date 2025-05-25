@@ -28,8 +28,10 @@ namespace Wah
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fists";
+        // Bools tied to level 5 
         public static bool champion = false;
         public static bool degen = false;
+        public static bool debt = false;
 
 
 
@@ -1707,12 +1709,22 @@ namespace Wah
             Console.Clear();
             string decision;
             level = 5;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You enter Hell’s Casino—a palace of false promise and endless debt.\n" +
                 "Gold-lined walls shimmer under flickering neon, masking the desperation in the air.\n" +
                 "Fortune teases, greed consumes, and the deeper you go, the harder it is to escape.\n\n");
-           Console.ForegroundColor= ConsoleColor.DarkMagenta;
-            Console.WriteLine("1. Play Slots\n2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
+
+           
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("1. Play Slots");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($"\t\t\t\t\t\tGold:");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{gold}\n");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
             
+
             decision = Console.ReadLine();
            
             switch (decision)
@@ -1741,7 +1753,74 @@ namespace Wah
         }
 
         public static void LoanShark()
-        {}
+        {
+            string decision;
+            Console.Clear();
+
+            if (debt == false)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You enter the loan shark’s office. The place is cramped, dimly lit, \nand reeks of stale cigars. He leans forward, fingers drumming against a ledger of debts.\n" +
+                                  "'Ohh, you're here to repay your debt, eh? About time. I hope, for your sake, you brought enough.'\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("|   1. Take the loan (1000 gold)   |   2. Leave   |");
+
+                decision = Console.ReadLine();
+
+                switch (decision)
+                {
+                    case "1":
+                        Console.WriteLine("You take the loan, hoping fortune provides the means to pay it back. The loan shark’s stern gaze makes one thing clear—he isn’t the forgiving type.\n\n");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+1000 Gold!");
+                        gold += 1000;
+                        debt = true;
+                        Console.ReadLine();
+                        Level5();
+                        break;
+
+                    case "2":
+                        Level5();
+                        break;
+
+                    default:
+                        LoanShark();
+                        break;
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You enter the loan shark’s office. The place is cramped, dimly lit, \nand reeks of stale cigars. He leans forward, fingers drumming against a ledger of debts.\n" +
+                                  "'You want a loan, eh? Fine. But make sure you pay it back before you leave… or else.'\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("|   1. Repay debt (1200 Gold)   |   2. Leave   |");
+
+                decision = Console.ReadLine();
+
+                switch (decision)
+                {
+                    case "1":
+                        Console.WriteLine("You place the gold on the desk. The Shark looks shocked, but with a grin slides the money into a drawer. \n" +
+                                          "'Good doing business with you.'\n");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("-1200 Gold!");
+                        gold -= 1200;
+                        Console.ReadLine();
+                        Level5();
+                        break;
+
+                    case "2":
+                        Level5();
+                        break;
+
+                    default:
+                        LoanShark();
+                        break;
+                }
+            }
+        }
+
 
         public static void slots()
         {
@@ -1965,7 +2044,7 @@ namespace Wah
             bool game = true;
             int shots = 6; 
             int round = 1;
-            int winnings = round * 250;
+            int winnings;
 
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -1994,6 +2073,7 @@ namespace Wah
 
             while (game && shots > 1)
             {
+                winnings = round * 250;
                 Console.Clear();
                 Console.WriteLine($"\nRound {round}: {shots} shots remaining\n");
 
@@ -2006,7 +2086,12 @@ namespace Wah
                 {
                     Console.WriteLine("The gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
                     gold += winnings;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"+{winnings} gold!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
                     game = false;
+                    Level5();
                 }
                 else
                 {
@@ -2025,6 +2110,7 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     game = false;
+                    Level5();
                 }
                 else
                 {
@@ -2082,10 +2168,9 @@ namespace Wah
                 }
 
                 
-                if (game)
-                {
+                
                     round++;
-                }
+                
             }
         }
 
