@@ -1956,188 +1956,163 @@ namespace Wah
         }
 
 
+
+
+
         public static void RussianRoulette()
         {
             string decision;
+            bool game = true;
+            int shots = 6; 
+            int round = 1;
+            int winnings = round * 250;
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("you enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
-                "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
-                "A demonic figure looms across from a trembling young lady.\n" +
-                "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
-                "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
-                "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
-                "'Step up if you dare, {name}.'\n\n\n");
+            Console.WriteLine("You enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
+                              "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
+                              "A demonic figure looms across from a trembling young lady.\n" +
+                              "With a slow squeeze of the trigger, her fate is sealed. Her body jerks, then stillness.\n" +
+                              "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno.\n" +
+                              "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
+                              $"'Step up if you dare, {name}.'\n\n");
 
-            
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("1. Play (250 gold)\n2.Leave");
+            Console.WriteLine("1. Play (250 gold)\n2. Leave");
             decision = Console.ReadLine();
-           
-            bool game = true;
-            int shots = 6;
-            int roll = rand.Next(0, shots);
-            int round = 1;
-            
-
-
-            
-            
-                switch (decision)
-                {
-                    case "1":
-                        gold = gold - 250;
-                        break;
-
-                    case "2":
-                        Level5();
-                        break;
-
-                        
-                }
-                if (decision == "1")
-                {
-                    while (game == true)
-                    {
-                        Console.WriteLine("Demons turn");
-                        roll = rand.Next(0, shots);
-                        if (roll == 0)
-                        {
-                            Console.WriteLine("public static void RussianRoulette()
-        {
-            string decision;
-            Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("you enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
-                "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
-                "A demonic figure looms across from a trembling young lady.\n" +
-                "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
-                "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
-                "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
-                "'Step up if you dare, {name}.'\n\n\n");
 
-            
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("1. Play (250 gold)\n2.Leave");
-            decision = Console.ReadLine();
-           
-            bool game = true;
-            int shots = 6;
-            int roll = rand.Next(0, shots);
-            int round = 1;
-
-
-            
-            
-                switch (decision)
-                {
-                    case "1":
-                        gold = gold - 250;
-                                    decision = "0";
-                        break;
-
-                    case "2":
-                        Level5();
-                        break;
-
-                        
-                }
-                if (decision == "1")
-                {
-                    while (game = true)
-                    {
-                        Console.WriteLine("Demons turn\n\n");
-                        roll = rand.Next(0, shots);
-                        if (roll == 0)
-                        {
-                            Console.WriteLine("he gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
-                            game = false;
-                            
-                        }
-                        else
-                        {
-                            Console.WriteLine("The demon puts the revolver to his head and pulls the trigger without hesitation\n" +
-                                "you hear a click -- Damn! The demon has survived");
-                            shots--;
-                            Console.WriteLine("You press the cold steel of the revolver to your head\n");
-                                        Console.WriteLine("|    1. Pull the trigger    |");
-                            roll = rand.Next(0, shots);
-                            
-                           if (roll == 0)
-                            {
-                                Console.WriteLine("A deafening blast. Your thoughts splatter, immortalized in a grotesque mural.");
-                                            Console.ReadLine();
-                                DeathScreen();
-                            }
-                           else
-                            {
-                                shots--;
-                                Console.WriteLine("You squeeze the trigger… Click.\n" +
-                                    "Luck still lingers in your grasp.");
-                            
-
-                            }
-                            round++;
-                        }
-                        Console.ReadLine();
-");
-                        Console.WriteLine
-                            game = false;
-                            
-                        }
-                        else
-                        {
-                            Console.WriteLine("The demon puts the revolver to his head and pulls the trigger without hesitation\n" +
-                                "you hear a click -- Damn! The demon has survived");
-                            shots--;
-                            Console.WriteLine("You put the revolver to your head");
-                            roll = rand.Next(0, shots);
-                            
-                           if (roll == 0)
-                            {
-                                Console.WriteLine("You slowly squeeze the trigger" +
-                                    "the echo of a scream can be heard" +
-                                    "as you make a brain mural on the wall");
-                                DeathScreen();
-                            }
-                           else
-                            {
-                                shots--;
-                                Console.WriteLine("You slowly squeeze the trigger\n" +
-                                    "You hear a click - its your lucky day!");
-                            
-
-                            }
-                            round++;
-                        }
-                        Console.ReadLine();
-
-
-
-
-
-
-
-                    }
-
-                }
-
-
+            if (decision == "1")
+            {
+                gold -= 250;
+            }
+            else if (decision == "2")
+            {
+                Level5();
+                game = false;
             }
 
-            
+            while (game && shots > 1)
+            {
+                Console.Clear();
+                Console.WriteLine($"\nRound {round}: {shots} shots remaining\n");
 
-        
-            
-         
                 
+                Console.WriteLine("Demon's turn...");
+                Console.ReadLine();
+                int roll = rand.Next(0, shots);
 
+                if (roll == 0)
+                {
+                    Console.WriteLine("The gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
+                    gold += winnings;
+                    game = false;
+                }
+                else
+                {
+                    Console.WriteLine("The demon presses the revolver to his head... Click. He lives.");
+                }
+
+                
+                if (!game)
+                {
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("You've survived the game. The demon is no more.");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"+{winnings} gold!");
+                    gold += winnings;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    game = false;
+                }
+                else
+                {
+                    Console.ReadLine();
+                    Console.Clear();
 
                     
-          
-            
+                    Console.WriteLine($"\nRound {round}: {shots} shots remaining");
+                    Console.WriteLine("Your turn.\n\n\n");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("1. Pull the trigger\n2. Quit while you are ahead");
+                    decision = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
 
-        
+                    if (decision == "2")
+                    {
+                        Console.WriteLine("Pocketing your winnings, you rise from the table and step away.\n\n");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"+{winnings} gold!");
+                        gold += winnings;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Level5();
+                        game = false;
+                    }
+                    else
+                    {
+                    
+                        roll = rand.Next(0, shots);
+
+                        if (roll == 0)
+                        {
+                            Console.WriteLine("You press the cold steel to your temple.. Slowly you squeeze the trigger.");
+                            Console.ReadLine();
+                            Console.WriteLine("A deafening blast. Your thoughts splatter, immortalized in a grotesque mural.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            DeathScreen();
+                            game = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You press the cold steel to your temple.. Slowly you squeeze the trigger.");
+                            Console.ReadLine();
+                            Console.WriteLine("Click. Luck still lingers in your grasp.");
+                            Console.ReadLine();
+                        }
+                    }
+                }
+
+              
+                if (shots > 1)
+                {
+                    shots--;
+                }
+
+                
+                if (game)
+                {
+                    round++;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
