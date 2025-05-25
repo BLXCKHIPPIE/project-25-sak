@@ -1978,6 +1978,7 @@ namespace Wah
             int shots = 6;
             int roll = rand.Next(0, shots);
             int round = 1;
+            
 
 
             
@@ -1996,13 +1997,91 @@ namespace Wah
                 }
                 if (decision == "1")
                 {
-                    while (game = true)
+                    while (game == true)
                     {
                         Console.WriteLine("Demons turn");
                         roll = rand.Next(0, shots);
                         if (roll == 0)
                         {
-                            Console.WriteLine("The demon blows his brains out");
+                            Console.WriteLine("public static void RussianRoulette()
+        {
+            string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("you enter the Russian Roulette lounge, where silence weighs heavier than fate.\n" +
+                "A polished revolver rests on the table, and every click of the trigger is a heartbeat stolen.\n" +
+                "A demonic figure looms across from a trembling young lady.\n" +
+                "With a slow squeeze of the trigger, her fate is sealed. her body jerks, then stillness.\n" +
+                "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno\n" +
+                "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
+                "'Step up if you dare, {name}.'\n\n\n");
+
+            
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("1. Play (250 gold)\n2.Leave");
+            decision = Console.ReadLine();
+           
+            bool game = true;
+            int shots = 6;
+            int roll = rand.Next(0, shots);
+            int round = 1;
+
+
+            
+            
+                switch (decision)
+                {
+                    case "1":
+                        gold = gold - 250;
+                                    decision = "0";
+                        break;
+
+                    case "2":
+                        Level5();
+                        break;
+
+                        
+                }
+                if (decision == "1")
+                {
+                    while (game = true)
+                    {
+                        Console.WriteLine("Demons turn\n\n");
+                        roll = rand.Next(0, shots);
+                        if (roll == 0)
+                        {
+                            Console.WriteLine("he gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
+                            game = false;
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("The demon puts the revolver to his head and pulls the trigger without hesitation\n" +
+                                "you hear a click -- Damn! The demon has survived");
+                            shots--;
+                            Console.WriteLine("You press the cold steel of the revolver to your head\n");
+                                        Console.WriteLine("|    1. Pull the trigger    |");
+                            roll = rand.Next(0, shots);
+                            
+                           if (roll == 0)
+                            {
+                                Console.WriteLine("A deafening blast. Your thoughts splatter, immortalized in a grotesque mural.");
+                                            Console.ReadLine();
+                                DeathScreen();
+                            }
+                           else
+                            {
+                                shots--;
+                                Console.WriteLine("You squeeze the trigger… Click.\n" +
+                                    "Luck still lingers in your grasp.");
+                            
+
+                            }
+                            round++;
+                        }
+                        Console.ReadLine();
+");
+                        Console.WriteLine
                             game = false;
                             
                         }
@@ -2026,6 +2105,7 @@ namespace Wah
                                 shots--;
                                 Console.WriteLine("You slowly squeeze the trigger\n" +
                                     "You hear a click - its your lucky day!");
+                            
 
                             }
                             round++;
