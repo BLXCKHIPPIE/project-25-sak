@@ -1664,13 +1664,51 @@ namespace Wah
                     case "2":
                         Console.WriteLine("You know enough to avoid getting involved with cults. You move on.");
                         choiceloop = false;
+                        Level3_1(1);
                         break;
                     default:
                         Console.WriteLine("Incorrect input, please choose a valid option.");
                         break;
                 }
-                Console.ReadLine();
-                Console.Clear();
+                
+            }
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Menu("1. Question, 2. Attack");
+            Console.ForegroundColor = ConsoleColor.White;
+            temp = Console.ReadLine();
+            Console.Clear();
+            switch(temp)
+            {
+                case "1":
+                    if (intelligence > 12)
+                    {
+                        Console.WriteLine("You manage to shake off the surreal feelin and buckle down. Who is King Minos? Who is she?\n" +
+                            "What is she doing here?\n\n" +
+                            "'Does thou not remember King Minos? He who condemned you unto eternal torment? It is he that chooses\n" +
+                            "unto what Circle thou art condemned, as is his right, given unto him by God.'\n\n" +
+                            "You have another memory, this one disjointed and blurry; You remember being wrapped in layers of cloth,\n" +
+                            "so confused after your death.\n\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You have many questions, thrashing in your mouth, but you only manage to ask one. Who are these\n" +
+                            "people, and what are they doing?\n\n");
+                    }
+                    Console.WriteLine("'I am Mystery, Babylon the Great, and these, my children.'\n\n" +
+                        "The woman's voice is soft, but something about it sets you on edge. You are in Hell, after all:\n" +
+                        "there is no comfort to be found in this place.\n\n" +
+                        "'We perform a ritual to learn the name of God, and together, we shall leave this place.'\n");
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    Console.WriteLine($"You lunge at the woman, anticipating the crunch of bone, but your {weaponName} glances off a pane\n" +
+                        $"of invisible energy. The woman's eyes flash with arcane power, and you are lifted up off your feet." +
+                        $"\n\n'Thou art a brute, and I have no use for you. Return to me when hell has broken you.'\n\n" +
+                        $"A great force sweeps across you, like a wind, and you find yourself tumbling end-over-end through the air.\n" +
+                        $"One of those eerie roads spins into your view, and then everything goes black.");
+                    Console.ReadLine();
+                    Level3_1(2);
+                    break;
             }
             
 
@@ -1688,9 +1726,24 @@ namespace Wah
 
 
 
+
         }
-        public static void 3_1()//The layer guardian
+        public static void Level3_1(int route)//The layer guardian
         {
+            Console.Clear();
+            if(route == 1)
+            {
+                Console.WriteLine("Angel");
+            }
+            else if (route == 2)
+            {
+                Console.WriteLine("Mystery");
+            }
+            else
+            {
+                Console.WriteLine("Victory");
+            }
+            Console.ReadLine();
 
         }
 
