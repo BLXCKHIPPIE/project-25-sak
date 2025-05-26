@@ -1620,7 +1620,11 @@ namespace Wah
         {
             level = 3;
             string temp = " ";
-            bool choiceloop = false;
+            bool choiceloop = false, mystery = false;
+            string[] cultThings = { "wail and moan", "anoint themselves with fragrant incense", "inscribe names in an unholy tongue across their skin", "weep and gnash their teeth" };
+
+
+
             Console.Clear();
             Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1668,7 +1672,7 @@ namespace Wah
             }
             Console.Clear();
             choiceloop = true;
-            while (choiceloop)
+            while (choiceloop == true)
             {
                 Console.WriteLine("But as you walk through the city, you begin to hear a noise that you hadn't realized you missed: the sound\n" +
                     "of voices. Ahead of you, in the middle of an open plaza, stand a group of people. Not demons, people, dressed in loose,\n" +
@@ -1704,7 +1708,7 @@ namespace Wah
                                         "'Does thou not remember King Minos? He who condemned you unto eternal torment? It is he that chooses\n" +
                                         "unto what Circle thou art condemned, as is his right, given unto him by God.'\n\n" +
                                         "You have another memory, this one disjointed and blurry; You remember being wrapped in layers of cloth,\n" +
-                                        "so confused after your death.\n\n");
+                                        "so confused after your death.\n");
                                 }
                                 else
                                 {
@@ -1714,11 +1718,30 @@ namespace Wah
                                 Console.WriteLine("'I am Mystery, Babylon the Great, and these, my children.'\n\n" +
                                     "The woman is beautiful, and her voice soft, but something about her sets you on edge. You are in Hell, after all:\n" +
                                     "there is no comfort to be found in this place.\n\n" +
-                                    "'We perform a ritual to learn the name of God, and together, we shall leave this place.'\n");
-                                Console.ReadLine();
-
-
-
+                                    "'We perform a ritual to learn the name of God, and together, we shall leave this place.'\n\n" +
+                                    "Mystery holds out her hand, decorated with many rings, and smiles at you. It's a clear invitation.\n");
+                                mystery = true;
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("1. Join, 2. Refuse");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                temp = Console.ReadLine();
+                                Console.Clear();
+                                switch(temp)
+                                {
+                                    case "1":
+                                        Level3_2(1);//Leads to something later, for now you die.
+                                        break;
+                                    case "2":
+                                        Console.WriteLine("You think about it, before shaking your head. Mystery smiles sadly before withdrawing.\n\n" +
+                                            "'Free will is thy right, after all.'\n\n" +
+                                            "You see her return to her spot in the center of the circle before you leave.\n");
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+                                        Menu("Press ENTER to continue...");
+                                        Console.ForegroundColor = ConsoleColor.White;
+                                        Console.ReadLine();
+                                        Level3_1(1);
+                                        break;
+                                }
                                 break;
                             case "2":
                                 Console.WriteLine($"You lunge at the woman, anticipating the crunch of bone, but your {weaponName} glances off a pane\n" +
@@ -1726,6 +1749,7 @@ namespace Wah
                                     $"\n\n'Thou art a brute, and I have no use for you. Return to me when hell has broken you.'\n\n" +
                                     $"A great force sweeps across you, like a wind, and you find yourself tumbling end-over-end through the air.\n" +
                                     $"One of those eerie floating roads spins into your view, and then everything goes black.");
+                                choiceloop = false;
                                 Console.ReadLine();
                                 Level3_1(2);
                                 break;
@@ -1742,10 +1766,34 @@ namespace Wah
                         Level3_1(1);
                         break;
                     default:
-                        Console.WriteLine("Incorrect input, please choose a valid option.");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("Incorrect input, please choose a valid option.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
                 
+            }
+            choiceloop = true;
+            while (choiceloop)
+            {
+                Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
+                   $"as they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + "\n" +
+                   "steps down to meet you.\n\n" +
+                   "'Thou hast returned, stranger. Hast thou changed their mind? Wilst thee join us?'\n");
+                   Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("1. Join, 2. Attack, 3. Question, 4. Return to the Angel");
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                switch (temp)
+                {
+                    case "1":
+                        Level3_2(2); 
+                        break;
+                    case "4":
+                        Level3_1(6);
+                        Console.Clear();
+                        break;
+                }
             }
             
             
@@ -1768,39 +1816,118 @@ namespace Wah
         }
         public static void Level3_1(int route)//The layer guardian
         {
+            string temp = " ";
+            bool choiceloop = false;
+            string nameOfGod = rand.Next(0, 999).ToString();
             Console.Clear();
-            if(route == 1)
+            switch (route)
             {
-                Console.WriteLine("You hike up the winding road, carefully keeping your balance on the narrow path. The atmosphere is\n" +
+                case 1:
+                    Console.WriteLine("You hike up the winding road, carefully keeping your balance on the narrow path. The atmosphere is\n" +
                     "becoming increasingly stuffy as you climb; all the hot air is gathering at the roof of the cave. It feels like\n" +
                     "forever when you finally find something of note. But what a 'something' it is! Before you stands a massive door\n" +
                     "built into the roof of the cave, easily large enough to usher through a construction crane. But before the door\n" +
                     "stands something... otherworldy.\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("It's a being of immense splendor; a titan formed of light and flame, with wings spread to block the\n" +
+                        "gate and a flaming sword planted tip down in the road. It can only be an angel, but the pure, blazing radiance of\n" +
+                        "its face is a little like the sun: blinding. Behind its head hovers a wheel of fire, rimmed with multitudes of eyes,\n" +
+                        "and as you approach, those eyes roll to focus down on you.\n\n" +
+                        "'WHO APPROACHES?'\n\n" +
+                        "The angel bellows, a challenge.\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("1. State your name, 2. Attack, 3. Return to the Cult");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    temp = Console.ReadLine();
+                    Console.Clear();
+                    switch (temp)
+                    {
+                        case "1":
+                            Console.WriteLine("The Angel's halo spins, and you can see it scanning you. It's radiant face darkens.\n\n" +
+                                "'A SINNER COME TO ESCAPE THEIR FATE? NOT SO EASILY IS HELL BESTED.'\n\n" +
+                                "Despite his harsh words, he makes no move to attack you.\n\n" +
+                                "'I AM URIEL, AND ONLY THOSE WHO PASS MY CHALLENGE SHALL MAKE IT THROUGH THE GATE.'\n\n");
+                            break;
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Mystery");
+                    break;
+                default:
+                    Console.WriteLine("Victory");
+                    break;
+            }
+            choiceloop = true;
+            while (choiceloop)
+            {
+                Console.WriteLine("Uriel stands before you, blade planted between his feet. The heat from that weapon scalds your\n" +
+                    "skin even at this distance, and in sheer size, it's larger than your whole body.\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("Press ENTER to continue...");
+                Menu("1. Challenge, 2. Attack, 3. Return to the Cult");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+                temp = Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine("It's a being of immense splendor; a titan formed of light and flame, with wings spread to block the\n" +
-                    "gate and a flaming sword planted tip down in the road. It can only be an angel, but the pure, blazing radiance of\n" +
-                    "its face is a little like the sun: blinding. Behind its head hovers a wheel of fire, rimmed with multitudes of eyes,\n" +
-                    "and as you approach, those eyes roll to focus down on you.\n\n" +
-                    "'WHO APPROACHES?'\n\n" +
-                    "The angel bellows, a challenge.");
-                Console.ReadLine();
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("Uriel's wings spread, and he speaks in a voice like trumpets.\n\n" +
+                            "'WHAT IS THE NAME OF GOD?'\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("" + (route == 5 ? $"{nameOfGod}Speak the Name of God," : ""));
+                        Console.ForegroundColor = ConsoleColor.White;
+                        temp = Console.ReadLine();
+                        Console.Clear();
+                        if (temp == nameOfGod)
+                        {
+                            Console.WriteLine("YOU DID IT");
+                            Level4();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Uriel shakes his radiant head.\n\n" +
+                                "'THAT IS NOT THE NAME OF GOD.'");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        break;
+                    case "2":
+                        Console.WriteLine($"You surge forwards, {weaponName} ready. Maybe if you try--\n" +
+                            $"You don't even have time to react as Uriel swings, and you are reduced to nothing but atoms.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("You Are Dead.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
 
+                        Console.WriteLine($"\n\"\"Follow your own path, wherever it may lead you.\"\"");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("Soothing warmth surrounds you, and you find yourself lying on your back, staring at the inverted\n" +
+                            "city once more. Uriel withdraws his hands, his angelic power knitting your body back from the ether.\n\n" +
+                            $"'THAT WAS NOT THE CHALLENGE, {name.ToUpper()}'");
+                        Console.ReadLine();
+                        death++;
+                        Console.Clear();
+                        break;
+                    case "3":
+                        Console.WriteLine("You turn away, and walk back to the city.");
+                        choiceloop = false;
+                        break;
+                }
             }
-            else if (route == 2)
-            {
-                Console.WriteLine("Mystery");
-            }
-            else
-            {
-                Console.WriteLine("Victory");
-            }
-            Console.ReadLine();
+        }
+        public static void Level3_2(int route)//Join the cult
+        {
 
         }
+
+
+        
 
         static void SatanSays()
         {
