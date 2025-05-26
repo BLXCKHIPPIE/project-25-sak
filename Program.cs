@@ -19,7 +19,7 @@ namespace Wah
 
         // Character sheet //
 
-        public static string name = " ";
+        public static string name = "Traveler";
         public static int strength = 10;
         public static int vitality = 100; // Max health
         public static int intelligence = 10;
@@ -29,6 +29,7 @@ namespace Wah
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fists";
+
         // Bools tied to level 5 
         public static bool champion = false;
         public static bool degen = false;
@@ -406,7 +407,7 @@ namespace Wah
             int damage, attack;
 
             attack = rand.Next(0, 10);
-            damage = rand.Next(0, mAttack);
+            damage = rand.Next(1, mAttack);
 
 
 
@@ -608,7 +609,7 @@ namespace Wah
 
         public static void MonsterRound()//monster's turn
         {
-            int damage, attack, block = 2;
+            int block = 2;
             if (monHp >= 0 && coward == false)
             {
                 Console.WriteLine($"\n\nIt is {monsterName}'s turn.\n");
@@ -620,17 +621,15 @@ namespace Wah
 
                 Console.WriteLine('\n');
 
-                attack = rand.Next(0, 10) + mAttack;// determines whether an attack hits
-                damage = rand.Next(0, mAttack); // determines monster damage
                 switch (rand.Next(0, 4))
                 {
                     case <=1:
                         MonsterAttacks(mAttack, 1);
                         break;
-                    case 2:
+                    case <=3:
                         MonsterAttacks(mAttack, 2);
                         break;
-                    case 3:
+                    case 4:
                         if (monHp <= monPanic)
                         {
                             Console.WriteLine($"{monsterName} throws some gold at you. While you are distracted, {monsterName} flees.");
@@ -1633,9 +1632,17 @@ namespace Wah
                 "tumbling down into the fire. And the city ahead doesn't seem like it will offer much more comfort; the multitudinous\n" +
                 "windows reflecting the color of the flames gives the appearance of a hundred baleful eyes, pinning you with their gaze.\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Menu("Press ENTER to continue...");
+            Menu("1. Jump off the road, 2. Continue");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
+            temp = Console.ReadLine();
+            if (temp == "1")
+            {
+                Console.Clear();
+                Console.WriteLine("You take a flying leap off the road, and the wind whirls in your ears. You were told we all float down\n" +
+                    "here.\n\n" +
+                    "So that was a lie.\n\n");
+                DeathScreen();
+            }
             Console.Clear();
             choiceloop = true;
             while (choiceloop)
@@ -2118,9 +2125,9 @@ namespace Wah
 
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($" the fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
+                Console.WriteLine($"The fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
                     "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
-                    "'Care to try your luck, stranger? The house pays well... if you survive.'\n\n\n");
+                    "'Care to try your luck, stranger? The house pays well... if you survive.'\n");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("1. Fight!(350 gold)\n2. Leave");
                 decision = Console.ReadLine();
@@ -2145,7 +2152,7 @@ namespace Wah
                 }
                 Console.Clear();
                 Console.WriteLine("'Stepping into the ring—the Young Nephilim. Born just three days ago, yet already thrown into the fight.\n" +
-                    "' Will his divine blood save him, or will he fall like the rest?'\n\n\n");
+                    "'Will his divine blood save him, or will he fall like the rest?'\n");
                 Console.ForegroundColor= ConsoleColor.Red;
                 Console.WriteLine("Press ENTER to fight!");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -2158,7 +2165,7 @@ namespace Wah
                 Console.ReadLine();
                 Combat("Cursed Vagabond", 2, 2);
                 Console.WriteLine($"'{name} stands victorious—the Cursed Vagabond is no more, his struggle ending like all the others before him.\nBut the air shifts, the crowd quiets, and a new presence looms at the edge of the arena.\nHugh Capet.\n" +
-                    "\nOnce a king, now a wretched soul bound by the weight of greed.\n Gold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
+                    "\nOnce a king, now a wretched soul bound by the weight of greed.\nGold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
                     $"'Will {name} break the chains, or be crushed beneath them?'");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Press ENTER to continue");
@@ -2180,7 +2187,7 @@ namespace Wah
             else
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"'The Champion returns… but there are no challengers left.\n The pit stands empty, fear outweighing ambition. For now {name}, earths mightiest traveller reigns uncontested.'\n\n\n");
+                Console.WriteLine($"'The Champion returns… but there are no challengers left.\nThe pit stands empty, fear outweighing ambition. For now {name}, earths mightiest traveller reigns uncontested.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("Press ENTER to leave");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -2208,7 +2215,7 @@ namespace Wah
                               "With a slow squeeze of the trigger, her fate is sealed. Her body jerks, then stillness.\n" +
                               "The demon clicks his fingers, and with a flash of fire, she vanishes into the abyss, claimed by the inferno.\n" +
                               "He leans back, turning his burning gaze toward you. His voice drips with amusement, thick with menace:\n" +
-                              $"'Step up if you dare, {name}.'\n\n");
+                              $"'Step up if you dare, {name}.'\n");
 
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("1. Play (250 gold)\n2. Leave");
