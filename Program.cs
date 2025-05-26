@@ -1598,6 +1598,7 @@ namespace Wah
         {
             level = 3;
             string temp = " ";
+            bool choiceloop = false;
             Console.Clear();
             Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1626,6 +1627,52 @@ namespace Wah
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("You make your way up the winding path towards the inverted city, listening to the sound of crackling and\n" +
+                "screams wafting up from the plains below. The road is narrower than it looked, and more than once you come close to\n" +
+                "tumbling down into the fire. And the city ahead doesn't seem like it will offer much more comfort; the multitudinous\n" +
+                "windows reflecting the color of the flames gives the appearance of a hundred baleful eyes, pinning you with their gaze.\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            choiceloop = true;
+            while (choiceloop)
+            {
+                Console.WriteLine("But as you walk through the city, you begin to hear a noise that you hadn't realized you missed: the sound\n" +
+                    "of voices. Ahead of you, in the middle of an open plaza, stand a group of people. Not demans, people, dressed in loose,\n" +
+                    "flowing robes. Their voices flow across the wind, sonorous and overlapping. You don't understand the words, but they\n" +
+                    "carry meaning. They are surroundind someone in the center, a woman with red hair that whips in the hot wind.\n\n" +
+                    "This...looks a lot like a cult.\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("1. Approach the cult, 2. Carry on");
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("You deviate from your path, approaching the plaza. As you approach, you see many of the\n" +
+                            "cloaked figures eyeing you, but they do not stop their chanting. It's eerie, as if they have traded their\n" +
+                            "individuality for a single, sonorous voice. The red-haired woman in the center, however, lowers her arms as\n" +
+                            "you approach.\n\n" +
+                            "'Even in hell, the chain that is humanity remains unbroken. King Minos sends us a gift.'\n\n" +
+                            "What's your next move?\n");
+                        choiceloop = false;
+                        break;
+                    case "2":
+                        Console.WriteLine("You know enough to avoid getting involved with cults. You move on.");
+                        choiceloop = false;
+                        break;
+                    default:
+                        Console.WriteLine("Incorrect input, please choose a valid option.");
+                        break;
+                }
+                Console.ReadLine();
+                Console.Clear();
+            }
+            
 
 
 
@@ -1639,6 +1686,11 @@ namespace Wah
 
 
 
+
+
+        }
+        public static void 3_1()//The layer guardian
+        {
 
         }
 
