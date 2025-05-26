@@ -2,6 +2,7 @@
 using System.Collections;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
+using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -45,7 +46,7 @@ namespace Wah
             Console.WriteLine("     ██║███╗██║██╔══██║██╔══██║");
             Console.WriteLine("     ╚███╔███╔╝██║  ██║██║  ██║");
             Console.WriteLine("      ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n\n");
-            Console.WriteLine("   We are hungry games presents...\n\n");
+            Console.WriteLine("   We are Hungry games presents...\n\n");
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.ReadLine(); // pause
@@ -252,6 +253,7 @@ namespace Wah
                         break;
                     case "3":
                         Console.WriteLine("Coming soon");
+                        Console.ReadLine();
                         break;
                     case "4":
                         DevMenu();
@@ -274,7 +276,7 @@ namespace Wah
 
             string decision;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("1. Lust\n2. Violence\n3. Character\n4. Death Screen\n5. Bonfire\n6. Roulette\n7. Slots\n8. level 5\n9. Exit");
+            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
@@ -304,6 +306,9 @@ namespace Wah
                     Level5();
                     break;
                 case "9":
+                    Level3();
+                    break;
+                case "10":
                     break;
             }
             }
@@ -1592,6 +1597,39 @@ namespace Wah
         public static void Level3()// Circle 7: Heresy
         {
             level = 3;
+            string temp = " ";
+            Console.Clear();
+            Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Your ears pop as you ascend from the layer and into the one beyond. It reminds you of being on an airplane,\n" +
+                "and with that, you suddenly have a memory, as clear as a crystallized diamond, of sitting in a plane. The 'fasten\n" +
+                "seatbelt' signs are flashing, and the sensation of vertigo fils your belly. But as quickly as the memory comes, it\n" +
+                "vanishes, leaving you with your now-familiar mental haze. It's probably for the best; there are other things to focus\n" +
+                "on.\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Treachery was cold, and Violence was oppresively gloomy. But this layer is scaldingly hot, almost blistering\n" +
+                "against your skin. But it's the smell that makes you recoil; the scent of rusty iron, carrying with it the parasitical\n" +
+                "taste of blood. A deep orange glow meets your eyes as you take a look around. The landscape is terrifyingly bizzare,\n" +
+                "it is best described as a vast cavern. From the ceiling, like enormous stalactites, hang the towering shapes of inverted\n" +
+                "skyscrapers, the roads between them suspended in the air. Below is a barren, rocky ground, laced with glowing cracks of\n" +
+                "burning lava and pools of boiling blood.\n\n" +
+                "This looks like Hell.\n");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+
+
+
+
 
 
 
