@@ -352,7 +352,7 @@ namespace Wah
             monsterName = creature;
             bool combat = true;
             monHp = difficulty * 10;
-            monPanic = (difficulty * 10) - (difficulty * 8);
+            monPanic = (difficulty * 10) - (difficulty * 9);
             monSpeed = speed;
             int spoils = difficulty * rand.Next(20, 50);
 
@@ -609,7 +609,7 @@ namespace Wah
 
         public static void MonsterRound()//monster's turn
         {
-            int block = 2;
+            int block = 2, damage = 0;
             if (monHp >= 0 && coward == false)
             {
                 Console.WriteLine($"\n\nIt is {monsterName}'s turn.\n");
@@ -626,10 +626,10 @@ namespace Wah
                     case <=1:
                         MonsterAttacks(mAttack, 1);
                         break;
-                    case <=3:
+                    case 2:
                         MonsterAttacks(mAttack, 2);
                         break;
-                    case 4:
+                    case 3:
                         if (monHp <= monPanic)
                         {
                             Console.WriteLine($"{monsterName} throws some gold at you. While you are distracted, {monsterName} flees.");
@@ -639,17 +639,39 @@ namespace Wah
                         {
                             if (blocking == true)
                             {
-                                Console.WriteLine($"{monsterName} drops their defensive stance.");
-                                monSpeed = (monSpeed - block);
-                                mAttack = mAttack + block;
-                                blocking = false;
+                                switch(monsterName)//allows for custom gimmicks
+                                {
+                                    case "Benedict Arnold":
+                                        damage = rand.Next(7, 21);
+                                        Console.WriteLine($"{monsterName} fires his musket, dealing {damage} damage!");
+                                        vitality = vitality - damage;
+                                        blocking = false;
+                                        break;
+
+                                    default:
+                                        Console.WriteLine($"{monsterName} drops their defensive stance.");
+                                        monSpeed = (monSpeed - block);
+                                        mAttack = mAttack + block;
+                                        blocking = false;
+                                        break;
+
+                                }
                             }
                             else
                             {
-                                Console.WriteLine($"{monsterName} takes a defensive stance.");
-                                monSpeed = monSpeed + block;
-                                mAttack = mAttack - block;
-                                blocking = true;
+                                switch(monsterName)
+                                {
+                                    case "Benedict Arnold":
+                                        Console.WriteLine($"{monsterName} loads his musket!");
+                                        blocking = true;
+                                        break;
+                                    default:
+                                        Console.WriteLine($"{monsterName} takes a defensive stance.");
+                                        monSpeed = monSpeed + block;
+                                        mAttack = mAttack - block;
+                                        blocking = true;
+                                        break;
+                                }
                             }
                         }
                         break;
@@ -662,6 +684,7 @@ namespace Wah
             else
             {
                 Console.WriteLine($"{monsterName} has been defeated!\nYou are victorious!\n");
+                blocking = false;
             }
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\nPress ENTER to continue...");
@@ -1319,7 +1342,7 @@ namespace Wah
                         Menu("Strength check passed., Your Strength has increased.");
                         strength = strength + 1;
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("You don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
+                        Console.WriteLine("\nYou don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
                             $"person-shaped forms of ice that jut from the barren, endless ice-fields. Using your {weaponName}, you bash open\n" +
                             $"the section where it's face should be. A long, thin scream escaped the ice, but when you peer inside, there's a\n" +
                             $"woman staring back at you, thrashing in her prison. Not  Benedict Arnold. Oh well. On to the next.");
@@ -1648,9 +1671,9 @@ namespace Wah
             while (choiceloop)
             {
                 Console.WriteLine("But as you walk through the city, you begin to hear a noise that you hadn't realized you missed: the sound\n" +
-                    "of voices. Ahead of you, in the middle of an open plaza, stand a group of people. Not demans, people, dressed in loose,\n" +
+                    "of voices. Ahead of you, in the middle of an open plaza, stand a group of people. Not demons, people, dressed in loose,\n" +
                     "flowing robes. Their voices flow across the wind, sonorous and overlapping. You don't understand the words, but they\n" +
-                    "carry meaning. They are surroundind someone in the center, a woman with red hair that whips in the hot wind.\n\n" +
+                    "carry meaning. They are surrounding someone in the center, a woman with red hair that whips in the hot wind.\n\n" +
                     "This...looks a lot like a cult.\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Menu("1. Approach the cult, 2. Carry on");
@@ -1666,10 +1689,55 @@ namespace Wah
                             "you approach.\n\n" +
                             "'Even in hell, the chain that is humanity remains unbroken. King Minos sends us a gift.'\n\n" +
                             "What's your next move?\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("1. Question, 2. Attack");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        temp = Console.ReadLine();
+                        Console.Clear();
+                        switch (temp)
+                        {
+                            case "1":
+                                if (intelligence > 12)
+                                {
+                                    Console.WriteLine("You manage to shake off the surreal feeling and buckle down. Who is King Minos? Who is she?\n" +
+                                        "What is she doing here?\n\n" +
+                                        "'Does thou not remember King Minos? He who condemned you unto eternal torment? It is he that chooses\n" +
+                                        "unto what Circle thou art condemned, as is his right, given unto him by God.'\n\n" +
+                                        "You have another memory, this one disjointed and blurry; You remember being wrapped in layers of cloth,\n" +
+                                        "so confused after your death.\n\n");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You have many questions, thrashing in your mouth, but you only manage to ask one. Who are these\n" +
+                                        "people, and what are they doing chanting in a circle?\n");
+                                }
+                                Console.WriteLine("'I am Mystery, Babylon the Great, and these, my children.'\n\n" +
+                                    "The woman is beautiful, and her voice soft, but something about her sets you on edge. You are in Hell, after all:\n" +
+                                    "there is no comfort to be found in this place.\n\n" +
+                                    "'We perform a ritual to learn the name of God, and together, we shall leave this place.'\n");
+                                Console.ReadLine();
+
+
+
+                                break;
+                            case "2":
+                                Console.WriteLine($"You lunge at the woman, anticipating the crunch of bone, but your {weaponName} glances off a pane\n" +
+                                    $"of invisible energy. The woman's eyes flash with arcane power, and you are lifted up off your feet." +
+                                    $"\n\n'Thou art a brute, and I have no use for you. Return to me when hell has broken you.'\n\n" +
+                                    $"A great force sweeps across you, like a wind, and you find yourself tumbling end-over-end through the air.\n" +
+                                    $"One of those eerie floating roads spins into your view, and then everything goes black.");
+                                Console.ReadLine();
+                                Level3_1(2);
+                                break;
+                        }
                         choiceloop = false;
                         break;
                     case "2":
-                        Console.WriteLine("You know enough to avoid getting involved with cults. You move on.");
+                        Console.WriteLine("You know enough to avoid getting involved with cults. You move on.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
                         choiceloop = false;
                         Level3_1(1);
                         break;
@@ -1679,44 +1747,7 @@ namespace Wah
                 }
                 
             }
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Menu("1. Question, 2. Attack");
-            Console.ForegroundColor = ConsoleColor.White;
-            temp = Console.ReadLine();
-            Console.Clear();
-            switch(temp)
-            {
-                case "1":
-                    if (intelligence > 12)
-                    {
-                        Console.WriteLine("You manage to shake off the surreal feelin and buckle down. Who is King Minos? Who is she?\n" +
-                            "What is she doing here?\n\n" +
-                            "'Does thou not remember King Minos? He who condemned you unto eternal torment? It is he that chooses\n" +
-                            "unto what Circle thou art condemned, as is his right, given unto him by God.'\n\n" +
-                            "You have another memory, this one disjointed and blurry; You remember being wrapped in layers of cloth,\n" +
-                            "so confused after your death.\n\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You have many questions, thrashing in your mouth, but you only manage to ask one. Who are these\n" +
-                            "people, and what are they doing?\n\n");
-                    }
-                    Console.WriteLine("'I am Mystery, Babylon the Great, and these, my children.'\n\n" +
-                        "The woman's voice is soft, but something about it sets you on edge. You are in Hell, after all:\n" +
-                        "there is no comfort to be found in this place.\n\n" +
-                        "'We perform a ritual to learn the name of God, and together, we shall leave this place.'\n");
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    Console.WriteLine($"You lunge at the woman, anticipating the crunch of bone, but your {weaponName} glances off a pane\n" +
-                        $"of invisible energy. The woman's eyes flash with arcane power, and you are lifted up off your feet." +
-                        $"\n\n'Thou art a brute, and I have no use for you. Return to me when hell has broken you.'\n\n" +
-                        $"A great force sweeps across you, like a wind, and you find yourself tumbling end-over-end through the air.\n" +
-                        $"One of those eerie roads spins into your view, and then everything goes black.");
-                    Console.ReadLine();
-                    Level3_1(2);
-                    break;
-            }
+            
             
 
 
@@ -1740,7 +1771,24 @@ namespace Wah
             Console.Clear();
             if(route == 1)
             {
-                Console.WriteLine("Angel");
+                Console.WriteLine("You hike up the winding road, carefully keeping your balance on the narrow path. The atmosphere is\n" +
+                    "becoming increasingly stuffy as you climb; all the hot air is gathering at the roof of the cave. It feels like\n" +
+                    "forever when you finally find something of note. But what a 'something' it is! Before you stands a massive door\n" +
+                    "built into the roof of the cave, easily large enough to usher through a construction crane. But before the door\n" +
+                    "stands something... otherworldy.\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("It's a being of immense splendor; a titan formed of light and flame, with wings spread to block the\n" +
+                    "gate and a flaming sword planted tip down in the road. It can only be an angel, but the pure, blazing radiance of\n" +
+                    "its face is a little like the sun: blinding. Behind its head hovers a wheel of fire, rimmed with multitudes of eyes,\n" +
+                    "and as you approach, those eyes roll to focus down on you.\n\n" +
+                    "'WHO APPROACHES?'\n\n" +
+                    "The angel bellows, a challenge.");
+                Console.ReadLine();
+
             }
             else if (route == 2)
             {
