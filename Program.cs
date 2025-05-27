@@ -2111,7 +2111,7 @@ namespace Wah
         {
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[3]; //Change this number to change the length of 'Satan Says'
+            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
 
             for (int i = 0; i < sequence.Length; i++)
             {
@@ -2360,6 +2360,8 @@ namespace Wah
             {
                 SatanSays(ref playAgain);
                 timesLost++;
+                Combat("Shadow", 4, 2);
+                
             } while (playAgain == true);
 
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
