@@ -2111,7 +2111,7 @@ namespace Wah
         {
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
+            int[] sequence = new int[8]; //Change this number to change the length of 'Satan Says'
 
             for (int i = 0; i < sequence.Length; i++)
             {
