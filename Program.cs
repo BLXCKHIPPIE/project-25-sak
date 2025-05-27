@@ -1507,63 +1507,71 @@ namespace Wah
         }
         public static void Level2_1()// Circle 8: Violence River
         {
-           
-            int decision;
             level = 2;
             Console.Clear();
             Console.WriteLine("You descend down the cliff and are met with a river of blood and fire. Across is a dark and twisted forest.");
             Console.WriteLine("The River is guarded by a Centaur armed with a sword");
             Console.WriteLine("Those who have sinned to a certain degree will be hunted by the Centaur if they try to cross the river.\n\nWill you attempt to cross?\n");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("1. Cross the river");
-            Console.WriteLine("2. Attack the Centaur");
+            Menu("1. Cross the river, 2. Fight the Centaur");
             Console.ForegroundColor = ConsoleColor.White;
-            decision = Convert.ToInt32(Console.ReadLine());
+            string decision = Console.ReadLine();
             Console.Clear();
-            if (decision == 1) //If they cross the river
+            switch (decision)
             {
-                if (karmaScore < -10)
-                {
-                    Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
+                case "2":
+
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
+                    Console.WriteLine("He gallops over to you, and pulls out his sword. ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Combat("The Centaur", 3, 3);
+                    Console.ReadLine();
+                    Combat("Centaur", 4, 1); //Heavy but slow
                     Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.");
+                    break;
+
+                case "1":
+                default:
+                    intelligence++;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Your Intelligence increased by 1");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    Console.Clear() ;
-                }
-
+                    if (karmaScore < -10)
+                    {
+                        Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Combat("The Centaur", 3, 3);
+                        Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    break;
             }
-
-            if (decision == 2) //If they Attack
-            {
-
-                Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
-                Console.WriteLine("He gallops over to you, and pulls out his sword. ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-                Combat("Centaur", 4, 1); //Heavy but slow
-                Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-            }
-
+                
             Level2_2();
         }
 
@@ -1573,51 +1581,87 @@ namespace Wah
             Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); 
             Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("1. Gather Wood\n2. Carry on moving through the forest");
+            Menu("1. Gather wood for a bonfire, 2. Carry on through the forest");
             Console.ForegroundColor = ConsoleColor.White;
-            int decision = Convert.ToInt32(Console.ReadLine());
+            string decision = Console.ReadLine();
             Console.Clear();
-            if (decision == 1) //If the player decides to gather wood
+            switch (decision)
             {
-                Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
-                Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
-                Console.WriteLine("WHY WOULD YOU RIP OFF THAT BRANCH!"); Thread.Sleep(1500);
-                Console.WriteLine("DO YOU HAVE ANY EMPATHY?"); Thread.Sleep(1500);
-                Console.WriteLine("WHAT IS WRONG WITH YOU!"); Thread.Sleep(1500);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Clear();
-                Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-                Console.Clear();
-                //Fight goes here
-                Combat("Harpy", 2, 4);
-                Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
-                Bonfire();
+                
+                case "2":
+                    intelligence++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case "1":
+                default:
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
+                    Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("AAAAAAARRHHHGHH!"); Thread.Sleep(1500);
+                    Console.WriteLine("WHY WOULD YOU RIP OFF THAT BRANCH!"); Thread.Sleep(1500);
+                    Console.WriteLine("DO YOU HAVE ANY EMPATHY?"); Thread.Sleep(1500);
+                    Console.WriteLine("WHAT IS WRONG WITH YOU!"); Thread.Sleep(1500);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Clear();
+                    Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    //Fight goes here
+                    Combat("Harpy", 2, 4);
+                    Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Bonfire();
+                    break;
             }
-            else //If the player decides to leave the forest
+                Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+            do
             {
-                Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible"); 
-            }
-            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Menu("Press ENTER to continue...");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-            Combat("Minotaur", 6, 2);
+                Combat("Minotaur", 6, 2);
+                if (coward == true) //If they run from the minotaur
+                {
+                    Console.WriteLine("The minotaur was far too powerful for you to handle. You run away back in to the forest.");
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("1. Rest at the bonfire, 2. Go back to the minotaur");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    decision = Console.ReadLine();
+                    if (decision != "2")
+                    {
+                        Bonfire();
+                        Console.WriteLine("Now that you are fully rested, It's time to try again");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to fight the Minotaur...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                    }
+                }
+            } while (coward == true); //Makes it so that the player cannot run from the minotaur
             Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
             Console.ReadLine();
             //Was thinking of putting ASCII text art for "HERESY" after here
@@ -2086,7 +2130,7 @@ namespace Wah
         {
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
+            int[] sequence = new int[8]; //Change this number to change the length of 'Satan Says'
 
             for (int i = 0; i < sequence.Length; i++)
             {
@@ -2102,31 +2146,31 @@ namespace Wah
                         {
                             case 0:
                                 Console.BackgroundColor = ConsoleColor.Red;
-                                Console.Beep(915, 700);
                                 Console.Write(" RED ");
+                                Console.Beep(915, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "r";
                                 break;
                             case 1:
                                 Console.BackgroundColor = ConsoleColor.Blue;
-                                Console.Beep(794, 700);
                                 Console.Write(" BLUE ");
+                                Console.Beep(794, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "b";
 
                                 break;
                             case 2:
                                 Console.BackgroundColor = ConsoleColor.Green;
-                                Console.Beep(646, 700);
                                 Console.Write(" GREEN ");
+                                Console.Beep(646, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "g";
                                 break;
                             case 3:
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
-                                Console.Beep(1298, 700);
                                 Console.Write(" YELLOW ");
+                                Console.Beep(1298, 700);
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "y";
@@ -2142,7 +2186,9 @@ namespace Wah
                     do
                     {
                         Console.Clear();
-                        Console.WriteLine("Press 1 To begin Satan Says\nPress 2 for the rules");
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Menu("1. Begin Satan Says, 2. Read the Rules");
+                        Console.ForegroundColor = ConsoleColor.White;
                         guess = Console.ReadLine();
                         if (guess != "1" && guess != "2") // Invalid Input
                         {
@@ -2201,7 +2247,9 @@ namespace Wah
                     if (i > 0)
                     {
                         Console.Clear();
-                        Console.WriteLine("Correct!\n\nPress Enter to continue");
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Menu("Correct! Press Enter to continue");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                     }
                     playAgain = false;
@@ -2221,7 +2269,9 @@ namespace Wah
             {
                 Console.WriteLine($"Your score is currently: {playerScore}/{timesLost}");
                 Console.WriteLine("Input your guess! Rock, Paper, or Scissors!\n");
-                Console.WriteLine("r. Rock\np. Paper\ns. Scissors");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Menu("r. Rock, p. Paper, s. Scissors");
+                Console.ForegroundColor = ConsoleColor.White;
                 guess = Console.ReadLine().ToLower();
                 Console.Clear();
 
@@ -2311,28 +2361,41 @@ namespace Wah
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
             Console.WriteLine("A large light pointing down at the center of the room turns on");
             Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
             Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
             Console.WriteLine("If you want to go through that door, you have to go through me.");
             Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             do
             {
                 SatanSays(ref playAgain);
                 timesLost++;
+                Combat("Shadow", 4, 2);
+                
             } while (playAgain == true);
 
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
-            Console.WriteLine("Press Enter to enter the door");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to go through the door...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding");
             Console.WriteLine("\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.");
             Console.WriteLine("After all, I am the only one who can open the door.");
             Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             RockPaperScissors(ref timesLost);
@@ -2341,6 +2404,9 @@ namespace Wah
             Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
             Console.WriteLine("The Shadow points his arm at the door and it opens");
             Console.WriteLine("Press enter to go through");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Level5();
@@ -2894,13 +2960,14 @@ namespace Wah
 
                         Console.WriteLine("Before you can even process what's happening, a fist slams into your gut.\n" +
                                           "The world tilts as you're sent sprawling, each blow driving the lesson home—you don’t walk away from debt.\n\n");
-                        Console.ReadLine();
+                        
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Health -50\nKarma -10\nGold -{gold}");
                         gold = 0;
                         vitality -= 50;
                         karmaScore -= 10;
                         debt = false;
+                        Console.ReadLine();
                         break;
 
                     default:
@@ -3092,6 +3159,7 @@ namespace Wah
         public static void Level7()// Circle 3: Lust
         {
             level = 7;
+            vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
             int decision;
 
             Console.Clear();
@@ -3364,8 +3432,10 @@ namespace Wah
 
         
 
-        public static void Level7_5()
-        { }
+        public static void Level7_5() // FINAL BOSS FIGHT
+        {
+        
+        }
 
         public static void Vendor()
         {
