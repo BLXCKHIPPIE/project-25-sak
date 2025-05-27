@@ -1781,7 +1781,7 @@ namespace Wah
             while (choiceloop)
             {
                 Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
-                   $"as they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
+                   $"As they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
                    "'Thou hast returned, stranger. Hast thou changed their mind? Wilst thee join us?'\n");
                    Console.ForegroundColor = ConsoleColor.Magenta;
                 Menu("1. Join, 2. Attack, 3. Question, 4. Return to the Angel");
@@ -1883,7 +1883,7 @@ namespace Wah
                     Console.WriteLine("Mystery");
                     break;
                 default:
-                    Console.WriteLine("Victory");
+                    Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.");
                     break;
             }
             choiceloop = true;
@@ -1961,14 +1961,16 @@ namespace Wah
         public static bool AngelMenu(ref bool holyRune)
         {
             string temp = " ";
-            bool question = false, choiceloop = true;
+            bool godQuestion = false, cultQuestion = false, choiceLoop = true;
+            holyRune = false;
+            int encounter = 0;
 
-            while (choiceloop == true)
+            while (choiceLoop == true)
             {
                 Console.Clear();
                 Console.WriteLine($"What would you like to question?\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu((question == false ? "1. How do I pass your challenge?," : "1. And how do I learn that?,") + "2. What was that cult back there?, 3. Can I really leave hell?, 5. Return.");
+                Menu((godQuestion == false ? "1. How do I pass your challenge?," : "1. And how do I learn that?,") + (cultQuestion == false ? "2. Tell me about the cult, " : "2. How do I beat them when they have plot armor?, ") + "3. Can I really leave hell?, 5. Return");
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
@@ -1976,23 +1978,85 @@ namespace Wah
                 switch (temp)
                 {
                     case "1":
-                        if (question == false)
+                        if (godQuestion == false)
                         {
-                            Console.WriteLine("'YOU MUST LEARN THE NAME OF GOD!'");
-                            question = true;
+                            Console.WriteLine("'YOU MUST LEARN THE NAME OF GOD.'\n\n" +
+                                "The Angel replies cryptically.\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            godQuestion = true;
                         }
                         else
                         {
-                            Console.WriteLine("");
+                            Console.WriteLine("'SLAY THE CULT IN THE NAME OF RIGHTOUSNESS, AND IT WILL BE REVEALED.'\n\n" +
+                                "The Angel's wings blaze, and the orange glow radiating up from the ground, miles below, increases.\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
                         }
                         break;
-                    case "5":
-                        choiceloop = false;
+                    case "2":
+                        if (cultQuestion == false)
+                        {
+                            Console.WriteLine("'DEFILERS. THE HARLOT OF BABYLON OFFERS FALSE TRUTH, WHILE BLEEDING DRY THE SOULS OF HER MISERABLE FOLLOWERS. MANY ARE\n" +
+                                "THE BONES THAT LITTER HER WAKE.'\n\n" +
+                                "The Angel drives his blade harder into the earth, wings blazing.\n\n" +
+                                "'SHOULD THEY BE SLAIN, I WOULD CONSIDER IT SERVICE'\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            cultQuestion = true;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Holy Rune gained.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\n'BABYLON DRAWS HER POWER FROM THE PROFANE RITUALS OF HER FOLLOWERS. I CAN GRANT YOU A POWER'\n" +
+                                "THAT WILL UNDO HER WICKED SPELL.'\n\n" +
+                                "He reaches forwards, and you feel a scalding power surge across your chest. When you look down, you see a glowing.\n" +
+                                "rune across your chest, thrumming with power. It burns, but it feels good.\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            holyRune = true;
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("'PEHAPS YOU CAN FIND REDEMPTION OF A SORT, BUT I WARN YOU THAT THE PATH WILL NOT BE EASY.'\n\n" +
+                            "The Angel seems regretful, the intense light of his countenance dimming. He looks down at you, and sighs.\n");
+                        if(karmaScore <=0)
+                        {
+                            Console.WriteLine("'YOU HAVE A LONG WAY TO GO YET.\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("'YOUR SOUL IS LIGHTENING ALREADY.'\n");
+                        }
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        choiceLoop = false;
+                        Console.Clear();
+                        Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
+                        encounter = rand.Next(0, 11);
+                        if(encounter >= 0)
+                        {
+                            Console.WriteLine("On the way back, you are ambushed by a shrieking demon!");
+                            Combat("The Shrieking Demon", 2, 5);
+                        }
                         break;
                 }
             }
-            Console.ReadLine();
-            return holyRune = false;
+            return holyRune;
 
 
         }
