@@ -1512,10 +1512,18 @@ namespace Wah
             Menu("1. Cross the river, 2. Fight the Centaur");
             Console.ForegroundColor = ConsoleColor.White;
             string decision = Console.ReadLine();
+            Console.Clear();
             switch (decision)
             {
                 case "2":
-                        Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
+
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
                     Console.WriteLine("He gallops over to you, and pulls out his sword. ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
@@ -1531,6 +1539,10 @@ namespace Wah
 
                 case "1":
                 default:
+                    intelligence++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     if (karmaScore < -10)
                     {
                         Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
@@ -1573,10 +1585,22 @@ namespace Wah
             {
                 
                 case "2":
+                    intelligence++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case "1":
                 default:
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
                     Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -1607,13 +1631,33 @@ namespace Wah
                     Bonfire();
                     break;
             }
+                Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+            do
+            {
+                Combat("Minotaur", 6, 2);
+                if (coward == true) //If they run from the minotaur
+                {
+                    Console.WriteLine("The minotaur was far too powerful for you to handle. You run away back in to the forest.");
 
-            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Menu("Press ENTER to continue...");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-            Combat("Minotaur", 6, 2);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("1. Rest at the bonfire, 2. Go back to the minotaur");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    decision = Console.ReadLine();
+                    if (decision != "2")
+                    {
+                        Bonfire();
+                        Console.WriteLine("Now that you are fully rested, It's time to try again");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to fight the Minotaur...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                    }
+                }
+            } while (coward == true); //Makes it so that the player cannot run from the minotaur
             Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
             Console.ReadLine();
             //Was thinking of putting ASCII text art for "HERESY" after here
