@@ -29,8 +29,8 @@ namespace Wah
         public static int gold = 100;
         public static int death = 0;
         public static int level = 0;
-        public static int weapon = 0; //used to derive damage calcs
-        public static string weaponName = "fist";
+        public static int weapon = 2; //used to derive damage calcs
+        public static string weaponName = "rusty knife";
 
         // Bools tied to level 5 
         public static bool champion = false;
@@ -201,7 +201,8 @@ namespace Wah
                     Level1();
                     break;
                 case 2:
-                    Level2(); break;
+                    Level2();
+                    break;
                 case 3:
                     Level3();
                     break;
@@ -1697,7 +1698,7 @@ namespace Wah
         {
             level = 3;
             string temp = " ";
-            bool choiceloop = false, mystery = false;
+            bool choiceloop = false, mystery = false, beatMystery = true;
             string[] cultThings = { "wail and moan", "anoint themselves with fragrant incense", "inscribe names in an unholy tongue across their skin", "weep and gnash their teeth" };
 
 
@@ -1874,29 +1875,55 @@ namespace Wah
                             Console.WriteLine("You step forwards, feeling the heat of the rune across your chest. It washes away your fear.\n\n" +
                                 "'What is that, Stranger? Dost thou believe that thee can escape damnation with the blessing of a condemned angel?'\n\n" +
                                 "Despite her words, you can see fear entering her expression, even as she summons her wicked scythe to her side.\n" +
-                                "It's a fight!");
+                                "It's a fight!\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Menu("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
                             Combat("Babylon the Great", 5, 5);
-                            Console.WriteLine("'No, this cannot be! This cannot!'\n\n" +
-                                "with a scream, the woman falls back, and for a moment you think she might flee. But then she holds out her hands, and\n " +
-                                "the ground shakes. You stumble, trying to keep you balance. But the followers, those men and women who swore their\n" +
-                                "souls into Mystery's service, they begin to melt. Their flesh sloughs away like putty, flowing and wrapping and pooling" +
-                                "about Mystery's feet. She is subsumed, a writhing mass of limbs embracing her like armor.\n\n" +
-                                "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
-                                "She looms over you, towering now. But you feel something in your chest tingle.");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("1. Unleash the Holy Rune");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            weapon = 20;
-                            weaponName = $"Light-Infused {weaponName}";
-                            vitality = 100;
-                            Combat("Babylon the Great", 8, 5);
+                            if (!coward)
+                            {
+                                Console.WriteLine("'No, this cannot be! This cannot!'\n\n" +
+                                    "with a scream, the woman falls back, and for a moment you think she might flee. But then she holds out her hands, and\n " +
+                                    "the ground shakes. You stumble, trying to keep you balance. But the followers, those men and women who swore their\n" +
+                                    "souls into Mystery's service, they begin to melt. Their flesh sloughs away like putty, flowing and wrapping and pooling\n" +
+                                    "about Mystery's feet. She is subsumed, a writhing mass of limbs embracing her like armor.\n\n" +
+                                    "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
+                                    "She looms over you, towering now. But you feel something in your chest tingle.\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("1. Unleash the Holy Rune");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                Console.WriteLine("It feels like something is tearing its way out of you, a force of immense power. The darkness of hell\n" +
+                                    "washes away from a pure radiant light bursting from your eyes and mouth, sending Mystery skidding back from you\n" +
+                                    $"in shock. The taste of spice fills your mouth, just as your {weaponName} fills with holy power.\n" +
+                                    $"Mystery, surrounded in her loathesome armor, crawls towards you with all her power, but this time you have the strength\n" +
+                                    $"to meet her.\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                weapon = 10;
+                                weaponName = $"Light-Infused {weaponName}";
+                                vitality = 100;
+                                Combat("Babylon the Great", 8, 5);
+                                beatMystery = true;
+                                choiceloop = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
+                                   "Mystery dismisses her scythe, her chest heaving. She fixes you with a glare, while you see her wounds\n" +
+                                   "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
+                                   "the experience rapturous.\n\n" +
+                                   "'Next time I may not be so generous.'\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
                         }
                         else
                         {
@@ -1904,8 +1931,8 @@ namespace Wah
                             Console.WriteLine($"You rush Mystery, {weaponName} drawn back. But she's unnaturally fast, back-stepping away from your swing with a\n" +
                                 $"dancer's grace. She looks at you, tilting her head almost quizzically, but you can see the surge of bloodlust come into her eyes." +
                                 $"'If that is thy wish...'\n\n" +
-                                $"She hold out her hands, and a shimmery red scythe coalesces in her hands. It's taller than her, and wickedly sharp, but she\n" +
-                                $" twirls it around easily.\n\n" +
+                                $"She hold out her hands, and a shimmery red scythe coalesces in her hands. It's taller than her, and wickedly sharp, but" +
+                                $"she twirls it around easily.\n\n" +
                                 $"'I, Babylon the Great, shall happily indulge you.'\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Menu("Press ENTER to continue...");
@@ -1916,7 +1943,7 @@ namespace Wah
                             if(coward == true)
                             {
                                 Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
-                                    "Mystery dismisses her scythe. Although you just attacked her, she doesn't seem angry. In fact, you can see her wounds" +
+                                    "Mystery dismisses her scythe. Although you just attacked her, she doesn't seem angry. In fact, you can see her wounds\n" +
                                     "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
                                     "the experience rapturous.\n\n" +
                                     "'Perhaps thee shall reconsider where thou stands.'\n");
@@ -1930,10 +1957,16 @@ namespace Wah
                     case "3":
                         break;
                     case "4":
-                        Level3_1(6);
                         Console.Clear();
+                        Level3_1(6);
                         break;
                 }
+            }
+
+            if(beatMystery)
+            {
+                Level3_1(5);
+                Level4();
             }
         }
         public static void Level3_1(int route)//The layer guardian
@@ -2072,15 +2105,28 @@ namespace Wah
                         break;
                     case "4":
                         Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        encounter = rand.Next(0, 20);
-                        if (encounter == 1)
+                        if (holyRune)
                         {
-                            Console.WriteLine("On the way back, you are ambushed by a shrieking demon!\n");
+                            Console.WriteLine("On the way back, you see a glimmering, wavering light that you hadn't noticed before. It\n" +
+                                "beckons to you.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Menu("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
-                            Combat("The Shrieking Demon", 2, 5);
+                            Bonfire();
+                        }
+                        else
+                        {
+                            encounter = rand.Next(0, 20);
+                            if (encounter == 1)
+                            {
+                                Console.WriteLine("On the way back, you are ambushed by a shrieking demon!\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Combat("The Shrieking Demon", 2, 5);
+                            }
                         }
                         choiceloop = false;
                         break;
