@@ -2066,7 +2066,9 @@ namespace Wah
         static void SatanSays(ref bool playAgain)
         {
             string guess = "", currentSequence = "", temp = "";
-            int[] sequence = new int[7]; //Change this to change the amount of Simon Says levels you have to do
+            Random rand = new Random();
+            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
+
             for (int i = 0; i < sequence.Length; i++)
             {
                 sequence[i] = rand.Next(4);
