@@ -29,12 +29,15 @@ namespace Wah
         public static int death = 0;
         public static int level = 0;
         public static int weapon = 0; //used to derive damage calcs
-        public static string weaponName = "fists";
+        public static string weaponName = "fist";
 
         // Bools tied to level 5 
         public static bool champion = false;
         public static bool degen = false;
         public static bool debt = false;
+
+        //bool for level 3
+        public static bool holyRune = false;
 
 
 
@@ -229,9 +232,10 @@ namespace Wah
             do
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n\n\n\n           ██╗██████╗░██████╗░███████╗██╗░░░██╗███████╗██████╗░███████╗███╗░░██╗░█████╗░███████╗");
                 Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔════╝██║░░░██║██╔════╝██╔══██╗██╔════╝████╗░██║██╔══██╗██╔════╝");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("           ██║██████╔╝██████╔╝█████╗░░╚██╗░██╔╝█████╗░░██████╔╝█████╗░░██╔██╗██║██║░░╚═╝█████╗░░");
                 Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔══╝░░░╚████╔╝░██╔══╝░░██╔══██╗██╔══╝░░██║╚████║██║░░██╗██╔══╝░░");
                 Console.WriteLine("           ██║██║░░██║██║░░██║███████╗░░╚██╔╝░░███████╗██║░░██║███████╗██║░╚███║╚█████╔╝███████╗");
@@ -1513,10 +1517,18 @@ namespace Wah
             Menu("1. Cross the river, 2. Fight the Centaur");
             Console.ForegroundColor = ConsoleColor.White;
             string decision = Console.ReadLine();
+            Console.Clear();
             switch (decision)
             {
                 case "2":
-                        Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
+
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
                     Console.WriteLine("He gallops over to you, and pulls out his sword. ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
@@ -1532,6 +1544,10 @@ namespace Wah
 
                 case "1":
                 default:
+                    intelligence++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     if (karmaScore < -10)
                     {
                         Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
@@ -1574,10 +1590,22 @@ namespace Wah
             {
                 
                 case "2":
+                    intelligence++;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case "1":
                 default:
+                    strength++;
+                    karmaScore--;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your Strength increased by 1");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
                     Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -1608,13 +1636,33 @@ namespace Wah
                     Bonfire();
                     break;
             }
+                Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+            do
+            {
+                Combat("Minotaur", 6, 2);
+                if (coward == true) //If they run from the minotaur
+                {
+                    Console.WriteLine("The minotaur was far too powerful for you to handle. You run away back in to the forest.");
 
-            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Menu("Press ENTER to continue...");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
-            Combat("Minotaur", 6, 2);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Menu("1. Rest at the bonfire, 2. Go back to the minotaur");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    decision = Console.ReadLine();
+                    if (decision != "2")
+                    {
+                        Bonfire();
+                        Console.WriteLine("Now that you are fully rested, It's time to try again");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Menu("Press ENTER to fight the Minotaur...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                    }
+                }
+            } while (coward == true); //Makes it so that the player cannot run from the minotaur
             Console.WriteLine("After landing your final blow against the Minotaur, he unleashes a ground-shaking roar before falling to the ground.\nYou walk through the gate through to the next layer of Hell");
             Console.ReadLine();
             //Was thinking of putting ASCII text art for "HERESY" after here
@@ -1639,7 +1687,7 @@ namespace Wah
             Console.Clear();
             Console.WriteLine("Your ears pop as you ascend from the layer and into the one beyond. It reminds you of being on an airplane,\n" +
                 "and with that, you suddenly have a memory, as clear as a crystallized diamond, of sitting in a plane. The 'fasten\n" +
-                "seatbelt' signs are flashing, and the sensation of vertigo fils your belly. But as quickly as the memory comes, it\n" +
+                "seatbelt' signs are flashing, and the sensation of vertigo fills your belly. But as quickly as the memory comes, it\n" +
                 "vanishes, leaving you with your now-familiar mental haze. It's probably for the best; there are other things to focus\n" +
                 "on.\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -1647,7 +1695,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("Treachery was cold, and Violence was oppresively gloomy. But this layer is scaldingly hot, almost blistering\n" +
+            Console.WriteLine("Treachery was cold, and Violence was oppressively gloomy. But this layer is scaldingly hot, almost blistering\n" +
                 "against your skin. But it's the smell that makes you recoil; the scent of rusty iron, carrying with it the parasitical\n" +
                 "taste of blood. A deep orange glow meets your eyes as you take a look around. The landscape is terrifyingly bizzare,\n" +
                 "it is best described as a vast cavern. From the ceiling, like enormous stalactites, hang the towering shapes of inverted\n" +
@@ -1731,7 +1779,7 @@ namespace Wah
                                 Console.ForegroundColor = ConsoleColor.White;
                                 temp = Console.ReadLine();
                                 Console.Clear();
-                                switch(temp)
+                                switch (temp)
                                 {
                                     case "1":
                                         Level3_2(1);//Leads to something later, for now you die.
@@ -1776,14 +1824,15 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
-                
+
             }
+
             choiceloop = true;
             while (choiceloop)
             {
                 Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
                    $"As they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
-                   "'Thou hast returned, stranger. Hast thou changed their mind? Wilst thee join us?'\n");
+                   "'Thou hast returned, stranger. Hast thou changed thy mind? Wilst thee join us?'\n");
                    Console.ForegroundColor = ConsoleColor.Magenta;
                 Menu("1. Join, 2. Attack, 3. Question, 4. Return to the Angel");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -1792,6 +1841,19 @@ namespace Wah
                 {
                     case "1":
                         Level3_2(2); 
+                        break;
+                    case "2":
+                        if(holyRune == true)
+                        {
+                            Console.WriteLine("A");
+                        }
+                        else
+                        {
+                            Console.WriteLine("B");
+                        }
+                        Console.ReadLine();
+                        break;
+                    case "3":
                         break;
                     case "4":
                         Level3_1(6);
@@ -1818,11 +1880,13 @@ namespace Wah
 
 
         }
-        public static bool Level3_1(int route)//The layer guardian
+        public static void Level3_1(int route)//The layer guardian
         {
             string temp = " ", angelName = "The Angel";
-            bool choiceloop = false, holyRune=false;
+            bool choiceloop = false;
             string nameOfGod = rand.Next(0, 999).ToString();
+            int encounter = 0;
+
             Console.Clear();
             switch (route)
             {
@@ -1903,7 +1967,7 @@ namespace Wah
                         Console.WriteLine($"{angelName}'s wings spread, and he speaks in a voice like trumpets.\n\n" +
                             "'WHAT IS THE NAME OF GOD?'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("" + (route == 5 ? $"{nameOfGod}Speak the Name of God," : "Type your response then press ENTER to continue..."));
+                        Menu("" + (route == 5 ? $"{nameOfGod}. Speak the Name of God," : "Type your response then press ENTER to continue..."));
                         Console.ForegroundColor = ConsoleColor.White;
                         temp = Console.ReadLine();
                         Console.Clear();
@@ -1944,34 +2008,43 @@ namespace Wah
                         death++;
                         break;
                     case "3":
-                        AngelMenu(ref holyRune);
+                        AngelMenu();
                         break;
                     case "4":
-                        Console.WriteLine("You turn away, and walk back to the city.");
+                        Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
+                        encounter = rand.Next(0, 11);
+                        if (encounter == 10)
+                        {
+                            Console.WriteLine("On the way back, you are ambushed by a shrieking demon!\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Combat("The Shrieking Demon", 2, 5);
+                        }
                         choiceloop = false;
-                        return holyRune;
                         break;
                 }
             }
-            return holyRune;
+    
         }
         public static void Level3_2(int route)//Join the cult
         {
            
         }
-        public static bool AngelMenu(ref bool holyRune)
+        public static void AngelMenu()
         {
             string temp = " ";
             bool godQuestion = false, cultQuestion = false, choiceLoop = true;
-            holyRune = false;
-            int encounter = 0;
+
+            
 
             while (choiceLoop == true)
             {
                 Console.Clear();
                 Console.WriteLine($"What would you like to question?\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu((godQuestion == false ? "1. How do I pass your challenge?," : "1. And how do I learn that?,") + (cultQuestion == false ? "2. Tell me about the cult, " : "2. How do I beat them when they have plot armor?, ") + "3. Can I really leave hell?, 5. Return");
+                Menu((godQuestion == false ? "1. How do I pass your challenge?," : "1. And how do I learn that?,") + (cultQuestion == false ? "2. Tell me about the cult, " : "2. How do I beat them when they have plot armor?, ") + "3. Can I really leave hell?, 4. Return");
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
@@ -1991,7 +2064,7 @@ namespace Wah
                         }
                         else
                         {
-                            Console.WriteLine("'SLAY THE CULT IN THE NAME OF RIGHTOUSNESS, AND IT WILL BE REVEALED.'\n\n" +
+                            Console.WriteLine("'SLAY THE CULT IN THE NAME OF RIGHTEOUSNESS, AND IT WILL BE REVEALED.'\n\n" +
                                 "The Angel's wings blaze, and the orange glow radiating up from the ground, miles below, increases.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Menu("Press ENTER to continue...");
@@ -2047,19 +2120,9 @@ namespace Wah
                     case "4":
                         choiceLoop = false;
                         Console.Clear();
-                        Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        encounter = rand.Next(0, 11);
-                        if(encounter >= 0)
-                        {
-                            Console.WriteLine("On the way back, you are ambushed by a shrieking demon!");
-                            Combat("The Shrieking Demon", 2, 5);
-                        }
                         break;
                 }
             }
-            return holyRune;
-
-
         }
 
 
@@ -2068,7 +2131,7 @@ namespace Wah
         {
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[3]; //Change this number to change the length of 'Satan Says'
+            int[] sequence = new int[8]; //Change this number to change the length of 'Satan Says'
 
             for (int i = 0; i < sequence.Length; i++)
             {
@@ -2317,6 +2380,8 @@ namespace Wah
             {
                 SatanSays(ref playAgain);
                 timesLost++;
+                Combat("Shadow", 4, 2);
+                
             } while (playAgain == true);
 
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
