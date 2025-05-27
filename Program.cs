@@ -656,6 +656,11 @@ namespace Wah
                                         blocking = false;
                                         break;
 
+                                    case "Babylon the Great":
+                                        Console.WriteLine($"{monsterName} moves close to one of her followers.");
+                                        blocking = false;
+                                        break;
+
                                     default:
                                         Console.WriteLine($"{monsterName} drops their defensive stance.");
                                         monSpeed = (monSpeed - block);
@@ -673,6 +678,14 @@ namespace Wah
                                         Console.WriteLine($"{monsterName} loads his musket!");
                                         blocking = true;
                                         break;
+
+                                    case "Babylon the Great":
+                                        Console.WriteLine($"{monsterName} reaches out with her scythe, pulling one of her followers to her. You watch as\n" +
+                                            $"the poor unfortunate soul is drained into a husk, his spent life closing Mystery's wounds!");
+                                        monHp = monHp + mAttack * 2;
+                                        blocking = true;
+                                        break;
+
                                     default:
                                         Console.WriteLine($"{monsterName} takes a defensive stance.");
                                         monSpeed = monSpeed + block;
@@ -1781,7 +1794,7 @@ namespace Wah
                                 switch (temp)
                                 {
                                     case "1":
-                                        Level3_2(1);//Leads to something later, for now you die.
+                                        Level3_2(1);
                                         break;
                                     case "2":
                                         Console.WriteLine("You think about it, before shaking your head. Mystery smiles sadly before withdrawing.\n\n" +
@@ -1829,6 +1842,7 @@ namespace Wah
             choiceloop = true;
             while (choiceloop)
             {
+                Console.Clear();
                 Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
                    $"As they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
                    "'Thou hast returned, stranger. Hast thou changed thy mind? Wilst thee join us?'\n");
@@ -1844,11 +1858,60 @@ namespace Wah
                     case "2":
                         if(holyRune == true)
                         {
-                            Console.WriteLine("A");
+                            Console.Clear();
+                            Console.WriteLine("You step forwards, feeling the heat of the rune across your chest. It washes away your fear.\n\n" +
+                                "'What is that, Stranger? Dost thou believe that thee can escape damnation with the blessing of a condemned angel?'\n\n" +
+                                "Despite her words, you can see fear entering her expression, even as she summons her wicked scythe to her side.\n" +
+                                "It's a fight!");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Combat("Babylon the Great", 5, 5);
+                            Console.WriteLine("'No, this cannot be! This cannot!'\n\n" +
+                                "with a scream, the woman falls back, and for a moment you think she might flee. But then she holds out her hands, and\n " +
+                                "the ground shakes. You stumble, trying to keep you balance. But the followers, those men and women who swore their\n" +
+                                "souls into Mystery's service, they begin to melt. Their flesh sloughs away like putty, flowing and wrapping and pooling" +
+                                "about Mystery's feet. She is subsumed, a writhing mass of limbs embracing her like armor.\n\n" +
+                                "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
+                                "She looms over you, towering now. But you feel something in your chest tingle.");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("1. Unleash the Holy Rune");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            weapon = 20;
+                            weaponName = $"Light-Infused {weaponName}";
+                            vitality = 100;
+                            Combat("Babylon the Great", 8, 5);
                         }
                         else
                         {
-                            Console.WriteLine("B");
+                            Console.Clear();
+                            Console.WriteLine($"You rush Mystery, {weaponName} drawn back. But she's unnaturally fast, back-stepping away from your swing with a\n" +
+                                $"dancer's grace. She looks at you, tilting her head almost quizzically, but you can see the surge of bloodlust come into her eyes." +
+                                $"'If that is thy wish...'\n\n" +
+                                $"She hold out her hands, and a shimmery red scythe coalesces in her hands. It's taller than her, and wickedly sharp, but she\n" +
+                                $" twirls it around easily.\n\n" +
+                                $"'I, Babylon the Great, shall happily indulge you.'\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Combat("Babylon the Great", 8, 5);
+                            if(coward == true)
+                            {
+                                Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
+                                    "Mystery dismisses her scythe. Although you just attacked her, she doesn't seem angry. In fact, you can see her wounds" +
+                                    "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
+                                    "the experience rapturous.\n\n" +
+                                    "'Perhaps thee shall reconsider where thou stands.'\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
                         }
                         Console.ReadLine();
                         break;
@@ -1860,24 +1923,6 @@ namespace Wah
                         break;
                 }
             }
-            
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
         public static void Level3_1(int route)//The layer guardian
         {
@@ -1947,7 +1992,11 @@ namespace Wah
                     Console.WriteLine("Mystery");
                     break;
                 default:
-                    Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.");
+                    Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
                     break;
             }
             choiceloop = true;
@@ -2011,8 +2060,8 @@ namespace Wah
                         break;
                     case "4":
                         Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        encounter = rand.Next(0, 11);
-                        if (encounter == 10)
+                        encounter = rand.Next(0, 20);
+                        if (encounter == 1)
                         {
                             Console.WriteLine("On the way back, you are ambushed by a shrieking demon!\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
