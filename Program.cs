@@ -2067,7 +2067,7 @@ namespace Wah
         {
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
+            int[] sequence = new int[3]; //Change this number to change the length of 'Satan Says'
 
             for (int i = 0; i < sequence.Length; i++)
             {
@@ -2126,7 +2126,6 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                         Menu("1. Begin Satan Says, 2. Read the Rules");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
                         guess = Console.ReadLine();
                         if (guess != "1" && guess != "2") // Invalid Input
                         {
@@ -2210,7 +2209,6 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Menu("r. Rock, p. Paper, s. Scissors");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
                 guess = Console.ReadLine().ToLower();
                 Console.Clear();
 
@@ -2300,12 +2298,18 @@ namespace Wah
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
             Console.WriteLine("A large light pointing down at the center of the room turns on");
             Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
             Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
             Console.WriteLine("If you want to go through that door, you have to go through me.");
             Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             do
@@ -2315,13 +2319,18 @@ namespace Wah
             } while (playAgain == true);
 
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
-            Console.WriteLine("Press Enter to enter the door");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to go through the door...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding");
             Console.WriteLine("\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.");
             Console.WriteLine("After all, I am the only one who can open the door.");
             Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             RockPaperScissors(ref timesLost);
@@ -2330,6 +2339,9 @@ namespace Wah
             Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
             Console.WriteLine("The Shadow points his arm at the door and it opens");
             Console.WriteLine("Press enter to go through");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Level5();
