@@ -24,13 +24,13 @@ namespace Wah
         public static string name = "Traveler";
         public static int strength = 10;
         public static int vitality = 100; // Max health
-        public static int intelligence = 10;
+        public static int intelligence = 15;
         public static int karmaScore = -10;
         public static int gold = 100;
         public static int death = 0;
         public static int level = 0;
         public static int weapon = 2; //used to derive damage calcs
-        public static string weaponName = "rusty knife";
+        public static string weaponName = "fist";
 
         // Bools tied to level 5 
         public static bool champion = false;
@@ -39,6 +39,7 @@ namespace Wah
 
         //bool for level 3
         public static bool holyRune = false;
+        public static bool cultist = false;
 
 
 
@@ -373,7 +374,7 @@ namespace Wah
             monsterName = creature;
             bool combat = true;
             monHp = difficulty * 10;
-            monPanic = (difficulty * 10) - (difficulty * 9);
+            monPanic = monHp - (difficulty * 9);
             monSpeed = speed;
             int spoils = difficulty * rand.Next(20, 50);
 
@@ -404,7 +405,7 @@ namespace Wah
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"you are fighting {creature}.");
+                    Console.WriteLine($"You are fighting {creature}.");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write($"--[ {creature} ]-- \nVitality: {monHp} ");
                     for (int i = 0; i <= (monHp / 2); i++)
@@ -428,7 +429,7 @@ namespace Wah
             int damage, attack;
 
             attack = rand.Next(0, 10);
-            damage = rand.Next(1, mAttack);
+            damage = rand.Next(0, mAttack);
 
 
 
@@ -575,8 +576,8 @@ namespace Wah
                             damage = rand.Next(0, strength) + weapon * 2;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way of your \n" +
-                                    $"telegraphed move.");
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName}\n" +
+                                    $"{def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
                                 damage = 0;
                                 playerRound = false;
                             }
@@ -674,6 +675,14 @@ namespace Wah
                                         blocking = false;
                                         break;
 
+                                    case "Mystery, the Death of Kings":
+                                        Console.WriteLine($"{monsterName} speaks a word of blasphemy, and one of the squirming forms that make up her armor\n" +
+                                            $"melts into her own flesh, healing her wounds. She heals, but now she's easier to hit.");
+                                        monHp = monHp + mAttack * 2;
+                                        monSpeed = monSpeed - 2;
+                                        blocking = false;
+                                        break;
+
                                     default:
                                         Console.WriteLine($"{monsterName} drops their defensive stance.");
                                         monSpeed = (monSpeed - block);
@@ -696,6 +705,15 @@ namespace Wah
                                         Console.WriteLine($"{monsterName} reaches out with her scythe, pulling one of her followers to her. You watch as\n" +
                                             $"the poor unfortunate soul is drained into a husk, his spent life closing Mystery's wounds!");
                                         monHp = monHp + mAttack * 2;
+                                        blocking = true;
+                                        break;
+
+                                    case "Mystery, the Death of Kings":
+                                        damage = rand.Next(10, 30);
+                                        Console.WriteLine($"Mystery twirls her scythe around, impaling into her own chest, then whips it out, sending\n" +
+                                            $"an arc of boiling blood slicing across you! You take {damage} damage; the good news is, so does she!");
+                                        monHp = monHp - damage;
+                                        vitality = vitality - damage;
                                         blocking = true;
                                         break;
 
@@ -1698,7 +1716,7 @@ namespace Wah
         {
             level = 3;
             string temp = " ";
-            bool choiceloop = false, mystery = false, beatMystery = true;
+            bool choiceloop = false, mystery = false, beatMystery = false;
             string[] cultThings = { "wail and moan", "anoint themselves with fragrant incense", "inscribe names in an unholy tongue across their skin", "weep and gnash their teeth" };
 
 
@@ -1807,7 +1825,7 @@ namespace Wah
                                 switch (temp)
                                 {
                                     case "1":
-                                        Level3_2(1);
+                                        Level3_2(0);
                                         break;
                                     case "2":
                                         Console.WriteLine("You think about it, before shaking your head. Mystery smiles sadly before withdrawing.\n\n" +
@@ -1853,121 +1871,155 @@ namespace Wah
             }
 
             choiceloop = true;
-            while (choiceloop)
+            if (cultist != true)
             {
-                Console.Clear();
-                Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
-                   $"As they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
-                   "'Thou hast returned, stranger. Hast thou changed thy mind? Wilst thee join us?'\n");
-                   Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("1. Join, 2. Attack, 3. Question, 4. Return to the Angel");
-                Console.ForegroundColor = ConsoleColor.White;
-                temp = Console.ReadLine();
-                switch (temp)
+                while (choiceloop)
                 {
-                    case "1":
-                        Level3_2(2); 
-                        break;
-                    case "2":
-                        if(holyRune == true)
-                        {
-                            Console.Clear();
-                            Console.WriteLine("You step forwards, feeling the heat of the rune across your chest. It washes away your fear.\n\n" +
-                                "'What is that, Stranger? Dost thou believe that thee can escape damnation with the blessing of a condemned angel?'\n\n" +
-                                "Despite her words, you can see fear entering her expression, even as she summons her wicked scythe to her side.\n" +
-                                "It's a fight!\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Combat("Babylon the Great", 5, 5);
-                            if (!coward)
+                    Console.Clear();
+                    Console.WriteLine("You stand in the center of the city plaza, surrounded by the sonorous chanting of the worshippers.\n" +
+                       $"As they {cultThings[rand.Next(cultThings.Length)]}, " + (mystery == true ? "Mystery" : "the red-haired woman") + " steps down to meet you.\n\n" +
+                       "'Thou hast returned, stranger. Hast thou changed thy mind? Wilst thee join us?'\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("1. Join, 2. Attack, 3. Question, 4. Leave");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    temp = Console.ReadLine();
+                    switch (temp)
+                    {
+                        case "1":
+                            Level3_2(1);
+                            break;
+                        case "2":
+                            if (holyRune == true)
                             {
-                                Console.WriteLine("'No, this cannot be! This cannot!'\n\n" +
-                                    "with a scream, the woman falls back, and for a moment you think she might flee. But then she holds out her hands, and\n " +
-                                    "the ground shakes. You stumble, trying to keep you balance. But the followers, those men and women who swore their\n" +
-                                    "souls into Mystery's service, they begin to melt. Their flesh sloughs away like putty, flowing and wrapping and pooling\n" +
-                                    "about Mystery's feet. She is subsumed, a writhing mass of limbs embracing her like armor.\n\n" +
-                                    "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
-                                    "She looms over you, towering now. But you feel something in your chest tingle.\n");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("1. Unleash the Holy Rune");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.ReadLine();
                                 Console.Clear();
-                                Console.WriteLine("It feels like something is tearing its way out of you, a force of immense power. The darkness of hell\n" +
-                                    "washes away from a pure radiant light bursting from your eyes and mouth, sending Mystery skidding back from you\n" +
-                                    $"in shock. The taste of spice fills your mouth, just as your {weaponName} fills with holy power.\n" +
-                                    $"Mystery, surrounded in her loathesome armor, crawls towards you with all her power, but this time you have the strength\n" +
-                                    $"to meet her.\n");
+                                Console.WriteLine("You step forwards, feeling the heat of the rune across your chest. It washes away your fear.\n\n" +
+                                    "'What is that, Stranger? Dost thou believe that thee can escape damnation with the blessing of a condemned angel?'\n\n" +
+                                    "Despite her words, you can see fear entering her expression, even as she summons her wicked scythe to her side.\n" +
+                                    "It's a fight!\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
                                 Menu("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
-                                weapon = 10;
-                                weaponName = $"Light-Infused {weaponName}";
-                                vitality = 100;
-                                Combat("Babylon the Great", 8, 5);
-                                beatMystery = true;
-                                choiceloop = false;
+                                Combat("Babylon The Great", 5, 4);
+                                if (!coward)
+                                {
+                                    Console.WriteLine("'No, this cannot be! This cannot!'\n\n" +
+                                        "With a scream, the woman falls back, and for a moment you think she might flee. But then she holds out her hands,\n" +
+                                        "and the ground shakes. You stumble, trying to keep you balance. But the followers, those men and women who swore their\n" +
+                                        "souls into Mystery's service, they begin to melt. Their flesh sloughs away like putty, flowing and wrapping and pooling\n" +
+                                        "about Mystery's feet. She is subsumed, a writhing mass of limbs embracing her like armor.\n\n" +
+                                        "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
+                                        "She looms over you, towering now. But you feel something in your chest tingle.\n");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Menu("1. Unleash the Holy Rune");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    Console.WriteLine("It feels like something is tearing its way out of you, a force of immense power. The darkness of hell\n" +
+                                        "washes away from a pure radiant light bursting from your eyes and mouth, sending Mystery skidding back from you\n" +
+                                        $"in shock. The taste of spice fills your mouth, just as your {weaponName} fills with holy power.\n" +
+                                        $"Mystery, surrounded in her loathesome armor, crawls towards you with all her power, but this time you have the strength\n" +
+                                        $"to meet her.\n");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Menu("Press ENTER to continue...");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    weapon = 10;
+                                    weaponName = $"Light-Infused {weaponName}";
+                                    vitality = 100;
+                                    Combat("Mystery, the Death of Kings", 8, 7);
+                                    beatMystery = true;
+                                    choiceloop = false;
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
+                                       "Mystery dismisses her scythe, her chest heaving. She fixes you with a glare, while you see her wounds\n" +
+                                       "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
+                                       "the experience rapturous.\n\n" +
+                                       "'Next time I may not be so generous.'\n");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Menu("Press ENTER to continue...");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.ReadLine();
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
-                                   "Mystery dismisses her scythe, her chest heaving. She fixes you with a glare, while you see her wounds\n" +
-                                   "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
-                                   "the experience rapturous.\n\n" +
-                                   "'Next time I may not be so generous.'\n");
+                                Console.Clear();
+                                Console.WriteLine($"You rush Mystery, {weaponName} drawn back. But she's unnaturally fast, back-stepping away from your swing with a\n" +
+                                    $"dancer's grace. She looks at you, tilting her head almost quizzically, but you can see the surge of bloodlust come into her eyes." +
+                                    $"'If that is thy wish...'\n\n" +
+                                    $"She hold out her hands, and a shimmery red scythe coalesces in her hands. It's taller than her, and wickedly sharp, but" +
+                                    $"she twirls it around easily.\n\n" +
+                                    $"'I, Babylon the Great, shall happily indulge you.'\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
                                 Menu("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                Combat("Babylon the Great", 8, 5);
+                                if (coward == true)
+                                {
+                                    Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
+                                        "Mystery dismisses her scythe. Although you just attacked her, she doesn't seem angry. In fact, you can see her wounds\n" +
+                                        "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
+                                        "the experience rapturous.\n\n" +
+                                        "'Perhaps thee shall reconsider where thou stands.'\n");
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Menu("Press ENTER to continue...");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.ReadLine();
+                                }
                             }
-                        }
-                        else
-                        {
+                            break;
+                        case "3":
+                            CultMenu();
+                            break;
+                        case "4":
                             Console.Clear();
-                            Console.WriteLine($"You rush Mystery, {weaponName} drawn back. But she's unnaturally fast, back-stepping away from your swing with a\n" +
-                                $"dancer's grace. She looks at you, tilting her head almost quizzically, but you can see the surge of bloodlust come into her eyes." +
-                                $"'If that is thy wish...'\n\n" +
-                                $"She hold out her hands, and a shimmery red scythe coalesces in her hands. It's taller than her, and wickedly sharp, but" +
-                                $"she twirls it around easily.\n\n" +
-                                $"'I, Babylon the Great, shall happily indulge you.'\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Combat("Babylon the Great", 8, 5);
-                            if(coward == true)
-                            {
-                                Console.WriteLine("'Thou hast seen the power I wield.'\n\n" +
-                                    "Mystery dismisses her scythe. Although you just attacked her, she doesn't seem angry. In fact, you can see her wounds\n" +
-                                    "closing even as her followers wail, their own bodies opening up gaping pores. They writhe, but they seem to find\n" +
-                                    "the experience rapturous.\n\n" +
-                                    "'Perhaps thee shall reconsider where thou stands.'\n");
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                        }
-                        Console.ReadLine();
-                        break;
-                    case "3":
-                        break;
-                    case "4":
-                        Console.Clear();
-                        Level3_1(6);
-                        break;
+                            Level3_1(3);
+                            break;
+                    }
                 }
             }
 
             if(beatMystery)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("War Scythe Gained, Karma increased");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("\nThe light steaming off you finally fades, as Mystery's blood pools across the ground.\n" +
+                    "You gasp, feeling your injuries now that the angelic power filling your body is gone. But something catches\n" +
+                    "your eye. It's Mystery's scythe, tip-down in the earth. You heft it up. It's a fine weapon.\n");
+                weapon = 4;
+                weaponName = "War Scythe";
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("You know the name of God");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("\nBut that's not all. As you touch the weapon, something flashes into your mind, a Truth too vast\n" +
+                    "for the Universe. All that's left is to return to Uriel. There is nothing but ruin left here.\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
                 Level3_1(5);
-                Level4();
+                
             }
+            else 
+            {
+                Level3_1(6);
+            }
+            Level4();
         }
         public static void Level3_1(int route)//The layer guardian
         {
@@ -2034,7 +2086,15 @@ namespace Wah
                     }
                     break;
                 case 2:
-                    Console.WriteLine("Mystery");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("-10 Vitality");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nSlowly, you come to, feeling woozy and unsure of yourself. Light is washing over you, a touch\n" +
+                        "of relief in the agony of Hell. When you look for it's source, you see it-- a titanic being formed of light and\n" +
+                        "flame, holding out an armored hand in your direction. As you stand up, it withdraws.\n\n" +
+                        $"'YOU HAVE NOT PERISHED YET, {name.ToUpper()}. I AM URIEL, GUARDIAN OF THE GATE.'\n\n" +
+                        $"It stands upright, and you see what stands behind it: a truly massive gate built into the ceiling.");
+                    angelName = "Uriel";
                     break;
                 default:
                     Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.\n");
@@ -2042,6 +2102,7 @@ namespace Wah
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
+                    Console.Clear();
                     break;
             }
             choiceloop = true;
@@ -2060,14 +2121,14 @@ namespace Wah
                         Console.WriteLine($"{angelName}'s wings spread, and he speaks in a voice like trumpets.\n\n" +
                             "'WHAT IS THE NAME OF GOD?'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("" + (route == 5 ? $"{nameOfGod}. Speak the Name of God," : "Type your response then press ENTER to continue..."));
+                        Menu("" + (route == 5||route == 6 ? $"{nameOfGod}. Speak the Name of God," : "Type your response then press ENTER to continue..."));
                         Console.ForegroundColor = ConsoleColor.White;
                         temp = Console.ReadLine();
                         Console.Clear();
                         if (temp == nameOfGod)
                         {
                             Console.WriteLine("YOU DID IT");
-                            Level4();
+                            choiceloop = false;
                         }
                         else
                         {
@@ -2105,7 +2166,16 @@ namespace Wah
                         break;
                     case "4":
                         Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        if (holyRune)
+                        if(route == 5)
+                        {
+                            Console.WriteLine("There is nothing but ruin there now\n");
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Menu("Press ENTER to return");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                        else if (holyRune)
                         {
                             Console.WriteLine("On the way back, you see a glimmering, wavering light that you hadn't noticed before. It\n" +
                                 "beckons to you.\n");
@@ -2114,6 +2184,7 @@ namespace Wah
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Bonfire();
+                            choiceloop = false;
                         }
                         else
                         {
@@ -2127,8 +2198,8 @@ namespace Wah
                                 Console.ReadLine();
                                 Combat("The Shrieking Demon", 2, 5);
                             }
+                            choiceloop = false;
                         }
-                        choiceloop = false;
                         break;
                 }
             }
@@ -2136,7 +2207,133 @@ namespace Wah
         }
         public static void Level3_2(int route)//Join the cult
         {
-           
+            string temp = "";
+            bool choiceloop = false;
+
+            Console.Clear();
+            switch(route)
+            {
+                case 0:
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Karma lowered");
+                    karmaScore = karmaScore - 5;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nYou place your hand in Mystery's, and she smiles, all white teeth and red lips. She pulls\n" +
+                        "you into the center of the Plaza, and her followers begin to sing. You don't understand the words, but\n" +
+                        "you can feel the power pulsing into your chest with each beat.");
+                    break;
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Karma lowered");
+                    karmaScore = karmaScore - 5;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\nYou've made your choice. This woman may be a sinner, but she's definitely more personable\n" +
+                        "than Uriel. And frankly, you don't care what you have to do; as long as you get out of here, you're happy.\n\n" +
+                        "'Thou art wise.'\n\n" +
+                        "Mystery steps forwards, and places a gentle hand on your wrist, drawing you further into the circle of adulant\n" +
+                        "worshippers.");
+                        break;
+                case 3:
+                   Console.WriteLine( "You already did that, silly.");
+                    break;
+
+            }
+            if (route != 3)
+            {
+                Console.WriteLine("When you stand in the center, Mystery turns to face you.\n" +
+                    "She's holding a knife.\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("Press ENTER to continue...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("'Take up this blade, and inscribe the secret name upon thy brow, and together we shall commune.'\n\n" +
+                    "She hands you the knife, glinting in the reddish light. The worshippers around you raise their hands, some\n" +
+                    "brushing you with their fingertips, while others chant in increasily sonorous tones. The energy is mounting.\n" +
+                    (intelligence >= 15 ? "However, you notice that they all bear the same mark across their foreheads, but not a single wound has healed.\n" : ""));
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("1. Inscribe the mark, 2. Refuse, " + (intelligence > 13 ? "3. Fake the mark," : ""));
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("You grip the knife, and inscribe a mark across your forehead. You cannot see it, but\n" +
+                            "Mystery smiles, letting you know all you need. At once, you can feel your mind expand, and the voices\n" +
+                            "of the choir around you snap into clarity. The words carry meaning now, drifting along, tugging at your\n" +
+                            "consiousness. And Mystery...\n\n" +
+                            "She glows.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("You cannot help but worship, as if you are in a daze. The words flow past, one after the\n" +
+                            "other. Words shouldn't multiply meaning, but these do: stacked one atop the other like stones.\n" +
+                            "Meaning expands your mind.\n\n" +
+                            "You are one, and you are home. Perhaps, in this form, you do escape Hell, riding the back of Baylon the Great.\n" +
+                            "But at that point, it's no longer you.\n");
+                        DeathScreen();
+                        break;
+                    case "2":
+                        Console.WriteLine("Mystery frowns.\n\n" +
+                            "'I'm afraid that this is a requirement. Do not stop at the threshold, the cusp of greatness.'\n\n" +
+                            "Several of her followers approach you, suddenly trying to hold you down, while another takes the\n" +
+                            "knife, attempting to mark you by force. You throw them aside, and prepare to fight back!\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Combat("Cultist", 1, 1);
+                        break;
+                    case "3":
+                        Console.WriteLine("You inscribe the mark on your forehead, but you carefully add a few extra lines to it.\n" +
+                            "HOnestly, you have no idea what this will do, but the mindless cultists kind of give you the creeps.\n" +
+                            "Mystery smiles, and then the world spins.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("At once, you can feel your mind expand, and the voices\n" +
+                            "of the choir around you snap into clarity. The words carry meaning now, drifting along, tugging at your\n" +
+                            "consiousness. Multiplying. Combining. Your brain touches the edge of a truth so vast you nearly black out.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("You have stolen the Name of God");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nYou snap back to consciousness, and everything feels different. The cult feels it too,\n" +
+                            "looking about themselves with confused expressions. Mystery looks at you, and her smile is gone.\n\n" +
+                            "'Thou hast profaned the ritual!'\n\n" +
+                            "She points at you, and the cultists lumber towards you, hands outstretched.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Combat("Cultist", 1, 2);
+                        Combat("Cultist", 1, 2);
+                        Combat("Cultist", 1, 2);
+                        Console.WriteLine("As the first wave falls, Mystery herself approaches, a shimmering, blood-red scythe\n" +
+                            "manifesting in her hands. Fighting her alone would be trouble enough, but she has her whole army\n" +
+                            "with her. It is time to leave.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        cultist = true;
+                        break;
+
+
+                }
+            }
+
         }
         public static void AngelMenu()
         {
@@ -2212,7 +2409,7 @@ namespace Wah
                             "The Angel seems regretful, the intense light of his countenance dimming. He looks down at you, and sighs.\n");
                         if(karmaScore <=0)
                         {
-                            Console.WriteLine("'YOU HAVE A LONG WAY TO GO YET.\n");
+                            Console.WriteLine("'YOU HAVE A LONG WAY TO GO YET.'\n");
                         }
                         else
                         {
@@ -2228,6 +2425,80 @@ namespace Wah
                         Console.Clear();
                         break;
                 }
+            }
+        }
+        public static void CultMenu()
+        {
+            string temp = " ";
+            bool choiceLoop = true;
+            Console.Clear();
+
+            while (choiceLoop == true)
+            {
+                Console.Clear();
+                Console.WriteLine($"What would you like to question?\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("1. Who are you?, 2. What is your group here doing?, 3. How do I get past the Angel?, 4. Can I leave hell?, 5. Return");
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("'I am Mystery, Babylon the Great, god of mankind.'\n\n" +
+                            "The Woman replies enigmatically, walking around behind you with a tinkling of jewelry.\n" +
+                            "She lowers her voice, looking out over the burning plain.\n\n" +
+                            "'Thou has known me in thy own life, known me by my works, for I am she who would become as a God.'\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.WriteLine("'Together we will create the Arcanum, and leave this cursed place.'\n\n" +
+                            "She gestures to where her followers gyrate in unison, murmuring their sacred songs. Their rythm\n" +
+                            "draws your eyes, carrying with it a building sense of power. But their eyes... look vacant.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "3":
+                        Console.WriteLine("'Thou hast not the strength. The angel has been given the strength to halt all who\n" +
+                            "would seek to leave this wretched place. But together, if thee and I combined our strength, we could\n" +
+                            "wrest the name of God from the aether, and speak it in Profanity.'\n\n" +
+                            "Mystery genstures to the gate in the distance, then smiles.\n\n" +
+                            "'That will weaken him, I think.'\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Strength gained.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\n'Most certainly. Hell is not for us, but a prison for the Angels, those who in ancient\n" +
+                            "times did defy the will of God. But we art built to rule; it is our birthright, should only we have the\n" +
+                            "will to claim it.'\n\n" +
+                            "Her words feel right somehow, like they are burrowing past your skin and inflaming your muscles.\n");
+                        if (strength < 15)
+                        {
+                            strength = strength + 1;
+                        }
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "5":
+                        Console.WriteLine("That's a lot to think about.");
+                        choiceLoop = false;
+                        break;
+
+                }
+
             }
         }
 
@@ -2467,7 +2738,7 @@ namespace Wah
             string decision;
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
             Console.WriteLine("A large light pointing down at the center of the room turns on");
-            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow");
+            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -2476,7 +2747,7 @@ namespace Wah
             Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
             Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
             Console.WriteLine("If you want to go through that door, you have to go through me.");
-            Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"");
+            Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -2499,7 +2770,7 @@ namespace Wah
             Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding");
             Console.WriteLine("\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.");
             Console.WriteLine("After all, I am the only one who can open the door.");
-            Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"");
+            Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -2510,7 +2781,7 @@ namespace Wah
             Console.WriteLine("After beating the Shadow at his games, he gives a smile");
             Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
             Console.WriteLine("The Shadow points his arm at the door and it opens");
-            Console.WriteLine("Press enter to go through");
+            Console.WriteLine("Press enter to go through\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
