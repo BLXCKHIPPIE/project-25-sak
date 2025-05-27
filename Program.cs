@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -3095,7 +3096,7 @@ namespace Wah
         {
             level = 7;
             vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
-            int decision;
+            string decision;
 
             Console.Clear();
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
@@ -3105,92 +3106,106 @@ namespace Wah
                 "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
             Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
-            decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
-            if (decision == 1) // if user enters "1"
+            decision = Console.ReadLine(); // decision now equals user input
+            
+            switch (decision)
+            {
+                case "1":
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
+                    Level7_1();
+                    break;
+                case "2":
+                    Level7_2();
+                    break;
+                default:
+                    Level7();
+                    break;
 
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
-                Level7_1();
-            }
-            else
-            {
-                Level7_2();
             }
 
 
         }
 
-        public static void Level7_1()// Circle 3: Lust - Taking the path to high ground
+        public static void Level7_1() // Circle 3: Lust - Taking the path to high ground
         {
-            int decision;
+            string decision;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You follow the left path, rising steadily until you're about 100 meters above the chasm’s depths.\n" +
                 "The ground beneath you narrows, forcing cautious steps. Pressing forward, you reach a rope bridge,\n" +
                 "its worn strands shifting in the breeze. Glancing back, you spot the leftmost edge of the wall—rough,\n" +
                 "but climbable.\n\n");
-            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
-            decision = Convert.ToInt32(Console.ReadLine()); // decision now equals user input
+
+            decision = Console.ReadLine(); 
+
             Console.Clear();
-            if (decision == 2)
+
+            switch (decision)
             {
-
-                Level7_3();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("You begin climbing the chasm’s side wall when a noise rises from below.\n" +
-                    "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
-                    "it closes the gap, its presence looming just beneath you.");
-                Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
-                Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
-
-                decision = Convert.ToInt32(Console.ReadLine());
-                if (decision == 1)
-                {
-                    Console.Clear();
+                case "1":
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("The demon’s claws tear into you, ripping you from the wall.\n" +
-                        "Together, you plummet—seven meters of uncontrolled descent.\n" +
-                        "You hit the ground with a thump as dust and debris settle around you. Only one choice remains:\n\nKill or be killed.");
-                    Console.ReadLine();
-
-                    Combat("Gnarled abomination", 5, 5);
-
-                    Console.Clear();
-                    Console.WriteLine("You press on, scaling the rugged wall with steady determination.\n" +
-                        "Before you know it, your hand finds the final ledge, and you pull yourself up.");
+                    Console.WriteLine("You begin climbing the chasm’s side wall when a noise rises from below.\n" +
+                        "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
+                        "it closes the gap, its presence looming just beneath you.");
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n Press ENTER to continue");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
 
-                    Console.ReadLine();
-                    Level7_4();
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
-                        "It tumbles backward, crashing hard into the ground. Dust settles, silence lingers—it’s not moving.\n" +
-                        "You press on, scaling the rugged wall with steady determination.\n" +
-                        "Before you know it, your hand finds the final ledge, and you pull yourself up.");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("\n Press ENTER to continue");
-                    Console.ReadLine();
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.White;
+                    decision = Console.ReadLine();
 
-                    Level7_4();
-                }
+                    Console.Clear();
+
+                    if (decision == "1")
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("The demon’s claws tear into you, ripping you from the wall.\n" +
+                            "Together, you plummet—seven meters of uncontrolled descent.\n" +
+                            "You hit the ground with a thump as dust and debris settle around you. Only one choice remains:\n\nKill or be killed.");
+                        Console.ReadLine();
+
+                        Combat("Gnarled abomination", 5, 5);
+
+                        Console.Clear();
+                        Console.WriteLine("You press on, scaling the rugged wall with steady determination.\n" +
+                            "Before you know it, your hand finds the final ledge, and you pull yourself up.");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n Press ENTER to continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Level7_4();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
+                            "It tumbles backward, crashing hard into the ground. Dust settles, silence lingers—it’s not moving.\n" +
+                            "You press on, scaling the rugged wall with steady determination.\n" +
+                            "Before you know it, your hand finds the final ledge, and you pull yourself up.");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n Press ENTER to continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Level7_4();
+                    }
+                    break;
+
+                case "2":
+                    Level7_3();
+                    break;
+
+                default:
+                    Level7_1();
+                    break;
             }
-            Console.ReadLine();
         }
+
+
+
         public static void Level7_2()// Circle 3: Lust - continuing straight ahead
 
         {
@@ -3267,63 +3282,57 @@ namespace Wah
         }
         public static void Level7_4()
         {
-            int decision = 0;
+            string decision;
             Console.ForegroundColor = ConsoleColor.White;
-            while (decision != 1)
-            {
-                Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n" +
-                          "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n" +
-                          "The sky, bruised and relentless, presses down, mirroring the hunger within.\n" +
-                          "On the horizon, a solitary tower rises—blackened, defiant.\n" +
-                          "It calls to you, its whisper threading through the ruinous winds,\n" +
-                          "beckoning you forward into the unknown.\n\n");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("1. Head Towards the Tower");
-                decision = Convert.ToInt32(Console.ReadLine());
 
-            }
-            decision = 0;
-
+            Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n" +
+                      "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n" +
+                      "The sky, bruised and relentless, presses down, mirroring the hunger within.\n" +
+                      "On the horizon, a solitary tower rises—blackened, defiant.\n" +
+                      "It calls to you, its whisper threading through the ruinous winds,\n" +
+                      "beckoning you forward into the unknown.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Head Towards the Tower");
+            Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("The wind howls, pushing against you, each step heavier than the last.\n\n" +
                        "Your strength fades, the tower distant, unwavering.\n You spot a nearby bonfire");
-            while (decision != 1 && decision != 2)
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Rest by bonfire\n2. Leave");
+            decision = Console.ReadLine();
+            switch (decision)
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("1. Rest by bonfire\n2. Leave");
-                decision = Convert.ToInt32(Console.ReadLine());
-                switch (decision)
-                {
-                    case 1:
-                        Console.Clear();
-                        Bonfire();
-                        break;
-                    case 2:
-                        Console.Clear();
-                        break;
-
-                }
-
+                case "1":
+                    Console.Clear();
+                    Bonfire();
+                    break;
+                case "2":
+                    Console.Clear();
+                    break;
+                default:
+                    Level7_4();
+                    break;
 
             }
-            decision = 0;
-            
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
-                    "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
-                    "At its base stands the gate keeper. His armor, a shiny fusion of metal and sin, exudes an aura of ruin.\n Darkness stares from within his helmet, a silent challenge.\n\n");
-             Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("'Mortal, Your journey was long, but futile. This is King Minos' domain and you are unworthy of his gaze. \n" +
-                    "Turn back, lest this place strip you bare.There is no salvation here.Only judgment.'\n\n");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                decision = Convert.ToInt32(Console.ReadLine());
-                switch (decision)
-                {
-                    case 1:
-                        Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
+                "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
+                "At its base stands the gate keeper. His armor, a shiny fusion of metal and sin, exudes an aura of ruin.\n Darkness stares from within his helmet, a silent challenge.\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("'Mortal, Your journey was long, but futile. This is King Minos' domain and you are unworthy of his gaze. \n" +
+                "Turn back, lest this place strip you bare. There is no salvation here. Only judgment.'\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+
+            decision = Console.ReadLine();
+            switch (decision)
+            {
+                case "1":
+                    Console.Clear();
                     if (intelligence >= 20)
                     {
                         Console.WriteLine("'Your words bear the weight of wisdom, an argument as sharp as Minos' tail.\nVery well—pass, but know this: knowledge alone will not shield you from what lies ahead.'\n\n" +
@@ -3335,37 +3344,41 @@ namespace Wah
                     {
                         Console.WriteLine("'Reason? There is no reason in this place—only judgment. \nYou speak of purpose, of resolve, as if they hold weight here. They do not.'\n" +
                                     "'Turn back, mortal. Your words are wasted.'\n");
-                        decision = 0;
+
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        decision = Convert.ToInt32(Console.ReadLine());
+                        decision = Console.ReadLine();
                     }
-                    if (decision ==1)
-                    { Combat("Gate Keeper", 7, 3); }
+
+                    if (decision == "1")
+                    {
+                        Combat("Gate Keeper", 7, 3);
+                    }
                     else
-                    { 
-                    Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
-                    Console.WriteLine("Press ENTER");
-                    Console.ReadLine();
-                    Combat("Gate Keeper", 7, 3);
-
+                    {
+                        Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
+                        Console.WriteLine("Press ENTER");
+                        Console.ReadLine();
+                        Combat("Gate Keeper", 7, 3);
                     }
-                        break;
-                    case 2:
+                    break;
+
+                case "2":
                     Combat("Gate Keeper", 7, 3);
                     break;
-                    case 3:
+
+                case "3":
                     Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
                     Console.WriteLine("Press ENTER");
                     Console.ReadLine();
                     Combat("Gate Keeper", 7, 3);
                     break;
-
             }
-            }
+        }
 
-        
+
+
 
         public static void Level7_5() // FINAL BOSS FIGHT
         {
