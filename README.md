@@ -1,85 +1,25 @@
-Game Change Log
-May 23, 2025
 
-    Accolades improved
+           ██╗██████╗░██████╗░███████╗██╗░░░██╗███████╗██████╗░███████╗███╗░░██╗░█████╗░███████╗
+           ██║██╔══██╗██╔══██╗██╔════╝██║░░░██║██╔════╝██╔══██╗██╔════╝████╗░██║██╔══██╗██╔════╝
+           ██║██████╔╝██████╔╝█████╗░░╚██╗░██╔╝█████╗░░██████╔╝█████╗░░██╔██╗██║██║░░╚═╝█████╗░░
+           ██║██╔══██╗██╔══██╗██╔══╝░░░╚████╔╝░██╔══╝░░██╔══██╗██╔══╝░░██║╚████║██║░░██╗██╔══╝░░
+           ██║██║░░██║██║░░██║███████╗░░╚██╔╝░░███████╗██║░░██║███████╗██║░╚███║╚█████╔╝███████╗
+           ╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝░╚════╝░╚══════╝
 
-    Added secret unlock to character sheet
+-------------------------------------------------------------------------------------------------------------
+The world has fallen into ruin, and you perished in the first wave. But death was only the beginning.
+Once a sinner, you now awaken in Hell—where torment is eternal and judgment absolute. Yet, amid the flames,
+a question remains: Can redemption be earned?
+Descend through hell, face the horrors within, and fight for your soul before damnation seals your fate.
 
-    Added title, overhauled menu
 
-    Finished fighting pits
+A text-based narrative inspired by Dante’s Divine Comedy 
+This game features a Karma system, Dynamic choices where every decision alters your fate.
+Engage with morally complex dilemmas in your quest for redemption.
+Face demonic adversaries that stand between you and salvation
+Immerse yourself in atmospheric storytelling and dark lore.
 
-    Fighting pits added to greed level
-
-    Added level 5 UI and lore
-
-    Bug fixes on slots
-
-    Altered basic language of lust to fit theme
-
-May 22, 2025
-
-    Started development on greed level
-
-    Finished treachery (potential bugs)
-
-    Added Simon Says minigame
-
-    Changed violence text
-
-    Fixed some combat bugs
-
-    Added Minotaur Boss Fight
-
-May 20, 2025
-
-    Finished level 7 leading to final boss fight
-
-    Added bonfire in Violence
-
-    Added weapon declaration into main
-
-    Added Weapon to character sheet
-
-    Can now cross river without fight
-
-    Added Centaur and Harpy fight
-
-May 19, 2025
-
-    Implemented vendor into level 7 and added more lore/formatting
-
-    Added vendor, increased gold to 1000 for testing
-
-May 18, 2025
-
-    You can now pick a fight with Satan (not recommended!)
-
-May 17, 2025
-
-    Monsters can now miss attacks
-
-    Fixed critical error in state detection in Violence
-
-    Added health bar to combat
-
-May 16, 2025
-
-    Added Combat sequence to level 7 (demon)
-
-    Finished level 7 rope bridge/wall climb interactions
-
-May 15, 2025
-
-    Added strength check to level 7
-
-    Made Level restart on death
-
-    Added death screen
-
-    Made character sheet look visually appealing
-
-May 14, 2025
-
-    Cleaned up menu UI
-
+Developed by WAH Games
+Creators: Cody Brett, Luke Ari Patel, Thomas Visser 
+Language: C# 
+Genre: Text Adventure, Dark Fantasy

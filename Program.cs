@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.ComponentModel.Design;
 using System.Net.NetworkInformation;
@@ -258,8 +259,7 @@ namespace Wah
                         Credits();
                         break;
                     case "3":
-                        Console.WriteLine("Coming soon");
-                        Console.ReadLine();
+                        ReadMe();
                         break;
                     case "4":
                         DevMenu();
@@ -276,6 +276,16 @@ namespace Wah
             }
             while (decision != "0");
         } // exit command - placeholder to be worked on
+
+        public static void ReadMe()
+        {
+           string readmePath = ("README.txt");
+            string content = File.ReadAllText(readmePath);
+            Console.WriteLine(content);
+            Console.ReadLine();
+        }
+
+
 
         public static void DevMenu()
         {
@@ -2997,31 +3007,6 @@ namespace Wah
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         public static void Level6()// Circle 4: Gluttony
