@@ -2895,13 +2895,14 @@ namespace Wah
 
                         Console.WriteLine("Before you can even process what's happening, a fist slams into your gut.\n" +
                                           "The world tilts as you're sent sprawling, each blow driving the lesson home—you don’t walk away from debt.\n\n");
-                        Console.ReadLine();
+                        
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Health -50\nKarma -10\nGold -{gold}");
                         gold = 0;
                         vitality -= 50;
                         karmaScore -= 10;
                         debt = false;
+                        Console.ReadLine();
                         break;
 
                     default:
@@ -3093,6 +3094,7 @@ namespace Wah
         public static void Level7()// Circle 3: Lust
         {
             level = 7;
+            vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
             int decision;
 
             Console.Clear();
@@ -3365,8 +3367,10 @@ namespace Wah
 
         
 
-        public static void Level7_5()
-        { }
+        public static void Level7_5() // FINAL BOSS FIGHT
+        {
+        
+        }
 
         public static void Vendor()
         {
