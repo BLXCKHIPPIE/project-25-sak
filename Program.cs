@@ -1715,6 +1715,8 @@ namespace Wah
         public static void Level3()// Circle 7: Heresy
         {
             level = 3;
+            cultist = false;
+            holyRune = false;
             string temp = " ";
             bool choiceloop = false, mystery = false, beatMystery = false;
             string[] cultThings = { "wail and moan", "anoint themselves with fragrant incense", "inscribe names in an unholy tongue across their skin", "weep and gnash their teeth" };
@@ -1871,7 +1873,7 @@ namespace Wah
             }
 
             choiceloop = true;
-            if (cultist != true)
+            if (cultist == false)
             {
                 while (choiceloop)
                 {
@@ -1887,6 +1889,7 @@ namespace Wah
                     {
                         case "1":
                             Level3_2(1);
+                            choiceloop = false;
                             break;
                         case "2":
                             if (holyRune == true)
@@ -1929,7 +1932,7 @@ namespace Wah
                                     weapon = 10;
                                     weaponName = $"Light-Infused {weaponName}";
                                     vitality = 100;
-                                    Combat("Mystery, the Death of Kings", 8, 7);
+                                    Combat("Mystery, the Death of Kings", 8, 8);
                                     beatMystery = true;
                                     choiceloop = false;
 
@@ -2096,6 +2099,25 @@ namespace Wah
                         $"It stands upright, and you see what stands behind it: a truly massive gate built into the ceiling.");
                     angelName = "Uriel";
                     break;
+                case 5:
+                    Console.WriteLine("Anointed with the Name of God, you leave the ruined plaza behind. Mystery was right about just one.\n" +
+                        "thing; it's time to leave this desolate place;\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                case 6:
+                    Console.WriteLine("You open your mouth, the blasphemed truth on your lips; and Mystery reels. You don't have time to waste,\n" +
+                        "you turn away, leaving the screaming woman with her followers. It's time to go, one way or another. It's a long walk,\n" +
+                        "until you finally find the gate, and it's holy guardian.\n");
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Menu("Press ENTER to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
                 default:
                     Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -2127,7 +2149,75 @@ namespace Wah
                         Console.Clear();
                         if (temp == nameOfGod)
                         {
-                            Console.WriteLine("YOU DID IT");
+                            if (route == 5)
+                            {
+                                karmaScore = karmaScore + 5;
+                                Console.WriteLine("Uriel's wings spread, and a burst of radiant flame explodes from his body. A sound like a clear trumpet\n" +
+                                    "rings out. The titan of flame nods, a smile spreading across his face.\n\n" +
+                                    "'THAT IS THE CORRECT ANSWER. WELL DONE, TO WALK THE PATH OF RIGHTEOUSNESS.'\n\n" +
+                                    "The gate behind him shudders, and you feel a wash of air across your face. It's time to go. You earned it.\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                            }
+                            else 
+                            {
+                                Console.WriteLine("The Angel blanches, the light that radiates from his body dimming.\n\n" +
+                                    "'WHAT HAVE YOU DONE? DEFILER! BLASPHEMER! YOU HAVE STOLEN THAT WHICH WAS MOST SACRED!'\n\n" +
+                                    "For the first time, you feel genuine hatred coming from his voice, as he yanks the sword from the ground and\n" +
+                                    "charges you. Your blasphemy has consequences; it's a fight!\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                Combat("Uriel the Guardian", 4, 7);
+                                if (coward == true)
+                                {
+                                    Console.WriteLine("You flee, but where is there to go? Only death awaits you.\n");
+                                    DeathScreen();
+                                }
+                                Console.WriteLine("Uriel stumbles, but catches himself on one hand. His armor shatters, and he is no longer shaped\n" +
+                                    "like a man, but an unbound flame.\n\n" +
+                                    "'I WILL NOT ALLOW YOU TO PASS'\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                Combat("Uriel the Guardian", 5, 0);
+                                if (coward == true)
+                                {
+                                    Console.WriteLine("You flee, but where is there to go? Only death awaits you.\n");
+                                    DeathScreen();
+                                }
+                                Console.WriteLine("The gateway is silent, whispering, holding the echoes of the heresy that you have committed. It is\n" +
+                                    "a forlorn feeling. But something calls to you from the place where Uriel once stood, something glimmering a dull\n" +
+                                    "gold.\n");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Angelic Splinter gained");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("\nIt's a piece of his armor, sharp and jagged, but still holding remnants of angelic power.\n" +
+                                    "It will make a fine weapon. As you pick it, the gate creaks, then, with a terrific rumbling, it breaks open.\n" +
+                                    "Air rushes against your face, blowing away the scent of ash, and you take one last look at the Circle of Heresy.\n" +
+                                    "It's time to leave.");
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Menu("Press ENTER to continue...");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadLine();
+                                Console.Clear();
+                                weapon = 4;
+                                weaponName = "Angelic Splinter";
+
+                            }
+
                             choiceloop = false;
                         }
                         else
@@ -2166,9 +2256,10 @@ namespace Wah
                         break;
                     case "4":
                         Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        if(route == 5)
+                        if(route == 5 || route == 6)
                         {
-                            Console.WriteLine("There is nothing but ruin there now\n");
+                            Console.WriteLine("The sound of desolate whispers and screams of fury meet you; there is nothing but ruin here now.\n" +
+                                "You should leave.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Menu("Press ENTER to return");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -2249,10 +2340,10 @@ namespace Wah
                 Console.Clear();
                 Console.WriteLine("'Take up this blade, and inscribe the secret name upon thy brow, and together we shall commune.'\n\n" +
                     "She hands you the knife, glinting in the reddish light. The worshippers around you raise their hands, some\n" +
-                    "brushing you with their fingertips, while others chant in increasily sonorous tones. The energy is mounting.\n" +
+                    "brushing you with their fingertips, while others chant in increasingly sonorous tones. The energy is mounting.\n" +
                     (intelligence >= 15 ? "However, you notice that they all bear the same mark across their foreheads, but not a single wound has healed.\n" : ""));
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("1. Inscribe the mark, 2. Refuse, " + (intelligence > 13 ? "3. Fake the mark," : ""));
+                Menu("1. Inscribe the mark, 2. Refuse, " + (intelligence > 15 ? "3. Fake the mark," : ""));
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
@@ -2272,7 +2363,7 @@ namespace Wah
                         Console.WriteLine("You cannot help but worship, as if you are in a daze. The words flow past, one after the\n" +
                             "other. Words shouldn't multiply meaning, but these do: stacked one atop the other like stones.\n" +
                             "Meaning expands your mind.\n\n" +
-                            "You are one, and you are home. Perhaps, in this form, you do escape Hell, riding the back of Baylon the Great.\n" +
+                            "You are one, and you are home. Perhaps, in this form, you do escape Hell, riding the back of Babylon the Great.\n" +
                             "But at that point, it's no longer you.\n");
                         DeathScreen();
                         break;
