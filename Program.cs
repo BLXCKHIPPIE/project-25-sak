@@ -277,7 +277,7 @@ namespace Wah
 
             string decision;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit");
+            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit, 11. Anger Layer");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
@@ -310,6 +310,10 @@ namespace Wah
                     Level3();
                     break;
                 case "10":
+                    break;
+                case "11":
+                    Console.Clear();
+                    Level4();
                     break;
             }
             }
@@ -1614,7 +1618,7 @@ namespace Wah
             Console.ReadLine();
             //Was thinking of putting ASCII text art for "HERESY" after here
             //Also just putting 'Satan Says' here for testing it
-            SatanSays();
+            Level3();
         }
         public static void Level3()// Circle 7: Heresy
         {
@@ -1995,11 +1999,12 @@ namespace Wah
 
 
 
-
-        static void SatanSays()
+        static void SatanSays(ref bool playAgain)
         {
             string guess = "", currentSequence = "", temp = "";
-            int[] sequence = new int[7]; //Change this to change the amount of Simon Says levels you have to do
+            Random rand = new Random();
+            int[] sequence = new int[10]; //Change this number to change the length of 'Satan Says'
+
             for (int i = 0; i < sequence.Length; i++)
             {
                 sequence[i] = rand.Next(4);
@@ -2014,30 +2019,31 @@ namespace Wah
                         {
                             case 0:
                                 Console.BackgroundColor = ConsoleColor.Red;
+                                Console.Beep(915, 700);
                                 Console.Write(" RED ");
-                                Console.Beep(915, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "r";
                                 break;
                             case 1:
                                 Console.BackgroundColor = ConsoleColor.Blue;
+                                Console.Beep(794, 700);
                                 Console.Write(" BLUE ");
-                                Console.Beep(794, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "b";
+
                                 break;
                             case 2:
                                 Console.BackgroundColor = ConsoleColor.Green;
+                                Console.Beep(646, 700);
                                 Console.Write(" GREEN ");
-                                Console.Beep(646, 500);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "g";
                                 break;
                             case 3:
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
+                                Console.Beep(1298, 700);
                                 Console.Write(" YELLOW ");
-                                Console.Beep(1298, 500);
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "y";
@@ -2050,36 +2056,211 @@ namespace Wah
                 currentSequence = currentSequence + temp;
                 if (i == 0)
                 {
-                    Console.WriteLine("Press 1 to begin Satan Says\nPress 2 for the rules");
-                    guess = Console.ReadLine();
-                    if (guess == "2") //Tutorial
+                    do
                     {
                         Console.Clear();
-                        Console.WriteLine("Will explain later. Press enter to start");
+                        Console.WriteLine("Press 1 To begin Satan Says\nPress 2 for the rules");
+                        guess = Console.ReadLine();
+                        if (guess != "1" && guess != "2") // Invalid Input
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("INVALID INPUT");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("Press Enter to try again");
+                            Console.ReadLine();
+                        }
+                    } while (guess != "1" && guess != "2");
+
+                    if (guess == "2") // If the player wants to read the rules
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:");
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.Write(" RED ");
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                        Console.Write(" BLUE ");
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.Write(" RED ");
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.Write("GREEN \n");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Write("Would mean that you would have to type rbrg and then press Enter\n\nPress enter when you're ready");
                         Console.ReadLine();
+                        Console.Clear();
                     }
                 }
-                else //Playing the Game
+                else //Input the guess
                 {
                     Console.WriteLine("Please enter the sequence");
-                    guess = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("r. Red");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("b. Blue");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("g. Green");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("y. Yellow");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    guess = Console.ReadLine().ToLower();
+
                 }
-                if (guess != currentSequence && i != 0) //Checking Answer
+                if (guess != currentSequence && i != 0) // Wrong Answer
                 {
                     Console.WriteLine("Wrong!");
-                    Console.WriteLine($"The correct sequence is {currentSequence}");
+                    Console.WriteLine(currentSequence);
+                    playAgain = true;
                     Console.ReadLine();
+                    i = sequence.Length; //Ends
+                }
+                else // Correct Answer
+                {
+                    if (i > 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Correct!\n\nPress Enter to continue");
+                        Console.ReadLine();
+                    }
+                    playAgain = false;
                 }
                 Console.Clear();
             }
-            Console.WriteLine("You win! Congratulations!");
+        }
+
+
+
+        static void RockPaperScissors(ref int timesLost)
+        {
+            Random rand = new Random();
+            int round = 1, computerInput, computerScore = 0, playerScore = 0; // I'm feeling nice and not making it so you need to beat them x times IN A ROW. That would be horrible for people who get stuck on Satan Says
+            string guess, computerGuess = "";
+            do
+            {
+                Console.WriteLine($"Your score is currently: {playerScore}/{timesLost}");
+                Console.WriteLine("Input your guess! Rock, Paper, or Scissors!\n");
+                Console.WriteLine("r. Rock\np. Paper\ns. Scissors");
+                guess = Console.ReadLine().ToLower();
+                Console.Clear();
+
+                computerInput = rand.Next(3); //Decide what the Shadow chooses
+                switch (computerInput)
+                {
+                    case 0:
+                        computerGuess = "rock";
+                        break;
+                    case 1:
+                        computerGuess = "paper";
+                        break;
+                    case 2:
+                        computerGuess = "scissors";
+                        break;
+                }
+
+                //Convert the player's guess to Rock, Paper, or Scissors to make it eso I can do less switch statements
+                switch (guess)
+                {
+                    case "r":
+                        guess = "rock";
+                        break;
+                    case "p":
+                        guess = "paper";
+                        break;
+                    case "s":
+                        guess = "scissors";
+                        break;
+                }
+
+                if (guess == computerGuess) //If the player chose rock
+                {
+                    Console.WriteLine($"You both decided to choose {guess}! That's a draw!");
+                }
+                else
+                {
+                    switch (guess)
+                    {
+                        case "rock":
+                            if (computerGuess == "scissors")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+                        case "scissors":
+
+                            if (computerGuess == "paper")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+                        case "paper":
+                            if (computerGuess == "rock")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+
+                    }
+                }
+            } while (playerScore < timesLost);
 
         }
+
         public static void Level4()// Circle 6: Anger
         {
             level = 4;
-            
+            int timesLost = 0;
+            bool playAgain = false;
+            string decision;
+            Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
+            Console.WriteLine("A large light pointing down at the center of the room turns on");
+            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
+            Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
+            Console.WriteLine("If you want to go through that door, you have to go through me.");
+            Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"");
+            Console.ReadLine();
+            Console.Clear();
+            do
+            {
+                SatanSays(ref playAgain);
+                timesLost++;
+            } while (playAgain == true);
 
+            Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
+            Console.WriteLine("Press Enter to enter the door");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding");
+            Console.WriteLine("\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.");
+            Console.WriteLine("After all, I am the only one who can open the door.");
+            Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"");
+            Console.ReadLine();
+            Console.Clear();
+            RockPaperScissors(ref timesLost);
+            Console.Clear();
+            Console.WriteLine("After beating the Shadow at his games, he gives a smile");
+            Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
+            Console.WriteLine("The Shadow points his arm at the door and it opens");
+            Console.WriteLine("Press enter to go through");
+            Console.ReadLine();
+            Console.Clear();
+            Level5();
 
 
 
