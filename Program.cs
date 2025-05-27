@@ -2019,31 +2019,31 @@ namespace Wah
                         {
                             case 0:
                                 Console.BackgroundColor = ConsoleColor.Red;
-                                Console.Beep(915, 700);
                                 Console.Write(" RED ");
+                                Console.Beep(915, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "r";
                                 break;
                             case 1:
                                 Console.BackgroundColor = ConsoleColor.Blue;
-                                Console.Beep(794, 700);
                                 Console.Write(" BLUE ");
+                                Console.Beep(794, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "b";
 
                                 break;
                             case 2:
                                 Console.BackgroundColor = ConsoleColor.Green;
-                                Console.Beep(646, 700);
                                 Console.Write(" GREEN ");
+                                Console.Beep(646, 700);
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "g";
                                 break;
                             case 3:
                                 Console.BackgroundColor = ConsoleColor.Yellow;
                                 Console.ForegroundColor = ConsoleColor.Black;
-                                Console.Beep(1298, 700);
                                 Console.Write(" YELLOW ");
+                                Console.Beep(1298, 700);
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 temp = "y";
