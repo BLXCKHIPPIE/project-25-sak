@@ -279,7 +279,8 @@ namespace Wah
 
         public static void ReadMe()
         {
-           string readmePath = ("README.txt");
+
+            string readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.txt");
             string content = File.ReadAllText(readmePath);
             Console.WriteLine(content);
             Console.ReadLine();
