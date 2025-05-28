@@ -119,11 +119,21 @@ namespace Wah
             Console.Write($" Deaths: ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(death);
-            if (champion == true || degen == true)
+            if (champion == true || degen == true || cultist == true || holyRune == true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"\n--- Accolades ---\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                if(holyRune == true)
+                {
+                    Console.WriteLine("'Scourge of the Unrighteous'\n");
+                }
+
+                if (cultist == true)
+                {
+                    Console.WriteLine($"'Loathesome Blashphemer'\n");
+                }
 
                 if (champion == true)
                 {
@@ -166,7 +176,7 @@ namespace Wah
     "Follow your own path, wherever it may lead you.",
     "The worst of all deceptions is self-deception.",
     "Nature is the art of God.",
-    "You're not you when you're hungry", //Forgot why this is here, but it's staying
+    "You're not you when you're hungry", //Forgot why this is here, but it's staying(It's here because there was a duplicate quote)
     "The purpose of the present life is virtuous action.",
     "Do not be afraid; our fate cannot be taken from us; it is a gift.",
     "All your anxieties will disappear if you are willing to live in the moment.",
@@ -340,7 +350,7 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-            string names = "1.Cody Brett, 2.Luke Ari Patel, 3.Ryan Field, 4.Thomas Visser";
+            string names = "1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
             string[] split;
 
             Console.WriteLine("Irreverence Credits.\n");
@@ -1584,13 +1594,13 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
-                    Console.WriteLine("He gallops over to you, and pulls out his sword. ");
+                    Console.WriteLine("He gallops over to you, and pulls out his sword.\n ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Combat("Centaur", 4, 1); //Heavy but slow
-                    Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+                    Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1601,16 +1611,16 @@ namespace Wah
                 default:
                     intelligence++;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.WriteLine("Your Intelligence increased by 1\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     if (karmaScore < -10)
                     {
-                        Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out");
+                        Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Menu("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Combat("The Centaur", 3, 3);
-                        Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.");
+                        Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Menu("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -1618,7 +1628,7 @@ namespace Wah
                     }
                     else
                     {
-                        Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.");
+                        Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Menu("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -1635,7 +1645,7 @@ namespace Wah
         {
             Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony");
             Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); 
-            Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?");
+            Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Menu("1. Gather wood for a bonfire, 2. Carry on through the forest");
             Console.ForegroundColor = ConsoleColor.White;
@@ -1647,9 +1657,9 @@ namespace Wah
                 case "2":
                     intelligence++;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your Intelligence increased by 1");
+                    Console.WriteLine("Your Intelligence increased by 1\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible");
+                    Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1662,7 +1672,7 @@ namespace Wah
                     Console.WriteLine("Your Strength increased by 1");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
-                    Console.WriteLine("As you snap the branch off, blood spills out and the tree screams");
+                    Console.WriteLine("As you snap the branch off, blood spills out and the tree screams!\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1675,7 +1685,7 @@ namespace Wah
                     Console.WriteLine("WHAT IS WRONG WITH YOU!"); Thread.Sleep(1500);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you");
+                    Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you!\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1683,7 +1693,7 @@ namespace Wah
                     Console.Clear();
                     //Fight goes here
                     Combat("Harpy", 2, 4);
-                    Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire");
+                    Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1701,7 +1711,7 @@ namespace Wah
                 Combat("Minotaur", 6, 2);
                 if (coward == true) //If they run from the minotaur
                 {
-                    Console.WriteLine("The minotaur was far too powerful for you to handle. You run away back in to the forest.");
+                    Console.WriteLine("The minotaur was far too powerful for you to handle. You run away back in to the forest.\n");
 
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("1. Rest at the bonfire, 2. Go back to the minotaur");
@@ -1710,7 +1720,7 @@ namespace Wah
                     if (decision != "2")
                     {
                         Bonfire();
-                        Console.WriteLine("Now that you are fully rested, It's time to try again");
+                        Console.WriteLine("Now that you are fully rested, It's time to try again.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Menu("Press ENTER to fight the Minotaur...");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -1736,6 +1746,7 @@ namespace Wah
 
 
             Console.Clear();
+            Console.WriteLine("You have now entered the layer of\n");
             Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Menu("Press ENTER to continue...");
@@ -2685,7 +2696,7 @@ namespace Wah
                     if (guess == "2") // If the player wants to read the rules
                     {
                         Console.Clear();
-                        Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:");
+                        Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:\n");
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write(" RED ");
                         Console.BackgroundColor = ConsoleColor.Blue;
@@ -2893,8 +2904,7 @@ namespace Wah
             Console.Clear();
             Console.WriteLine("After beating the Shadow at his games, he gives a smile");
             Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
-            Console.WriteLine("The Shadow points his arm at the door and it opens");
-            Console.WriteLine("Press enter to go through\n");
+            Console.WriteLine("The Shadow points his arm at the door and it opens.\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -3987,7 +3997,7 @@ _________________________________________________________________________
                 Console.Write("   300 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write("3. Placeholder Sword");
+                Console.Write("3. Arclight Blade of Obliteration");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("   || kills stuff pretty well  ||");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -4039,12 +4049,14 @@ _________________________________________________________________________
                         }
                         break;
                     case 3:
-                        if (gold >= 1000000)
+                        if (gold >= 3000000)
                         {
-                            gold = gold - 1000000;
+                            gold = gold - 3000000;
                             
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
+                            weapon = 20;
+                            weaponName = "Arclight Blade of Obliteration";
                         }
                         else
                         {
@@ -4099,6 +4111,7 @@ _________________________________________________________________________
                 switch (decision)
                 {
                     case "1":
+                        Thread.Sleep(2000);
                         vitality = 100;
                         Console.Clear();
                         break;
