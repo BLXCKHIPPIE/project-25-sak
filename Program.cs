@@ -380,7 +380,7 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-            string names = "1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
+            string names = "1.Cody Brett               |               Art Director, 2.Luke Ari Patel           |               Story Direction, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
             string[] split;
 
             Console.WriteLine("Irreverence Credits.\n");
@@ -3546,7 +3546,7 @@ namespace Wah
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("'Ah, another traveler seeking passage! Fear not, for these stairs demand no toll—only the courage to climb.\n" +
-                " Greed has weighed down many souls, but ahead lies gluttony, where excess takes a different form.\n Step into our dining hall, Where everyone is well-fed'\n\n");
+                "Greed has weighed down many souls, but ahead lies gluttony, where excess takes a different form.\n Step into our dining hall, Where everyone is well-fed'\n\n");
             
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("|    1. Proceed   |   2. Stay in greed   |");
@@ -4065,7 +4065,7 @@ namespace Wah
                     "his coiled tails writhing like the damned souls he judges. His hollow eyes burn with ancient knowledge,\n" +
                     "his throne a twisted mass of marble and tree roots. His voice rumbles like distant thunder.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Your sins are weighed, your fate determined. There is no escape.");
+                Console.WriteLine("Your sins are weighed, your fate determined. There is no escape.\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Press ENTER to fight for your life");
                 Console.ReadLine();
@@ -4341,7 +4341,49 @@ _________________________________________________________________________
 
 
         public static void GoodEnding()
-        { }
+        {
+            Console.Clear();
+            Console.WriteLine("You've fought your way out of hell, through traitors, murderers, defilers; You know that King Minos is right.\n" +
+                "Unlike everyone else you fought, he was the only one not condemned here, the only one here by choice. Hell is a place of\n" +
+                $"punishment, and maybe you deserved to be there. You withdraw your {weaponName}, and step back, letting out a long breath.\n\n" +
+                $"Then, you offer King Minos your hand.\n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("'You're sparing me?'\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("He heaves himself up onto his throne, but you turn away. In front of you are wrought gates of black iron,\n" +
+                "reading 'ABANDON ALL HOPE, YE WHO ENTER HERE;' The gates of Hell itself. You wonder if sparing King Minos means\n" +
+                "that you don't deserve to be here anymore. You turn back to the fallen King, and he grimaces... but then waves his hand.\n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine("The gates of hell swing open.\n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine("The world beyond is full of sorrow, despair, and desolation. You remember it, the shades falling from your eyes;\n" +
+                "the war, the famine, the bloodshed. But it's also a place where the sun plays across riverbeds, where stars glimmer\n" +
+                "between silver-lined clouds, where mothers sing songs to their children. As you step beyone the threshold, you feel\n" +
+                "something warm return to you, something you hadn't even realized you had missed.\n\n" +
+                "Hope.\n\n" +
+                "It's time to see what the future really holds.\n");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Epilogue();
+
+
+        }
 
 
 
