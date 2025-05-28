@@ -24,12 +24,12 @@ namespace Wah
         public static string name = "Traveler";
         public static int strength = 10;
         public static int vitality = 100; // Max health
-        public static int intelligence = 15;
+        public static int intelligence = 10;
         public static int karmaScore = -10;
         public static int gold = 100;
         public static int death = 0;
         public static int level = 0;
-        public static int weapon = 2; //used to derive damage calcs
+        public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fist";
 
         // Bools tied to level 5 
@@ -282,8 +282,9 @@ namespace Wah
         public static void ReadMe()
         {
 
-            string readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.txt");
-            string content = File.ReadAllText(readmePath);
+            StreamReader sr = new StreamReader(@"README.txt");
+            string content = sr.ReadToEnd();
+            sr.Close();
             Console.WriteLine(content);
             Console.ReadLine();
         }
@@ -3219,6 +3220,7 @@ namespace Wah
                 Console.WriteLine("Press ENTER to fight!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
+
                 Combat("Infant Nephilim", 1, 1);
                 Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -4082,10 +4084,27 @@ _________________________________________________________________________
                     
             
             }
-               
-            
 
 
+
+
+            public static void GoodEnding()
+        { }
+
+
+
+
+
+
+        public static void BadEnding()
+        { }
+
+
+
+
+
+        public static void NeutralEnding()
+        { }
 
 
             }
