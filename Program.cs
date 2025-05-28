@@ -24,12 +24,12 @@ namespace Wah
         public static string name = "Traveler";
         public static int strength = 10;
         public static int vitality = 100; // Max health
-        public static int intelligence = 15;
+        public static int intelligence = 10;
         public static int karmaScore = -10;
         public static int gold = 100;
         public static int death = 0;
         public static int level = 0;
-        public static int weapon = 2; //used to derive damage calcs
+        public static int weapon = 0; //used to derive damage calcs
         public static string weaponName = "fist";
 
         // Bools tied to level 5 
