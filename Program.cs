@@ -4063,10 +4063,27 @@ _________________________________________________________________________
                     
             
             }
-               
-            
 
 
+
+
+            public static void GoodEnding()
+        { }
+
+
+
+
+
+
+        public static void BadEnding()
+        { }
+
+
+
+
+
+        public static void NeutralEnding()
+        { }
 
 
             }
