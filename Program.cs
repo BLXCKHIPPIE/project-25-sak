@@ -2925,8 +2925,8 @@ namespace Wah
             int timesLost = 0;
             bool playAgain = false;
             string decision;
-            Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
-            Console.WriteLine("A large light pointing down at the center of the room turns on");
+            Console.WriteLine("You enter a dark black room, where the only visible thing is a large door\n" +
+                "A large light pointing down at the center of the room turns on\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("You have entered the layer of:");
             Console.WriteLine(" _______  _        _______  _______  _______ \r\n" +
@@ -2942,11 +2942,13 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow\n");
-            Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
-            Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
-            Console.WriteLine("If you want to go through that door, you have to go through me.");
-            Console.WriteLine("I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"\n");
+            Console.WriteLine("A humanoid figure emerges from the floor.\n" +
+                "It looks totally black and has no visible features, like a living standing shadow\n" +
+                "The dark figure stands still for a few seconds and looks around. \n" +
+                "His head then turns towards your direction and erupts in laughter\n" +
+                "Wow. You really think you can just walk through the Anger layer and just leave?\n" +
+                "If you want to go through that door, you have to go through me.\n" +
+                "I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -2966,9 +2968,9 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding");
-            Console.WriteLine("\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.");
-            Console.WriteLine("After all, I am the only one who can open the door.");
+            Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding\n" +
+                "\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.\n" +
+                "After all, I am the only one who can open the door.");
             Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
@@ -2977,9 +2979,10 @@ namespace Wah
             Console.Clear();
             RockPaperScissors(ref timesLost);
             Console.Clear();
-            Console.WriteLine("After beating the Shadow at his games, he gives a smile");
-            Console.WriteLine("\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. You have proved that you're worthy to cross the door. Good luck.\"");
-            Console.WriteLine("The Shadow points his arm at the door and it opens.\n");
+            Console.WriteLine("After beating the Shadow at his games, he gives a smile\n" +
+                "\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. \n" +
+                "You have proved that you're worthy to cross the door. Good luck.\"\n" +
+                "The Shadow points his arm at the door and it opens.\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
@@ -3834,7 +3837,7 @@ namespace Wah
         public static void Level7_2()// Circle 3: Lust - continuing straight ahead
 
         {
-            int decision;
+            string decision;
             Console.Clear(); // clearing console
             Console.ForegroundColor = ConsoleColor.White; // setting text color to white
             Console.WriteLine("The wind howls as you push forward. As the dust settles, a marble staircase comes into view—pristine, out of place.\n" +
@@ -3843,8 +3846,8 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
             Console.WriteLine("1. Descend the marble stairs (Back to greed)\n" +
                 "2. Turn back and take the path upward, away from the excess below.");
-            decision = Convert.ToInt32(Console.ReadLine()); // Convert to int and accept users input
-            if (decision == 1)
+            decision = Console.ReadLine(); // Convert to int and accept users input
+            if (decision == "1")
             { Level5(); } // calls Level6 method
             else
             { Level7_1(); } // calls Level7_1 method
@@ -4415,7 +4418,58 @@ _________________________________________________________________________
 
 
         public static void BadEnding()
-        { }
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("You stare into King Minos's pleading eyes.\n" +
+                "As you pull out the weapon that is about to bring the end of the Judge of the Damned,\n" +
+                "you remember waking up in Treachery. Cold and confused. \n" +
+                "Every decision that you made throughout your journey through Hell brought you to here,\n" +
+                "The end of your journey for salvation. \n" +
+                "Without any more hesitation, you slice off the head of King Minos.");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("His body falls to the ground and you breathe a sigh of relief.\n" +
+                "You walk through the gates out of Limbo and travel through a long dark tunnel\n" +
+                "that emerges just outside of a mountain in a forest. There is a sign that warns travellers.\n");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Abandon Hope, All Ye who Enter here.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("While admiring the beautiful forest views, you feel a loud rumble. \n" +
+                "The rumbling approaches and you realize the consequences of your actions.\n" +
+                "With King Minos slain, There is no one left to guard the gates of Limbo. \n" +
+                "Without someone to judge the sins of sinners, no one gets assigned to their respective layers \n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("You have opened the gates of Hell");
+            Thread.Sleep(1000);
+            Console.Write(" for every Sinner");
+            Thread.Sleep(1000);
+            Console.Write(" And Demon");
+            Thread.Sleep(500);
+            Console.WriteLine(" to Escape.\n");
+            Thread.Sleep(1000);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Menu("Press ENTER to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\n\n                              The End.");
+            Console.ReadLine();
+            Console.Clear();
+            Credits();
+            Epilogue();
+        }
 
 
 
