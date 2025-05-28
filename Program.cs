@@ -3840,13 +3840,15 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White; // setting text to white
             Console.WriteLine("You step onto the rope bridge, its frayed strands swaying beneath your weight.\n" +
                 "The abyss yawns below, but hesitation won’t serve you now.\nfortune favors the bold.");
+            Console.ReadLine();
             Console.Clear();
-            //LoadAnimation();
+           
             if (chance < 30)
             {
                 Console.WriteLine("You make it across the rope bridge, steadying yourself on solid ground. Turning back,\nyou peer into the abyss" +
                     "100 meters of sheer drop. The realization settles in.\n" +
                     "If that rope had snapped, the fall would have been fatal. ");
+                Level7_4();
             }
             else
             {
@@ -3868,8 +3870,8 @@ namespace Wah
                     Console.WriteLine("You pull yourself up the rope, muscles straining but growing stronger.\nEvery challenge,every fight—it’s all paying off.\n" +
                         "Bit by bit, you’re becoming tougher for what lies ahead.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+1 Strength");
-                    strength = strength + 1;
+                    Console.WriteLine("+2 Strength");
+                    strength = strength + 2;
                     Console.ReadLine();
                     Level7_4(); }
                 else
@@ -3960,6 +3962,10 @@ namespace Wah
                     if (decision == "1")
                     {
                         Combat("Gate Keeper", 7, 3);
+                        Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                            "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                            "a wave of unease washes over you. With a deep breath, you push it open.");
+                        Level7_5();
                     }
                     else
                     {
@@ -3967,11 +3973,19 @@ namespace Wah
                         Console.WriteLine("Press ENTER");
                         Console.ReadLine();
                         Combat("Gate Keeper", 7, 3);
+                        Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                        Level7_5();
                     }
                     break;
 
                 case "2":
                     Combat("Gate Keeper", 7, 3);
+                    Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                    Level7_5();
                     break;
 
                 case "3":
@@ -3979,6 +3993,10 @@ namespace Wah
                     Console.WriteLine("Press ENTER");
                     Console.ReadLine();
                     Combat("Gate Keeper", 7, 3);
+                    Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                    Level7_5();
                     break;
             }
         }
