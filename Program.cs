@@ -2778,6 +2778,7 @@ namespace Wah
                 }
                 Console.Clear();
             }
+            playAgain = false;
         }
 
 
@@ -4097,7 +4098,7 @@ namespace Wah
             Console.WriteLine("3. Become the new Gatekeeper\n\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Make your final decision:\n");
-            break; // Desperate measure to ensure all loops are closed -- 
+            
             decision = Console.ReadLine();
 
             switch (decision)
