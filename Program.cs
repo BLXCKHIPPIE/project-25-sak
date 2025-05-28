@@ -380,8 +380,7 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-            string names = " 1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
-            string names = "1.Cody Brett               |               Art Director, 2.Luke Ari Patel           |               Story Direction, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
+            string names = "1.Cody Brett               |               Art Director,2.Luke Ari Patel           |               Story Direction,3.Ryan Field               |               Sound Engineer,4.Thomas Visser            |               Developer";
             string[] split;
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -663,7 +662,8 @@ namespace Wah
                             }
                             break;
                         default:
-                            Console.WriteLine("Please input a valid key.");
+                            Console.Clear();
+                            Console.WriteLine("Input a valid key.");
                             break;
                     }
                     monHp = monHp - damage;
@@ -733,6 +733,28 @@ namespace Wah
                                         blocking = false;
                                         break;
 
+                                    case "King Minos":
+                                        Console.WriteLine("King Minos tugs the threads, and his scales tip. You are " + (karmaScore <= 0 ? "guilty!" : "Innocent!"));
+                                        if (karmaScore <= 0)
+                                        {
+                                            Console.WriteLine("You take 25 damage, as the weight of your sins crash down on you!");
+                                            vitality = vitality - 25;
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("The scales have no effect! In fact, you regain 5 Vitality!");
+                                            vitality = vitality + 5;
+                                        }
+                                        blocking = false;
+                                        break;
+
+                                    case "Serpent King Minos":
+                                        block = 5;
+                                        Console.WriteLine("The Serpent King's hardened scales fall off.");
+                                        monSpeed = (monSpeed - block);
+                                        blocking = false;
+                                        break;
+
                                     default:
                                         Console.WriteLine($"{monsterName} drops their defensive stance.");
                                         monSpeed = (monSpeed - block);
@@ -766,6 +788,20 @@ namespace Wah
                                         vitality = vitality - damage;
                                         blocking = true;
                                         break;
+
+                                    case "King Minos":
+                                        Console.WriteLine("King Minos hold up a great scale in his hands, and a multitude of intangible threads wrap about your\n" +
+                                            "body! They aren't restricting your movement, but you can feel them probing your soul!");
+                                        blocking = true;
+                                        break;
+
+                                    case "Serpent King Minos":
+                                        block = 5;
+                                        Console.WriteLine($"The great Serpent King hardens his scales, becoming harder to hit!");
+                                        monSpeed = monSpeed + block;
+                                        blocking = true;
+                                        break;
+
 
                                     default:
                                         Console.WriteLine($"{monsterName} takes a defensive stance.");
@@ -1629,10 +1665,10 @@ namespace Wah
                     strength++;
                     karmaScore--;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your Strength increased by 1");
+                    Console.WriteLine("Your Strength has increased");
                     Console.ForegroundColor = ConsoleColor.White;
 
-                    Console.WriteLine("You gesture at the Centaur to get his attention and give him an intense stare. ");
+                    Console.WriteLine("\nYou gesture at the Centaur to get his attention and give him an intense stare. ");
                     Console.WriteLine("He gallops over to you, and pulls out his sword.\n ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
@@ -1696,7 +1732,7 @@ namespace Wah
                 case "2":
                     intelligence++;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your Intelligence increased by 1\n");
+                    Console.WriteLine("Your Intelligence has increased\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -1708,7 +1744,7 @@ namespace Wah
                     strength++;
                     karmaScore--;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your Strength increased by 1");
+                    Console.WriteLine("Your Strength has increased\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
                     Console.WriteLine("As you snap the branch off, blood spills out and the tree screams!\n");
@@ -4042,7 +4078,6 @@ namespace Wah
             }
             do
             {
-                strength += 1000; /// just testing
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("You approach the throne. King Minos looms above,\n" +
@@ -4332,7 +4367,7 @@ _________________________________________________________________________
                 "Unlike everyone else you fought, he was the only one not condemned here, the only one here by choice. Hell is a place of\n" +
                 $"punishment, and maybe you deserved to be there. You withdraw your {weaponName}, and step back, letting out a long breath.\n\n" +
                 $"Then, you offer King Minos your hand.\n");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Menu("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
@@ -4343,13 +4378,13 @@ _________________________________________________________________________
             Console.WriteLine("He heaves himself up onto his throne, but you turn away. In front of you are wrought gates of black iron,\n" +
                 "reading 'ABANDON ALL HOPE, YE WHO ENTER HERE;' The gates of Hell itself. You wonder if sparing King Minos means\n" +
                 "that you don't deserve to be here anymore. You turn back to the fallen King, and he grimaces... but then waves his hand.\n");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Menu("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("The gates of hell swing open.\n");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Menu("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
@@ -4360,11 +4395,16 @@ _________________________________________________________________________
                 "something warm return to you, something you hadn't even realized you had missed.\n\n" +
                 "Hope.\n\n" +
                 "It's time to see what the future really holds.\n");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Menu("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\n\n                              The End.");
+            Console.ReadLine();
+            Console.Clear();
+            Credits();
             Epilogue();
 
 
@@ -4408,13 +4448,13 @@ _________________________________________________________________________
                 "\nI pledge my existence and vigilance to this duty—for all who come, and all who shall remain.\"");
             Console.WriteLine("The oath is sealed. Minos bows his head, accepting his place at your side. The throne of Limbo is no longer empty.\r\nThe cycle does not end—but now, you stand as its guardian.");
             Console.ReadLine();
-            Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n\n\n                              The End.");
             Console.ReadLine();
             Console.Clear();
             Credits();
+            Epilogue();
 
 
 
