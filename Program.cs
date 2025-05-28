@@ -296,7 +296,7 @@ namespace Wah
 
             string decision;
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit, 11. Anger Layer");
+            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit, 11. Anger Layer 12.Boss");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
@@ -334,6 +334,9 @@ namespace Wah
                     Console.Clear();
                     Level4();
                     break;
+                case "12":
+                    Level7_5();
+                        break;
             }
             }
 
@@ -3480,6 +3483,7 @@ namespace Wah
                         break;
 
                     case "2":
+
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Bad call. You’ll regret this.\n");
@@ -3947,7 +3951,56 @@ namespace Wah
 
         public static void Level7_5() // FINAL BOSS FIGHT
         {
-        
+            string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("  \n\n\n      ▄█   ▄█▄  ▄█  ███▄▄▄▄      ▄██████▄                       ");
+            Console.WriteLine("        ███ ▄███▀ ███  ███▀▀▀██▄   ███    ███                      ");
+            Console.WriteLine("        ███▐██▀   ███▌ ███   ███   ███    █▀                       ");
+            Console.WriteLine("       ▄█████▀    ███▌ ███   ███  ▄███                              ");
+            Console.WriteLine("      ▀▀█████▄    ███▌ ███   ███ ▀▀███ ████▄                       ");
+            Console.WriteLine("        ███▐██▄   ███  ███   ███   ███    ███                      ");
+            Console.WriteLine("        ███ ▀███▄ ███  ███   ███   ███    ███                      ");
+            Console.WriteLine("        ███   ▀█▀ █▀    ▀█   █▀    ████████▀                       ");
+            Console.WriteLine("        ▀                                                           ");
+            Console.WriteLine("    ▄▄▄▄███▄▄▄▄    ▄█  ███▄▄▄▄    ▄██████▄     ▄████████           ");
+            Console.WriteLine("  ▄██▀▀▀███▀▀▀██▄ ███  ███▀▀▀██▄ ███    ███   ███    ███           ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███   ███    █▀            ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███   ███                  ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███ ▀███████████           ");
+            Console.WriteLine("  ███   ███   ███ ███  ███   ███ ███    ███          ███           ");
+            Console.WriteLine("  ███   ███   ███ ███  ███   ███ ███    ███    ▄█    ███           ");
+            Console.WriteLine("   ▀█   ███   █▀  █▀    ▀█   █▀   ▀██████▀   ▄████████▀            ");
+            Console.WriteLine("\n\n\n\t   |    Press ENTER to continue    |");
+
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("\n\nThe chamber is vast, its marble floor smooth and reflective. Soft silver light filters down, illuminating crimson banners that hang motionless.\n" +
+                "Tall obsidian pillars line the path, engraved with ancient symbols.\n\n" +
+                "At the far end, King Minos sits upon his throne, watching in silence.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("   |   1. Approach Minos   |   2. Visit the Bonfire   |");
+            Console.ForegroundColor=ConsoleColor.White;
+            decision = Console.ReadLine();
+            switch (decision)
+            {
+                case "1":
+
+                    break;
+                case "2":
+                    Bonfire();
+                    Level7_5();
+                    break;
+                default:
+                    Level7_5();
+                    break;
+
+                   
+            }
+            Console.WriteLine("level continues here");
+            Console.ReadLine();
         }
 
         public static void Vendor()
