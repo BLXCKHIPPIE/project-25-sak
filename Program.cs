@@ -2823,7 +2823,6 @@ namespace Wah
                 }
                 Console.Clear();
             }
-            playAgain = false; // Added to fix loopback errors after final boss fight
         }
 
 
@@ -2960,7 +2959,7 @@ namespace Wah
                 Combat("Shadow", 4, 2);
                 
             } while (playAgain == true);
-
+            playAgain = false; // Added to fix loopback errors after final boss fight
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to go through the door...");
