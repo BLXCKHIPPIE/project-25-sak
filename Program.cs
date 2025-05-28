@@ -1540,12 +1540,23 @@ namespace Wah
             Console.WriteLine("As you leave Treachery, you notice the temperature cooling down to a bearable heat.");
             Console.WriteLine("You enter a rocky mountain range and see a long red river far away.");
             Console.WriteLine("A roar echoes in the distance\n");
+
             Console.ForegroundColor = ConsoleColor.Red;
+            
+            Console.WriteLine("You have now entered the layer of");
+            Console.WriteLine("         _________ _______  _        _______  _        _______  _______ \r\n" +
+                "|\\     /|\\__   __/(  ___  )( \\      (  ____ \\( (    /|(  ____ \\(  ____ \\\r\n" +
+                "| )   ( |   ) (   | (   ) || (      | (    \\/|  \\  ( || (    \\/| (    \\/\r\n" +
+                "| |   | |   | |   | |   | || |      | (__    |   \\ | || |      | (__    \r\n" +
+                "( (   ) )   | |   | |   | || |      |  __)   | (\\ \\) || |      |  __)   \r\n" +
+                " \\ \\_/ /    | |   | |   | || |      | (      | | \\   || |      | (      \r\n" +
+                "  \\   /  ___) (___| (___) || (____/\\| (____/\\| )  \\  || (____/\\| (____/\\\r\n" +
+                "   \\_/   \\_______/(_______)(_______/(_______/|/    )_)(_______/(_______/\r\n\n\n");
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear ();
-
+            
             //Going to attempt to foreshadow the Minotaur. Will add a fight
             Level2_1();
         }
@@ -2829,12 +2840,22 @@ namespace Wah
             string decision;
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door");
             Console.WriteLine("A large light pointing down at the center of the room turns on");
-            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("You have entered the layer of:");
+            Console.WriteLine(" _______  _        _______  _______  _______ \r\n" +
+                "(  ___  )( (    /|(  ____ \\(  ____ \\(  ____ )\r\n" +
+                "| (   ) ||  \\  ( || (    \\/| (    \\/| (    )|\r\n" +
+                "| (___) ||   \\ | || |      | (__    | (____)|\r\n" +
+                "|  ___  || (\\ \\) || | ____ |  __)   |     __)\r\n" +
+                "| (   ) || | \\   || | \\_  )| (      | (\\ (   \r\n" +
+                "| )   ( || )  \\  || (___) || (____/\\| ) \\ \\__\r\n" +
+                "|/     \\||/    )_)(_______)(_______/|/   \\__/\r\n" +
+                "                                             ");
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
+            Console.WriteLine("A humanoid figure emerges from the floor.\nIt looks totally black and has no visible features, like a living standing shadow\n");
             Console.WriteLine("The dark figure stands still for a few seconds and looks around. \nHis head then turns towards your direction and erupts in laughter");
             Console.WriteLine("\"Wow. You really think you can just walk through the Anger layer and just leave?");
             Console.WriteLine("If you want to go through that door, you have to go through me.");
