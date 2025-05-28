@@ -3341,7 +3341,7 @@ namespace Wah
         {
             string decision;
             bool game = true;
-            int shots = 6; 
+            int shots = 6;
             int round = 1;
             int winnings;
 
@@ -3360,129 +3360,103 @@ namespace Wah
             decision = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
 
-            switch (decision)
+            if (decision == "1")
             {
-                case "1":
-                    if (gold >= 250)
+                if (gold >= 250)
+                {
+                    gold -= 250;
+                    game = true;
+                }
+                else
+                {
+                    Console.WriteLine("You do not have enough gold to play!");
+                    Console.ReadLine();
+                    return; 
+                }
+            }
+            else
+            {
+                return; 
+            }
+
+            while (game && shots > 1)
+            {
+                winnings = round * 250;
+                Console.Clear();
+                Console.WriteLine($"\nRound {round}: {shots} shots remaining\n");
+
+                // Demon’s Turn
+                Console.WriteLine("Demon's turn...");
+                Console.ReadLine();
+                int roll = rand.Next(0, shots);
+
+                if (roll == 0)
+                {
+                    Console.WriteLine("The gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
+                    gold += winnings;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"+{winnings} gold!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    game = false;
+                }
+                else
+                {
+                    Console.WriteLine("The demon presses the revolver to his head... Click. He lives.");
+                }
+
+                if (game)
+                {
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine($"\nRound {round}: {shots} shots remaining");
+                    Console.WriteLine("Your turn.\n");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("1. Pull the trigger\n2. Quit while you are ahead");
+                    decision = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    if (decision == "2")
                     {
-                        gold -= 250;
-                        break;
+                        Console.WriteLine("Pocketing your winnings, you rise from the table and step away.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"+{winnings} gold!");
+                        gold += winnings;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        game = false;
                     }
                     else
                     {
-                        Console.WriteLine("You do not have enough gold to play!");
-                        Console.ReadLine();
-                        Level5();
-                        break;
-                    }
-                case "2":
-                    Level5();
-                    break;
-            }
-
-
-
-                    while (game && shots > 1)
-                    {
-                        winnings = round * 250;
-                        Console.Clear();
-                        Console.WriteLine($"\nRound {round}: {shots} shots remaining\n");
-
-
-                        Console.WriteLine("Demon's turn...");
-                        Console.ReadLine();
-                        int roll = rand.Next(0, shots);
-
+                        roll = rand.Next(0, shots);
                         if (roll == 0)
                         {
-                            Console.WriteLine("The gun erupts. The demon’s skull splits like cracked stone,\nfragments sizzling as they hit the floor. His body jerks once, then nothing.");
-                            gold += winnings;
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine($"+{winnings} gold!");
-                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("You press the cold steel to your temple... Slowly you squeeze the trigger.");
                             Console.ReadLine();
+                            Console.WriteLine("A deafening blast. Your thoughts splatter, immortalized in a grotesque mural.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            DeathScreen();
                             game = false;
-                            Level5();
                         }
                         else
                         {
-                            Console.WriteLine("The demon presses the revolver to his head... Click. He lives.");
+                            Console.WriteLine("Click. Luck still lingers in your grasp.");
                         }
-
-
-                        if (!game)
-                        {
-                            Console.ReadLine();
-                            Console.Clear();
-                            Console.WriteLine("You've survived the game. The demon is no more.");
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine($"+{winnings} gold!");
-                            gold += winnings;
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            game = false;
-                            Level5();
-                        }
-                        else
-                        {
-                            Console.ReadLine();
-                            Console.Clear();
-
-
-                            Console.WriteLine($"\nRound {round}: {shots} shots remaining");
-                            Console.WriteLine("Your turn.\n\n\n");
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            Console.WriteLine("1. Pull the trigger\n2. Quit while you are ahead");
-                            decision = Console.ReadLine();
-                            Console.ForegroundColor = ConsoleColor.White;
-
-                            if (decision == "2")
-                            {
-                                Console.WriteLine("Pocketing your winnings, you rise from the table and step away.\n\n");
-                                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                Console.WriteLine($"+{winnings} gold!");
-                                gold += winnings;
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.ReadLine();
-                                Level5();
-                                game = false;
-                            }
-                            else
-                            {
-
-                                roll = rand.Next(0, shots);
-
-                                if (roll == 0)
-                                {
-                                    Console.WriteLine("You press the cold steel to your temple.. Slowly you squeeze the trigger.");
-                                    Console.ReadLine();
-                                    Console.WriteLine("A deafening blast. Your thoughts splatter, immortalized in a grotesque mural.");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    DeathScreen();
-                                    game = false;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("You press the cold steel to your temple.. Slowly you squeeze the trigger.");
-                                    Console.ReadLine();
-                                    Console.WriteLine("Click. Luck still lingers in your grasp.");
-                                    Console.ReadLine();
-                                }
-                            }
-                        }
-
-
-                        if (shots > 1)
-                        {
-                            shots--;
-                        }
-
-
-
-                        round++;
-
                     }
+                }
+
+                if (shots > 1)
+                {
+                    shots--;
+                }
+
+                round++;
+            }
+
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
+
         }
         public static void Level5_1()
         {
@@ -3515,7 +3489,7 @@ namespace Wah
                         {
                             Console.WriteLine("You don't have enough to repay the debt!");
                             Console.ReadLine();
-                            goto case "2"; // Forces player into consequences if they can't pay
+                            goto case "2";
                         }
                         break;
 
@@ -4123,6 +4097,7 @@ namespace Wah
             Console.WriteLine("3. Become the new Gatekeeper\n\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Make your final decision:\n");
+            break; // Desperate measure to ensure all loops are closed -- 
             decision = Console.ReadLine();
 
             switch (decision)
