@@ -308,48 +308,72 @@ namespace Wah
         {
 
             string decision;
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Menu("1. Lust, 2. Violence, 3. Character, 4. Death Screen, 5. Bonfire, 6. Roulette, 7. Slots, 8. level 5, 9. Heresy, 10. Exit, 11. Anger Layer 12.Boss");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine("       ██████  ███████ ██    ██ ███████ ██       ██████  ██████  ███████ ██████      ");
+            Console.WriteLine("       ██   ██ ██      ██    ██ ██      ██      ██    ██ ██   ██ ██      ██   ██     ");
+            Console.WriteLine("       ██   ██ █████   ██    ██ █████   ██      ██    ██ ██████  █████   ██████      ");
+            Console.WriteLine("       ██   ██ ██       ██  ██  ██      ██      ██    ██ ██      ██      ██   ██     ");
+            Console.WriteLine("       ██████  ███████   ████   ███████ ███████  ██████  ██      ███████ ██   ██     ");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("                          ███    ███ ███████ ███    ██ ██    ██                         ");
+            Console.WriteLine("                          ████  ████ ██      ████   ██ ██    ██                         ");
+            Console.WriteLine("                          ██ ████ ██ █████   ██ ██  ██ ██    ██                         ");
+            Console.WriteLine("                          ██  ██  ██ ██      ██  ██ ██ ██    ██                         ");
+            Console.WriteLine("                          ██      ██ ███████ ██   ████  ██████                          ");
+            Console.WriteLine("\n\n\n");
+
+
+
+            Console.WriteLine("\t   1. Level 1  |  2. Level 2  |  3. Level 3  |  4. Level 4  |  5. Level 5\n");
+            Console.WriteLine("\t   6. Level 6  |  7. Level 7  |  8. Final Boss  |  9. Bonfire | 10. Exit ");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
             {
-                case "1": // use to test levels we will remove this from menu later!
-                    Level7();
+                case "1":
+                    Console.Clear();
+                    Level1();
                     break;
                 case "2":
-                    Level2(); //Takes you to level 2
+                    Console.Clear();
+                    Level2();
                     break;
                 case "3":
-                    Character();
-                    break;
-                case "4":
-                    DeathScreen();
-                    break;
-                case "5":
-                    Bonfire();
-                    break;
-                case "6":
-                    RussianRoulette();
-                    break;
-                case "7":
-                    slots();
-                    break;
-                case "8":
-                    Level5();
-                    break;
-                case "9":
+                    Console.Clear();
                     Level3();
                     break;
-                case "10":
-                    break;
-                case "11":
+                case "4":
                     Console.Clear();
                     Level4();
                     break;
-                case "12":
+                case "5":
+                    Console.Clear();
+                    Level5();
+                    break;
+                case "6":
+                    Console.Clear();
+                    Level6();
+                    break;
+                case "7":
+                    Console.Clear();
+                    Level7();
+                    break;
+                case "8":
+                    Console.Clear();
                     Level7_5();
-                        break;
+                    break;
+                case "9":
+                    Console.Clear();
+                    Bonfire();
+                    break;
+                default:
+                    Console.Clear();
+                    Main();
+                    break;
+
+               
             }
             }
 
