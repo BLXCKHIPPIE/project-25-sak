@@ -4173,21 +4173,21 @@ _________________________________________________________________________
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("   || Boosts intelligence by 5 ||");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("   200 Gold\n\n");
+                Console.Write("   300 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("2. Strength Elixer");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("   || Boosts Strength by 5 ||");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("   300 Gold\n\n");
+                Console.Write("   500 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("3. Arclight Blade of Obliteration");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("   || kills stuff pretty well  ||");
+                Console.Write("   || A radiant blade that erases existence.  ||");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("   3000000 Gold\n\n");
+                Console.Write("   8000 Gold\n\n");
 
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("4. Leave vendor\n");
@@ -4235,9 +4235,9 @@ _________________________________________________________________________
                         }
                         break;
                     case 3:
-                        if (gold >= 3000000)
+                        if (gold >= 8000)
                         {
-                            gold = gold - 3000000;
+                            gold = gold - 8000;
                             
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
