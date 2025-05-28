@@ -380,11 +380,8 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-<<<<<<< HEAD
-            string names = "1.Cody Brett               |               Art Director, 2.Luke Ari Patel           |               Story Direction, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
-=======
             string names = " 1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
->>>>>>> f90bae4ae8e8caf0b17cd7358fb012c02da2a952
+            string names = "1.Cody Brett               |               Art Director, 2.Luke Ari Patel           |               Story Direction, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
             string[] split;
 
             Console.ForegroundColor = ConsoleColor.Red;
