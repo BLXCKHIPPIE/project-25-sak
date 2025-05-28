@@ -282,8 +282,9 @@ namespace Wah
         public static void ReadMe()
         {
 
-            string readmePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "README.txt");
-            string content = File.ReadAllText(readmePath);
+            StreamReader sr = new StreamReader(@"README.txt");
+            string content = sr.ReadToEnd();
+            sr.Close();
             Console.WriteLine(content);
             Console.ReadLine();
         }
@@ -3198,6 +3199,7 @@ namespace Wah
                 Console.WriteLine("Press ENTER to fight!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
+
                 Combat("Infant Nephilim", 1, 1);
                 Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -4061,10 +4063,27 @@ _________________________________________________________________________
                     
             
             }
-               
-            
 
 
+
+
+            public static void GoodEnding()
+        { }
+
+
+
+
+
+
+        public static void BadEnding()
+        { }
+
+
+
+
+
+        public static void NeutralEnding()
+        { }
 
 
             }
