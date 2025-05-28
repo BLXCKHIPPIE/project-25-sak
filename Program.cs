@@ -2204,7 +2204,7 @@ namespace Wah
                                 }
                                 Console.WriteLine("Uriel stumbles, but catches himself on one hand. His armor shatters, and he is no longer shaped\n" +
                                     "like a man, but an unbound flame.\n\n" +
-                                    "'I WILL NOT ALLOW YOU TO PASS'\n");
+                                    "'I WILL NOT ALLOW YOU TO PASS'.\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
                                 Menu("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
@@ -2228,7 +2228,7 @@ namespace Wah
                                 Menu("Angelic Splinter gained");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("\nIt's a piece of his armor, sharp and jagged, but still holding remnants of angelic power.\n" +
-                                    "It will make a fine weapon. As you pick it, the gate creaks, then, with a terrific rumbling, it breaks open.\n" +
+                                    "It will make a fine weapon. As you pick it up, the gate creaks, then, with a terrific rumbling, it breaks open.\n" +
                                     "Air rushes against your face, blowing away the scent of ash, and you take one last look at the Circle of Heresy.\n" +
                                     "It's time to leave.");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -4137,7 +4137,7 @@ _________________________________________________________________________
 
 
 
-            public static void GoodEnding()
+        public static void GoodEnding()
         { }
 
 
