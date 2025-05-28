@@ -380,20 +380,28 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-            string names = "1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
+            string names = " 1.Cody Brett               |               Developer, 2.Luke Ari Patel           |               Developer, 3.Ryan Field               |               Sound Engineer, 4.Thomas Visser            |               Developer";
             string[] split;
 
-            Console.WriteLine("Irreverence Credits.\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n\n\n\n           ██╗██████╗░██████╗░███████╗██╗░░░██╗███████╗██████╗░███████╗███╗░░██╗░█████╗░███████╗");
+            Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔════╝██║░░░██║██╔════╝██╔══██╗██╔════╝████╗░██║██╔══██╗██╔════╝");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("           ██║██████╔╝██████╔╝█████╗░░╚██╗░██╔╝█████╗░░██████╔╝█████╗░░██╔██╗██║██║░░╚═╝█████╗░░");
+            Console.WriteLine("           ██║██╔══██╗██╔══██╗██╔══╝░░░╚████╔╝░██╔══╝░░██╔══██╗██╔══╝░░██║╚████║██║░░██╗██╔══╝░░");
+            Console.WriteLine("           ██║██║░░██║██║░░██║███████╗░░╚██╔╝░░███████╗██║░░██║███████╗██║░╚███║╚█████╔╝███████╗");
+            Console.WriteLine("           ╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚══════╝╚═╝░░╚══╝░╚════╝░╚══════╝\n\n\n\n");
+
             Console.ForegroundColor = ConsoleColor.Green;
 
             split = names.Split(',');
             foreach (string name in split)//increments names neatly, will assign roles later.
             {
-                Console.WriteLine(name.Trim());
+                Console.WriteLine($"\t\t\t{name}");
                 Thread.Sleep(200);
             }
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nPress enter key to return to menu.");
+            Console.WriteLine("\n\n                         Press enter key to return to menu.");
             Console.ReadLine();//Exits back to menu
         }
 
@@ -2778,7 +2786,7 @@ namespace Wah
                 }
                 Console.Clear();
             }
-            playAgain = false;
+            playAgain = false; // Added to fix loopback errors after final boss fight
         }
 
 
@@ -4332,8 +4340,59 @@ _________________________________________________________________________
 
 
 
+
+
+
+
+
+
+
+
+
         public static void NeutralEnding()
-        { }
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("The weight of the final choice settles upon you.\nPerhaps redemption is not for all, but servitude bears its own honor.\n\n");
+            Console.WriteLine("Minos, once judge and executioner, lies defeated before you—yet you do not cast him aside.\n" +
+                "With a steady hand, you pull him from the depths, offering not exile, but purpose.\nA disciple, bound not by chains, but by duty.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("You speak the sacred oath, your voice resonating through the hollow expanse of Limbo:\n\n");
+            Console.ReadLine();
+            Console.WriteLine("\"The veil lifts, and my burden begins. It shall not end until eternity wanes.\n" +
+                "I shall claim no throne,\nwield no dominion, nor seek redemption.\nI shall pass no judgments, nor crave absolution." +
+                "\nI shall stand at the gates, an unyielding sentinel. \rI am the voice in the void, the keeper of the lost." +
+                "\nI am the shade against the abyss, the final whisper before descent.\nI am the balance that binds the wandering souls, the sentinel of Limbo’s threshold." +
+                "\nI pledge my existence and vigilance to this duty—for all who come, and all who shall remain.\"");
+            Console.WriteLine("The oath is sealed. Minos bows his head, accepting his place at your side. The throne of Limbo is no longer empty.\r\nThe cycle does not end—but now, you stand as its guardian.");
+            Console.ReadLine();
+            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\n\n\n                              The End.");
+            Console.ReadLine();
+            Console.Clear();
+            Credits();
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
 
 
 
