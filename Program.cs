@@ -3154,10 +3154,10 @@ namespace Wah
                     if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine($"\t\tJackpot baby!! All slots match!\n\t\t         You gain +5 Karma!\n\t\t           And {winnings} gold!\n\n");
+                        Console.WriteLine($"\t\tJackpot baby!! All slots match!\n\t\t         You gain +1 Karma!\n\t\t           And {winnings} gold!\n\n");
                         Console.ForegroundColor = ConsoleColor.White;
                         gold += winnings;
-                        karmaScore = karmaScore + 5;
+                        karmaScore = karmaScore + 1;
                     }
                     else
                     {
@@ -3172,7 +3172,6 @@ namespace Wah
             }
         }
 
-        
 
 
         public static void FightingPits()
@@ -3180,67 +3179,100 @@ namespace Wah
             int winnings = 2000;
             string decision;
             bool def = false;
-            
 
-
-            if (champion == false)
+            if (!champion)
             {
-
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"The fighting pits roar with blood-soaked desperation. Once gamblers now brawl for survival,\ntheir futures forged not by luck, but by grit, skill, and an unyielding will to live.\n" +
+                Console.WriteLine($"The fighting pits roar with blood-soaked desperation...\n" +
                     "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
                     "'Care to try your luck, stranger? The house pays well... if you survive.'\n");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("1. Fight!(350 gold)\n2. Leave");
-                decision = Console.ReadLine();
+                Console.WriteLine("1. Fight! (350 gold)\n2. Leave");
                 Console.ForegroundColor = ConsoleColor.White;
-                while (def == false)
+                decision = Console.ReadLine();
+
+                while (!def)
                 {
                     switch (decision)
                     {
-
                         case "1":
                             def = true;
-                            gold = gold - 350;
+                            gold -= 350;
                             break;
                         case "2":
                             def = true;
                             Level5();
-                            break;
+                            return;
                         default:
                             Console.WriteLine("Invalid input! Please enter a number between 1 and 2");
+                            decision = Console.ReadLine();
                             break;
                     }
                 }
+
                 Console.Clear();
-                Console.WriteLine("'Stepping into the ring—the Young Nephilim. Born just three days ago, yet already thrown into the fight.\n" +
-                    "'Will his divine blood save him, or will he fall like the rest?'\n");
-                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine("'Stepping into the ring—the Young Nephilim...'");
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Press ENTER to fight!");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
 
-                Combat("Infant Nephilim", 1, 1);
-                Console.WriteLine($"{name} triumphs, the Nephilim little more than a memory now. But next… \nthe Cursed Vagabond. A lost soul, too weak for true battle but too stubborn to die.\nWill {name} put him out of his misery?");
+                // Ensuring player fights the same enemy until they stop fleeing
+                do
+                {
+                    Combat("Infant Nephilim", 1, 1);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'Run? Ha! There's no escaping the Pits, whelp.' The pitmaster sneers as the crowd roars.");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"{name} triumphs, but next… the Cursed Vagabond.");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Press ENTER to continue");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
-                Combat("Cursed Vagabond", 2, 2);
-                Console.WriteLine($"'{name} stands victorious—the Cursed Vagabond is no more, his struggle ending like all the others before him.\nBut the air shifts, the crowd quiets, and a new presence looms at the edge of the arena.\nHugh Capet.\n" +
-                    "\nOnce a king, now a wretched soul bound by the weight of greed.\nGold chains coil around his arms like serpents, their links forged from the wealth he hoarded in life.\nHe fights not for survival, but because he is cursed to do so.\n" +
-                    $"'Will {name} break the chains, or be crushed beneath them?'");
+
+                // Repeat combat for next enemy if fleeing occurs
+                do
+                {
+                    Combat("Cursed Vagabond", 2, 2);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'Cowardice won't save you now. The crowd demands blood!'");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"'{name} stands victorious, but a new presence looms… Hugh Capet, once a king, now a wretched soul bound by greed.'");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Press ENTER to continue");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
-                Combat("Hugh Capet", 3, 3);
-                Console.WriteLine($"'{name} stands victorious, bloodied but unbeaten. Three challengers have fallen—the young Nephilim, the desperate Vagabond, and the cursed king, Hugh Capet.'" +
-                    "'Tonight, he is crowned Champion of the Pits, and with that title comes glory… and {winnings}.'\n\n");
+
+                // Final fight loop
+                do
+                {
+                    Combat("Hugh Capet", 3, 3);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'You will fight, whether by choice or fate. The Pit swallows all.'");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"'{name} stands victorious—Champion of the Pits! You win {winnings} gold.'\n");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"+ {winnings} gold!");
-                gold = gold + winnings;
+                gold += winnings;
                 champion = true;
 
                 Console.ForegroundColor = ConsoleColor.White;
@@ -3249,14 +3281,16 @@ namespace Wah
                 Level5();
             }
             else
+            {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"'The Champion returns… but there are no challengers left.\nThe pit stands empty, fear outweighing ambition. For now {name}, earths mightiest traveller reigns uncontested.'\n");
+                Console.WriteLine($"'The Champion returns… but the pit stands empty.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("Press ENTER to leave");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Level5();
+            }
         }
 
 
@@ -4031,7 +4065,8 @@ _________________________________________________________________________
 
 
         public static void Bonfire()
-        { string decision = "";
+        {
+            string decision = "";
             bool leaver = false;
             string[] darkTradeGreetings = {
     "A stranger in the shadows… do you come to barter?",
@@ -4044,7 +4079,7 @@ _________________________________________________________________________
     "Give me something of worth, and perhaps I'll give you something of use.",
     "Only fools hoard what they cannot carry. Shall we make a trade?",
     "Every item has a story, and every trade has a consequence. What do you bring?"};
-            while (leaver==false)
+            while (leaver == false)
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -4081,9 +4116,10 @@ _________________________________________________________________________
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
-                    
-            
+
+
             }
+        }
 
 
 
@@ -4107,8 +4143,15 @@ _________________________________________________________________________
         { }
 
 
+
+
+        public static void Epilogue()
+        { 
+        
+        }
+
+
             }
         }
-    }
-
+    
 
