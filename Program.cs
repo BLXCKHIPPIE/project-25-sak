@@ -219,6 +219,9 @@ namespace Wah
                 case 7:
                     Level7();
                     break;
+                case 8:
+                    Level7_5();
+                    break;
                 default:
                     MainMenu();
                     break;
@@ -3951,6 +3954,7 @@ namespace Wah
 
         public static void Level7_5() // FINAL BOSS FIGHT
         {
+            level = 8;
             string decision;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -3982,7 +3986,7 @@ namespace Wah
                 "At the far end, King Minos sits upon his throne, watching in silence.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("   |   1. Approach Minos   |   2. Visit the Bonfire   |");
-            Console.ForegroundColor=ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
             {
@@ -3997,11 +4001,116 @@ namespace Wah
                     Level7_5();
                     break;
 
-                   
+
+
             }
-            Console.WriteLine("level continues here");
-            Console.ReadLine();
+            do
+            {
+                strength += 1000; /// just testing
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You approach the throne. King Minos looms above,\n" +
+                    "his coiled tails writhing like the damned souls he judges. His hollow eyes burn with ancient knowledge,\n" +
+                    "his throne a twisted mass of marble and tree roots. His voice rumbles like distant thunder.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Your sins are weighed, your fate determined. There is no escape.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Press ENTER to fight for your life");
+                Console.ReadLine();
+
+                Combat("King Minos", 5, 5);
+
+            } while (coward);
+            do
+            {
+                Console.WriteLine("After his defeat, the throne crumbles, and Minos lets out a guttural roar.\n" +
+                    "His massive frame coils inward, his form unraveling into a monstrous serpent.\n" +
+                    "Scales, dark as obsidian, ripple across his body as his tails fuse into a singular, writhing mass.\n" +
+                    "His hollow eyes burn anew, now slitted like those of a beast ancient and unrelenting.\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You thought judgment was done? No mortal escapes the coils of fate!");
+                Console.ForegroundColor = ConsoleColor.White;
+                vitality = 100;
+                Console.ReadLine();
+
+                Combat("Serpent Minos", 8, 5);
+
+            } while (coward);
+            Level7_6();
         }
+        public static void Level7_6()
+        {
+            string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Minos writhes in agony, his serpent form collapsing into dust and shadow.");
+            Console.WriteLine("His body reshapes, sinew and bone snapping into place as he returns to his human form.");
+            Console.WriteLine("Weakened and trembling before you, his hollow eyes flicker with desperation.\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\"You... you would cast me down so easily?\" Minos gasps, clutching at the ruins of his throne.");
+            Console.WriteLine("\"Without a Gatekeeper, chaos will consume Limbo. The souls will wander lost, unjudged, untethered.");
+            Console.WriteLine("The abyss will spill into the world itself!\"\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("He kneels, bloodied and broken, his once-imposing figure reduced to a pleading shell.");
+            Console.WriteLine("Then, lifting his gaze, he fixes you with a knowing stare.\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\"Spare me, and I will continue my duty.");
+            Console.WriteLine("Kill me, and you will unleash madness.");
+            Console.WriteLine("Or... you may take my place, if you have the strength to bear it.\"\n\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Your choice:");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("1. Kill Minos");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("2. Spare Minos");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("3. Become the new Gatekeeper\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Make your final decision:\n");
+            decision = Console.ReadLine();
+
+            switch (decision)
+            {
+                case "1":
+                    BadEnding();
+                    break;
+
+                case "2":
+                    GoodEnding();
+                    break;
+
+                case "3":
+                    NeutralEnding();
+                    break;
+
+                default:
+                    Level7_6();
+                    break;
+            }
+        }
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public static void Vendor()
         {
