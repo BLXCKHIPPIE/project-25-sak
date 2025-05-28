@@ -1776,9 +1776,9 @@ namespace Wah
 
 
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("You have now entered the layer of\n");
             Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
-            Console.ForegroundColor = ConsoleColor.Magenta;
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
