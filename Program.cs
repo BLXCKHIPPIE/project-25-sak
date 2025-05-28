@@ -4297,7 +4297,6 @@ _________________________________________________________________________
                 switch (decision)
                 {
                     case "1":
-                        Thread.Sleep(2000);
                         vitality = 100;
                         Console.Clear();
                         break;
