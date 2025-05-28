@@ -327,7 +327,7 @@ namespace Wah
 
 
             Console.WriteLine("\t   1. Level 1  |  2. Level 2  |  3. Level 3  |  4. Level 4  |  5. Level 5\n");
-            Console.WriteLine("\t   6. Level 6  |  7. Level 7  |  8. Final Boss  |  9. Bonfire | 10. Exit ");
+            Console.WriteLine("\t   6. Level 6  |  7. Level 7  |  8. King Minos  |  9. Bonfire | 10. Exit ");
             Console.ForegroundColor = ConsoleColor.White;
             decision = Console.ReadLine();
             switch (decision)
