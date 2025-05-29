@@ -1943,6 +1943,7 @@ namespace Wah
                                         Menu("Press ENTER to continue...");
                                         Console.ForegroundColor = ConsoleColor.White;
                                         Console.ReadLine();
+                                        choiceloop = false;
                                         Level3_1(1);
                                         break;
                                 }
@@ -2665,7 +2666,7 @@ namespace Wah
                         Console.WriteLine("'Thou hast not the strength. The angel has been given the strength to halt all who\n" +
                             "would seek to leave this wretched place. But together, if thee and I combined our strength, we could\n" +
                             "wrest the name of God from the aether, and speak it in Profanity.'\n\n" +
-                            "Mystery genstures to the gate in the distance, then smiles.\n\n" +
+                            "Mystery gestures to the gate in the distance, then smiles.\n\n" +
                             "'That will weaken him, I think.'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
                         Menu("Press ENTER to continue...");
@@ -2936,7 +2937,7 @@ namespace Wah
         public static void Level4()// Circle 6: Anger
         {
             level = 4;
-            int timesLost = 0;
+            int timesLost = 1;
             string decision;
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door\n" +
                 "A large light pointing down at the center of the room turns on\n");
@@ -4200,10 +4201,11 @@ namespace Wah
 
         public static void Vendor()
         {
-            int store;
             bool leave = false;
             while (leave == false) // allows player to interact with menus and leave by choice
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine(@"
   _   _           __     __             _                       _   _  
  | | | |          \ \   / /__ _ __   __| | ___  _ __           | | | | 
@@ -4249,12 +4251,12 @@ _________________________________________________________________________
 
 
 
-                store = Convert.ToInt32(Console.ReadLine());
+                string store = Console.ReadLine();
 
 
                 switch (store)
                 {
-                    case 1:
+                    case "1":
                         if (gold >= 200) // Making sure player has enough gold for purchace
                         {
                             gold = gold - 200; // Charging player gold
@@ -4270,7 +4272,7 @@ _________________________________________________________________________
 
                         }
                         break;
-                    case 2:
+                    case "2":
                         if (gold >= 300)
                         {
                             gold = gold - 300;
@@ -4286,7 +4288,7 @@ _________________________________________________________________________
 
                         }
                         break;
-                    case 3:
+                    case "3":
                         if (gold >= 8000)
                         {
                             gold = gold - 8000;
@@ -4305,7 +4307,7 @@ _________________________________________________________________________
                         break;
 
 
-                    case 4:
+                    case "4":
                         leave = true;
                         break;
                 }
@@ -4405,7 +4407,7 @@ _________________________________________________________________________
             Console.Clear();
             Console.WriteLine("The world beyond is full of sorrow, despair, and desolation. You remember it, the shades falling from your eyes;\n" +
                 "the war, the famine, the bloodshed. But it's also a place where the sun plays across riverbeds, where stars glimmer\n" +
-                "between silver-lined clouds, where mothers sing songs to their children. As you step beyone the threshold, you feel\n" +
+                "between silver-lined clouds, where mothers sing songs to their children. As you step beyond the threshold, you feel\n" +
                 "something warm return to you, something you hadn't even realized you had missed.\n\n" +
                 "Hope.\n\n" +
                 "It's time to see what the future really holds.\n");
