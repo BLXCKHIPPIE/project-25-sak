@@ -754,7 +754,7 @@ namespace Wah
                                         blocking = false;
                                         break;
 
-                                    case "Serpent King Minos":
+                                    case "Serpent Minos":
                                         block = 5;
                                         Console.WriteLine("The Serpent King's hardened scales fall off.");
                                         monSpeed = (monSpeed - block);
