@@ -280,7 +280,7 @@ namespace Wah
                         DevMenu();
                         break;
                     case "5":
-                        decision = "0";
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid input!");
@@ -383,7 +383,7 @@ namespace Wah
         
         public static void Credits()// declare Credits method
         {
-            string names = "1.Cody Brett               |               Art Director,2.Luke Ari Patel           |               Story Direction,3.Ryan Field               |               Sound Engineer,4.Thomas Visser            |               Developer";
+            string names = "1.Cody Brett               |               Developer,2.Luke Ari Patel           |               Story Direction,3.Ryan Field               |               ,4.Thomas Visser            |               Sound Engineer";
             string[] split;
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -3619,18 +3619,18 @@ namespace Wah
             switch (decision)
             {
                 case "1":
-                    karmaScore += 1;
+                    karmaScore += 3;
                     Console.WriteLine("You feel nourished, yet grounded.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+1 Karma");
+                    Console.WriteLine("+3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
                 case "2":
-                    karmaScore -= 1;
+                    karmaScore -= 3;
                     Console.WriteLine("The richness lingers, but something feels off.");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-1 Karma");
+                    Console.WriteLine("-3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
@@ -3649,18 +3649,18 @@ namespace Wah
             switch (decision)
             {
                 case "1":
-                    karmaScore += 1;
+                    karmaScore += 3;
                     Console.WriteLine("Fresh, crisp, and satisfying.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+1 Karma");
+                    Console.WriteLine("+3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
                 case "2":
-                    karmaScore -= 1;
+                    karmaScore -= 3;
                     Console.WriteLine("Decadent, yet heavy.");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-1 Karma");
+                    Console.WriteLine("-3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
@@ -3679,18 +3679,18 @@ namespace Wah
             switch (decision)
             {
                 case "1":
-                    karmaScore += 1;
+                    karmaScore += 3;
                     Console.WriteLine("Simple yet fulfilling.");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+1 Karma");
+                    Console.WriteLine("+3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
                 case "2":
-                    karmaScore -= 1;
+                    karmaScore -= 3;
                     Console.WriteLine("A rare taste, but uneasy feelings linger.");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-1 Karma");
+                    Console.WriteLine("-3 Karma");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
