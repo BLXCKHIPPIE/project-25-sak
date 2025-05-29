@@ -7,6 +7,7 @@ using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Wah
 {
@@ -2817,7 +2818,7 @@ namespace Wah
                         currentSequence = "";
                         temp = "";
                         timesLost++;
-                        
+
                     }
                     else // Correct Answer
                     {
@@ -2966,6 +2967,7 @@ namespace Wah
             Console.Clear();
             SatanSays(ref timesLost);
             Combat("Shadow", 4, 2);
+            intelligence += 7;
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to go through the door...");
