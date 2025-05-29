@@ -1737,6 +1737,8 @@ namespace Wah
                     Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Menu("Press ENTER to continue...");
+                    Console.ReadLine();
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
                 case "1":
@@ -2693,136 +2695,141 @@ namespace Wah
 
 
 
-        static void SatanSays(ref bool playAgain)
+        static void SatanSays(ref int timesLost)
         {
+            bool playAgain = false;
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
-            int[] sequence = new int[8]; //Change this number to change the length of 'Satan Says'
-
-            for (int i = 0; i < sequence.Length; i++)
-            {
-                sequence[i] = rand.Next(4);
-            }
-            for (int i = 0; i < sequence.Length; i++)
-            {
-                for (int j = 0; j < i; j++)
+            int[] sequence = new int[8];
+            do { 
+                for (int i = 0; i < sequence.Length; i++)
                 {
-                    if (i >= 1)
-                    {
-                        switch (sequence[j])
-                        {
-                            case 0:
-                                Console.BackgroundColor = ConsoleColor.Red;
-                                Console.Write(" RED ");
-                                Console.Beep(915, 700);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                temp = "r";
-                                break;
-                            case 1:
-                                Console.BackgroundColor = ConsoleColor.Blue;
-                                Console.Write(" BLUE ");
-                                Console.Beep(794, 700);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                temp = "b";
-
-                                break;
-                            case 2:
-                                Console.BackgroundColor = ConsoleColor.Green;
-                                Console.Write(" GREEN ");
-                                Console.Beep(646, 700);
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                temp = "g";
-                                break;
-                            case 3:
-                                Console.BackgroundColor = ConsoleColor.Yellow;
-                                Console.ForegroundColor = ConsoleColor.Black;
-                                Console.Write(" YELLOW ");
-                                Console.Beep(1298, 700);
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                temp = "y";
-                                break;
-                        }
-                    }
-                    Thread.Sleep(1000);
+                    sequence[i] = rand.Next(4);
                 }
-                Console.Clear();
-                currentSequence = currentSequence + temp;
-                if (i == 0)
+                for (int i = 0; i < sequence.Length; i++)
                 {
-                    do
+                    for (int j = 0; j < i; j++)
                     {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Menu("1. Begin Satan Says, 2. Read the Rules");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        guess = Console.ReadLine();
-                        if (guess != "1" && guess != "2") // Invalid Input
+                        if (i >= 1)
+                        {
+                            switch (sequence[j])
+                            {
+                                case 0:
+                                    Console.BackgroundColor = ConsoleColor.Red;
+                                    Console.Write(" RED ");
+                                    Console.Beep(915, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "r";
+                                    break;
+                                case 1:
+                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                    Console.Write(" BLUE ");
+                                    Console.Beep(794, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "b";
+
+                                    break;
+                                case 2:
+                                    Console.BackgroundColor = ConsoleColor.Green;
+                                    Console.Write(" GREEN ");
+                                    Console.Beep(646, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "g";
+                                    break;
+                                case 3:
+                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write(" YELLOW ");
+                                    Console.Beep(1298, 700);
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "y";
+                                    break;
+                            }
+                        }
+                        Thread.Sleep(1000);
+                    }
+                    Console.Clear();
+                    currentSequence = currentSequence + temp;
+                    if (i == 0)
+                    {
+                        do
                         {
                             Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("INVALID INPUT");
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Menu("1. Begin Satan Says, 2. Read the Rules");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("Press Enter to try again");
+                            guess = Console.ReadLine();
+                            if (guess != "1" && guess != "2") // Invalid Input
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("INVALID INPUT");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Press Enter to try again");
+                                Console.ReadLine();
+                            }
+                        } while (guess != "1" && guess != "2");
+
+                        if (guess == "2") // If the player wants to read the rules
+                        {
+                            Console.Clear();
+                            Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:\n");
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(" RED ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.Write(" BLUE ");
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(" RED ");
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            Console.Write("GREEN \n");
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Write("Would mean that you would have to type rbrg and then press Enter\n\nPress enter when you're ready");
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                    }
+                    else //Input the guess
+                    {
+                        Console.WriteLine("Please enter the sequence");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("r. Red");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("b. Blue");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("g. Green");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("y. Yellow");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        guess = Console.ReadLine().ToLower();
+
+                    }
+                    if (guess != currentSequence && i != 0) // Wrong Answer
+                    {
+                        Console.WriteLine("Wrong!");
+                        Console.WriteLine(currentSequence);
+                        playAgain = true;
+                        Console.ReadLine();
+                        i = 0; //Goes back to start
+                        currentSequence = "";
+                        temp = "";
+                        timesLost++;
+                    }
+                    else // Correct Answer
+                    {
+                        if (i > 0)
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Menu("Correct! Press Enter to continue");
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                         }
-                    } while (guess != "1" && guess != "2");
-
-                    if (guess == "2") // If the player wants to read the rules
-                    {
-                        Console.Clear();
-                        Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:\n");
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(" RED ");
-                        Console.BackgroundColor = ConsoleColor.Blue;
-                        Console.Write(" BLUE ");
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(" RED ");
-                        Console.BackgroundColor = ConsoleColor.Green;
-                        Console.Write("GREEN \n");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.Write("Would mean that you would have to type rbrg and then press Enter\n\nPress enter when you're ready");
-                        Console.ReadLine();
-                        Console.Clear();
+                        playAgain = false;
                     }
-                }
-                else //Input the guess
-                {
-                    Console.WriteLine("Please enter the sequence");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("r. Red");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("b. Blue");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("g. Green");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("y. Yellow");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    guess = Console.ReadLine().ToLower();
-
-                }
-                if (guess != currentSequence && i != 0) // Wrong Answer
-                {
-                    Console.WriteLine("Wrong!");
-                    Console.WriteLine(currentSequence);
-                    playAgain = true;
-                    Console.ReadLine();
-                    i = sequence.Length; //Ends
-                }
-                else // Correct Answer
-                {
-                    if (i > 0)
-                    {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Menu("Correct! Press Enter to continue");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
+                    Console.Clear();
                     }
-                    playAgain = false;
-                }
-                Console.Clear();
-            }
+            } while (playAgain);
         }
 
 
@@ -2923,7 +2930,6 @@ namespace Wah
         {
             level = 4;
             int timesLost = 0;
-            bool playAgain = false;
             string decision;
             Console.WriteLine("You enter a dark black room, where the only visible thing is a large door\n" +
                 "A large light pointing down at the center of the room turns on\n");
@@ -2954,14 +2960,8 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
-            do
-            {
-                SatanSays(ref playAgain);
-                timesLost++;
-                Combat("Shadow", 4, 2);
-                
-            } while (playAgain == true);
-            playAgain = false; // Added to fix loopback errors after final boss fight
+            SatanSays(ref timesLost);
+            Combat("Shadow", 4, 2);
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Menu("Press ENTER to go through the door...");
