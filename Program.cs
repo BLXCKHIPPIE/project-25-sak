@@ -22,7 +22,7 @@ namespace Wah
         // Character sheet //
 
         public static string name = "Traveler";
-        public static int strength = 10;
+        public static int strength = 910;
         public static int vitality = 100; // Max health
         public static int intelligence = 10;
         public static int karmaScore = -10;
@@ -2747,7 +2747,7 @@ namespace Wah
                                     break;
                             }
                         }
-                        Thread.Sleep(1000);
+                        Thread.Sleep(500);
                     }
                     Console.Clear();
                     currentSequence = currentSequence + temp;
@@ -2814,6 +2814,7 @@ namespace Wah
                         currentSequence = "";
                         temp = "";
                         timesLost++;
+                        
                     }
                     else // Correct Answer
                     {
@@ -4456,7 +4457,7 @@ _________________________________________________________________________
             Console.Write(" for every Sinner");
             Thread.Sleep(1000);
             Console.Write(" And Demon");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Console.WriteLine(" to Escape.\n");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -4469,6 +4470,7 @@ _________________________________________________________________________
             Console.Clear();
             Credits();
             Epilogue();
+            MainMenu();
         }
 
 
