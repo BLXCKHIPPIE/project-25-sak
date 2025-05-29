@@ -22,7 +22,7 @@ namespace Wah
         // Character sheet //
 
         public static string name = "Traveler";
-        public static int strength = 910;
+        public static int strength = 10;
         public static int vitality = 100; // Max health
         public static int intelligence = 10;
         public static int karmaScore = -10;
