@@ -368,6 +368,9 @@ namespace Wah
                     Console.Clear();
                     Bonfire();
                     break;
+                case "666":
+                    weapon = 200;
+                    break;
                 default:
                     Console.Clear();
                     Main();
@@ -2029,7 +2032,7 @@ namespace Wah
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.ReadLine();
                                     Console.Clear();
-                                    weapon = 10;
+                                    weapon = 13;
                                     weaponName = $"Light-Infused {weaponName}";
                                     vitality = 100;
                                     Combat("Mystery, the Death of Kings", 8, 8);
@@ -3427,7 +3430,7 @@ namespace Wah
                 return; 
             }
 
-            while (game && shots > 1)
+            while (game == true && shots > 1)
             {
                 winnings = round * 250;
                 Console.Clear();
@@ -3453,7 +3456,7 @@ namespace Wah
                     Console.WriteLine("The demon presses the revolver to his head... Click. He lives.");
                 }
 
-                if (game)
+                if (game==true)
                 {
                     Console.ReadLine();
                     Console.Clear();
@@ -3490,6 +3493,7 @@ namespace Wah
                         else
                         {
                             Console.WriteLine("Click. Luck still lingers in your grasp.");
+                            Console.ReadLine();
                         }
                     }
                 }
@@ -3504,7 +3508,7 @@ namespace Wah
 
             Console.WriteLine("Press ENTER to continue");
             Console.ReadLine();
-
+            Level5();
         }
         public static void Level5_1()
         {
