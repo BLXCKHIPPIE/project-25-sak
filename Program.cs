@@ -2750,7 +2750,7 @@ namespace Wah
                                     break;
                             }
                         }
-                        Thread.Sleep(1000);
+                        Thread.Sleep(500);
                     }
                     Console.Clear();
                     currentSequence = currentSequence + temp;
@@ -2817,6 +2817,7 @@ namespace Wah
                         currentSequence = "";
                         temp = "";
                         timesLost++;
+                        
                     }
                     else // Correct Answer
                     {
@@ -4412,7 +4413,7 @@ _________________________________________________________________________
             Console.Clear();
             Credits();
             Epilogue();
-
+            MainMenu();
 
         }
 
@@ -4460,7 +4461,7 @@ _________________________________________________________________________
             Console.Write(" for every Sinner");
             Thread.Sleep(1000);
             Console.Write(" And Demon");
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Console.WriteLine(" to Escape.\n");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -4473,6 +4474,7 @@ _________________________________________________________________________
             Console.Clear();
             Credits();
             Epilogue();
+            MainMenu();
         }
 
 
@@ -4512,7 +4514,7 @@ _________________________________________________________________________
             Console.Clear();
             Credits();
             Epilogue();
-
+            MainMenu();
 
 
 
