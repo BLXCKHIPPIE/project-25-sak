@@ -3051,6 +3051,9 @@ namespace Wah
                 case "5":
                     Level5_1();
                     break;
+                default:
+                    Level5();
+                    break;
 
             }
 
