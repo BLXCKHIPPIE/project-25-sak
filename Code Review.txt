@@ -1,0 +1,10 @@
+Code Review Checklist
+
+Check out others branches to see if it runs
+Have two people code review. *Code review yourself until you're confident to  request a pull
+Smaller commits = smaller reviews (Easier for spoting out errors)
+Code readability - Is the logic created easy to read and understand?
+Documention - Detailed git issues/ commits 
+Style and Consistency  - Does the code have any reduntancies. (Imports, empty code, blank lines etc)
+Functionality   -   Does the project run as expected throughout all branches or does the specific branche's code run inexclusive of intial creation
+
