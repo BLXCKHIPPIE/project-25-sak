@@ -3434,24 +3434,51 @@ namespace Wah
             decision = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
 
-            if (decision == "1")
+            switch(decision)
             {
-                if (gold >= 250)
-                {
-                    gold -= 250;
-                    game = true;
-                }
-                else
-                {
-                    Console.WriteLine("You do not have enough gold to play!");
+                case "1":
+                    if (gold >= 250)
+                    {
+                        gold -= 250;
+                        game = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough gold to play!");
+                        Console.ReadLine();
+                        RussianRoulette();
+                    }
+                    break;
+                case "2":
+                    Level5();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
                     Console.ReadLine();
-                    return; 
-                }
+                    RussianRoulette();
+                    break;
+
             }
-            else
-            {
-                return; 
-            }
+            //if (decision == "1")
+            //{
+            //    if (gold >= 250)
+            //    {
+            //        gold -= 250;
+            //        game = true;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("You do not have enough gold to play!");
+            //        Console.ReadLine();
+            //        RussianRoulette();
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid input");
+            //    Console.ReadLine();
+            //    RussianRoulette();
+            //}
 
             while (game == true && shots > 1)
             {
