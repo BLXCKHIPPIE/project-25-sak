@@ -3588,6 +3588,8 @@ namespace Wah
 
                     default:
                         Console.WriteLine("\nInvalid Input!");
+                        Console.ReadLine();
+                        Level5_1();
                         break;
                 }
             }
@@ -3609,6 +3611,9 @@ namespace Wah
                     break;
                 case "2":
                     Level5();
+                    break;
+                default:
+                    Level5_1();
                     break;
             }
         }
