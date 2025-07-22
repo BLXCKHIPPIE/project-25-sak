@@ -87,7 +87,7 @@ namespace Wah
             Console.Write($" Name: \n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(name);
-            
+
             Console.WriteLine("--- Skills ---");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($" Strength: ");
@@ -126,7 +126,7 @@ namespace Wah
                 Console.Write($"\n--- Accolades ---\n");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
 
-                if(holyRune == true)
+                if (holyRune == true)
                 {
                     Console.WriteLine("'Scourge of the Unrighteous'\n");
                 }
@@ -300,7 +300,7 @@ namespace Wah
             string content = sr.ReadToEnd();
             sr.Close();
             Console.WriteLine("\n\n");
-            Console.WriteLine(content+"\n\n\n");
+            Console.WriteLine(content + "\n\n\n");
             Console.WriteLine("All complaints regarding the Anger level go to Thomas Visser");
             Console.ReadLine();
         }
@@ -379,11 +379,11 @@ namespace Wah
                     Main();
                     break;
 
-               
-            }
-            }
 
-        
+            }
+        }
+
+
         public static void Credits()// declare Credits method
         {
             string names = "1.Cody Brett               |               Developer,2.Luke Ari Patel           |               Story Direction,3.Ryan Field               |               ,4.Thomas Visser            |               Sound Engineer";
@@ -448,7 +448,7 @@ namespace Wah
                 if (monHp <= 0 || coward == true)
                 {
                     combat = false;
-                    if(coward == false)
+                    if (coward == false)
                     {
                         Console.WriteLine($"{monsterName} drops {spoils} gold!");
                         gold = gold + spoils;
@@ -471,7 +471,7 @@ namespace Wah
                     Menu($"DEF. {monSpeed} ");
                     Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    PlayerRound(true,creature);
+                    PlayerRound(true, creature);
                     MonsterRound();
                     Console.Clear();
                 }
@@ -577,7 +577,7 @@ namespace Wah
             }
         }
 
-        public static void PlayerRound(bool playerRound,string creature)//handles the player's round during combat
+        public static void PlayerRound(bool playerRound, string creature)//handles the player's round during combat
         {
             int damage = 0, attack = 0;
             string combatAction = " ";
@@ -715,7 +715,7 @@ namespace Wah
 
                 switch (rand.Next(0, 4))
                 {
-                    case <=1:
+                    case <= 1:
                         MonsterAttacks(mAttack, 1);
                         break;
                     case 2:
@@ -731,7 +731,7 @@ namespace Wah
                         {
                             if (blocking == true)
                             {
-                                switch(monsterName)//allows for custom gimmicks
+                                switch (monsterName)//allows for custom gimmicks
                                 {
                                     case "Benedict Arnold":
                                         damage = rand.Next(7, 21);
@@ -786,7 +786,7 @@ namespace Wah
                             }
                             else
                             {
-                                switch(monsterName)
+                                switch (monsterName)
                                 {
                                     case "Benedict Arnold":
                                         Console.WriteLine($"{monsterName} loads his musket!");
@@ -1340,7 +1340,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
-                switch(temp)
+                switch (temp)
                 {
                     case "1":
                         Console.WriteLine("You remember the old man that you met earlier. If he was in this level of Hell,\n" +
@@ -1547,7 +1547,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
-                switch(temp)
+                switch (temp)
                 {
                     case "1":
                         Console.WriteLine("The inscription reads:\n\n" +
@@ -1557,7 +1557,7 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.White;
                         temp = Console.ReadLine().ToLower();
                         Console.Clear();
-                        if(temp == "river"||temp == "a river")
+                        if (temp == "river" || temp == "a river")
                         {
                             choicebreak = true;
                             Console.WriteLine("As soon as you speak the words, the spikes click, then withdraw from the ice with a repeated whir");
@@ -1574,7 +1574,7 @@ namespace Wah
                         break;
                     case "2":
                         Console.WriteLine($"You move forwards and start going ham with your {weaponName}, bashing up and down the mechanism.");
-                        if(strength >= 12)
+                        if (strength >= 12)
                         {
                             Console.WriteLine("At first, it looks as if nothing is happening, but, after several repeated blows, something makes\n" +
                                 "a very satisfying PING.");
@@ -1603,7 +1603,7 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Combat("Benedict Arnold", 3, 3);
-            if(coward == true)
+            if (coward == true)
             {
                 Console.WriteLine("You flee across the ice, leaving Benedict Arnold behind. Unfortunately, you now have no offering to\n" +
                     "give Satan. Maybe he will offer you some other task instead.");
@@ -1648,7 +1648,7 @@ namespace Wah
             Console.WriteLine("A roar echoes in the distance\n");
 
             Console.ForegroundColor = ConsoleColor.Red;
-            
+
             Console.WriteLine("You have now entered the layer of");
             Console.WriteLine("         _________ _______  _        _______  _        _______  _______ \r\n" +
                 "|\\     /|\\__   __/(  ___  )( \\      (  ____ \\( (    /|(  ____ \\(  ____ \\\r\n" +
@@ -1661,8 +1661,8 @@ namespace Wah
             Menu("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
-            Console.Clear ();
-            
+            Console.Clear();
+
             //Going to attempt to foreshadow the Minotaur. Will add a fight
             Level2_1();
         }
@@ -1732,14 +1732,14 @@ namespace Wah
                     }
                     break;
             }
-                
+
             Level2_2();
         }
 
         public static void Level2_2() //Violence Forest
         {
             Console.WriteLine("You enter the forest. The colourless trees are warped and thorny. They remind you of people in agony");
-            Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you"); 
+            Console.WriteLine("The cold dark forest gives you a feeling of uneasiness, like anything could jump out and get you");
             Console.WriteLine("Would you like to gather some wood to make a fire? Or would you like to carry on moving?\n");
             Console.ForegroundColor = ConsoleColor.Red;
             Menu("1. Gather wood for a bonfire, 2. Carry on through the forest");
@@ -1748,7 +1748,7 @@ namespace Wah
             Console.Clear();
             switch (decision)
             {
-                
+
                 case "2":
                     intelligence++;
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -1798,11 +1798,11 @@ namespace Wah
                     Bonfire();
                     break;
             }
-                Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
+            Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
             do
             {
                 Combat("Minotaur", 6, 2);
@@ -2111,7 +2111,7 @@ namespace Wah
                 }
             }
 
-            if(beatMystery)
+            if (beatMystery)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Menu("War Scythe Gained, Karma increased");
@@ -2137,9 +2137,9 @@ namespace Wah
                 Console.ReadLine();
                 Console.Clear();
                 Level3_1(5);
-                
+
             }
-            else 
+            else
             {
                 Level3_1(6);
             }
@@ -2264,7 +2264,7 @@ namespace Wah
                         Console.WriteLine($"{angelName}'s wings spread, and he speaks in a voice like trumpets.\n\n" +
                             "'WHAT IS THE NAME OF GOD?'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("" + (route == 5||route == 6 ? $"{nameOfGod}. Speak the Name of God," : "Type your response then press ENTER to continue..."));
+                        Menu("" + (route == 5 || route == 6 ? $"{nameOfGod}. Speak the Name of God," : "Type your response then press ENTER to continue..."));
                         Console.ForegroundColor = ConsoleColor.White;
                         temp = Console.ReadLine();
                         Console.Clear();
@@ -2283,7 +2283,7 @@ namespace Wah
                                 Console.ReadLine();
                                 Console.Clear();
                             }
-                            else 
+                            else
                             {
                                 Console.WriteLine("The Angel blanches, the light that radiates from his body dimming.\n\n" +
                                     "'WHAT HAVE YOU DONE? DEFILER! BLASPHEMER! YOU HAVE STOLEN THAT WHICH WAS MOST SACRED!'\n\n" +
@@ -2377,7 +2377,7 @@ namespace Wah
                         break;
                     case "4":
                         Console.WriteLine("The Angel nods as you leave, and you make the lonely trek back to the city.");
-                        if(route == 5 || route == 6)
+                        if (route == 5 || route == 6)
                         {
                             Console.WriteLine("The sound of desolate whispers and screams of fury meet you; there is nothing but ruin here now.\n" +
                                 "You should leave.\n");
@@ -2415,7 +2415,7 @@ namespace Wah
                         break;
                 }
             }
-    
+
         }
         public static void Level3_2(int route)//Join the cult
         {
@@ -2423,7 +2423,7 @@ namespace Wah
             bool choiceloop = false;
 
             Console.Clear();
-            switch(route)
+            switch (route)
             {
                 case 0:
                     Console.ForegroundColor = ConsoleColor.Magenta;
@@ -2444,9 +2444,9 @@ namespace Wah
                         "'Thou art wise.'\n\n" +
                         "Mystery steps forwards, and places a gentle hand on your wrist, drawing you further into the circle of adulant\n" +
                         "worshippers.");
-                        break;
+                    break;
                 case 3:
-                   Console.WriteLine( "You already did that, silly.");
+                    Console.WriteLine("You already did that, silly.");
                     break;
 
             }
@@ -2552,7 +2552,7 @@ namespace Wah
             string temp = " ";
             bool godQuestion = false, cultQuestion = false, choiceLoop = true;
 
-            
+
 
             while (choiceLoop == true)
             {
@@ -2619,7 +2619,7 @@ namespace Wah
                     case "3":
                         Console.WriteLine("'PEHAPS YOU CAN FIND REDEMPTION OF A SORT, BUT I WARN YOU THAT THE PATH WILL NOT BE EASY.'\n\n" +
                             "The Angel seems regretful, the intense light of his countenance dimming. He looks down at you, and sighs.\n");
-                        if(karmaScore <=0)
+                        if (karmaScore <= 0)
                         {
                             Console.WriteLine("'YOU HAVE A LONG WAY TO GO YET.'\n");
                         }
@@ -2722,7 +2722,8 @@ namespace Wah
             string guess = "", currentSequence = "", temp = "";
             Random rand = new Random();
             int[] sequence = new int[8];
-            do { 
+            do
+            {
                 for (int i = 0; i < sequence.Length; i++)
                 {
                     sequence[i] = rand.Next(4);
@@ -2850,7 +2851,7 @@ namespace Wah
                         playAgain = false;
                     }
                     Console.Clear();
-                    }
+                }
             } while (playAgain);
         }
 
@@ -3038,7 +3039,7 @@ namespace Wah
                 "Gold-lined walls shimmer under flickering neon, masking the desperation in the air.\n" +
                 "Fortune teases, greed consumes, and the deeper you go, the harder it is to escape.\n\n");
 
-           
+
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("1. Play Slots");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -3047,10 +3048,10 @@ namespace Wah
             Console.Write($"{gold}\n");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
-            
+
 
             decision = Console.ReadLine();
-           
+
             switch (decision)
             {
                 case "1":
@@ -3089,7 +3090,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("You enter the loan shark’s office. The place is cramped, dimly lit, \nand reeks of stale cigars. He leans forward, fingers drumming against a ledger of debts.\n" +
                                  "'You want a loan, eh? Fine. But make sure you pay it back before you leave… or else.'\n\n");
-              
+
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine("|   1. Take the loan (1000 gold)   |   2. Leave   |");
 
@@ -3146,7 +3147,7 @@ namespace Wah
                             Console.ReadLine();
                             Level5();
                         }
-                            break;
+                        break;
 
                     case "2":
                         Level5();
@@ -3162,7 +3163,7 @@ namespace Wah
 
         public static void slots()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8; 
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             string[] symbols = { "7", "♥", "☺", "Ω", "✶" };
             bool gamble = true;
             string decision;
@@ -3175,7 +3176,7 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"|   Gold:{gold}   |");
                 Console.WriteLine("|   1.Bet 25   |   2.Bet 50   |   3.Bet 100  |  4.Leave   |");
-               
+
                 decision = Console.ReadLine();
                 int bet = 0;
 
@@ -3191,7 +3192,7 @@ namespace Wah
                         else
                         {
                             Console.WriteLine("You are too poor for this bet!");
-                            
+
                         }
                         break;
                     case "2":
@@ -3226,7 +3227,7 @@ namespace Wah
                         break;
                     default:
                         Console.WriteLine("Invalid input! Please enter a number between 1 and 4.");
-                        break; 
+                        break;
                 }
 
                 if (count == 30)
@@ -3240,19 +3241,19 @@ namespace Wah
                     karmaScore = karmaScore - 5;
                     Console.ReadLine();
                 }
-                    if (count == 60)
+                if (count == 60)
 
-                    {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
-                            "'Addiction is a fickle mistress'\n" +
-                        "A piece of your soul has been removed -10 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
+                        "'Addiction is a fickle mistress'\n" +
+                    "A piece of your soul has been removed -10 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
                     degen = true;
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        karmaScore = karmaScore - 10;
-                        Console.ReadLine();
-                    }
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    karmaScore = karmaScore - 10;
+                    Console.ReadLine();
+                }
                 if (bet > 0)
                 {
                     int slot1 = rand.Next(0, symbols.Length);
@@ -3261,9 +3262,9 @@ namespace Wah
                     int winnings = bet * 25;
 
                     Console.Clear();
-                    Console.ForegroundColor= ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"\n\n\t\t\t{symbols[slot1]}  --  {symbols[slot2]}  --  {symbols[slot3]}\n");
-                    
+
                     Console.ForegroundColor = ConsoleColor.White;
                     if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
                     {
@@ -3282,7 +3283,7 @@ namespace Wah
                     }
                 }
 
-                
+
             }
         }
 
@@ -3445,12 +3446,12 @@ namespace Wah
                 {
                     Console.WriteLine("You do not have enough gold to play!");
                     Console.ReadLine();
-                    return; 
+                    return;
                 }
             }
             else
             {
-                return; 
+                return;
             }
 
             while (game == true && shots > 1)
@@ -3479,7 +3480,7 @@ namespace Wah
                     Console.WriteLine("The demon presses the revolver to his head... Click. He lives.");
                 }
 
-                if (game==true)
+                if (game == true)
                 {
                     Console.ReadLine();
                     Console.Clear();
@@ -3537,7 +3538,7 @@ namespace Wah
         {
             string decision;
 
-            if (debt == true) 
+            if (debt == true)
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
@@ -3557,7 +3558,7 @@ namespace Wah
                             Console.WriteLine("'Fine. But don’t think this means we're square. I’ll remember you hesitated.'");
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Gold -1200\nKarma -5");
-                            gold -= 1200; 
+                            gold -= 1200;
                             debt = false;
                         }
                         else
@@ -3576,7 +3577,7 @@ namespace Wah
 
                         Console.WriteLine("Before you can even process what's happening, a fist slams into your gut.\n" +
                                           "The world tilts as you're sent sprawling, each blow driving the lesson home—you don’t walk away from debt.\n\n");
-                        
+
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Health -50\nKarma -10\nGold -{gold}");
                         gold = 0;
@@ -3591,17 +3592,17 @@ namespace Wah
                         break;
                 }
             }
-            
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("'Ah, another traveler seeking passage! Fear not, for these stairs demand no toll—only the courage to climb.\n" +
                 "Greed has weighed down many souls, but ahead lies gluttony, where excess takes a different form.\n Step into our dining hall, Where everyone is well-fed'\n\n");
-            
+
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("|    1. Proceed   |   2. Stay in greed   |");
             Console.ForegroundColor = ConsoleColor.White;
 
-            decision =Console.ReadLine();
+            decision = Console.ReadLine();
             switch (decision)
             {
                 case "1":
@@ -3617,20 +3618,20 @@ namespace Wah
         public static void Level6()// Circle 4: Gluttony
         {
 
-            
+
             level = 6;
             string decision;
             Console.Clear();
             Character();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
-           
+
             Console.WriteLine("You enter Gluttony. A vast dining hall sprawls before you, tables overflowing with lavish feasts—roasted meats, golden loaves, and goblets of wine.\n" +
                 "All around, bloated figures gorge themselves, shoveling food into their mouths without pause.\n Plates refill endlessly, trapping them in a cycle of indulgence that never satisfies.\n" +
                 "Press ENTER to continue");
 
 
-                Console.WriteLine("Choose your meal:\n");
+            Console.WriteLine("Choose your meal:\n");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("1. Lentil Stew – A warm, hearty bowl of slow-cooked lentils,\n infused with fragrant herbs and spices, offering a rich, earthy flavor.\n\n");
             Console.WriteLine("2. Veal Cutlet – A tender, delicately breaded piece of meat,\n pan-seared to a golden crisp and served with a savory sauce.\n\n\n");
@@ -3736,7 +3737,7 @@ namespace Wah
 
 
 
-        
+
 
 
 
@@ -3752,6 +3753,7 @@ namespace Wah
             level = 7;
             vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
             string decision;
+            int num;
 
             Console.Clear();
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
@@ -3763,24 +3765,23 @@ namespace Wah
             Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
             decision = Console.ReadLine(); // decision now equals user input
             
-            switch (decision)
+            int.TryParse(decision, out num);
+
+            switch (num)
             {
-                case "1":
+                case 1:
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
                     Level7_1();
                     break;
-                case "2":
+                case 2:
                     Level7_2();
                     break;
                 default:
                     Level7();
                     break;
-
             }
-
-
         }
 
         public static void Level7_1() // Circle 3: Lust - Taking the path to high ground
@@ -3795,7 +3796,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
 
-            decision = Console.ReadLine(); 
+            decision = Console.ReadLine();
 
             Console.Clear();
 
@@ -3891,7 +3892,7 @@ namespace Wah
                 "The abyss yawns below, but hesitation won’t serve you now.\nfortune favors the bold.");
             Console.ReadLine();
             Console.Clear();
-           
+
             if (chance < 30)
             {
                 Console.WriteLine("You make it across the rope bridge, steadying yourself on solid ground. Turning back,\nyou peer into the abyss" +
@@ -3909,7 +3910,7 @@ namespace Wah
                 Console.WriteLine("-10 hp\n\n");
                 vitality = vitality - 10; // Lowering Vitality
                 Console.ForegroundColor = ConsoleColor.White;
-                
+
                 Console.WriteLine("You attempt to pull yourself up.. lets just hope you are strong enough\n\nPress ENTER to climb");
                 Console.ReadLine();
                 Console.Clear();
@@ -3922,7 +3923,8 @@ namespace Wah
                     Console.WriteLine("+2 Strength");
                     strength = strength + 2;
                     Console.ReadLine();
-                    Level7_4(); }
+                    Level7_4();
+                }
                 else
                 {
                     Console.WriteLine("Your grip weakens, arms burning. The rope sways—you're running out of time.");
@@ -4171,7 +4173,7 @@ namespace Wah
             Console.WriteLine("3. Become the new Gatekeeper\n\n");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Make your final decision:\n");
-            
+
             decision = Console.ReadLine();
 
             switch (decision)
@@ -4195,7 +4197,7 @@ namespace Wah
         }
 
 
-        
+
 
 
 
@@ -4306,7 +4308,7 @@ _________________________________________________________________________
                         if (gold >= 8000)
                         {
                             gold = gold - 8000;
-                            
+
                             Console.Clear();
                             Console.WriteLine("Item Purchased.");
                             weapon = 20;
@@ -4562,12 +4564,12 @@ _________________________________________________________________________
 
 
         public static void Epilogue()
-        { 
-        
+        {
+
         }
 
 
-            }
-        }
-    
+    }
+}
+
 
