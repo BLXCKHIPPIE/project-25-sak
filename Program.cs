@@ -471,7 +471,7 @@ namespace Wah
                     Menu($"DEF. {monSpeed} ");
                     Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
-                    PlayerRound(true);
+                    PlayerRound(true,creature);
                     MonsterRound();
                     Console.Clear();
                 }
@@ -577,7 +577,7 @@ namespace Wah
             }
         }
 
-        public static void PlayerRound(bool playerRound)//handles the player's round during combat
+        public static void PlayerRound(bool playerRound,string creature)//handles the player's round during combat
         {
             int damage = 0, attack = 0;
             string combatAction = " ";
@@ -670,6 +670,20 @@ namespace Wah
                         default:
                             Console.Clear();
                             Console.WriteLine("Input a valid key.");
+                            Thread.Sleep(1000);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine($"You are fighting {creature}.");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write($"--[ {creature} ]-- \nVitality: {monHp} ");
+                            for (int i = 0; i <= (monHp / 2); i++)
+                            {
+                                Console.Write("|");
+                            }
+                            Console.WriteLine("");
+                            Menu($"DEF. {monSpeed} ");
+                            Console.WriteLine("\n\n\n");
+                            Console.ForegroundColor = ConsoleColor.White;
                             break;
                     }
                     monHp = monHp - damage;
