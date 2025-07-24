@@ -293,9 +293,10 @@ namespace Wah
         public static void ReadMe()
         {
 
-            StreamReader sr = new StreamReader(@"README.txt");
-            string content = sr.ReadToEnd();
-            sr.Close();
+            
+            string file = (@"README.txt");
+            string content =File.ReadAllText(file);
+
             Console.WriteLine("\n\n");
             Console.WriteLine(content+"\n\n\n");
             Console.WriteLine("All complaints regarding the Anger level go to Thomas Visser");
