@@ -3765,6 +3765,14 @@ namespace Wah
             Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
             decision = Console.ReadLine(); // decision now equals user input
             
+           
+
+
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
+
             int.TryParse(decision, out num);
 
             switch (num)
@@ -3787,6 +3795,7 @@ namespace Wah
         public static void Level7_1() // Circle 3: Lust - Taking the path to high ground
         {
             string decision;
+            int num;
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You follow the left path, rising steadily until you're about 100 meters above the chasm’s depths.\n" +
@@ -3796,13 +3805,18 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
 
-            decision = Console.ReadLine();
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
+
+            int.TryParse(decision, out num);
 
             Console.Clear();
 
-            switch (decision)
+            switch (num)
             {
-                case "1":
+                case 1:
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You begin climbing the chasm’s side wall when a noise rises from below.\n" +
                         "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
@@ -3810,7 +3824,10 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
 
-                    decision = Console.ReadLine();
+                    decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
 
                     Console.Clear();
 
@@ -3834,7 +3851,7 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.White;
                         Level7_4();
                     }
-                    else
+                    else if(decision == "2")
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
@@ -3850,7 +3867,7 @@ namespace Wah
                     }
                     break;
 
-                case "2":
+                case 2:
                     Level7_3();
                     break;
 
