@@ -4592,8 +4592,9 @@ _________________________________________________________________________
         /// <returns></returns>
         /// 
         public static T SafeInputWithRetry<T>(
-            Func<T> inputProvider, // Function to get the input
-            Func<T, bool> validator, // Function to validate the input
+            Func<string> inputProvider,
+            Func<string, bool> validator,
+            Func<string, T> converter,
             string invalidInputMessage // Custom message for invalid input
         )
         {
@@ -4601,15 +4602,15 @@ _________________________________________________________________________
             {
                 try
                 {
-                    T input = inputProvider();
+                    string input = inputProvider();
                     if (validator(input))
                     {
-                        return input;
+                        return converter(input);
                     }
                     else
                     {
                         Console.WriteLine(invalidInputMessage);
-                        Thread.Sleep(2000);
+                        Thread.Sleep(1000);
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
                     }
                 }
@@ -4620,24 +4621,31 @@ _________________________________________________________________________
                     Console.ResetColor();
                     Console.WriteLine(ex.Message);
                     Thread.Sleep(2000);
-                    Logger.LogError(invalidInputMessage);
+//                    Logger.LogError(invalidInputMessage);
                     Thread.Sleep(2000);
                 }
             }
         }
 
         /// <summary>
-        /// Test logger nnot really needed yet?
+        /// GetDecision method to get a decision from the user with validation against valid choices.
         /// </summary>
-        public static class Logger
+        /// <param name="prompt"></param>
+        /// <param name="validChoices"></param>
+        /// <returns></returns>
+        public static string GetDecision(
+        string prompt,
+        params string[] validChoices
+    )
         {
-            public static void LogError(string error)
-            {
-                //Could provide external .txt file for logging??
-                Console.WriteLine(error);
-            }
+            Console.Write(prompt);
+            return SafeInputWithRetry(
+                inputProvider: () => Console.ReadLine().Trim().ToLower(),
+                validator: input => Array.Exists(validChoices, choice => choice == input),
+                converter: input => input,
+                invalidInputMessage: $"Please enter one of the following choices: {string.Join(", ", validChoices)}"
+            );
         }
-
     }
 }
 
