@@ -4552,22 +4552,66 @@ _________________________________________________________________________
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
         public static void Epilogue()
         {
 
         }
 
+        /// <summary>
+        /// Simple input handler
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="inputProvider"></param>
+        /// <param name="validator"></param>
+        /// <param name="invalidInputMessage"></param>
+        /// <returns></returns>
+        /// 
+        public static T SafeInputWithRetry<T>(
+            Func<T> inputProvider, // Function to get the input
+            Func<T, bool> validator, // Function to validate the input
+            string invalidInputMessage // Custom message for invalid input
+        )
+        {
+            while (true)
+            {
+                try
+                {
+                    T input = inputProvider();
+                    if (validator(input))
+                    {
+                        return input;
+                    }
+                    else
+                    {
+                        Console.WriteLine(invalidInputMessage);
+                        Thread.Sleep(2000);
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("An error occurred: ");
+                    Console.ResetColor();
+                    Console.WriteLine(ex.Message);
+                    Thread.Sleep(2000);
+                    Logger.LogError(invalidInputMessage);
+                    Thread.Sleep(2000);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Test logger nnot really needed yet?
+        /// </summary>
+        public static class Logger
+        {
+            public static void LogError(string error)
+            {
+                //Could provide external .txt file for logging??
+                Console.WriteLine(error);
+            }
+        }
 
     }
 }
