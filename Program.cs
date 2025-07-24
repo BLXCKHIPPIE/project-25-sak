@@ -157,8 +157,6 @@ namespace Wah
 
         static void DeathScreen()
         {
-            int chosenQuote;
-            chosenQuote = rand.Next(30);
             string[] deathQuotes = {
     "All hope abandon, ye who enter here.",
     "The more a thing is perfect, the more it feels pleasure and pain.",
@@ -190,13 +188,12 @@ namespace Wah
     "The day that man allows true love to appear, those things which are well made will fall into confusion and will overturn everything we believe to be right and true.",
     "I did not die, and yet I lost life’s breath.",
     "O human race, born to fly upward, wherefore at a little wind dost thou so fall?" };
-            string quote = deathQuotes[chosenQuote];
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("You Are Dead.\n");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"\n\"{quote}\"");
+            Console.WriteLine($"\n\"{deathQuotes[rand.Next(30)]}\"");//chose a random death quote and display it
             Console.ReadLine();
             Console.Clear();
             death++;
@@ -426,11 +423,9 @@ namespace Wah
         {
             hpAtCombat = vitality;
             coward = false;
-            monsterName = creature;
             bool combat = true;
             monHp = difficulty * 10;
             monPanic = monHp - (difficulty * 9);
-            monSpeed = speed;
             int spoils = difficulty * rand.Next(20, 50);
 
             if (speed >= difficulty + 1)
@@ -450,7 +445,7 @@ namespace Wah
                     combat = false;
                     if(coward == false)
                     {
-                        Console.WriteLine($"{monsterName} drops {spoils} gold!");
+                        Console.WriteLine($"{creature} drops {spoils} gold!");
                         gold = gold + spoils;
                         Console.ReadLine();
                     }
@@ -468,7 +463,7 @@ namespace Wah
                         Console.Write("|");
                     }
                     Console.WriteLine("");
-                    Menu($"DEF. {monSpeed} ");
+                    Menu($"DEF. {speed} ");
                     Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true,creature);
@@ -485,8 +480,6 @@ namespace Wah
 
             attack = rand.Next(0, 10);
             damage = rand.Next(0, mAttack);
-
-
 
             if (attkType == 1)
             {
@@ -857,16 +850,14 @@ namespace Wah
             string temp = " ";
             bool correctName = false;
 
-
             do
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("PLEASE TYPE YOUR NAME.");
-                temp = Console.ReadLine();
-                name = temp;
+                name = Console.ReadLine();
 
-                Console.WriteLine($"\nYOUR NAME IS ---| {temp} |---, IS THAT CORRECT?\n");//error correction
+                Console.WriteLine($"\nYOUR NAME IS ---| {name} |---, IS THAT CORRECT?\n");//error correction
                 Menu("1. Yes, 2. No");
 
                 temp = Console.ReadLine();//reads user input
@@ -896,7 +887,7 @@ namespace Wah
 
         public static void Level1()// Circle 9: Treachery
         {
-            string menuOptions = "1. Yes, 2. No", temp = " ";
+            string temp = " ";
             bool choiceBreak = false, fought = false, toldName = false;
             weapon = 0;
             level = 1;
