@@ -3038,7 +3038,6 @@ namespace Wah
                 "Gold-lined walls shimmer under flickering neon, masking the desperation in the air.\n" +
                 "Fortune teases, greed consumes, and the deeper you go, the harder it is to escape.\n\n");
 
-           
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.Write("1. Play Slots");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -3047,7 +3046,6 @@ namespace Wah
             Console.Write($"{gold}\n");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
-            
 
             decision = Console.ReadLine();
            
@@ -3073,10 +3071,6 @@ namespace Wah
                     break;
 
             }
-
-
-
-
         }
 
         public static void LoanShark()
@@ -3281,8 +3275,6 @@ namespace Wah
 
                     }
                 }
-
-                
             }
         }
 
@@ -3457,28 +3449,7 @@ namespace Wah
                     Console.ReadLine();
                     RussianRoulette();
                     break;
-
             }
-            //if (decision == "1")
-            //{
-            //    if (gold >= 250)
-            //    {
-            //        gold -= 250;
-            //        game = true;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("You do not have enough gold to play!");
-            //        Console.ReadLine();
-            //        RussianRoulette();
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Invalid input");
-            //    Console.ReadLine();
-            //    RussianRoulette();
-            //}
 
             while (game == true && shots > 1)
             {
@@ -3651,6 +3622,7 @@ namespace Wah
 
             
             level = 6;
+            bool validInput = false;
             string decision;
             Console.Clear();
             Character();
@@ -3661,96 +3633,114 @@ namespace Wah
                 "All around, bloated figures gorge themselves, shoveling food into their mouths without pause.\n Plates refill endlessly, trapping them in a cycle of indulgence that never satisfies.\n" +
                 "Press ENTER to continue");
 
-
+            while (!validInput)
+            {
                 Console.WriteLine("Choose your meal:\n");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("1. Lentil Stew – A warm, hearty bowl of slow-cooked lentils,\n infused with fragrant herbs and spices, offering a rich, earthy flavor.\n\n");
-            Console.WriteLine("2. Veal Cutlet – A tender, delicately breaded piece of meat,\n pan-seared to a golden crisp and served with a savory sauce.\n\n\n");
-            Console.ForegroundColor = ConsoleColor.White;
-            decision = Console.ReadLine();
-            Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Lentil Stew – A warm, hearty bowl of slow-cooked lentils,\n infused with fragrant herbs and spices, offering a rich, earthy flavor.\n\n");
+                Console.WriteLine("2. Veal Cutlet – A tender, delicately breaded piece of meat,\n pan-seared to a golden crisp and served with a savory sauce.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
 
-            switch (decision)
-            {
-                case "1":
-                    karmaScore += 3;
-                    Console.WriteLine("You feel nourished, yet grounded.");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    karmaScore -= 3;
-                    Console.WriteLine("The richness lingers, but something feels off.");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                default:
-                    Console.WriteLine("\nInvalid Input!");
-                    break;
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("You feel nourished, yet grounded.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        validInput = true;
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("The richness lingers, but something feels off.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        validInput = true;
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
             }
 
-            Console.WriteLine("\nChoose your next meal:\n");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("1. Fresh Garden Salad – Crisp greens, vibrant vegetables, and a drizzle of dressing,\n refreshing and light on the palate.\n");
-            Console.WriteLine("2. Foie Gras – A silky-smooth delicacy, served atop toasted bread\n with a subtle, buttery richness that melts in the mouth.\n\n\n");
-            Console.ForegroundColor = ConsoleColor.White;
-            decision = Console.ReadLine();
-            Console.Clear();
-            switch (decision)
+            validInput = false;
+
+            while (!validInput)
             {
-                case "1":
-                    karmaScore += 3;
-                    Console.WriteLine("Fresh, crisp, and satisfying.");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    karmaScore -= 3;
-                    Console.WriteLine("Decadent, yet heavy.");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                default:
-                    Console.WriteLine("\nInvalid Input!");
-                    break;
+                Console.WriteLine("\nChoose your next meal:\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Fresh Garden Salad – Crisp greens, vibrant vegetables, and a drizzle of dressing,\n refreshing and light on the palate.\n");
+                Console.WriteLine("2. Foie Gras – A silky-smooth delicacy, served atop toasted bread\n with a subtle, buttery richness that melts in the mouth.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("Fresh, crisp, and satisfying.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("Decadent, yet heavy.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
             }
 
-            Console.WriteLine("\nChoose your final meal:\n");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("1. Whole Grain Bread & Hummus – A rustic loaf with a crunchy crust,\n paired with creamy hummus that carries a nutty, tangy depth.\n");
-            Console.WriteLine("2. Shark Fin Soup – A clear, aromatic broth simmered to perfection,\n featuring delicate strands with a subtle, oceanic taste.\n\n\n");
-            Console.ForegroundColor = ConsoleColor.White;
-            decision = Console.ReadLine();
-            Console.Clear();
-            switch (decision)
+            validInput = false;
+
+            while (!validInput)
             {
-                case "1":
-                    karmaScore += 3;
-                    Console.WriteLine("Simple yet fulfilling.");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("+3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                case "2":
-                    karmaScore -= 3;
-                    Console.WriteLine("A rare taste, but uneasy feelings linger.");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("-3 Karma");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.ReadLine();
-                    break;
-                default:
-                    Console.WriteLine("\nInvalid Input!");
-                    break;
+                Console.WriteLine("\nChoose your final meal:\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Whole Grain Bread & Hummus – A rustic loaf with a crunchy crust,\n paired with creamy hummus that carries a nutty, tangy depth.\n");
+                Console.WriteLine("2. Shark Fin Soup – A clear, aromatic broth simmered to perfection,\n featuring delicate strands with a subtle, oceanic taste.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("Simple yet fulfilling.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("A rare taste, but uneasy feelings linger.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
             }
 
             Console.Clear();
