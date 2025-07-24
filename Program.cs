@@ -3767,10 +3767,9 @@ namespace Wah
 
 
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
             switch (decision)
             {
@@ -3802,10 +3801,9 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
             int.TryParse(decision, out num);
 
@@ -3821,10 +3819,9 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
 
-                    decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+                    decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
                     Console.Clear();
 
@@ -3889,10 +3886,9 @@ namespace Wah
             Console.WriteLine("1. Descend the marble stairs (Back to greed)\n" +
                 "2. Turn back and take the path upward, away from the excess below.");
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
             if (decision.Equals("1"))
             { Level5(); } // calls Level6 method
@@ -3979,10 +3975,9 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Rest by bonfire\n2. Leave");
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
             switch (decision)
             {
@@ -4011,10 +4006,9 @@ namespace Wah
             Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2") || x.Equals("3")),
-                   invalidInputMessage: "Please enter either '1', '2' or '3'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2", "3" });
 
             switch (decision)
             {
@@ -4036,10 +4030,9 @@ namespace Wah
                         Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
 
-                        decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+                        decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
                     }
 
                     if (decision.Equals("1"))
@@ -4123,10 +4116,9 @@ namespace Wah
             Console.WriteLine("   |   1. Approach Minos   |   2. Visit the Bonfire   |");
             Console.ForegroundColor = ConsoleColor.White;
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
-                   invalidInputMessage: "Please enter either '1' or '2'"
-                   );
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
 
             switch (decision)
             {
@@ -4211,10 +4203,10 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Make your final decision:\n");
 
-            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
-                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2") || x.Equals("3")),
-                   invalidInputMessage: "Please enter either '1', '2' or '3'"
-                   );
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2", "3" });
 
             switch (decision)
             {
@@ -4621,7 +4613,7 @@ _________________________________________________________________________
                     Console.ResetColor();
                     Console.WriteLine(ex.Message);
                     Thread.Sleep(2000);
-//                    Logger.LogError(invalidInputMessage);
+                    //                    Logger.LogError(invalidInputMessage);
                     Thread.Sleep(2000);
                 }
             }
