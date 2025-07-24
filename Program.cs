@@ -3753,7 +3753,6 @@ namespace Wah
             level = 7;
             vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
             string decision;
-            int num;
 
             Console.Clear();
             Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
@@ -3764,8 +3763,8 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
             Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
             decision = Console.ReadLine(); // decision now equals user input
-            
-           
+
+
 
 
             decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
@@ -3773,17 +3772,15 @@ namespace Wah
                    invalidInputMessage: "Please enter either '1' or '2'"
                    );
 
-            int.TryParse(decision, out num);
-
-            switch (num)
+            switch (decision)
             {
-                case 1:
+                case "1":
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
                     Level7_1();
                     break;
-                case 2:
+                case "2":
                     Level7_2();
                     break;
                 default:
@@ -3851,7 +3848,7 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.White;
                         Level7_4();
                     }
-                    else if(decision == "2")
+                    else if (decision == "2")
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
@@ -3891,10 +3888,15 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
             Console.WriteLine("1. Descend the marble stairs (Back to greed)\n" +
                 "2. Turn back and take the path upward, away from the excess below.");
-            decision = Console.ReadLine(); // Convert to int and accept users input
-            if (decision == "1")
+
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
+
+            if (decision.Equals("1"))
             { Level5(); } // calls Level6 method
-            else
+            else if (decision.Equals("1"))
             { Level7_1(); } // calls Level7_1 method
             Console.ReadLine();
         }
@@ -3976,7 +3978,12 @@ namespace Wah
                        "Your strength fades, the tower distant, unwavering.\n You spot a nearby bonfire");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Rest by bonfire\n2. Leave");
-            decision = Console.ReadLine();
+
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
+
             switch (decision)
             {
                 case "1":
@@ -3989,8 +3996,8 @@ namespace Wah
                 default:
                     Level7_4();
                     break;
-
             }
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
                 "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
@@ -4004,7 +4011,11 @@ namespace Wah
             Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
             Console.ForegroundColor = ConsoleColor.DarkRed;
 
-            decision = Console.ReadLine();
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2") || x.Equals("3")),
+                   invalidInputMessage: "Please enter either '1', '2' or '3'"
+                   );
+
             switch (decision)
             {
                 case "1":
@@ -4024,10 +4035,14 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        decision = Console.ReadLine();
+
+                        decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
                     }
 
-                    if (decision == "1")
+                    if (decision.Equals("1"))
                     {
                         Combat("Gate Keeper", 7, 3);
                         Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
@@ -4035,7 +4050,7 @@ namespace Wah
                             "a wave of unease washes over you. With a deep breath, you push it open.");
                         Level7_5();
                     }
-                    else
+                    else if (decision.Equals("2"))
                     {
                         Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
                         Console.WriteLine("Press ENTER");
@@ -4107,7 +4122,12 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("   |   1. Approach Minos   |   2. Visit the Bonfire   |");
             Console.ForegroundColor = ConsoleColor.White;
-            decision = Console.ReadLine();
+
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2")),
+                   invalidInputMessage: "Please enter either '1' or '2'"
+                   );
+
             switch (decision)
             {
                 case "1":
@@ -4120,10 +4140,8 @@ namespace Wah
                 default:
                     Level7_5();
                     break;
-
-
-
             }
+
             do
             {
                 Console.Clear();
@@ -4140,6 +4158,7 @@ namespace Wah
                 Combat("King Minos", 5, 5);
 
             } while (coward);
+
             do
             {
                 Console.WriteLine("After his defeat, the throne crumbles, and Minos lets out a guttural roar.\n" +
@@ -4157,6 +4176,7 @@ namespace Wah
             } while (coward);
             Level7_6();
         }
+
         public static void Level7_6()
         {
             string decision;
@@ -4191,7 +4211,10 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Make your final decision:\n");
 
-            decision = Console.ReadLine();
+            decision = SafeInputWithRetry(() => Console.ReadLine().ToLower(),
+                   x => !string.IsNullOrWhiteSpace(x) && (x.Equals("1") || x.Equals("2") || x.Equals("3")),
+                   invalidInputMessage: "Please enter either '1', '2' or '3'"
+                   );
 
             switch (decision)
             {
@@ -4212,21 +4235,6 @@ namespace Wah
                     break;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
