@@ -2709,8 +2709,752 @@ namespace Wah
             Console.WriteLine("|    1. Proceed   |   2. Stay in greed   |");
             Console.ForegroundColor = ConsoleColor.White;
 
+            while (choiceLoop == true)
+            {
+                Console.Clear();
+                Console.WriteLine($"What would you like to question?\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Menu("1. Who are you?, 2. What is your group here doing?, 3. How do I get past the Angel?, 4. Can I leave hell?, 5. Return");
+                Console.ForegroundColor = ConsoleColor.White;
+                temp = Console.ReadLine();
+                Console.Clear();
+
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("'I am Mystery, Babylon the Great, god of mankind.'\n\n" +
+                            "The Woman replies enigmatically, walking around behind you with a tinkling of jewelry.\n" +
+                            "She lowers her voice, looking out over the burning plain.\n\n" +
+                            "'Thou has known me in thy own life, known me by my works, for I am she who would become as a God.'\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.WriteLine("'Together we will create the Arcanum, and leave this cursed place.'\n\n" +
+                            "She gestures to where her followers gyrate in unison, murmuring their sacred songs. Their rythm\n" +
+                            "draws your eyes, carrying with it a building sense of power. But their eyes... look vacant.\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "3":
+                        Console.WriteLine("'Thou hast not the strength. The angel has been given the strength to halt all who\n" +
+                            "would seek to leave this wretched place. But together, if thee and I combined our strength, we could\n" +
+                            "wrest the name of God from the aether, and speak it in Profanity.'\n\n" +
+                            "Mystery gestures to the gate in the distance, then smiles.\n\n" +
+                            "'That will weaken him, I think.'\n");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Strength gained.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\n'Most certainly. Hell is not for us, but a prison for the Angels, those who in ancient\n" +
+                            "times did defy the will of God. But we art built to rule; it is our birthright, should only we have the\n" +
+                            "will to claim it.'\n\n" +
+                            "Her words feel right somehow, like they are burrowing past your skin and inflaming your muscles.\n");
+                        if (strength < 15)
+                        {
+                            strength = strength + 1;
+                        }
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        break;
+                    case "5":
+                        Console.WriteLine("That's a lot to think about.");
+                        choiceLoop = false;
+                        break;
+
+                }
+
+            }
+        }
+
+
+
+        static void SatanSays(ref int timesLost)
+        {
+            bool playAgain = false;
+            string guess = "", currentSequence = "", temp = "";
+            Random rand = new Random();
+            int[] sequence = new int[8];
+            do { 
+                for (int i = 0; i < sequence.Length; i++)
+                {
+                    sequence[i] = rand.Next(4);
+                }
+                for (int i = 0; i < sequence.Length; i++)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (i >= 1)
+                        {
+                            switch (sequence[j])
+                            {
+                                case 0:
+                                    Console.BackgroundColor = ConsoleColor.Red;
+                                    Console.Write(" RED ");
+                                    Console.Beep(915, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "r";
+                                    break;
+                                case 1:
+                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                    Console.Write(" BLUE ");
+                                    Console.Beep(794, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "b";
+
+                                    break;
+                                case 2:
+                                    Console.BackgroundColor = ConsoleColor.Green;
+                                    Console.Write(" GREEN ");
+                                    Console.Beep(646, 700);
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "g";
+                                    break;
+                                case 3:
+                                    Console.BackgroundColor = ConsoleColor.Yellow;
+                                    Console.ForegroundColor = ConsoleColor.Black;
+                                    Console.Write(" YELLOW ");
+                                    Console.Beep(1298, 700);
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    temp = "y";
+                                    break;
+                            }
+                        }
+                        Thread.Sleep(500);
+                    }
+                    Console.Clear();
+                    currentSequence = currentSequence + temp;
+                    if (i == 0)
+                    {
+                        do
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Menu("1. Begin Satan Says, 2. Read the Rules");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            guess = Console.ReadLine();
+                            if (guess != "1" && guess != "2") // Invalid Input
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("INVALID INPUT");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.WriteLine("Press Enter to try again");
+                                Console.ReadLine();
+                            }
+                        } while (guess != "1" && guess != "2");
+
+                        if (guess == "2") // If the player wants to read the rules
+                        {
+                            Console.Clear();
+                            Console.WriteLine("You will be presented with a sequence of colours. \nYou must type out the first letter of each color\nFor Example:\n");
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(" RED ");
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.Write(" BLUE ");
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(" RED ");
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            Console.Write("GREEN \n");
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Write("Would mean that you would have to type rbrg and then press Enter\n\nPress enter when you're ready");
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
+                    }
+                    else //Input the guess
+                    {
+                        Console.WriteLine("Please enter the sequence");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("r. Red");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("b. Blue");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("g. Green");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("y. Yellow");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        guess = Console.ReadLine().ToLower();
+
+                    }
+                    if (guess != currentSequence && i != 0) // Wrong Answer
+                    {
+                        Console.WriteLine("Wrong!");
+                        Console.WriteLine(currentSequence);
+                        playAgain = true;
+                        Console.ReadLine();
+                        i = 0; //Goes back to start
+                        currentSequence = "";
+                        temp = "";
+                        timesLost++;
+
+                    }
+                    else // Correct Answer
+                    {
+                        if (i > 0)
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkCyan;
+                            Menu("Correct! Press Enter to continue");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                        }
+                        playAgain = false;
+                    }
+                    Console.Clear();
+                    }
+            } while (playAgain);
+        }
+
+
+
+        static void RockPaperScissors(ref int timesLost)
+        {
+            Random rand = new Random();
+            int round = 1, computerInput, computerScore = 0, playerScore = 0; // I'm feeling nice and not making it so you need to beat them x times IN A ROW. That would be horrible for people who get stuck on Satan Says
+            string guess, computerGuess = "";
+            do
+            {
+                Console.WriteLine($"Your score is currently: {playerScore}/{timesLost}");
+                Console.WriteLine("Input your guess! Rock, Paper, or Scissors!\n");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Menu("r. Rock, p. Paper, s. Scissors");
+                Console.ForegroundColor = ConsoleColor.White;
+                guess = Console.ReadLine().ToLower();
+                Console.Clear();
+
+                computerInput = rand.Next(3); //Decide what the Shadow chooses
+                switch (computerInput)
+                {
+                    case 0:
+                        computerGuess = "rock";
+                        break;
+                    case 1:
+                        computerGuess = "paper";
+                        break;
+                    case 2:
+                        computerGuess = "scissors";
+                        break;
+                }
+
+                //Convert the player's guess to Rock, Paper, or Scissors to make it eso I can do less switch statements
+                switch (guess)
+                {
+                    case "r":
+                        guess = "rock";
+                        break;
+                    case "p":
+                        guess = "paper";
+                        break;
+                    case "s":
+                        guess = "scissors";
+                        break;
+                }
+
+                if (guess == computerGuess) //If the player chose rock
+                {
+                    Console.WriteLine($"You both decided to choose {guess}! That's a draw!");
+                }
+                else
+                {
+                    switch (guess)
+                    {
+                        case "rock":
+                            if (computerGuess == "scissors")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+                        case "scissors":
+
+                            if (computerGuess == "paper")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+                        case "paper":
+                            if (computerGuess == "rock")
+                            {
+                                Console.WriteLine($"You decided to go {guess}, and the Shadow decided to go {computerGuess}! You win!");
+                                playerScore++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"You decided to play {guess}, but the shadow played {computerGuess}! You lose!");
+                            }
+                            break;
+
+                    }
+                }
+            } while (playerScore < timesLost);
+
+        }
+
+        public static void Level4()// Circle 6: Anger
+        {
+            level = 4;
+            int timesLost = 1;
+            string decision;
+            Console.WriteLine("You enter a dark black room, where the only visible thing is a large door\n" +
+                "A large light pointing down at the center of the room turns on\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("You have entered the layer of:");
+            Console.WriteLine(" _______  _        _______  _______  _______ \r\n" +
+                "(  ___  )( (    /|(  ____ \\(  ____ \\(  ____ )\r\n" +
+                "| (   ) ||  \\  ( || (    \\/| (    \\/| (    )|\r\n" +
+                "| (___) ||   \\ | || |      | (__    | (____)|\r\n" +
+                "|  ___  || (\\ \\) || | ____ |  __)   |     __)\r\n" +
+                "| (   ) || | \\   || | \\_  )| (      | (\\ (   \r\n" +
+                "| )   ( || )  \\  || (___) || (____/\\| ) \\ \\__\r\n" +
+                "|/     \\||/    )_)(_______)(_______/|/   \\__/\r\n" +
+                "                                             ");
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("A humanoid figure emerges from the floor.\n" +
+                "It looks totally black and has no visible features, like a living standing shadow\n" +
+                "The dark figure stands still for a few seconds and looks around. \n" +
+                "His head then turns towards your direction and erupts in laughter\n" +
+                "Wow. You really think you can just walk through the Anger layer and just leave?\n" +
+                "If you want to go through that door, you have to go through me.\n" +
+                "I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            SatanSays(ref timesLost);
+            Combat("Shadow", 4, 2);
+            intelligence += 7;
+            Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to go through the door...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("You begin walking to the door, but just before you reach it you hear the dark figure slowly applauding\n" +
+                "\"Impressive. You beat Satan Says. Now before you go, I'm going to challenge you to a game of Rock, Paper, Scissors.\n" +
+                "After all, I am the only one who can open the door.");
+            Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            RockPaperScissors(ref timesLost);
+            Console.Clear();
+            Console.WriteLine("After beating the Shadow at his games, he gives a smile\n" +
+                "\"Congratulations. It's quite rare that I've seen someone get through both of these challenges. \n" +
+                "You have proved that you're worthy to cross the door. Good luck.\"\n" +
+                "The Shadow points his arm at the door and it opens.\n");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Menu("Press ENTER to continue...");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Level5();
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+        public static void Level5()// Circle 5: Greed
+        {
+            Console.Clear();
+            string decision;
+            level = 5;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("You enter Hell’s Casino—a palace of false promise and endless debt.\n" +
+                "Gold-lined walls shimmer under flickering neon, masking the desperation in the air.\n" +
+                "Fortune teases, greed consumes, and the deeper you go, the harder it is to escape.\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("1. Play Slots");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($"\t\t\t\t\t\tGold:");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{gold}\n");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("2. Play Russian Roulette\n3. Fight in the pits\n4. Loan Shark\n5. Gate Keeper ( Leave )");
+
+            decision = Console.ReadLine();
+           
+            switch (decision)
+            {
+                case "1":
+                    slots();
+                    break;
+                case "2":
+                    RussianRoulette();
+                    break;
+                case "3":
+                    FightingPits();
+                    break;
+                case "4":
+                    LoanShark();
+                    break;
+                case "5":
+                    Level5_1();
+                    break;
+                default:
+                    Level5();
+                    break;
+
+            }
+        }
+
+        public static void LoanShark()
+        {
+            string decision;
+            Console.Clear();
+
+            if (debt == false)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You enter the loan shark’s office. The place is cramped, dimly lit, \nand reeks of stale cigars. He leans forward, fingers drumming against a ledger of debts.\n" +
+                                 "'You want a loan, eh? Fine. But make sure you pay it back before you leave… or else.'\n\n");
+              
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("|   1. Take the loan (1000 gold)   |   2. Leave   |");
+
+                decision = Console.ReadLine();
+
+                switch (decision)
+                {
+                    case "1":
+                        Console.WriteLine("You take the loan, hoping fortune provides the means to pay it back. The loan shark’s stern gaze makes one thing clear—he isn’t the forgiving type.\n\n");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+1000 Gold!");
+                        gold += 1000;
+                        debt = true;
+                        Console.ReadLine();
+                        Level5();
+                        break;
+
+                    case "2":
+                        Level5();
+                        break;
+
+                    default:
+                        LoanShark();
+                        break;
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You enter the loan shark’s office. The place is cramped, dimly lit, \nand reeks of stale cigars. He leans forward, fingers drumming against a ledger of debts.\n" +
+                                "'Ohh, you're here to repay your debt, eh? About time. I hope, for your sake, you brought enough.'\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("|   1. Repay debt (1200 Gold)   |   2. Leave   |");
+
+                decision = Console.ReadLine();
+
+                switch (decision)
+                {
+                    case "1":
+                        if (gold >= 1200)
+                        {
+                            Console.WriteLine("You place the gold on the desk. The Shark looks shocked, but with a grin slides the money into a drawer. \n" +
+                                              "'Good doing business with you.'\n");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("-1200 Gold!");
+                            gold -= 1200;
+                            debt = false;
+                            Console.ReadLine();
+                            Level5();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You cannot afford this!");
+                            Console.ReadLine();
+                            Level5();
+                        }
+                            break;
+
+                    case "2":
+                        Level5();
+                        break;
+
+                    default:
+                        LoanShark();
+                        break;
+                }
+            }
+        }
+
+
+        public static void slots()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8; 
+            string[] symbols = { "7", "♥", "☺", "Ω", "✶" };
+            bool gamble = true;
+            string decision;
+            int count = 0;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($"\n\n\t\t\t{symbols[1]}  --  {symbols[1]}  --  {symbols[1]}\n\n");
+            while (gamble)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"|   Gold:{gold}   |");
+                Console.WriteLine("|   1.Bet 25   |   2.Bet 50   |   3.Bet 100  |  4.Leave   |");
+               
+                decision = Console.ReadLine();
+                int bet = 0;
+
+                switch (decision)
+                {
+                    case "1":
+                        if (gold >= 25)
+                        {
+                            gold -= 25;
+                            bet = 25;
+                            count++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            
+                        }
+                        break;
+                    case "2":
+                        if (gold >= 50)
+                        {
+                            gold -= 50;
+                            bet = 50;
+                            count++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            break;
+                        }
+                        break;
+                    case "3":
+                        if (gold >= 100)
+                        {
+                            gold -= 100;
+                            bet = 100;
+                            count++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are too poor for this bet!");
+                            continue;
+                        }
+                        break;
+                    case "4":
+                        gamble = false;
+                        Level5();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input! Please enter a number between 1 and 4.");
+                        break; 
+                }
+
+                if (count == 30)
+
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'You have become a degenerate gambler, now you pay the ultimate price'\n\n" +
+                    "A piece of your soul has been removed -5 karma \n\nPress ENTER to Continue");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    karmaScore = karmaScore - 5;
+                    Console.ReadLine();
+                }
+                    if (count == 60)
+
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You hear a glorious booming voice rippling inside your head.\n'I see you have not learned anything young degenerate..'\n" +
+                            "'Addiction is a fickle mistress'\n" +
+                        "A piece of your soul has been removed -10 karma \n\nSecret Accolade Unlocked!\nPress ENTER to Continue");
+                    degen = true;
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        karmaScore = karmaScore - 10;
+                        Console.ReadLine();
+                    }
+                if (bet > 0)
+                {
+                    int slot1 = rand.Next(0, symbols.Length);
+                    int slot2 = rand.Next(0, symbols.Length);
+                    int slot3 = rand.Next(0, symbols.Length);
+                    int winnings = bet * 25;
+
+                    Console.Clear();
+                    Console.ForegroundColor= ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\n\t\t\t{symbols[slot1]}  --  {symbols[slot2]}  --  {symbols[slot3]}\n");
+                    
+                    Console.ForegroundColor = ConsoleColor.White;
+                    if (symbols[slot1] == symbols[slot2] && symbols[slot2] == symbols[slot3])
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine($"\t\tJackpot baby!! All slots match!\n\t\t         You gain +1 Karma!\n\t\t           And {winnings} gold!\n\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        gold += winnings;
+                        karmaScore = karmaScore + 1;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"\t\t\t -{bet} gold.\n\n\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                    }
+                }
+            }
+        }
+
+
+
+        public static void FightingPits()
+        {
+            int winnings = 2000;
+            string decision;
+            bool def = false;
+
+            if (!champion)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"The fighting pits roar with blood-soaked desperation...\n" +
+                    "A grizzled pitmaster leans against the iron gate, his voice filled with sadistic amusement.\n" +
+                    "'Care to try your luck, stranger? The house pays well... if you survive.'\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("1. Fight! (350 gold)\n2. Leave");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+
+                while (!def)
+                {
+                    switch (decision)
+                    {
+                        case "1":
+                            def = true;
+                            gold -= 350;
+                            break;
+                        case "2":
+                            def = true;
+                            Level5();
+                            return;
+                        default:
+                            Console.WriteLine("Invalid input! Please enter a number between 1 and 2");
+                            decision = Console.ReadLine();
+                            break;
+                    }
+                }
+
+                Console.Clear();
+                Console.WriteLine("'Stepping into the ring—the Young Nephilim...'");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to fight!");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+
+                // Ensuring player fights the same enemy until they stop fleeing
+                do
+                {
+                    Combat("Infant Nephilim", 1, 1);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'Run? Ha! There's no escaping the Pits, whelp.' The pitmaster sneers as the crowd roars.");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"{name} triumphs, but next… the Cursed Vagabond.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to continue");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+
+                // Repeat combat for next enemy if fleeing occurs
+                do
+                {
+                    Combat("Cursed Vagabond", 2, 2);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'Cowardice won't save you now. The crowd demands blood!'");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"'{name} stands victorious, but a new presence looms… Hugh Capet, once a king, now a wretched soul bound by greed.'");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Press ENTER to continue");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
+
+                // Final fight loop
+                do
+                {
+                    Combat("Hugh Capet", 3, 3);
+                    if (coward)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("'You will fight, whether by choice or fate. The Pit swallows all.'");
+                        Console.WriteLine("You must fight again!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                } while (coward);
+
+                Console.WriteLine($"'{name} stands victorious—Champion of the Pits! You win {winnings} gold.'\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"+ {winnings} gold!");
+                gold += winnings;
+                champion = true;
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Press ENTER to leave");
+                Console.ReadLine();
+                Level5();
+            }
+            else
+
             decision =Console.ReadLine();
             switch (decision)
+
             {
                 case "1":
                     Level6();
@@ -2744,6 +3488,29 @@ namespace Wah
             decision = Console.ReadLine();
             Console.Clear();
 
+            switch(decision)
+            {
+                case "1":
+                    if (gold >= 250)
+                    {
+                        gold -= 250;
+                        game = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You do not have enough gold to play!");
+                        Console.ReadLine();
+                        RussianRoulette();
+                    }
+                    break;
+                case "2":
+                    Level5();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    Console.ReadLine();
+                    RussianRoulette();
+
             switch (decision)
             {
                 case "1":
@@ -2764,6 +3531,7 @@ namespace Wah
                     break;
                 default:
                     Console.WriteLine("\nInvalid Input!");
+
                     break;
             }
 
@@ -2888,6 +3656,16 @@ namespace Wah
 
             decision = Console.ReadLine(); 
 
+
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        Console.ReadLine();
+                        Level5_1();
+                        break;
+                }
+            }
+            
+
             Console.Clear();
 
             switch (decision)
@@ -2947,11 +3725,21 @@ namespace Wah
                 default:
                     Level7_1();
                     break;
+                default:
+                    Level5_1();
+                    break;
             }
         }
         public static void Level7_2()// Circle 3: Lust - continuing straight ahead
 
         {
+
+
+            
+            level = 6;
+            bool validInput = false;
+
+    
             string decision;
             Console.Clear(); // clearing console
             Console.ForegroundColor = ConsoleColor.White; // setting text color to white
@@ -3021,6 +3809,77 @@ namespace Wah
                 }
             }
 
+            while (!validInput)
+            {
+                Console.WriteLine("Choose your meal:\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Lentil Stew – A warm, hearty bowl of slow-cooked lentils,\n infused with fragrant herbs and spices, offering a rich, earthy flavor.\n\n");
+                Console.WriteLine("2. Veal Cutlet – A tender, delicately breaded piece of meat,\n pan-seared to a golden crisp and served with a savory sauce.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
+
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("You feel nourished, yet grounded.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        validInput = true;
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("The richness lingers, but something feels off.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        validInput = true;
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
+            }
+
+            validInput = false;
+
+            while (!validInput)
+            {
+                Console.WriteLine("\nChoose your next meal:\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Fresh Garden Salad – Crisp greens, vibrant vegetables, and a drizzle of dressing,\n refreshing and light on the palate.\n");
+                Console.WriteLine("2. Foie Gras – A silky-smooth delicacy, served atop toasted bread\n with a subtle, buttery richness that melts in the mouth.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("Fresh, crisp, and satisfying.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("Decadent, yet heavy.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
             Console.ReadLine();
 
         }
@@ -3162,6 +4021,59 @@ namespace Wah
             Console.WriteLine("\n\n\n\t   |    Press ENTER to continue    |");
 
 
+            validInput = false;
+
+            while (!validInput)
+            {
+                Console.WriteLine("\nChoose your final meal:\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("1. Whole Grain Bread & Hummus – A rustic loaf with a crunchy crust,\n paired with creamy hummus that carries a nutty, tangy depth.\n");
+                Console.WriteLine("2. Shark Fin Soup – A clear, aromatic broth simmered to perfection,\n featuring delicate strands with a subtle, oceanic taste.\n\n\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                decision = Console.ReadLine();
+                Console.Clear();
+                switch (decision)
+                {
+                    case "1":
+                        karmaScore += 3;
+                        Console.WriteLine("Simple yet fulfilling.");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("+3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        karmaScore -= 3;
+                        Console.WriteLine("A rare taste, but uneasy feelings linger.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-3 Karma");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        validInput = true;
+                        Console.ReadLine();
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid Input!");
+                        break;
+                }
+            }
+
+            Console.Clear();
+            Console.WriteLine("You step forward, weighed down by indulgence. The gatekeeper eyes you with amusement.");
+            Console.WriteLine("\n\n Press ENTER to Proceed to Lust");
+            Console.ReadLine();
+            Console.WriteLine("The moment you nod, he grips a massive lever and pulls. A rush of weightlessness overtakes you—suddenly,\n" +
+                " you're soaring. Vision fades, replaced only by the sensation of wind rushing past," +
+                "\n lifting you effortlessly into the unknown.");
+            Console.ReadLine();
+            Level7();
+
+
+        }
+
+
+
+        
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
