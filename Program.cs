@@ -237,8 +237,6 @@ namespace Wah
 
         }
 
-
-
         static void MainMenu() // Declare title method
         {
 
@@ -302,8 +300,6 @@ namespace Wah
             Console.WriteLine("All complaints regarding the Anger level go to Thomas Visser");
             Console.ReadLine();
         }
-
-
 
         public static void DevMenu()
         {
@@ -461,7 +457,7 @@ namespace Wah
                         Console.Write("|");
                     }
                     Console.WriteLine("");
-                    Menu($"DEF. {speed} ");
+                    Console.WriteLine($"DEF. {speed}");
                     Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true,creature);
@@ -660,7 +656,7 @@ namespace Wah
                         default:
                             Console.Clear();
                             Console.WriteLine("Input a valid key.");
-                            Thread.Sleep(1000);
+                            Thread.Sleep(100);
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine($"You are fighting {creature}.");
@@ -671,7 +667,7 @@ namespace Wah
                                 Console.Write("|");
                             }
                             Console.WriteLine("");
-                            Menu($"DEF. {monSpeed} ");
+                            Console.WriteLine($"DEF. {monSpeed} ");
                             Console.WriteLine("\n\n\n");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
@@ -950,7 +946,7 @@ namespace Wah
                 "That could have been you.\n");
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Where are we?");
+            Console.WriteLine("1. Where are we?");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
 
@@ -1019,7 +1015,7 @@ namespace Wah
                     weapon = 2;
                     weaponName = "rusty knife";
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -1083,13 +1079,13 @@ namespace Wah
                             "If escaping hell was as simple as talking to someone, people would be coming back to life all the time.\n" +
                             "Bryan tries to make you reconsider, but your mind is made up.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
                         Console.WriteLine("You head out across the ice.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1101,7 +1097,7 @@ namespace Wah
                         Thread.Sleep(1500);
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Infernum non habet misericordiam.\r");
+                        Console.WriteLine("Infernum non habet misericordiam.\r");
                         Thread.Sleep(150);
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.White;
@@ -1111,7 +1107,7 @@ namespace Wah
                             "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest;\n" +
                             "each time you stop, the ice tries to swallow you as well.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1125,7 +1121,7 @@ namespace Wah
                         Console.Clear();
                         Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1145,7 +1141,7 @@ namespace Wah
             Thread.Sleep(1000);
             Console.WriteLine("Warmer.\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1190,7 +1186,7 @@ namespace Wah
                                 "'I know what you want, despite your best efforts.'\n");
                         }
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1211,7 +1207,7 @@ namespace Wah
                                 $"'Treachery may be your damnation, but arrogance will be your undoing. {name}, I INVENTED arrogance.'\n\n" +
                                 "It's a fight!\n");
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
@@ -1231,7 +1227,7 @@ namespace Wah
                             "'Belong here? You misguided mortal. You paid your way here with a \n" +
                             "lifetime of Sin. But perhaps I can help. It could be amusing.'\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1250,13 +1246,13 @@ namespace Wah
                 "'And Gaius Cassius. All the greatest traitors in history. For that is the nature of this place, the circle\n" +
                 "of...'\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("\\__   __/(  ____ )(  ____ \\(  ___  )(  ____ \\|\\     /|(  ____ \\(  ____ )|\\     /|\r\n   ) (   | (    )|| (    \\/| (   ) || (    \\/| )   ( || (    \\/| (    )|( \\   / )\r\n   | |   | (____)|| (__    | (___) || |      | (___) || (__    | (____)| \\ (_) / \r\n   | |   |     __)|  __)   |  ___  || |      |  ___  ||  __)   |     __)  \\   /  \r\n   | |   | (\\ (   | (      | (   ) || |      | (   ) || (      | (\\ (      ) (   \r\n   | |   | ) \\ \\__| (____/\\| )   ( || (____/\\| )   ( || (____/\\| ) \\ \\__   | |   \r\n   )_(   |/   \\__/(_______/|/     \\|(_______/|/     \\|(_______/|/   \\__/   \\_/\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1267,7 +1263,7 @@ namespace Wah
                 "The middle head slinks back down over you, puffing a putrid breath over you" + (fought == false ? "and Bryan.\n\n" : ".\n\n") +
                 "'So here's what I want, mortal. Find me a sweeter flavor to chew on, and I'll let you pass into the next circle.'\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1297,7 +1293,7 @@ namespace Wah
                             "With a quick motion, the Devil spits out the body of Cassius, flinging him across the snow, and then lunges.\n" +
                             "You hear the snap of jaws, and feel a flash of scalding heat.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1309,7 +1305,7 @@ namespace Wah
                             "One of the other heads turns towards you, slithering up across the snow.\n\n" +
                             $"'Done well enough, {name}, and so I open up Hell unto you.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
@@ -1330,7 +1326,7 @@ namespace Wah
                             "the frozen sarcophagus that contains Bryan's body. It's hard to chip him free, and even harder to drag him \n" +
                             "all the way back to where the devil waits.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1360,14 +1356,14 @@ namespace Wah
                     "Through it, you can see what looks like a dense forest, murky and dark. Satan huffs.\n\n" +
                     "'Go on. Claim your reward.'\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Pass through the gate");
+            Console.WriteLine("1. Pass through the gate");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Console.WriteLine("As you step forwards, you hear Satan laugh behind you.\n\n" +
                 "'I'll see you soon.'\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1443,7 +1439,7 @@ namespace Wah
                             "fields, hugging yourself for warmth. It's almost dreamlike in its misery: the landscape you are witnessing is too\n" +
                             "cruel, too oppressive, to be real. But the sharp cuts across your feet remind you that it is real.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1454,7 +1450,7 @@ namespace Wah
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Intelligence check failed.");
+                        Console.WriteLine("Intelligence check failed.");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nThe ice is dotted with the frozen-over shapes of men contorted in the throes of agony. There must\n" +
                             "be some sort of pattern, right? Some sort of method to the madness? You approach one such frozen sarcophagus, and take a\n" +
@@ -1462,7 +1458,7 @@ namespace Wah
                             "uncomfortable, and move to the next, then the next. It's a kalaeidoscope of human agony, each face blurring to the next.\n" +
                             "But there is no constant. There is no center. It's all just suffering and pain.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1487,7 +1483,7 @@ namespace Wah
                             $"the section where it's face should be. A long, thin scream escaped the ice, but when you peer inside, there's a\n" +
                             $"woman staring back at you, thrashing in her prison. Not  Benedict Arnold. Oh well. On to the next.");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1498,7 +1494,7 @@ namespace Wah
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Strength check failed.");
+                        Console.WriteLine("Strength check failed.");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYou don't really hold with all that thinking and logic. Instead, you simply approach the first of the\n" +
                             $"person-shaped forms of ice that jut from the barren, endless icefields. Using your {weaponName}, you bash open\n" +
@@ -1506,7 +1502,7 @@ namespace Wah
                             $"When you do, you are greeted by a warbling scream of pure agony, the voice of a young man writhing in the ice.\n" +
                             $"Clearly that's not Benedict Arnold; you'll have to try again.\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1535,7 +1531,7 @@ namespace Wah
                         Console.WriteLine("The inscription reads:\n\n" +
                             "'I have a mouth but no teeth, a body but no bones; I can fall but never rise. What am I?\n");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Write your answer then press ENTER to continue...");
+                        Console.WriteLine("Write your answer then press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         temp = Console.ReadLine().ToLower();
                         Console.Clear();
@@ -1548,7 +1544,7 @@ namespace Wah
                         {
                             Console.WriteLine("You whisper into the wind, but it swallows your words. You must have been wrong.\n");
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
@@ -1567,7 +1563,7 @@ namespace Wah
                             Console.WriteLine("Unfortunately, the ice resists your blows, and no matter how hard you try to hit it, nothing happens.\n" +
                                 "You might need to try something else.\n");
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
@@ -1580,7 +1576,7 @@ namespace Wah
                    "like Dracula from his coffin, comes a man in a Revolutionary War uniform, bound by a multitude of red tassels.\n" +
                    "Slowly, the tassels spread from his body, before the man's eyes snap open--it's a fight!\n");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1590,7 +1586,7 @@ namespace Wah
                 Console.WriteLine("You flee across the ice, leaving Benedict Arnold behind. Unfortunately, you now have no offering to\n" +
                     "give Satan. Maybe he will offer you some other task instead.");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
@@ -1604,7 +1600,7 @@ namespace Wah
                     $"eagerly as you approach, heads coiling and lashing over each other. The middle head approaches, steaming the snow, \n" +
                     $"and takes a deep whiff. The moment of truth.\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
@@ -1630,7 +1626,7 @@ namespace Wah
                 " \\ \\_/ /    | |   | |   | || |      | (      | | \\   || |      | (      \r\n" +
                 "  \\   /  ___) (___| (___) || (____/\\| (____/\\| )  \\  || (____/\\| (____/\\\r\n" +
                 "   \\_/   \\_______/(_______)(_______/(_______/|/    )_)(_______/(_______/\r\n\n\n");
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear ();
@@ -1663,13 +1659,13 @@ namespace Wah
                     Console.WriteLine("\nYou gesture at the Centaur to get his attention and give him an intense stare. ");
                     Console.WriteLine("He gallops over to you, and pulls out his sword.\n ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Combat("Centaur", 4, 1); //Heavy but slow
                     Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     break;
@@ -1684,12 +1680,12 @@ namespace Wah
                     {
                         Console.WriteLine("You step into the river, but the Centaur takes notice and gallops to you with his sword out.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Combat("The Centaur", 3, 3);
                         Console.WriteLine("After defeating the Centaur, you are able to cross the river to the forest safely.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                     }
@@ -1697,7 +1693,7 @@ namespace Wah
                     {
                         Console.WriteLine("You Step in to the river and the Centaur has no reaction. It makes eye contact with you, but does not approach.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -1727,7 +1723,7 @@ namespace Wah
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("You decide that your best priority is getting out of the forest as soon as possible.\n");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ReadLine();
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
@@ -1742,7 +1738,7 @@ namespace Wah
                     Console.WriteLine("You walk to a tree with many branches that looks like it would be good to start a fire.");
                     Console.WriteLine("As you snap the branch off, blood spills out and the tree screams!\n");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -1755,7 +1751,7 @@ namespace Wah
                     Console.Clear();
                     Console.WriteLine("The screams of the tree appear to have alerted something. A Harpy was alerted by the screaming and is ready to attack you!\n");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -1763,7 +1759,7 @@ namespace Wah
                     Combat("Harpy", 2, 4);
                     Console.WriteLine("After defeating the harpy, you are able to go back to the tree and set up a bonfire\n");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Bonfire();
@@ -1771,7 +1767,7 @@ namespace Wah
             }
                 Console.WriteLine("You venture through the forest until you find a clearing. \nYou arrive at an empty field surrounded by mountains. \nAt the other end of the field, you notice a tunnel. \nBetween you an the tunnel is a big fearsome beast, who you recognize as the infamous Minotaur. \nThe only way out of Violence is through The Minotaur.\n");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
             do
@@ -1790,7 +1786,7 @@ namespace Wah
                         Bonfire();
                         Console.WriteLine("Now that you are fully rested, It's time to try again.\n");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Menu("Press ENTER to fight the Minotaur...");
+                        Console.WriteLine("Press ENTER to fight the Minotaur...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                     }
@@ -1817,7 +1813,7 @@ namespace Wah
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("You have now entered the layer of\n");
             Console.WriteLine("          _______  _______  _______  _______          \r\n|\\     /|(  ____ \\(  ____ )(  ____ \\(  ____ \\|\\     /|\r\n| )   ( || (    \\/| (    )|| (    \\/| (    \\/( \\   / )\r\n| (___) || (__    | (____)|| (__    | (_____  \\ (_) / \r\n|  ___  ||  __)   |     __)|  __)   (_____  )  \\   /  \r\n| (   ) || (      | (\\ (   | (            ) |   ) (   \r\n| )   ( || (____/\\| ) \\ \\__| (____/\\/\\____) |   | |   \r\n|/     \\|(_______/|/   \\__/(_______/\\_______)   \\_/  \n");
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1827,7 +1823,7 @@ namespace Wah
                 "vanishes, leaving you with your now-familiar mental haze. It's probably for the best; there are other things to focus\n" +
                 "on.\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1839,7 +1835,7 @@ namespace Wah
                 "burning lava and pools of boiling blood.\n\n" +
                 "This looks like Hell.\n");
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -1925,7 +1921,7 @@ namespace Wah
                                             "'Free will is thy right, after all.'\n\n" +
                                             "You see her return to her spot in the center of the circle before you leave.\n");
                                         Console.ForegroundColor = ConsoleColor.Magenta;
-                                        Menu("Press ENTER to continue...");
+                                        Console.WriteLine("Press ENTER to continue...");
                                         Console.ForegroundColor = ConsoleColor.White;
                                         Console.ReadLine();
                                         choiceloop = false;
@@ -1949,7 +1945,7 @@ namespace Wah
                     case "2":
                         Console.WriteLine("You know enough to avoid getting involved with cults. You move on.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         choiceloop = false;
@@ -1992,7 +1988,7 @@ namespace Wah
                                     "Despite her words, you can see fear entering her expression, even as she summons her wicked scythe to her side.\n" +
                                     "It's a fight!\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2007,7 +2003,7 @@ namespace Wah
                                         "'I AM MYSTERY, THE DEATH OF KINGS!'\n\n" +
                                         "She looms over you, towering now. But you feel something in your chest tingle.\n");
                                     Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Menu("1. Unleash the Holy Rune");
+                                    Console.WriteLine("1. Unleash the Holy Rune");
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.ReadLine();
                                     Console.Clear();
@@ -2017,7 +2013,7 @@ namespace Wah
                                         $"Mystery, surrounded in her loathesome armor, crawls towards you with all her power, but this time you have the strength\n" +
                                         $"to meet her.\n");
                                     Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Menu("Press ENTER to continue...");
+                                    Console.WriteLine("Press ENTER to continue...");
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.ReadLine();
                                     Console.Clear();
@@ -2037,7 +2033,7 @@ namespace Wah
                                        "the experience rapturous.\n\n" +
                                        "'Next time I may not be so generous.'\n");
                                     Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Menu("Press ENTER to continue...");
+                                    Console.WriteLine("Press ENTER to continue...");
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.ReadLine();
                                 }
@@ -2052,7 +2048,7 @@ namespace Wah
                                     $"she twirls it around easily.\n\n" +
                                     $"'I, Babylon the Great, shall happily indulge you.'\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2065,7 +2061,7 @@ namespace Wah
                                         "the experience rapturous.\n\n" +
                                         "'Perhaps thee shall reconsider where thou stands.'\n");
                                     Console.ForegroundColor = ConsoleColor.Magenta;
-                                    Menu("Press ENTER to continue...");
+                                    Console.WriteLine("Press ENTER to continue...");
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Console.ReadLine();
                                 }
@@ -2093,17 +2089,17 @@ namespace Wah
                 weapon = 4;
                 weaponName = "War Scythe";
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("You know the name of God");
+                Console.WriteLine("You know the name of God");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nBut that's not all. As you touch the weapon, something flashes into your mind, a Truth too vast\n" +
                     "for the Universe. All that's left is to return to Uriel. There is nothing but ruin left here.\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
@@ -2133,7 +2129,7 @@ namespace Wah
                     "built into the roof of the cave, easily large enough to usher through a construction crane. But before the door\n" +
                     "stands something... otherworldy.\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -2172,7 +2168,7 @@ namespace Wah
                                 $"'THAT WAS NOT THE CHALLENGE, {name.ToUpper()}'\n");
                             angelName = "The Angel";
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             death++;
@@ -2182,7 +2178,7 @@ namespace Wah
                     break;
                 case 2:
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("-10 Vitality");
+                    Console.WriteLine("-10 Vitality");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nSlowly, you come to, feeling woozy and unsure of yourself. Light is washing over you, a touch\n" +
                         "of relief in the agony of Hell. When you look for it's source, you see it-- a titanic being formed of light and\n" +
@@ -2195,7 +2191,7 @@ namespace Wah
                     Console.WriteLine("Anointed with the Name of God, you leave the ruined plaza behind. Mystery was right about just one.\n" +
                         "thing; it's time to leave this desolate place;\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -2205,7 +2201,7 @@ namespace Wah
                         "you turn away, leaving the screaming woman with her followers. It's time to go, one way or another. It's a long walk,\n" +
                         "until you finally find the gate, and it's holy guardian.\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -2213,7 +2209,7 @@ namespace Wah
                 default:
                     Console.WriteLine("You turn away from the plaza, leaving it behind and hiking back up to the gate.\n");
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Press ENTER to continue...");
+                    Console.WriteLine("Press ENTER to continue...");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
                     Console.Clear();
@@ -2249,7 +2245,7 @@ namespace Wah
                                     "'THAT IS THE CORRECT ANSWER. WELL DONE, TO WALK THE PATH OF RIGHTEOUSNESS.'\n\n" +
                                     "The gate behind him shudders, and you feel a wash of air across your face. It's time to go. You earned it.\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2261,7 +2257,7 @@ namespace Wah
                                     "For the first time, you feel genuine hatred coming from his voice, as he yanks the sword from the ground and\n" +
                                     "charges you. Your blasphemy has consequences; it's a fight!\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2275,7 +2271,7 @@ namespace Wah
                                     "like a man, but an unbound flame.\n\n" +
                                     "'I WILL NOT ALLOW YOU TO PASS'.\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2289,19 +2285,19 @@ namespace Wah
                                     "a forlorn feeling. But something calls to you from the place where Uriel once stood, something glimmering a dull\n" +
                                     "gold.\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Angelic Splinter gained");
+                                Console.WriteLine("Angelic Splinter gained");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.WriteLine("\nIt's a piece of his armor, sharp and jagged, but still holding remnants of angelic power.\n" +
                                     "It will make a fine weapon. As you pick it up, the gate creaks, then, with a terrific rumbling, it breaks open.\n" +
                                     "Air rushes against your face, blowing away the scent of ash, and you take one last look at the Circle of Heresy.\n" +
                                     "It's time to leave.");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Console.Clear();
@@ -2317,7 +2313,7 @@ namespace Wah
                             Console.WriteLine($"{angelName} shakes his radiant head.\n\n" +
                                 "'THAT IS NOT THE NAME OF GOD.'\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
@@ -2337,7 +2333,7 @@ namespace Wah
                             "city once more. Uriel withdraws his hands, his angelic power knitting your body back from the ether.\n\n" +
                             $"'THAT WAS NOT THE CHALLENGE, {name.ToUpper()}'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -2353,7 +2349,7 @@ namespace Wah
                             Console.WriteLine("The sound of desolate whispers and screams of fury meet you; there is nothing but ruin here now.\n" +
                                 "You should leave.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to return");
+                            Console.WriteLine("Press ENTER to return");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Console.Clear();
@@ -2363,7 +2359,7 @@ namespace Wah
                             Console.WriteLine("On the way back, you see a glimmering, wavering light that you hadn't noticed before. It\n" +
                                 "beckons to you.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Bonfire();
@@ -2376,7 +2372,7 @@ namespace Wah
                             {
                                 Console.WriteLine("On the way back, you are ambushed by a shrieking demon!\n");
                                 Console.ForegroundColor = ConsoleColor.Magenta;
-                                Menu("Press ENTER to continue...");
+                                Console.WriteLine("Press ENTER to continue...");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadLine();
                                 Combat("The Shrieking Demon", 2, 5);
@@ -2398,7 +2394,7 @@ namespace Wah
             {
                 case 0:
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Karma lowered");
+                    Console.WriteLine("Karma lowered");
                     karmaScore = karmaScore - 5;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nYou place your hand in Mystery's, and she smiles, all white teeth and red lips. She pulls\n" +
@@ -2407,7 +2403,7 @@ namespace Wah
                     break;
                 case 1:
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Menu("Karma lowered");
+                    Console.WriteLine("Karma lowered");
                     karmaScore = karmaScore - 5;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("\nYou've made your choice. This woman may be a sinner, but she's definitely more personable\n" +
@@ -2426,7 +2422,7 @@ namespace Wah
                 Console.WriteLine("When you stand in the center, Mystery turns to face you.\n" +
                     "She's holding a knife.\n");
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Menu("Press ENTER to continue...");
+                Console.WriteLine("Press ENTER to continue...");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadLine();
                 Console.Clear();
@@ -2448,7 +2444,7 @@ namespace Wah
                             "consiousness. And Mystery...\n\n" +
                             "She glows.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -2465,7 +2461,7 @@ namespace Wah
                             "Several of her followers approach you, suddenly trying to hold you down, while another takes the\n" +
                             "knife, attempting to mark you by force. You throw them aside, and prepare to fight back!\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Combat("Cultist", 1, 1);
@@ -2475,7 +2471,7 @@ namespace Wah
                             "HOnestly, you have no idea what this will do, but the mindless cultists kind of give you the creeps.\n" +
                             "Mystery smiles, and then the world spins.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -2483,19 +2479,19 @@ namespace Wah
                             "of the choir around you snap into clarity. The words carry meaning now, drifting along, tugging at your\n" +
                             "consiousness. Multiplying. Combining. Your brain touches the edge of a truth so vast you nearly black out.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("You have stolen the Name of God");
+                        Console.WriteLine("You have stolen the Name of God");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nYou snap back to consciousness, and everything feels different. The cult feels it too,\n" +
                             "looking about themselves with confused expressions. Mystery looks at you, and her smile is gone.\n\n" +
                             "'Thou hast profaned the ritual!'\n\n" +
                             "She points at you, and the cultists lumber towards you, hands outstretched.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -2506,7 +2502,7 @@ namespace Wah
                             "manifesting in her hands. Fighting her alone would be trouble enough, but she has her whole army\n" +
                             "with her. It is time to leave.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         Console.Clear();
@@ -2536,7 +2532,7 @@ namespace Wah
                 "| )   ( || )  \\  || (___) || (____/\\| ) \\ \\__\r\n" +
                 "|/     \\||/    )_)(_______)(_______/|/   \\__/\r\n" +
                 "                                             ");
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -2548,7 +2544,7 @@ namespace Wah
                 "If you want to go through that door, you have to go through me.\n" +
                 "I will simply challenge you to a game. That's it! Just... Try not to get too angry. You will be punished.\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -2557,7 +2553,7 @@ namespace Wah
             intelligence += 7;
             Console.WriteLine("You have successfully beaten Satan Says! You may now pass the door to enter the next layer!\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Menu("Press ENTER to go through the door...");
+            Console.WriteLine("Press ENTER to go through the door...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -2566,7 +2562,7 @@ namespace Wah
                 "After all, I am the only one who can open the door.");
             Console.WriteLine($"Based off of your performance on Satan Says, you must beat me {timesLost} times!\"\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
@@ -2577,15 +2573,11 @@ namespace Wah
                 "You have proved that you're worthy to cross the door. Good luck.\"\n" +
                 "The Shadow points his arm at the door and it opens.\n");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
             Level5();
-
-
-
-
 
 
 
@@ -3541,7 +3533,7 @@ namespace Wah
                         {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.DarkCyan;
-                            Menu("Correct! Press Enter to continue");
+                            Console.WriteLine("Correct! Press Enter to continue");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                         }
@@ -4111,7 +4103,7 @@ namespace Wah
                             Console.WriteLine("'YOU MUST LEARN THE NAME OF GOD.'\n\n" +
                                 "The Angel replies cryptically.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             godQuestion = true;
@@ -4121,7 +4113,7 @@ namespace Wah
                             Console.WriteLine("'SLAY THE CULT IN THE NAME OF RIGHTEOUSNESS, AND IT WILL BE REVEALED.'\n\n" +
                                 "The Angel's wings blaze, and the orange glow radiating up from the ground, miles below, increases.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                         }
@@ -4134,7 +4126,7 @@ namespace Wah
                                 "The Angel drives his blade harder into the earth, wings blazing.\n\n" +
                                 "'SHOULD THEY BE SLAIN, I WOULD CONSIDER IT SERVICE'\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             cultQuestion = true;
@@ -4142,14 +4134,14 @@ namespace Wah
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Holy Rune gained.");
+                            Console.WriteLine("Holy Rune gained.");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\n'BABYLON DRAWS HER POWER FROM THE PROFANE RITUALS OF HER FOLLOWERS. I CAN GRANT YOU A POWER'\n" +
                                 "THAT WILL UNDO HER WICKED SPELL.'\n\n" +
                                 "He reaches forwards, and you feel a scalding power surge across your chest. When you look down, you see a glowing.\n" +
                                 "rune across your chest, thrumming with power. It burns, but it feels good.\n");
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
+                            Console.WriteLine("Press ENTER to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             holyRune = true;
                             Console.ReadLine();
@@ -4167,7 +4159,7 @@ namespace Wah
                             Console.WriteLine("'YOUR SOUL IS LIGHTENING ALREADY.'\n");
                         }
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
@@ -4202,7 +4194,7 @@ namespace Wah
                             "She lowers her voice, looking out over the burning plain.\n\n" +
                             "'Thou has known me in thy own life, known me by my works, for I am she who would become as a God.'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
@@ -4211,7 +4203,7 @@ namespace Wah
                             "She gestures to where her followers gyrate in unison, murmuring their sacred songs. Their rythm\n" +
                             "draws your eyes, carrying with it a building sense of power. But their eyes... look vacant.\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
@@ -4222,13 +4214,13 @@ namespace Wah
                             "Mystery gestures to the gate in the distance, then smiles.\n\n" +
                             "'That will weaken him, I think.'\n");
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
                     case "4":
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Strength gained.");
+                        Console.WriteLine("Strength gained.");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\n'Most certainly. Hell is not for us, but a prison for the Angels, those who in ancient\n" +
                             "times did defy the will of God. But we art built to rule; it is our birthright, should only we have the\n" +
@@ -4239,7 +4231,7 @@ namespace Wah
                             strength = strength + 1;
                         }
                         Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+                        Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
@@ -4430,7 +4422,7 @@ _________________________________________________________________________
                 $"punishment, and maybe you deserved to be there. You withdraw your {weaponName}, and step back, letting out a long breath.\n\n" +
                 $"Then, you offer King Minos your hand.\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
@@ -4441,13 +4433,13 @@ _________________________________________________________________________
                 "reading 'ABANDON ALL HOPE, YE WHO ENTER HERE;' The gates of Hell itself. You wonder if sparing King Minos means\n" +
                 "that you don't deserve to be here anymore. You turn back to the fallen King, and he grimaces... but then waves his hand.\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("The gates of hell swing open.\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
@@ -4458,7 +4450,7 @@ _________________________________________________________________________
                 "Hope.\n\n" +
                 "It's time to see what the future really holds.\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
@@ -4482,7 +4474,7 @@ _________________________________________________________________________
                 "The end of your journey for salvation. \n" +
                 "Without any more hesitation, you slice off the head of King Minos.");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -4492,7 +4484,7 @@ _________________________________________________________________________
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Abandon Hope, All Ye who Enter here.\n\n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -4501,7 +4493,7 @@ _________________________________________________________________________
                 "With King Minos slain, There is no one left to guard the gates of Limbo. \n" +
                 "Without someone to judge the sins of sinners, no one gets assigned to their respective layers \n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -4514,7 +4506,7 @@ _________________________________________________________________________
             Console.WriteLine(" to Escape.\n");
             Thread.Sleep(1000);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Menu("Press ENTER to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
