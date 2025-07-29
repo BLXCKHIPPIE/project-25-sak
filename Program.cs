@@ -4103,80 +4103,259 @@ namespace Wah
                 temp = Console.ReadLine();
                 Console.Clear();
 
-                switch (temp)
-                {
-                    case "1":
-                        if (godQuestion == false)
-                        {
-                            Console.WriteLine("'YOU MUST LEARN THE NAME OF GOD.'\n\n" +
-                                "The Angel replies cryptically.\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            godQuestion = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("'SLAY THE CULT IN THE NAME OF RIGHTEOUSNESS, AND IT WILL BE REVEALED.'\n\n" +
-                                "The Angel's wings blaze, and the orange glow radiating up from the ground, miles below, increases.\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                        }
-                        break;
-                    case "2":
-                        if (cultQuestion == false)
-                        {
-                            Console.WriteLine("'DEFILERS. THE HARLOT OF BABYLON OFFERS FALSE TRUTH, WHILE BLEEDING DRY THE SOULS OF HER MISERABLE FOLLOWERS. MANY ARE\n" +
-                                "THE BONES THAT LITTER HER WAKE.'\n\n" +
-                                "The Angel drives his blade harder into the earth, wings blazing.\n\n" +
-                                "'SHOULD THEY BE SLAIN, I WOULD CONSIDER IT SERVICE'\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            cultQuestion = true;
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Holy Rune gained.");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("\n'BABYLON DRAWS HER POWER FROM THE PROFANE RITUALS OF HER FOLLOWERS. I CAN GRANT YOU A POWER'\n" +
-                                "THAT WILL UNDO HER WICKED SPELL.'\n\n" +
-                                "He reaches forwards, and you feel a scalding power surge across your chest. When you look down, you see a glowing.\n" +
-                                "rune across your chest, thrumming with power. It burns, but it feels good.\n");
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            holyRune = true;
-                            Console.ReadLine();
-                        }
-                        break;
-                    case "3":
-                        Console.WriteLine("'PEHAPS YOU CAN FIND REDEMPTION OF A SORT, BUT I WARN YOU THAT THE PATH WILL NOT BE EASY.'\n\n" +
-                            "The Angel seems regretful, the intense light of his countenance dimming. He looks down at you, and sighs.\n");
-                        if (karmaScore <= 0)
-                        {
-                            Console.WriteLine("'YOU HAVE A LONG WAY TO GO YET.'\n");
-                        }
-                        else
-                        {
-                            Console.WriteLine("'YOUR SOUL IS LIGHTENING ALREADY.'\n");
-                        }
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 3;
+                    Console.WriteLine("You feel nourished, yet grounded.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 3;
+                    Console.WriteLine("The richness lingers, but something feels off.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
+
+            Console.WriteLine("\nChoose your next meal:\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("1. Fresh Garden Salad – Crisp greens, vibrant vegetables, and a drizzle of dressing,\n refreshing and light on the palate.\n");
+            Console.WriteLine("2. Foie Gras – A silky-smooth delicacy, served atop toasted bread\n with a subtle, buttery richness that melts in the mouth.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            Console.Clear();
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 3;
+                    Console.WriteLine("Fresh, crisp, and satisfying.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 3;
+                    Console.WriteLine("Decadent, yet heavy.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
+
+            Console.WriteLine("\nChoose your final meal:\n");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("1. Whole Grain Bread & Hummus – A rustic loaf with a crunchy crust,\n paired with creamy hummus that carries a nutty, tangy depth.\n");
+            Console.WriteLine("2. Shark Fin Soup – A clear, aromatic broth simmered to perfection,\n featuring delicate strands with a subtle, oceanic taste.\n\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            decision = Console.ReadLine();
+            Console.Clear();
+            switch (decision)
+            {
+                case "1":
+                    karmaScore += 3;
+                    Console.WriteLine("Simple yet fulfilling.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("+3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                case "2":
+                    karmaScore -= 3;
+                    Console.WriteLine("A rare taste, but uneasy feelings linger.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("-3 Karma");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    break;
+            }
+
+            Console.Clear();
+            Console.WriteLine("You step forward, weighed down by indulgence. The gatekeeper eyes you with amusement.");
+            Console.WriteLine("\n\n Press ENTER to Proceed to Lust");
+            Console.ReadLine();
+            Console.WriteLine("The moment you nod, he grips a massive lever and pulls. A rush of weightlessness overtakes you—suddenly,\n" +
+                " you're soaring. Vision fades, replaced only by the sensation of wind rushing past," +
+                "\n lifting you effortlessly into the unknown.");
+            Console.ReadLine();
+            Level7();
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static void Level7()// Circle 3: Lust
+        {
+            level = 7;
+            vitality += 1; // Added to avoid being trapped if loan shark is used twice without repayment.
+            string decision;
+
+            Console.Clear();
+            Console.WriteLine("You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
+                "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
+                "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
+                "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
+                "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // Set text color to Dark yellow
+            Console.WriteLine("1. Ascend to higher ground, where the air grows thin and the unseen stir.\n2. Press forward, into the shrouded unknown.");
+            decision = Console.ReadLine(); // decision now equals user input
+
+
+
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+            switch (decision)
+            {
+                case "1":
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("You tread the worn path to the left ramp, you feel the air pressure lessen as you progress");
+                    Level7_1();
+                    break;
+                case "2":
+                    Level7_2();
+                    break;
+                default:
+                    Level7();
+                    break;
+            }
+        }
+
+        public static void Level7_1() // Circle 3: Lust - Taking the path to high ground
+        {
+            string decision;
+            int num;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("You follow the left path, rising steadily until you're about 100 meters above the chasm’s depths.\n" +
+                "The ground beneath you narrows, forcing cautious steps. Pressing forward, you reach a rope bridge,\n" +
+                "its worn strands shifting in the breeze. Glancing back, you spot the leftmost edge of the wall—rough,\n" +
+                "but climbable.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Climb the rocky wall.\n2. Step onto the rope bridge.");
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+            int.TryParse(decision, out num);
+
+            Console.Clear();
+
+            switch (num)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("You begin climbing the chasm’s side wall when a noise rises from below.\n" +
+                        "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
+                        "it closes the gap, its presence looming just beneath you.");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face.");
+
+                    decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+                    Console.Clear();
+
+                    if (decision == "1")
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("The demon’s claws tear into you, ripping you from the wall.\n" +
+                            "Together, you plummet—seven meters of uncontrolled descent.\n" +
+                            "You hit the ground with a thump as dust and debris settle around you. Only one choice remains:\n\nKill or be killed.");
+                        Console.ReadLine();
+
+                        Combat("Gnarled abomination", 5, 5);
+
+                        Console.Clear();
+                        Console.WriteLine("You press on, scaling the rugged wall with steady determination.\n" +
+                            "Before you know it, your hand finds the final ledge, and you pull yourself up.");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n Press ENTER to continue");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Level7_4();
+                    }
+                    else if (decision == "2")
+                    {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
                         break;
                     case "4":
                         choiceLoop = false;
                         Console.Clear();
-                        break;
-                }
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Level7_4();
+                    }
+                    break;
+
+                case 2:
+                    Level7_3();
+                    break;
+
+                default:
+                    Level7_1();
+                    break;
             }
+        }
+
+
+
+        public static void Level7_2()// Circle 3: Lust - continuing straight ahead
+
+        {
+            string decision;
+            Console.Clear(); // clearing console
+            Console.ForegroundColor = ConsoleColor.White; // setting text color to white
+            Console.WriteLine("The wind howls as you push forward. As the dust settles, a marble staircase comes into view—pristine, out of place.\n" +
+                "Descending, a familiar scent of cigar smoke fills the air.\n" +
+                "remnants of excess. Greed awaits.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; // setting decisions text to "DarkYellow"
+            Console.WriteLine("1. Descend the marble stairs (Back to greed)\n" +
+                "2. Turn back and take the path upward, away from the excess below.");
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+            if (decision.Equals("1"))
+            { Level5(); } // calls Level6 method
+            else if (decision.Equals("1"))
+            { Level7_1(); } // calls Level7_1 method
+            Console.ReadLine();
         }
         public static void CultMenu()
         {
@@ -4194,64 +4373,280 @@ namespace Wah
                 temp = Console.ReadLine();
                 Console.Clear();
 
-                switch (temp)
-                {
-                    case "1":
-                        Console.WriteLine("'I am Mystery, Babylon the Great, god of mankind.'\n\n" +
-                            "The Woman replies enigmatically, walking around behind you with a tinkling of jewelry.\n" +
-                            "She lowers her voice, looking out over the burning plain.\n\n" +
-                            "'Thou has known me in thy own life, known me by my works, for I am she who would become as a God.'\n");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
+        }
+        public static void Level7_4()
+        {
+            string decision;
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("The wind howls through the chasm, its breath sharp with the scent of ruin.\n" +
+                      "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n" +
+                      "The sky, bruised and relentless, presses down, mirroring the hunger within.\n" +
+                      "On the horizon, a solitary tower rises—blackened, defiant.\n" +
+                      "It calls to you, its whisper threading through the ruinous winds,\n" +
+                      "beckoning you forward into the unknown.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Head Towards the Tower");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine("The wind howls, pushing against you, each step heavier than the last.\n\n" +
+                       "Your strength fades, the tower distant, unwavering.\n You spot a nearby bonfire");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Rest by bonfire\n2. Leave");
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+            switch (decision)
+            {
+                case "1":
+                    Console.Clear();
+                    Bonfire();
+                    break;
+                case "2":
+                    Console.Clear();
+                    break;
+                default:
+                    Level7_4();
+                    break;
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
+                "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
+                "At its base stands the gate keeper. His armor, a shiny fusion of metal and sin, exudes an aura of ruin.\n Darkness stares from within his helmet, a silent challenge.\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("'Mortal, Your journey was long, but futile. This is King Minos' domain and you are unworthy of his gaze. \n" +
+                "Turn back, lest this place strip you bare. There is no salvation here. Only judgment.'\n\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("1. Reason\n2. Attack\n3. Bribe (1000 Gold)");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2", "3" });
+
+            switch (decision)
+            {
+                case "1":
+                    Console.Clear();
+                    if (intelligence >= 20)
+                    {
+                        Console.WriteLine("'Your words bear the weight of wisdom, an argument as sharp as Minos' tail.\nVery well—pass, but know this: knowledge alone will not shield you from what lies ahead.'\n\n" +
+                            "Press ENTER to continue.");
                         Console.ReadLine();
-                        break;
-                    case "2":
-                        Console.WriteLine("'Together we will create the Arcanum, and leave this cursed place.'\n\n" +
-                            "She gestures to where her followers gyrate in unison, murmuring their sacred songs. Their rythm\n" +
-                            "draws your eyes, carrying with it a building sense of power. But their eyes... look vacant.\n");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Level7_5();
+                    }
+                    else
+                    {
+                        Console.WriteLine("'Reason? There is no reason in this place—only judgment. \nYou speak of purpose, of resolve, as if they hold weight here. They do not.'\n" +
+                                    "'Turn back, mortal. Your words are wasted.'\n");
+
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("1. Attack\n2. Bribe (1000 Gold)");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+
+                        decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+                    }
+
+                    if (decision.Equals("1"))
+                    {
+                        Combat("Gate Keeper", 7, 3);
+                        Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                            "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                            "a wave of unease washes over you. With a deep breath, you push it open.");
+                        Level7_5();
+                    }
+                    else if (decision.Equals("2"))
+                    {
+                        Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
+                        Console.WriteLine("Press ENTER");
                         Console.ReadLine();
-                        break;
-                    case "3":
-                        Console.WriteLine("'Thou hast not the strength. The angel has been given the strength to halt all who\n" +
-                            "would seek to leave this wretched place. But together, if thee and I combined our strength, we could\n" +
-                            "wrest the name of God from the aether, and speak it in Profanity.'\n\n" +
-                            "Mystery gestures to the gate in the distance, then smiles.\n\n" +
-                            "'That will weaken him, I think.'\n");
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        break;
-                    case "4":
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Strength gained.");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("\n'Most certainly. Hell is not for us, but a prison for the Angels, those who in ancient\n" +
-                            "times did defy the will of God. But we art built to rule; it is our birthright, should only we have the\n" +
-                            "will to claim it.'\n\n" +
-                            "Her words feel right somehow, like they are burrowing past your skin and inflaming your muscles.\n");
-                        if (strength < 15)
-                        {
-                            strength = strength + 1;
-                        }
-                        Console.ForegroundColor = ConsoleColor.Magenta;
-                        Menu("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        break;
-                    case "5":
-                        Console.WriteLine("That's a lot to think about.");
-                        choiceLoop = false;
-                        break;
+                        Combat("Gate Keeper", 7, 3);
+                        Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                        Level7_5();
+                    }
+                    break;
+
+                case "2":
+                    Combat("Gate Keeper", 7, 3);
+                    Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                    Level7_5();
+                    break;
+
+                case "3":
+                    Console.WriteLine("'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'");
+                    Console.WriteLine("Press ENTER");
+                    Console.ReadLine();
+                    Combat("Gate Keeper", 7, 3);
+                    Console.WriteLine("You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open.");
+                    Level7_5();
+                    break;
+            }
+        }
+
+
+
+
+        public static void Level7_5() // FINAL BOSS FIGHT
+        {
+            level = 8;
+            string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("  \n\n\n      ▄█   ▄█▄  ▄█  ███▄▄▄▄      ▄██████▄                       ");
+            Console.WriteLine("        ███ ▄███▀ ███  ███▀▀▀██▄   ███    ███                      ");
+            Console.WriteLine("        ███▐██▀   ███▌ ███   ███   ███    █▀                       ");
+            Console.WriteLine("       ▄█████▀    ███▌ ███   ███  ▄███                              ");
+            Console.WriteLine("      ▀▀█████▄    ███▌ ███   ███ ▀▀███ ████▄                       ");
+            Console.WriteLine("        ███▐██▄   ███  ███   ███   ███    ███                      ");
+            Console.WriteLine("        ███ ▀███▄ ███  ███   ███   ███    ███                      ");
+            Console.WriteLine("        ███   ▀█▀ █▀    ▀█   █▀    ████████▀                       ");
+            Console.WriteLine("        ▀                                                           ");
+            Console.WriteLine("    ▄▄▄▄███▄▄▄▄    ▄█  ███▄▄▄▄    ▄██████▄     ▄████████           ");
+            Console.WriteLine("  ▄██▀▀▀███▀▀▀██▄ ███  ███▀▀▀██▄ ███    ███   ███    ███           ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███   ███    █▀            ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███   ███                  ");
+            Console.WriteLine("  ███   ███   ███ ███▌ ███   ███ ███    ███ ▀███████████           ");
+            Console.WriteLine("  ███   ███   ███ ███  ███   ███ ███    ███          ███           ");
+            Console.WriteLine("  ███   ███   ███ ███  ███   ███ ███    ███    ▄█    ███           ");
+            Console.WriteLine("   ▀█   ███   █▀  █▀    ▀█   █▀   ▀██████▀   ▄████████▀            ");
+            Console.WriteLine("\n\n\n\t   |    Press ENTER to continue    |");
+
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("\n\nThe chamber is vast, its marble floor smooth and reflective. Soft silver light filters down, illuminating crimson banners that hang motionless.\n" +
+                "Tall obsidian pillars line the path, engraved with ancient symbols.\n\n" +
+                "At the far end, King Minos sits upon his throne, watching in silence.\n\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("   |   1. Approach Minos   |   2. Visit the Bonfire   |");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2" });
+
+            switch (decision)
+            {
+                case "1":
+
+                    break;
+                case "2":
+                    Bonfire();
+                    Level7_5();
+                    break;
+                default:
+                    Level7_5();
+                    break;
+            }
+
+            do
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("You approach the throne. King Minos looms above,\n" +
+                    "his coiled tails writhing like the damned souls he judges. His hollow eyes burn with ancient knowledge,\n" +
+                    "his throne a twisted mass of marble and tree roots. His voice rumbles like distant thunder.\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Your sins are weighed, your fate determined. There is no escape.\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Press ENTER to fight for your life");
+                Console.ReadLine();
+
+                Combat("King Minos", 5, 5);
+
+            } while (coward);
+
+            do
+            {
+                Console.WriteLine("After his defeat, the throne crumbles, and Minos lets out a guttural roar.\n" +
+                    "His massive frame coils inward, his form unraveling into a monstrous serpent.\n" +
+                    "Scales, dark as obsidian, ripple across his body as his tails fuse into a singular, writhing mass.\n" +
+                    "His hollow eyes burn anew, now slitted like those of a beast ancient and unrelenting.\n\n");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You thought judgment was done? No mortal escapes the coils of fate!");
+                Console.ForegroundColor = ConsoleColor.White;
+                vitality = 100;
+                Console.ReadLine();
+
+                Combat("Serpent Minos", 8, 5);
+
+            } while (coward);
+            Level7_6();
+        }
+
+        public static void Level7_6()
+        {
+            string decision;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Minos writhes in agony, his serpent form collapsing into dust and shadow.");
+            Console.WriteLine("His body reshapes, sinew and bone snapping into place as he returns to his human form.");
+            Console.WriteLine("Weakened and trembling before you, his hollow eyes flicker with desperation.\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\"You... you would cast me down so easily?\" Minos gasps, clutching at the ruins of his throne.");
+            Console.WriteLine("\"Without a Gatekeeper, chaos will consume Limbo. The souls will wander lost, unjudged, untethered.");
+            Console.WriteLine("The abyss will spill into the world itself!\"\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("He kneels, bloodied and broken, his once-imposing figure reduced to a pleading shell.");
+            Console.WriteLine("Then, lifting his gaze, he fixes you with a knowing stare.\n");
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\"Spare me, and I will continue my duty.");
+            Console.WriteLine("Kill me, and you will unleash madness.");
+            Console.WriteLine("Or... you may take my place, if you have the strength to bear it.\"\n\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Your choice:");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("1. Kill Minos");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("2. Spare Minos");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("3. Become the new Gatekeeper\n\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Make your final decision:\n");
+
+
+            decision = GetDecision(
+prompt: "Input your choice:",
+validChoices: new[] { "1", "2", "3" });
+
+            switch (decision)
+            {
+                case "1":
+                    BadEnding();
+                    break;
+
+                case "2":
+                    GoodEnding();
+                    break;
 
                 }
 
             }
         }
+
+
+
+
+
         public static void Vendor()
         {
             bool leave = false;
@@ -4550,22 +4945,78 @@ _________________________________________________________________________
             Credits();
             Epilogue();
             MainMenu();
-
-
-
-
-
-
-
-
-
         }
+
+
         public static void Epilogue()
         {
 
         }
 
+        /// <summary>
+        /// Simple input handler
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="inputProvider"></param>
+        /// <param name="validator"></param>
+        /// <param name="invalidInputMessage"></param>
+        /// <returns></returns>
+        /// 
+        public static T SafeInputWithRetry<T>(
+            Func<string> inputProvider,
+            Func<string, bool> validator,
+            Func<string, T> converter,
+            string invalidInputMessage // Custom message for invalid input
+        )
+        {
+            while (true)
+            {
+                try
+                {
+                    string input = inputProvider();
+                    if (validator(input))
+                    {
+                        return converter(input);
+                    }
+                    else
+                    {
+                        Console.WriteLine(invalidInputMessage);
+                        Thread.Sleep(1000);
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("An error occurred: ");
+                    Console.ResetColor();
+                    Console.WriteLine(ex.Message);
+                    Thread.Sleep(2000);
+                    //                    Logger.LogError(invalidInputMessage);
+                    Thread.Sleep(2000);
+                }
+            }
+        }
 
+        /// <summary>
+        /// GetDecision method to get a decision from the user with validation against valid choices.
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <param name="validChoices"></param>
+        /// <returns></returns>
+        public static string GetDecision(
+        string prompt,
+        params string[] validChoices
+    )
+        {
+            Console.Write(prompt);
+            return SafeInputWithRetry(
+                inputProvider: () => Console.ReadLine().Trim().ToLower(),
+                validator: input => Array.Exists(validChoices, choice => choice == input),
+                converter: input => input,
+                invalidInputMessage: $"Please enter one of the following choices: {string.Join(", ", validChoices)}"
+            );
+        }
     }
 }
 
