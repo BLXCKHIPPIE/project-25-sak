@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.IO;
 using System.Collections;
 using System.ComponentModel.Design;
@@ -1101,8 +1102,47 @@ namespace Wah
                         Thread.Sleep(1500);
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Infernum non habet misericordiam.\r");
-                        Thread.Sleep(150);
+
+                        Console.WriteLine("   ██▓ ███▄    █   █████▒▓█████  ██▀███   ███▄    █  █    ██  ███▄ ▄███▓         ");
+                        Console.WriteLine("  ▓██▒ ██ ▀█   █ ▓██   ▒ ▓█   ▀ ▓██ ▒ ██▒ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒         ");
+                        Console.WriteLine("  ▒██▒▓██  ▀█ ██▒▒████ ░ ▒███   ▓██ ░▄█ ▒▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░         ");
+                        Console.WriteLine("  ▒██▒▓██  ▀█ ██▒▒████ ░ ▒███   ▓██ ░▄█ ▒▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░         ");
+                        Console.WriteLine("  ░██░▓██▒  ▐▌██▒░▓█▒  ░ ▒▓█  ▄ ▒██▀▀█▄  ▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██          ");
+                        Console.WriteLine("  ░██░▒██░   ▓██░░▒█░    ░▒████▒░██▓ ▒██▒▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒         ");
+                        Console.WriteLine("    ░▓  ░ ▒░   ▒ ▒  ▒ ░    ░░ ▒░ ░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░       ");
+                        Console.WriteLine("        ▒ ░░ ░░   ░ ▒░ ░       ░ ░  ░  ░▒ ░ ▒░░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░       ");
+                        Console.WriteLine("         ▒ ░   ░   ░ ░  ░ ░       ░     ░░   ░    ░   ░ ░  ░░░ ░ ░ ░      ░            ");
+                        Console.WriteLine("         ░           ░            ░  ░   ░              ░    ░            ░            ");
+                        Console.WriteLine("                                                       ");
+                        Console.WriteLine("     ███▄    █  ▒█████   ███▄    █     ██░ ██  ▄▄▄       ▄▄▄▄   ▓█████▄▄▄█████▓    ");
+                        Console.WriteLine("     ██ ▀█   █ ▒██▒  ██▒ ██ ▀█   █    ▓██░ ██▒▒████▄    ▓█████▄ ▓█   ▀▓  ██▒ ▓▒    ");
+                        Console.WriteLine("    ▓██  ▀█ ██▒▒██░  ██▒▓██  ▀█ ██▒   ▒██▀▀██░▒██  ▀█▄  ▒██▒ ▄██▒███  ▒ ▓██░ ▒░    ");
+                        Console.WriteLine("    ▓██▒  ▐▌██▒▒██   ██░▓██▒  ▐▌██▒   ░▓█ ░██ ░██▄▄▄▄██ ▒██░█▀  ▒▓█  ▄░ ▓██▓ ░     ");
+                        Console.WriteLine("    ▒██░   ▓██░░ ████▓▒░▒██░   ▓██░   ░▓█▒░██▓ ▓█   ▓██▒░▓█  ▀█▓░▒████▒ ▒██▒ ░     ");
+                        Console.WriteLine("    ░ ▒░   ▒ ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒     ▒ ░░▒░▒ ▒▒   ▓▒█░░▒▓███▀▒░░ ▒░ ░ ▒ ░░       ");
+                        Console.WriteLine("       ░   ░ ░ ░ ░ ░ ▒     ░   ░ ░     ░  ░░ ░  ░   ▒    ░    ░    ░    ░          ");
+                        Console.WriteLine("            ░     ░ ░           ░     ░  ░  ░      ░  ░ ░         ░  ░            ");
+                        Console.WriteLine("                                  ░                    ");
+                        Console.WriteLine("     ███▄ ▄███▓ ██▓  ██████ ▓█████  ██▀███   ██▓ ▄████▄   ▒█████   ██▀███  ▓█████▄ ");
+                        Console.WriteLine("    ▓██▒▀█▀ ██▒▓██▒▒██    ▒ ▓█   ▀ ▓██ ▒ ██▒▓██▒▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▒██▀ ██▌");
+                        Console.WriteLine("    ▓██    ▓██░▒██▒░ ▓██▄   ▒███   ▓██ ░▄█ ▒▒██▒▒▓█    ▄ ▒██░  ██▒▓██ ░▄█ ▒░██   █▌");
+                        Console.WriteLine("    ▒██    ▒██ ░██░  ▒   ██▒▒▓█  ▄ ▒██▀▀█▄  ░██░▒▓▓▄ ▄██▒▒██   ██░▒██▀▀█▄  ░▓█▄   ▌");
+                        Console.WriteLine("    ▒██▒   ░██▒░██░▒██████▒▒░▒████▒░██▓ ▒██▒░██░▒ ▓███▀ ░░ ████▓▒░░██▓ ▒██▒░▒████▓ ");
+                        Console.WriteLine("    ░ ▒░   ░  ░░▓  ▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ▒▓ ░▒▓░░▓  ░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░ ▒▒▓  ▒ ");
+                        Console.WriteLine("   ░  ░      ░ ▒ ░░ ░▒  ░ ░ ░ ░  ░  ░▒ ░ ▒░ ▒ ░  ░  ▒     ░ ▒ ▒░   ░▒ ░ ▒░ ░ ▒  ▒ ");
+                        Console.WriteLine("    ░      ░    ▒ ░░  ░  ░     ░     ░░   ░  ▒ ░░        ░ ░ ░ ▒    ░░   ░  ░ ░  ░ ");
+                        Console.WriteLine("           ░    ░        ░     ░  ░   ░      ░  ░ ░          ░ ░     ░        ░    ");
+                        Console.WriteLine("                                                ░                           ░      ");
+                        Console.WriteLine("     ██▓ ▄▄▄       ███▄ ▄███▓                                                      ");
+                        Console.WriteLine("    ▓██▒▒████▄    ▓██▒▀█▀ ██▒                                                      ");
+                        Console.WriteLine("    ▒██▒▒██  ▀█▄  ▓██    ▓██░                                                      ");
+                        Console.WriteLine("    ░██░░██▄▄▄▄██ ▒██    ▒██                                                       ");
+                        Console.WriteLine("    ░██░ ▓█   ▓██▒▒██▒   ░██▒                                                      ");
+                        Console.WriteLine("    ░▓   ▒▒   ▓▒█░░ ▒░   ░  ░                                                      ");
+                        Console.WriteLine("     ▒ ░  ▒   ▒▒ ░░  ░      ░                                                      ");
+                        Console.WriteLine("    ▒ ░  ░   ▒   ░      ░                                                         ");
+                        Console.WriteLine("    ░        ░  ░       ░                                                         ");
+                        Thread.Sleep(600);
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
