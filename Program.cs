@@ -878,81 +878,110 @@ namespace Wah
         }
         public static void Level1()// Circle 9: Treachery
         {
-            string temp = " ";
-            bool choiceBreak = false, fought = false, toldName = false;
+            string temp = " ", input;
+            bool choiceBreak = false, fought = false, toldName = false, errorCheck = false;
             weapon = 0;
             level = 1;
 
-            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
-                "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
-                "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
-                "It's a bit creepy how he's staring down at you.\n");
-
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Stand Up, 2. Attack, 3. Question");
-            temp = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-
-            Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
-                "Looking down, you see that your limbs are encased in thick, frigid rimes of ice. \n" +
-                "No sooner have you noticed than the pain sets in--It's both numbing and agonizing at the same time; every \n" +
-                "cell of your body demands that you MAKE IT STOP.\n");
-            Thread.Sleep(200);
-
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Work your way out, 2. Attack, 3. Ask for help");
-            temp = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-
-            switch (temp)//the first choice to alter stats
+            while (!errorCheck)
             {
-                case "1":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
+                    "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
+                    "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
+                    "It's a bit creepy how he's staring down at you.\n");
 
-                    Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
-                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
-                    intelligence = intelligence + 1;
-                    break;
-                case "2":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
-                    "It pushes back, but then, with a sudden crack, it gives way.\n");
-                    strength = strength + 1;
-                    break;
-                case "3":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    Console.WriteLine("'Okay, hold tight.'\n\n" +
-                         "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                    "but eventually, you feel the ice loosen all at once, then shatter.\n");
-                    intelligence = intelligence + 1;
-                    karmaScore = karmaScore + 1; //treachery is decreased by trust
-                    break;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Stand Up, 2. Attack, 3. Question");
+                temp = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+                switch (temp)
+                {
+                    case "1":
+                    case "2":
+                    case "3":
+                        errorCheck = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
             }
 
-            Console.WriteLine("You push yourself upright, looking around. You are standing on a vast plain of ice, like you've seen in depictions\n" +
+            errorCheck = false;
+
+            while (!errorCheck)
+            {
+                Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
+                    "Looking down, you see that your limbs are encased in thick, frigid rimes of ice. \n" +
+                    "No sooner have you noticed than the pain sets in--It's both numbing and agonizing at the same time; every \n" +
+                    "cell of your body demands that you MAKE IT STOP.\n");
+                Thread.Sleep(200);
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Work your way out, 2. Attack, 3. Ask for help");
+                input = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+
+                switch (input)//the first choice to alter stats
+                {
+                    case "1":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                       "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                       "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
+                        intelligence = intelligence + 1;
+                        errorCheck = true;
+                        break;
+                    case "2":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                        "It pushes back, but then, with a sudden crack, it gives way.\n");
+                        strength = strength + 1;
+                        errorCheck = true;
+                        break;
+                    case "3":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("'Okay, hold tight.'\n\n" +
+                             "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
+                        "but eventually, you feel the ice loosen all at once, then shatter.\n");
+                        intelligence = intelligence + 1;
+                        karmaScore = karmaScore + 1; //treachery is decreased by trust
+                        errorCheck = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+
+                Console.WriteLine("You push yourself upright, looking around. You are standing on a vast plain of ice, like you've seen in depictions\n" +
                 "of Antarctica, with howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice, each vaguely moulding to the shape of the person \n" +
                 "inside.\n" +
                 "That could have been you.\n");
 
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Where are we?");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Where are we?");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadLine();
 
             do
             {
@@ -995,6 +1024,7 @@ namespace Wah
                         Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
                         intelligence++;
                         break;
+
                 }
             } while (choiceBreak == false);
 
@@ -2582,14 +2612,6 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Level5();
-
-
-
-
-
-
-
-
         }
         public static void Level5()// Circle 5: Greed
         {
