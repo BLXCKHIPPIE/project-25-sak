@@ -1,0 +1,125 @@
+dialog_levels{
+
+level7:
+1 "You land on your feet but cannot see anything. Slowly the fog of war clears,\n" +
+                "you are standing in the pit of a rocky chasm. The sky above is an iridescent\n" +
+                "purple with lines of black almost tearing up the sky. You are in some kind of anomaly unlike \n" +
+                "anything you have ever experienced.\n\nTo your left you see a path stretching up the chasm leading to higher ground\n" +
+                "It is unclear what lies straight ahead as the path is shrouded by a cloud of dust and debris.\n\n"
+
+level7_1:
+1 "You follow the left path, rising steadily until you're about 100 meters above the chasm’s depths.\n" +
+                "The ground beneath you narrows, forcing cautious steps. Pressing forward, you reach a rope bridge,\n" +
+                "its worn strands shifting in the breeze. Glancing back, you spot the leftmost edge of the wall—rough,\n" +
+                "but climbable.\n\n"
+
+2 "1. Climb the rocky wall.\n2. Step onto the rope bridge."
+
+3 "1. Scramble upward, pushing your limits as the demon closes in.\n2. Lash out with a desperate kick, aiming straight for its stupid face."
+
+4 "You press on, scaling the rugged wall with steady determination.\n" +
+                            "Before you know it, your hand finds the final ledge, and you pull yourself up."
+
+level7_2:
+1 "The wind howls as you push forward. As the dust settles, a marble staircase comes into view—pristine, out of place.\n" +
+                "Descending, a familiar scent of cigar smoke fills the air.\n" +
+                "remnants of excess. Greed awaits.\n\n"
+
+2 "1. Descend the marble stairs (Back to greed)\n" +
+                "2. Turn back and take the path upward, away from the excess below."
+
+level7_3:
+1 "You step onto the rope bridge, its frayed strands swaying beneath your weight.\n" +
+                "The abyss yawns below, but hesitation won’t serve you now.\nfortune favors the bold."
+
+2 "You make it across the rope bridge, steadying yourself on solid ground. Turning back,\nyou peer into the abyss" +
+                    "100 meters of sheer drop. The realization settles in.\n" +
+                    "If that rope had snapped, the fall would have been fatal. "
+
+3 "A sharp snap rings out behind you. The world tilts—you fall.\n" +
+                    "By sheer luck, your hands grasp the rope, stopping your descent.\n" +
+                    "The impact against the chasm wall leaves you breathless, but you’re still hanging on.\n"
+
+4 "You attempt to pull yourself up.. lets just hope you are strong enough\n\nPress ENTER to climb"
+
+5 "You pull yourself up the rope, muscles straining but growing stronger.\nEvery challenge,every fight—it’s all paying off.\n" +
+                        "Bit by bit, you’re becoming tougher for what lies ahead."
+
+6 "Your grip weakens, arms burning. The rope sways—you're running out of time."
+
+7 "Your grip fails. The world tilts as you fall, vertigo consuming you. The abyss rushes up—there’s no stopping it now."
+
+level7_4:
+
+1 "The wind howls through the chasm, its breath sharp with the scent of ruin.\n" +
+                      "Below, cracked plains stretch into infinity, bones scattered like whispers of past agony.\n" +
+                      "The sky, bruised and relentless, presses down, mirroring the hunger within.\n" +
+                      "On the horizon, a solitary tower rises—blackened, defiant.\n" +
+                      "It calls to you, its whisper threading through the ruinous winds,\n" +
+                      "beckoning you forward into the unknown.\n\n"
+
+2 "1. Head Towards the Tower"
+
+3 "The wind howls, pushing against you, each step heavier than the last.\n\n" +
+                       "Your strength fades, the tower distant, unwavering.\n You spot a nearby bonfire"
+
+4 "The cracked plains stretch endlessly, each step grinding against fragments of ruin.\n Wind, sharp with whispers of past agony, drives you forward.\n" +
+                "The Carnal Tower looms ahead, its marble spine fractured, clawing at the heavens. \nThe spiral staircase winds upward—worn, broken, defiant.\n" +
+                "At its base stands the gate keeper. His armor, a shiny fusion of metal and sin, exudes an aura of ruin.\n Darkness stares from within his helmet, a silent challenge.\n\n"
+
+5 "'Mortal, Your journey was long, but futile. This is King Minos' domain and you are unworthy of his gaze. \n" +
+                "Turn back, lest this place strip you bare. There is no salvation here. Only judgment.'\n\n"
+
+}
+
+
+decisions{
+
+7.1 "You tread the worn path to the left ramp, you feel the air pressure lessen as you progress"
+
+7_1.1 "You begin climbing the chasm’s side wall when a noise rises from below.\n" +
+                        "Looking down, you spot a scaled figure moving upward with unnerving speed. Before you can react,\n" +
+                        "it closes the gap, its presence looming just beneath you."
+
+7_1.2 "The demon’s claws tear into you, ripping you from the wall.\n" +
+                            "Together, you plummet—seven meters of uncontrolled descent.\n" +
+                            "You hit the ground with a thump as dust and debris settle around you. Only one choice remains:\n\nKill or be killed."
+
+
+7_1.3 "Your foot connects with the demon’s stupid face, its crooked nose collapsing under the force.\n" +
+                            "It tumbles backward, crashing hard into the ground. Dust settles, silence lingers—it’s not moving.\n" +
+                            "You press on, scaling the rugged wall with steady determination.\n" +
+                            "Before you know it, your hand finds the final ledge, and you pull yourself up."
+
+7_4.1 "1. Rest by bonfire\n2. Leave"
+
+7_4.2 "1. Reason\n2. Attack\n3. Bribe (1000 Gold)"
+
+7_4.3 "'Your words bear the weight of wisdom, an argument as sharp as Minos' tail.\nVery well—pass, but know this: knowledge alone will not shield you from what lies ahead.'\n\n" +
+                            "Press ENTER to continue."
+
+7_4.4 "'Reason? There is no reason in this place—only judgment. \nYou speak of purpose, of resolve, as if they hold weight here. They do not.'\n" +
+                                    "'Turn back, mortal. Your words are wasted.'\n"
+
+7_4.5 "1. Attack\n2. Bribe (1000 Gold)"
+
+7_4.6 "You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                            "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                            "a wave of unease washes over you. With a deep breath, you push it open."
+
+7_4.7 "'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'"
+
+7_4.8 "You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open."
+
+7_4.9 "You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open."
+
+7_4.10 "'This is Limbo, the threshold of judgment. No offering can change your fate. For your insult,\n you will face the blade.\n\n'"
+
+7_4.11 "You step over the fallen gatekeeper, his armor—once gleaming—now darkened with blood.\n" +
+                           "Climbing the spiral staircase, you reach the tower’s entrance. As you press your hand against the door,\n" +
+                           "a wave of unease washes over you. With a deep breath, you push it open."
+}
