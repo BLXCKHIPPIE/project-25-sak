@@ -4574,7 +4574,7 @@ _________________________________________________________________________
         /// <param name="invalidInputMessage"></param>
         /// <returns></returns>
         /// 
-        public static T SafeInputWithRetry<T>(
+        public static T InputChecking<T>(
             Func<string> inputProvider,
             Func<string, bool> validator,
             Func<string, T> converter,
@@ -4622,7 +4622,7 @@ _________________________________________________________________________
     )
         {
             Console.Write(prompt);
-            return SafeInputWithRetry(
+            return InputChecking(
                 inputProvider: () => Console.ReadLine().Trim().ToLower(),
                 validator: input => Array.Exists(validChoices, choice => choice == input),
                 converter: input => input,
