@@ -874,72 +874,101 @@ namespace Wah
         }
         public static void Level1()// Circle 9: Treachery
         {
-            string temp = " ";
-            bool choiceBreak = false, fought = false, toldName = false;
+            string temp = " ", input;
+            bool choiceBreak = false, fought = false, toldName = false, errorCheck = false;
             weapon = 0;
             level = 1;
 
-            Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
-                "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
-                "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
-                "It's a bit creepy how he's staring down at you.\n");
-
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Stand Up, 2. Attack, 3. Question");
-            temp = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-
-            Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
-                "Looking down, you see that your limbs are encased in thick, frigid rimes of ice. \n" +
-                "No sooner have you noticed than the pain sets in--It's both numbing and agonizing at the same time; every \n" +
-                "cell of your body demands that you MAKE IT STOP.\n");
-            Thread.Sleep(200);
-
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Menu("1. Work your way out, 2. Attack, 3. Ask for help");
-            temp = Console.ReadLine();
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Clear();
-
-            switch (temp)//the first choice to alter stats
+            while (!errorCheck)
             {
-                case "1":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("'Nothingness shouldn't hurt so much, should it?'\n\n" +
+                    "The voice drags you awake, prompting you to pull your head up and look around, blinking open your sleep-encrusted eyes.\n" +
+                    "In front of you is an elderly man, hunched over, with a wispy beard drooping down his chin.\n" +
+                    "It's a bit creepy how he's staring down at you.\n");
 
-                    Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
-                   "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
-                   "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
-                    intelligence = intelligence + 1;
-                    break;
-                case "2":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
-                    "It pushes back, but then, with a sudden crack, it gives way.\n");
-                    strength = strength + 1;
-                    break;
-                case "3":
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
-                        "Other choices may require you to have certain stats to succeed.\n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    Console.WriteLine("'Okay, hold tight.'\n\n" +
-                         "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
-                    "but eventually, you feel the ice loosen all at once, then shatter.\n");
-                    intelligence = intelligence + 1;
-                    karmaScore = karmaScore + 1; //treachery is decreased by trust
-                    break;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Stand Up, 2. Attack, 3. Question");
+                temp = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+                switch (temp)
+                {
+                    case "1":
+                    case "2":
+                    case "3":
+                        errorCheck = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
             }
 
-            Console.WriteLine("You push yourself upright, looking around. You are standing on a vast plain of ice, like you've seen in depictions\n" +
+            errorCheck = false;
+
+            while (!errorCheck)
+            {
+                Console.WriteLine("You " + (temp == "3" ? "start to speak, " : (temp == "2" ? "HATE old people, so you try to attack, " : "try to get up, ")) + "but something stops you.\n" +
+                    "Looking down, you see that your limbs are encased in thick, frigid rimes of ice. \n" +
+                    "No sooner have you noticed than the pain sets in--It's both numbing and agonizing at the same time; every \n" +
+                    "cell of your body demands that you MAKE IT STOP.\n");
+                Thread.Sleep(200);
+
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Menu("1. Work your way out, 2. Attack, 3. Ask for help");
+                input = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+
+                switch (input)//the first choice to alter stats
+                {
+                    case "1":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("You squirm around, systematically testing for weaknesses in your bindings.\n" +
+                       "At first it feels impossible, but eventually you feel it begin to give way. Slowly, the ice loosens,\n" +
+                       "until you finally pull an arm free. After that, it's a simple matter of working your way free.");
+                        intelligence = intelligence + 1;
+                        errorCheck = true;
+                        break;
+                    case "2":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your strength has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("You writhe around with brute force,throwing your will against the ice that binds you.\n" +
+                        "It pushes back, but then, with a sudden crack, it gives way.\n");
+                        strength = strength + 1;
+                        errorCheck = true;
+                        break;
+                    case "3":
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("Your intelligence has increased by 1. In this game, certain choices can alter your stats.\n" +
+                            "Other choices may require you to have certain stats to succeed.\n");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        Console.WriteLine("'Okay, hold tight.'\n\n" +
+                             "The old man pulls out a knife and begins chipping at your binds with a rusty knife. It takes several firm blows,\n" +
+                        "but eventually, you feel the ice loosen all at once, then shatter.\n");
+                        intelligence = intelligence + 1;
+                        karmaScore = karmaScore + 1; //treachery is decreased by trust
+                        errorCheck = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+
+                Console.WriteLine("You push yourself upright, looking around. You are standing on a vast plain of ice, like you've seen in depictions\n" +
                 "of Antarctica, with howling wind hurling great billowing clouds of snow against your face. Your toes still feel numb,\n" +
                 "but what really chills you are the frozen statues dotting the ice, each vaguely moulding to the shape of the person \n" +
                 "inside.\n" +
@@ -949,10 +978,10 @@ namespace Wah
             Console.WriteLine("1. Where are we?");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
-
+          
             do
             {
-                choiceBreak = true;
+                
                 Console.Clear();
                 Console.WriteLine("'Hell'.\n\n" +
                "The old man replies quickly.\n\n" +
@@ -978,6 +1007,7 @@ namespace Wah
                             $"'Well, it's a pleasure to meet you, {name}.'\n");
                         karmaScore = karmaScore + 1;
                         toldName = true;
+                        choiceBreak = true;
                         break;
                     case "2":
                         Console.Clear();
@@ -990,9 +1020,18 @@ namespace Wah
                     case "3":
                         Console.WriteLine("'The silent type, hmmm? I suppose that's the name of the game, isn't it?'\n");
                         intelligence++;
+                        choiceBreak = true;
                         break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+
                 }
             } while (choiceBreak == false);
+
+            errorCheck = false;
 
             if (fought == true)//if they attacked Bryan they have to go face Satan
             {
@@ -1025,7 +1064,8 @@ namespace Wah
             }
             else
             {
-
+                while (!errorCheck)
+                { 
                 Console.WriteLine("The old man steps up closer to you, pausing just within arm's length. He holds out " + (intelligence > 10 && karmaScore > -10 ? "his" : "a") + " rusty knife towards you.\n\n" +
                             "'Take it, you probably need it more than I do.'\n");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -1033,106 +1073,125 @@ namespace Wah
                 Console.ForegroundColor = ConsoleColor.White;
                 temp = Console.ReadLine();
                 Console.Clear();
-                switch (temp)
-                {
-                    case "1":
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Bryan's knife gained.\n");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("The knife is spotted with rust, but the steel itself is firm, and the blade tapers to a sharp point.\n" +
-                            "You need a weapon, if this really is Hell. Honestly, the feeling of something solid in your hands is a lifeline.\n" +
-                            "It helps keep the panic at just how messed up this situation is at bay.\n");
-                        weapon = 2;
-                        weaponName = "rusty knife";
-                        break;
-                    case "2":
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Your Intelligence has increased.\n");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("If this is Hell, you can only assume that everyone down here are the worst people imaginable.\n" +
-                            "If someone is offering you a gift, then it's probably wise to refuse. Thinking logically like this feels good,\n" +
-                            "like your mind is a shield against the terrible wind. It makes you feel just that much more confident.\n");
-                        break;
-
+                    switch (temp)
+                    {
+                        case "1":
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("Bryan's knife gained.\n");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("The knife is spotted with rust, but the steel itself is firm, and the blade tapers to a sharp point.\n" +
+                                "You need a weapon, if this really is Hell. Honestly, the feeling of something solid in your hands is a lifeline.\n" +
+                                "It helps keep the panic at just how messed up this situation is at bay.\n");
+                            weapon = 2;
+                            weaponName = "rusty knife";
+                            errorCheck = true;
+                            break;
+                        case "2":
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.WriteLine("Your Intelligence has increased.\n");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("If this is Hell, you can only assume that everyone down here are the worst people imaginable.\n" +
+                                "If someone is offering you a gift, then it's probably wise to refuse. Thinking logically like this feels good,\n" +
+                                "like your mind is a shield against the terrible wind. It makes you feel just that much more confident.\n");
+                            errorCheck = true;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input...");
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
+                    }
                 }
-                Console.WriteLine("'It sounds counterintuitive, but I think our best way out is to talk to the Devil.'\n\n" +
+
+                errorCheck = false;
+
+                while (!errorCheck)
+                {
+                    Console.WriteLine("'It sounds counterintuitive, but I think our best way out is to talk to the Devil.'\n\n" +
                             "Bryan destroys your budding confidence, just like that. He must have seen the look on your face,\n" +
                             "because he quickly explains.\n\n" +
                             "'I mean we have to talk to the one on top, right?'\n\n" +
                             "He pauses, then chuckles.\n\n" +
                             "'Or the one down below, I suppose.'\n");
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Menu("1. That makes sense, 2. I'm going my own way");
-                Console.ForegroundColor = ConsoleColor.White;
-                temp = Console.ReadLine();
-                Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Menu("1. That makes sense, 2. I'm going my own way");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    temp = Console.ReadLine();
+                    Console.Clear();
 
-                switch (temp)
-                {
-                    case "1":
-                        Console.WriteLine("Everything about this situation is insane. Why not add one more thing to the pile? What could go wrong?\n\n" +
-                            "'Let's go, before we freeze to death.'\n");
-                        break;
-                    case "2":
-                        Console.WriteLine("You aren't going to go speak to the LITERAL devil. What sort of insane plan is that?\n" +
-                            "Just looking at him makes your skin crawl; speaking to that THING will be so much worse. Besides, why would that work?\n" +
-                            "If escaping hell was as simple as talking to someone, people would be coming back to life all the time.\n" +
-                            "Bryan tries to make you reconsider, but your mind is made up.\n");
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine("You head out across the ice.\n");
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
-                            "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
-                            "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
-                            "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest; \n" +
-                            "each time you stop, the ice tries to swallow you as well.");
-                        Thread.Sleep(1500);
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Infernum non habet misericordiam.\r");
-                        Thread.Sleep(150);
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
-                            "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
-                            "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
-                            "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest;\n" +
-                            "each time you stop, the ice tries to swallow you as well.\n");
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.");
-                        Thread.Sleep(500);
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Menu("Infernum non habet misericordiam, Gementes in tenebris perpetuis, damnati ululant.");
-                        Thread.Sleep(250);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Clear();
-                        Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("Press ENTER to continue...");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.ReadLine();
-                        Console.Clear();
-                        Console.WriteLine("The ice finds you quickly, crawling up your legs like the most persistent of predators. It's not long before\n" +
-                            "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. Yet there is no respite. It just\n" +
-                            "goes on and on and on. Is this your eternity? Is this your torment?\n\n" +
-                            $"But eventually, {name} stops thinking.\n\n");
-                        weapon = 0;
-                        DeathScreen();
-                        break;
+                    switch (temp)
+                    {
+                        case "1":
+                            Console.WriteLine("Everything about this situation is insane. Why not add one more thing to the pile? What could go wrong?\n\n" +
+                                "'Let's go, before we freeze to death.'\n");
+                            errorCheck = true;
+                            break;
+                        case "2":
+                            Console.WriteLine("You aren't going to go speak to the LITERAL devil. What sort of insane plan is that?\n" +
+                                "Just looking at him makes your skin crawl; speaking to that THING will be so much worse. Besides, why would that work?\n" +
+                                "If escaping hell was as simple as talking to someone, people would be coming back to life all the time.\n" +
+                                "Bryan tries to make you reconsider, but your mind is made up.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("You head out across the ice.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
+                                "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
+                                "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
+                                "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest; \n" +
+                                "each time you stop, the ice tries to swallow you as well.");
+                            Thread.Sleep(1500);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Infernum non habet misericordiam.\r");
+                            Thread.Sleep(150);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
+                                "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
+                                "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
+                                "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest;\n" +
+                                "each time you stop, the ice tries to swallow you as well.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.");
+                            Thread.Sleep(500);
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Infernum non habet misericordiam, Gementes in tenebris perpetuis, damnati ululant.");
+                            Thread.Sleep(250);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Clear();
+                            Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Menu("Press ENTER to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("The ice finds you quickly, crawling up your legs like the most persistent of predators. It's not long before\n" +
+                                "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. Yet there is no respite. It just\n" +
+                                "goes on and on and on. Is this your eternity? Is this your torment?\n\n" +
+                                $"But eventually, {name} stops thinking.\n\n");
+                            weapon = 0;
+                            DeathScreen();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid input...");
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
 
+                    }
                 }
             }
             Console.WriteLine("You" + (fought == false ? " and Bryan" : "") + " set out across the ice, towards the looming shape\n" +
@@ -1146,8 +1205,7 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             do
-            {
-                choiceBreak = true;
+            {               
                 Console.WriteLine("It's practically hot by the time you get to the Devil himself. Three-headed and vast, \n" +
                 "his skin is scaled and red, and beneath the steaming ice you see the outline of shadowed wings.\n" +
                 "You feel violently ill just looking at him.\n\n" +
@@ -1188,6 +1246,7 @@ namespace Wah
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
+                        choiceBreak = true;
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -1230,6 +1289,12 @@ namespace Wah
                         Console.WriteLine("Press ENTER to continue...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadLine();
+                        Console.Clear();
+                        choiceBreak = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input...");
+                        Console.ReadKey();
                         Console.Clear();
                         break;
 
@@ -1368,8 +1433,6 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Level2();
-
-
         }
         public static bool Level1_1(ref bool fought)
         {
@@ -2578,9 +2641,6 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Level5();
-
-
-
 
         }
         public static void Level5()// Circle 5: Greed
