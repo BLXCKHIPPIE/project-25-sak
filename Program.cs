@@ -1437,8 +1437,6 @@ namespace Wah
             Console.ReadLine();
             Console.Clear();
             Level2();
-
-
         }
         public static bool Level1_1(ref bool fought)
         {
