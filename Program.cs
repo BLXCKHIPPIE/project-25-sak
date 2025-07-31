@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.IO;
 using System.Collections;
 using System.ComponentModel.Design;
@@ -1121,77 +1122,141 @@ namespace Wah
                     temp = Console.ReadLine();
                     Console.Clear();
 
-                    switch (temp)
-                    {
-                        case "1":
-                            Console.WriteLine("Everything about this situation is insane. Why not add one more thing to the pile? What could go wrong?\n\n" +
-                                "'Let's go, before we freeze to death.'\n");
-                            errorCheck = true;
-                            break;
-                        case "2":
-                            Console.WriteLine("You aren't going to go speak to the LITERAL devil. What sort of insane plan is that?\n" +
-                                "Just looking at him makes your skin crawl; speaking to that THING will be so much worse. Besides, why would that work?\n" +
-                                "If escaping hell was as simple as talking to someone, people would be coming back to life all the time.\n" +
-                                "Bryan tries to make you reconsider, but your mind is made up.\n");
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Console.WriteLine("You head out across the ice.\n");
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
-                                "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
-                                "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
-                                "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest; \n" +
-                                "each time you stop, the ice tries to swallow you as well.");
-                            Thread.Sleep(1500);
-                            Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Infernum non habet misericordiam.\r");
-                            Thread.Sleep(150);
-                            Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
-                                "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
-                                "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
-                                "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest;\n" +
-                                "each time you stop, the ice tries to swallow you as well.\n");
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.");
-                            Thread.Sleep(500);
-                            Console.Clear();
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Infernum non habet misericordiam, Gementes in tenebris perpetuis, damnati ululant.");
-                            Thread.Sleep(250);
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.Clear();
-                            Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Menu("Press ENTER to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Console.Clear();
-                            Console.WriteLine("The ice finds you quickly, crawling up your legs like the most persistent of predators. It's not long before\n" +
-                                "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. Yet there is no respite. It just\n" +
-                                "goes on and on and on. Is this your eternity? Is this your torment?\n\n" +
-                                $"But eventually, {name} stops thinking.\n\n");
-                            weapon = 0;
-                            DeathScreen();
-                            break;
-                        default:
-                            Console.WriteLine("Invalid input...");
-                            Console.ReadKey();
-                            Console.Clear();
-                            break;
+
+                switch (temp)
+                {
+                    case "1":
+                        Console.WriteLine("Everything about this situation is insane. Why not add one more thing to the pile? What could go wrong?\n\n" +
+                            "'Let's go, before we freeze to death.'\n");
+                        break;
+                    case "2":
+                        Console.WriteLine("You aren't going to go speak to the LITERAL devil. What sort of insane plan is that?\n" +
+                            "Just looking at him makes your skin crawl; speaking to that THING will be so much worse. Besides, why would that work?\n" +
+                            "If escaping hell was as simple as talking to someone, people would be coming back to life all the time.\n" +
+                            "Bryan tries to make you reconsider, but your mind is made up.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("You head out across the ice.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
+                            "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
+                            "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
+                            "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest; \n" +
+                            "each time you stop, the ice tries to swallow you as well.");
+                        Thread.Sleep(1500);
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+
+                        Console.WriteLine("   ██▓ ███▄    █   █████▒▓█████  ██▀███   ███▄    █  █    ██  ███▄ ▄███▓         ");
+                        Console.WriteLine("  ▓██▒ ██ ▀█   █ ▓██   ▒ ▓█   ▀ ▓██ ▒ ██▒ ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒         ");
+                        Console.WriteLine("  ▒██▒▓██  ▀█ ██▒▒████ ░ ▒███   ▓██ ░▄█ ▒▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░         ");
+                        Console.WriteLine("  ▒██▒▓██  ▀█ ██▒▒████ ░ ▒███   ▓██ ░▄█ ▒▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░         ");
+                        Console.WriteLine("  ░██░▓██▒  ▐▌██▒░▓█▒  ░ ▒▓█  ▄ ▒██▀▀█▄  ▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██          ");
+                        Console.WriteLine("  ░██░▒██░   ▓██░░▒█░    ░▒████▒░██▓ ▒██▒▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒         ");
+                        Console.WriteLine("    ░▓  ░ ▒░   ▒ ▒  ▒ ░    ░░ ▒░ ░░ ▒▓ ░▒▓░░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░       ");
+                        Console.WriteLine("        ▒ ░░ ░░   ░ ▒░ ░       ░ ░  ░  ░▒ ░ ▒░░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░       ");
+                        Console.WriteLine("         ▒ ░   ░   ░ ░  ░ ░       ░     ░░   ░    ░   ░ ░  ░░░ ░ ░ ░      ░            ");
+                        Console.WriteLine("         ░           ░            ░  ░   ░              ░    ░            ░            ");
+                        Console.WriteLine("                                                       ");
+                        Console.WriteLine("     ███▄    █  ▒█████   ███▄    █     ██░ ██  ▄▄▄       ▄▄▄▄   ▓█████▄▄▄█████▓    ");
+                        Console.WriteLine("     ██ ▀█   █ ▒██▒  ██▒ ██ ▀█   █    ▓██░ ██▒▒████▄    ▓█████▄ ▓█   ▀▓  ██▒ ▓▒    ");
+                        Console.WriteLine("    ▓██  ▀█ ██▒▒██░  ██▒▓██  ▀█ ██▒   ▒██▀▀██░▒██  ▀█▄  ▒██▒ ▄██▒███  ▒ ▓██░ ▒░    ");
+                        Console.WriteLine("    ▓██▒  ▐▌██▒▒██   ██░▓██▒  ▐▌██▒   ░▓█ ░██ ░██▄▄▄▄██ ▒██░█▀  ▒▓█  ▄░ ▓██▓ ░     ");
+                        Console.WriteLine("    ▒██░   ▓██░░ ████▓▒░▒██░   ▓██░   ░▓█▒░██▓ ▓█   ▓██▒░▓█  ▀█▓░▒████▒ ▒██▒ ░     ");
+                        Console.WriteLine("    ░ ▒░   ▒ ▒ ░ ▒░▒░▒░ ░ ▒░   ▒ ▒     ▒ ░░▒░▒ ▒▒   ▓▒█░░▒▓███▀▒░░ ▒░ ░ ▒ ░░       ");
+                        Console.WriteLine("       ░   ░ ░ ░ ░ ░ ▒     ░   ░ ░     ░  ░░ ░  ░   ▒    ░    ░    ░    ░          ");
+                        Console.WriteLine("            ░     ░ ░           ░     ░  ░  ░      ░  ░ ░         ░  ░            ");
+                        Console.WriteLine("                                  ░                    ");
+                        Console.WriteLine("     ███▄ ▄███▓ ██▓  ██████ ▓█████  ██▀███   ██▓ ▄████▄   ▒█████   ██▀███  ▓█████▄ ");
+                        Console.WriteLine("    ▓██▒▀█▀ ██▒▓██▒▒██    ▒ ▓█   ▀ ▓██ ▒ ██▒▓██▒▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▒██▀ ██▌");
+                        Console.WriteLine("    ▓██    ▓██░▒██▒░ ▓██▄   ▒███   ▓██ ░▄█ ▒▒██▒▒▓█    ▄ ▒██░  ██▒▓██ ░▄█ ▒░██   █▌");
+                        Console.WriteLine("    ▒██    ▒██ ░██░  ▒   ██▒▒▓█  ▄ ▒██▀▀█▄  ░██░▒▓▓▄ ▄██▒▒██   ██░▒██▀▀█▄  ░▓█▄   ▌");
+                        Console.WriteLine("    ▒██▒   ░██▒░██░▒██████▒▒░▒████▒░██▓ ▒██▒░██░▒ ▓███▀ ░░ ████▓▒░░██▓ ▒██▒░▒████▓ ");
+                        Console.WriteLine("    ░ ▒░   ░  ░░▓  ▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ▒▓ ░▒▓░░▓  ░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░ ▒▒▓  ▒ ");
+                        Console.WriteLine("   ░  ░      ░ ▒ ░░ ░▒  ░ ░ ░ ░  ░  ░▒ ░ ▒░ ▒ ░  ░  ▒     ░ ▒ ▒░   ░▒ ░ ▒░ ░ ▒  ▒ ");
+                        Console.WriteLine("    ░      ░    ▒ ░░  ░  ░     ░     ░░   ░  ▒ ░░        ░ ░ ░ ▒    ░░   ░  ░ ░  ░ ");
+                        Console.WriteLine("           ░    ░        ░     ░  ░   ░      ░  ░ ░          ░ ░     ░        ░    ");
+                        Console.WriteLine("                                                ░                           ░      ");
+                        Console.WriteLine("     ██▓ ▄▄▄       ███▄ ▄███▓                                                      ");
+                        Console.WriteLine("    ▓██▒▒████▄    ▓██▒▀█▀ ██▒                                                      ");
+                        Console.WriteLine("    ▒██▒▒██  ▀█▄  ▓██    ▓██░                                                      ");
+                        Console.WriteLine("    ░██░░██▄▄▄▄██ ▒██    ▒██                                                       ");
+                        Console.WriteLine("    ░██░ ▓█   ▓██▒▒██▒   ░██▒                                                      ");
+                        Console.WriteLine("    ░▓   ▒▒   ▓▒█░░ ▒░   ░  ░                                                      ");
+                        Console.WriteLine("     ▒ ░  ▒   ▒▒ ░░  ░      ░                                                      ");
+                        Console.WriteLine("    ▒ ░  ░   ▒   ░      ░                                                         ");
+                        Console.WriteLine("    ░        ░  ░       ░                                                         ");
+                        Thread.Sleep(600);
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("It's cold. It's so cold. The ice never ends. The cold never stops. You're sure that if you were alive,\n" +
+                            "you would be at risk of severe hypothermia. But for some reason you are able to just keep going, and going, and going.\n" +
+                            "You pass by unfortunate souls, trapped in their own personal coffins; the bones of creatures you don't recognize,\n" +
+                            "and the ruins of cities that don't exist. It quickly becomes apparent that you can't rest;\n" +
+                            "each time you stop, the ice tries to swallow you as well.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.");
+                        Thread.Sleep(500);
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("      ▄████  ██▀███   ▄▄▄     ▄▄▄█████▓ ██▓ ▄▄▄        ██████  ");
+                        Console.WriteLine("     ██▒ ▀█▒▓██ ▒ ██▒▒████▄   ▓  ██▒ ▓▒▓██▒▒████▄    ▒██    ▒ ");
+                        Console.WriteLine("    ▒██░▄▄▄░▓██ ░▄█ ▒▒██  ▀█▄ ▒ ▓██░ ▒░▒██▒▒██  ▀█▄  ░ ▓██▄   ");
+                        Console.WriteLine("    ░▓█  ██▓▒██▀▀█▄  ░██▄▄▄▄██░ ▓██▓ ░ ░██░░██▄▄▄▄██   ▒   ██▒");
+                        Console.WriteLine("    ░▒▓███▀▒░██▓ ▒██▒ ▓█   ▓██▒ ▒██▒ ░ ░██░ ▓█   ▓██▒▒██████▒▒");
+                        Console.WriteLine("     ░▒   ▒ ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░ ▒ ░░   ░▓   ▒▒   ▓▒█░▒ ▒▓▒ ▒ ░");
+                        Console.WriteLine("      ░   ░   ░▒ ░ ▒░  ▒   ▒▒ ░   ░     ▒ ░  ▒   ▒▒ ░░ ░▒  ░ ░");
+                        Console.WriteLine("    ░ ░   ░   ░░   ░   ░   ▒    ░       ▒ ░  ░   ▒   ░  ░  ░  ");
+                        Console.WriteLine("          ░    ░           ░  ░         ░        ░  ░      ░  ");
+                        Console.WriteLine("                                              ");
+                        Console.WriteLine("     ▄▄▄        ▄████  ▒█████     ▄▄▄█████▓ ██▓ ▄▄▄▄    ██▓   ");
+                        Console.WriteLine("    ▒████▄     ██▒ ▀█▒▒██▒  ██▒   ▓  ██▒ ▓▒▓██▒▓█████▄ ▓██▒   ");
+                        Console.WriteLine("    ▒██  ▀█▄  ▒██░▄▄▄░▒██░  ██▒   ▒ ▓██░ ▒░▒██▒▒██▒ ▄██▒██▒   ");
+                        Console.WriteLine("    ░██▄▄▄▄██ ░▓█  ██▓▒██   ██░   ░ ▓██▓ ░ ░██░▒██░█▀  ░██░   ");
+                        Console.WriteLine("     ▓█   ▓██▒░▒▓███▀▒░ ████▓▒░     ▒██▒ ░ ░██░░▓█  ▀█▓░██░   ");
+                        Console.WriteLine("     ▒▒   ▓▒█░ ░▒   ▒ ░ ▒░▒░▒░      ▒ ░░   ░▓  ░▒▓███▀▒░▓     ");
+                        Console.WriteLine("      ▒   ▒▒ ░  ░   ░   ░ ▒ ▒░        ░     ▒ ░▒░▒   ░  ▒ ░   ");
+                        Console.WriteLine("      ░   ▒   ░ ░   ░ ░ ░ ░ ▒       ░       ▒ ░ ░    ░  ▒ ░   ");
+                        Console.WriteLine("          ░  ░      ░     ░ ░               ░   ░       ░     ");
+                        Console.WriteLine("                                                     ░        ");
+                        Console.WriteLine("    ▓█████▄  ██▓ ▄▄▄       ▄▄▄▄    ▒█████   ██▓     ██▓       ");
+                        Console.WriteLine("    ▒██▀ ██▌▓██▒▒████▄    ▓█████▄ ▒██▒  ██▒▓██▒    ▓██▒       ");
+                        Console.WriteLine("    ░██   █▌▒██▒▒██  ▀█▄  ▒██▒ ▄██▒██░  ██▒▒██░    ▒██▒       ");
+                        Console.WriteLine("    ░▓█▄   ▌░██░░██▄▄▄▄██ ▒██░█▀  ▒██   ██░▒██░    ░██░       ");
+                        Console.WriteLine("    ░▒████▓ ░██░ ▓█   ▓██▒░▓█  ▀█▓░ ████▓▒░░██████▒░██░       ");
+                        Console.WriteLine("    ▒▒▓  ▒ ░▓   ▒▒   ▓▒█░░▒▓███▀▒░ ▒░▒░▒░ ░ ▒░▓  ░░▓         ");
+                        Console.WriteLine("     ░ ▒  ▒  ▒ ░  ▒   ▒▒ ░▒░▒   ░   ░ ▒ ▒░ ░ ░ ▒  ░ ▒ ░       ");
+                        Console.WriteLine("     ░ ░  ░  ▒ ░  ░   ▒    ░    ░ ░ ░ ░ ▒    ░ ░    ▒ ░       ");
+                        Console.WriteLine("       ░     ░        ░  ░ ░          ░ ░      ░  ░ ░         ");
+                        Console.WriteLine("     ░                          ░                             .");
+                        Thread.Sleep(600);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Clear();
+                        Console.WriteLine("But eventually, you have to stop. You can't go on. Your body refuses to move.\n");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Menu("Press ENTER to continue...");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine("The ice finds you quickly, crawling up your legs like the most persistent of predators. It's not long before\n" +
+                            "you are fully encased, and the pain is back. Numbing, agonizing, wracking your nerves. Yet there is no respite. It just\n" +
+                            "goes on and on and on. Is this your eternity? Is this your torment?\n\n" +
+                            $"But eventually, {name} stops thinking.\n\n");
+                        weapon = 0;
+                        DeathScreen();
+                        break;
+
 
                     }
                 }
