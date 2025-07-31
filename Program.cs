@@ -415,6 +415,8 @@ namespace Wah
         }
         public static void Combat(string creature, int difficulty, int speed)//handles combat in general
         {
+            monSpeed = speed;
+            monsterName = creature;
             hpAtCombat = vitality;
             coward = false;
             bool combat = true;
@@ -422,9 +424,9 @@ namespace Wah
             monPanic = monHp - (difficulty * 9);
             int spoils = difficulty * rand.Next(20, 50);
 
-            if (speed >= difficulty + 1)
+            if (monSpeed >= difficulty + 1)
             {
-                mAttack = difficulty + speed;
+                mAttack = difficulty + monSpeed;
             }
             else
             {
@@ -439,7 +441,7 @@ namespace Wah
                     combat = false;
                     if(coward == false)
                     {
-                        Console.WriteLine($"{creature} drops {spoils} gold!");
+                        Console.WriteLine($"{monsterName} drops {spoils} gold!");
                         gold = gold + spoils;
                         Console.ReadLine();
                     }
@@ -449,7 +451,7 @@ namespace Wah
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"You are fighting {creature}.");
+                    Console.WriteLine($"You are fighting {monsterName}.");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write($"--[ {creature} ]-- \nVitality: {monHp} ");
                     for (int i = 0; i <= (monHp / 2); i++)
@@ -457,7 +459,7 @@ namespace Wah
                         Console.Write("|");
                     }
                     Console.WriteLine("");
-                    Console.WriteLine($"DEF. {speed}");
+                    Console.WriteLine($"DEF. {monSpeed}");
                     Console.WriteLine("\n\n\n");
                     Console.ForegroundColor = ConsoleColor.White;
                     PlayerRound(true,creature);
@@ -521,7 +523,7 @@ namespace Wah
 
 
             }
-            else if (attkType == 2)
+            else 
             {
                 switch (rand.Next(0, mAttack))
                 {
@@ -591,7 +593,7 @@ namespace Wah
                             damage = rand.Next(0, strength / 2) + weapon;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName} {def[rand.Next(def.Length)]} out of the way.");
+                                Console.WriteLine($"You {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {creature} {def[rand.Next(def.Length)]} out of the way.");
                                 playerRound = false;
                                 damage = 0;
 
@@ -606,7 +608,7 @@ namespace Wah
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your {weaponName} at {monsterName}, dealing {damage} damage.");
+                                    Console.WriteLine($"you {atk[rand.Next(atk.Length)]} your {weaponName} at {creature}, dealing {damage} damage.");
                                     playerRound = false;
                                 }
                             }
@@ -617,7 +619,7 @@ namespace Wah
                             damage = rand.Next(0, strength) + weapon * 2;
                             if (attack <= monSpeed)
                             {
-                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {monsterName}\n" +
+                                Console.WriteLine($"You wind up a mighty {atk[rand.Next(atk.Length)]} with your {weaponName}, but unfortunately {creature}\n" +
                                     $"{def[rand.Next(def.Length)]} out of the way of your telegraphed move.");
                                 damage = 0;
                                 playerRound = false;
@@ -4078,6 +4080,7 @@ namespace Wah
             Console.ReadLine();
             Level5();
         }
+
         public static void AngelMenu()
         {
             string temp = " ";
